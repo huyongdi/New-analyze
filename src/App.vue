@@ -54,12 +54,30 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    /*overflow: hidden;*/
     body{
       height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
+      #app{
+        height: 100%;
+        .po{
+          cursor: pointer;
+        }
+        .inline{
+          display: inline-block;
+        }
+        .block{
+          display: block;
+        }
+        ul {
+          li{
+            list-style: none;
+          }
+        }
+      }
     }
   }
 </style>

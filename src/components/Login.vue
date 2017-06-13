@@ -12,7 +12,7 @@
           <img src="../../static/img/header-2.png"/>
         </div>
       </div>
-      <div class="pull-right po">
+      <div class="pull-right po" @click="login" >
         <img src="../../static/img/header-2.png"/>
         <img class="register-img" src="../../static/img/header-3.png"/>
         <span class="register-span">登录</span>
@@ -51,19 +51,33 @@
             <div class="login-content">
               <label class="block">
                 <p>用户名:</p>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" v-model="inputName">
               </label>
               <label class="block">
                 <p>密码:</p>
-                <input class="form-control" type="password">
+                <input @keyup.enter="login" class="form-control" type="password" v-model="inputPassword">
               </label>
-              <img class="login-img po" src="../../static/img/login-2.png" alt="">
+              <img @click="login" class="login-img po" src="../../static/img/login-2.png" alt="">
             </div>
 
             <div class="alert">
               <i class="alert-img inline"></i>
+              <span class="alert-title">公告</span>
+              <div class="alert-content">
+                <span class="block">
+                  grandbox为向您提供分析解读平台（Analyze）、项目管理系统（Management）、医学大数据库（BioMedDB）等可选择系统模块。若您选择grandbox
+                  系统网站上提供的服务，都是您自行做出的选择，同时表明您完全同意本免责声明的全部内容。
+                </span>
+                <span class="block">
+                  grandbox系统网站上提供的信息均为严格保密，用户将个人密码告诉他人或与他人共享注册账户，由此导致的任何个人资料泄露，grandbox不承担由此
+                  引起的任何损失和责任。
+                </span>
+                <span class="block">
+                  本免责声明的最终解释权归北京希望组生物科技有限公司所有，且希望组生物科技有限公司有权在不通知您的情况下更新本免责声明，并只需在grandbox
+                  网站上发布即生效。
+                </span>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -73,7 +87,36 @@
 
 <script>
   export default {
+    data: function () {
+      return {
+        inputName: '',
+        inputPassword: ''
+      }
+    },
+    created: function () {
+      if (localStorage.token) {
+        this.$router.push({path: '/'})
+      }
+    },
     methods: {
+      login: function () {
+        const _vue = this;
+        this.$axios({
+          url: 'user/login/',
+          method: 'post',
+          data: {
+            username: this.inputName,
+            password: this.inputPassword
+          }
+        }).then(function (resp) {
+          localStorage.token = resp.data.data.token;
+          localStorage.uname = resp.data.data.personnel;
+          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/';
+          _vue.$router.push({path: nextPath})
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        });
+      },
       clickLi: function (event) {
         $(".content-left").find(".active").removeClass('active');
         $(event.target).closest('li').addClass('active')
@@ -87,7 +130,6 @@
   @triangle-color: rgb(0, 118, 192);
   @font-color: rgb(21, 65, 65);
   .all {
-    font-family: "AdobeHeitiStd";
     height: 100%;
     .header {
       height: 52px;
@@ -122,7 +164,6 @@
       .content-left {
         width: 250px;
         height: 100%;
-        border-right: 1px solid @border;
         ul {
           margin-left: -40px;
           .triangle {
@@ -197,8 +238,9 @@
         }
       }
       .content-right {
-        height: 100%;
+        border-left: 1px solid @border;
         float: left;
+        min-height: 100%;
         padding-left: 32px;
         width: calc(~'100vw - 267px');
         .login-logo {
@@ -207,7 +249,7 @@
         }
         .login-content {
           color: @font-color;
-          margin: 40px 0;
+          margin: 5vh 0 7vh 0;
           .block{
             margin: 20px 0;
             input{
@@ -219,13 +261,22 @@
           }
         }
         .alert{
-          height: 137px;
           width: 100%;
+          padding: 25px 20px;
           background-color: rgb(237,246,251);
           .alert-img{
-              width: 15px;
+            width: 15px;
             height: 15px;
             background: url('../../static/img/all-2.jpg') 0 15px;
+          }
+          .alert-title{
+            color: rgb( 21, 65, 65 );
+            font-weight: bold;
+          }
+          .alert-content{
+            color: rgb( 49, 49, 49 );
+            font-weight: bold;
+            margin-top: 12px;
           }
         }
       }

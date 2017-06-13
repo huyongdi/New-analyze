@@ -49,34 +49,130 @@
 </script>
 
 <style lang="less">
-  html{
+  @triangle-color: rgb(0, 118, 192);
+  @border: rgb(168, 185, 209);
+  @in: rgb(14, 125, 195);
+  @color: rgb( 49, 49, 49 );
+
+  html {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    /*overflow: hidden;*/
-    body{
+    body {
       height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
-      #app{
+      font-family: "AdobeHeitiStd";
+      #app {
         height: 100%;
-        .po{
+        /*自定义class*/
+        .po {
           cursor: pointer;
         }
-        .inline{
+        .inline {
           display: inline-block;
         }
-        .block{
+        .block {
           display: block;
         }
+        a{
+          text-decoration: none;
+        }
         ul {
-          li{
+          li {
             list-style: none;
           }
         }
+        /*页面共用样式*/
+        .all-content{
+          height: 100%;
+          .under{
+            border-top: 1px solid @border;
+            height: 100%;
+            .under-left {
+              /*display: inline-block;*/
+              float: left;
+              width: 250px;
+              height: 100%;
+              margin: 0;
+              padding: 0;
+              color: @color;
+              cursor: pointer;
+              border-right: 1px solid @border;
+              li.active {
+                .father{
+                  .triangle {
+                    opacity: 1;
+                  }
+                  border-right: 1px solid @triangle-color;
+                  color: @in;
+                }
+                .children{
+                  display: block;
+                }
+              }
+              .father{
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid @border;
+                font-weight: bold;
+                .img {
+                  float: left;
+                  width: 18px;
+                  height: 25px;
+                  margin: 6px 10px 0 20px;
+                }
+                img{
+                  float: right;
+                  margin: 16px 20px 0 0;
+                }
+                .triangle {
+                  float: right;
+                  width: 0;
+                  height: 0;
+                  margin-top: 4px;
+                  border-top: 15px solid transparent;
+                  border-right: 18px solid @triangle-color;
+                  border-bottom: 15px solid transparent;
+                  opacity: 0;
+                }
+              }
+              .children{
+                display: none;
+                padding-left: 23px;
+                border-bottom: 1px solid @border;
+                a{
+                  height: 25px;
+                  line-height: 25px;
+                  color: inherit;
+                }
+                a.active{
+                  color: @in;
+                }
+              }
+            }
+            .under-right{
+              /*display: inline-block;*/
+              float: left;
+              width: calc(~'100vw - 270px');
+              height: 100%;
+              padding-left: 30px;
+              padding-top: 28px;
+              .title{
+                color: rgb( 67, 67, 67 );
+                font-weight: bold;
+                .title-b{
+                  font-weight: bold;
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+        }
+
       }
     }
   }

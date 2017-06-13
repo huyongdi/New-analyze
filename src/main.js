@@ -15,6 +15,41 @@ axios.defaults.headers = {'Authorization': localStorage.token};
 Vue.prototype.dbUrl = 'http://biomeddb.zhu-ying.win:9999/'; /*请求接口*/
 Vue.prototype.dbHtml = 'http://grandbox.zhu-ying.win:8888/biomeddb/'; /*html地址*/
 
+Vue.prototype.catchFun = function (error) {
+  if (error.response) {
+    let alertContent = '';
+    if (error.response.data.detail) {
+      if(typeof error.response.data.detail === 'string'){
+        alertContent = error.response.data.detail
+      }else{
+        const arr =[];
+        $.each(error.response.data.detail, function (i, value) {
+          arr.push(i+' : '+value)
+        });
+        alertContent = arr.join(' ; ')
+      }
+    } else {
+      if(typeof error.response.data === 'object'){
+        const arr =[];
+        $.each(error.response.data, function (i, value) {
+          arr.push(i+' : '+value)
+        });
+        alertContent = arr.join(' ; ')
+      }else{
+        alertContent = error.response.data
+      }
+    }
+    alert(error.response.status + ' : ' + alertContent);
+    if (error.response.status === 401) {
+      if (this.$route.name !== 'login') {
+        this.$router.push({path: '/login' + this.$route.path})
+      }
+    }
+  } else {
+    alert(error.message);
+  }
+};
+
 new Vue({
   el: '#app',
   router,

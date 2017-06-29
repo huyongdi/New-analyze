@@ -267,7 +267,7 @@
           .alert-img{
             width: 15px;
             height: 15px;
-            background: url('../../static/img/all-2.jpg') 0 15px;
+            background: url('../../static/img/all-2.png') 0 15px;
           }
           .alert-title{
             color: rgb( 21, 65, 65 );

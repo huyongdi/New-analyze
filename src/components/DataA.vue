@@ -3,21 +3,21 @@
     <top-header></top-header>
     <div class="under">
       <ul class="under-left">
-        <li @click="leftLi" class="active">
+        <li class="active">
           <div class="father">
             <span class="img analyze-flow"></span>
             <span>分析流程</span>
             <i class="triangle"></i>
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
-          <div class="children">
+          <div class="children" @click.stop="">
             <router-link v-for="pipeline in leftObj.pipelineArr" :key="pipeline.id" :to="{name:pipeline.vue_name}"
                          class="block" :data-code="pipeline.code">
               {{pipeline.name}}
             </router-link>
           </div>
         </li>
-        <li @click="leftLi">
+        <li>
           <div class="father">
             <span class="img analyze-soft"></span>
             <span>分析软件</span>
@@ -25,7 +25,7 @@
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
         </li>
-        <li @click="leftLi">
+        <li>
           <div class="father">
             <span class="img analyze-tool"></span>
             <span>实用工具</span>
@@ -101,16 +101,6 @@
             });
           }
         })
-      },
-      leftLi: function (event) {
-        $(".under-left").find("li.active").removeClass('active');
-        const _currentLi = $(event.target).closest('li');
-        const _children = _currentLi.find('.children');
-        _currentLi.addClass('active');
-        /*如果children里面没有处于active的页面*/
-        if (_children.find('.active').length === 0) {
-          _children.find('span').first().addClass('active')
-        }
       },
     }
   }

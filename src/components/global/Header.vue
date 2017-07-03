@@ -13,7 +13,7 @@
         <img class="right-img" src="../../../static/img/header-2.png"/>
       </li>
       <li>
-        <router-link to="/">
+        <router-link to="/dataM/foo/grandE">
           <span class="img-dataManage li-img"></span>
           <span>数据管理</span>
         </router-link>
@@ -135,6 +135,10 @@
         .img-taskManage {
           background-size: 28px 19px;
           background: url(../../../static/img/header-7-1.png) no-repeat center;
+        }
+        .img-dataManage{
+          background-size: 21px 21px;
+          background: url(../../../static/img/header-5-1.png) no-repeat center;
         }
       }
       li {

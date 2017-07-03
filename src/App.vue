@@ -60,7 +60,18 @@
             }
           }
         });
-      }
+        /*点击左侧列表*/
+        $(".under-left").on('click','>li',function (event) {
+          const _currentLi = $(event.target).closest('li');
+          const _children = _currentLi.find('.children');
+          if(_currentLi.hasClass('active')){
+            _currentLi.removeClass('active')
+          }else{
+            $(".under-left").find("li.active").removeClass('active');
+            _currentLi.addClass('active');
+          }
+        });
+      },
     }
   }
 
@@ -71,6 +82,7 @@
   @border: rgb(168, 185, 209);
   @tableSha: rgb(185, 184, 184);
   @in: rgb(14, 125, 195);
+  @inBc: rgb(220, 238, 249);
   @color: rgb(49, 49, 49);
   @tdBorder: rgb(225, 226, 227);
   @trHover: rgb(255, 245, 231);
@@ -192,6 +204,7 @@
             }
           }
           tbody {
+            cursor: pointer;
             tr {
               td {
                 padding: 5px 8px 5px 17px;
@@ -272,15 +285,16 @@
               }
               .children {
                 display: none;
-                padding-left: 23px;
                 border-bottom: 1px solid @border;
                 a {
                   height: 25px;
                   line-height: 25px;
                   color: inherit;
+                  padding-left: 23px;
                 }
-                a.active {
+                a.active,a:hover {
                   color: @in;
+                  background-color: @inBc;
                 }
               }
             }

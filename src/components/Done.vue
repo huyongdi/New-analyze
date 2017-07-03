@@ -36,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="result in results">
+        <tr v-for="result in results" @click="toResult(result.type)">
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
@@ -44,21 +44,21 @@
           <td>{{result.nameArr[1]}}</td>
           <td>{{result.nameArr[0]}}</td>
           <td>{{result.nameArr[2]}}</td>
-          <td>
-            <i v-if="result.status == 'completed' && !result.error" class="fa fa-check text-success"
-               title="已完成"></i>
-            <i v-else="" class="fa fa-bug text-danger" title="出错"></i>
-          </td>
-          <td>{{result.startTime}}</td>
           <!--<td>-->
-            <!--<router-link v-if="result.grandmgds" :to="{path:'/sgResult',query:{id:result.typeId}}"-->
-                         <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
-            <!--<router-link v-if="result.grandmitos" :to="{path:'/gmResult',query:{id:result.typeId}}"-->
-                         <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
-            <!--&lt;!&ndash;<i v-if="result.status == 'error'" class="fa fa-refresh po" title="重新运行"&ndash;&gt;-->
-            <!--&lt;!&ndash;:data-id=result.id></i>&ndash;&gt;-->
-            <!--<img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id @click="removeTask">-->
+          <!--<i v-if="result.status == 'completed' && !result.error" class="fa fa-check text-success"-->
+          <!--title="已完成"></i>-->
+          <!--<i v-else="" class="fa fa-bug text-danger" title="出错"></i>-->
           <!--</td>-->
+          <td>{{result.startTime}}</td>
+          <td>
+            <!--<router-link v-if="result.grandmgds" :to="{path:'/dataA/foo/sgResult',query:{id:result.typeId}}"-->
+            <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
+            <!--<router-link v-if="result.grandmitos" :to="{path:'/dataA/foo/sgResult',query:{id:result.typeId}}"-->
+            <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
+            <!--<i v-if="result.status == 'error'" class="fa fa-refresh po" title="重新运行"-->
+            <!--:data-id=result.id></i>-->
+            <img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id @click="removeTask">
+          </td>
         </tr>
         </tbody>
       </table>
@@ -79,8 +79,8 @@
         loading: false,
         count: 0,
         pageNum: 1,
-        selectArr:[],
-        appCode:''
+        selectArr: [],
+        appCode: ''
       }
     },
     created: function () {
@@ -88,15 +88,15 @@
       this.getSelect()
     },
     methods: {
-      appClick:function (code) {
-          this.appCode = code?code:'';
-          this.getList()
+      appClick: function (code) {
+        this.appCode = code ? code : '';
+        this.getList()
       },
       getList: function () {
         this.loading = true;
         const _vue = this;
         this.$axios({
-          url: 'application/job/?compl=true&page=' + this.pageNum+ '&app=' + this.appCode
+          url: 'application/job/?compl=true&page=' + this.pageNum + '&app=' + this.appCode
         }).then(function (resp) {
           _vue.count = resp.data.count;
           $.each(resp.data.results, function (a, b) {
@@ -150,6 +150,10 @@
           _vue.catchFun(error);
         })
       },
+      toResult: function (type) {
+        let url = type === 0 ? '/dataA/foo/sgResult' : '/dataA/foo/gmResult';
+        this.$router.push(url)
+      }
     }
   }
 </script>

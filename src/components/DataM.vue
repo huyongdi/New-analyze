@@ -3,36 +3,44 @@
     <top-header></top-header>
     <div class="under">
       <ul class="under-left">
-        <li class="active">
+        <li>
           <div class="father">
-            <span class="img task-detail"></span>
-            <span>任务详情</span>
+            <span class="img data-centre"></span>
+            <span>数据中心</span>
+            <i class="triangle"></i>
+            <img src="../../static/img/under-left-1.png" alt="">
+          </div>
+        </li>
+        <li>
+          <div class="father">
+            <span class="img test-platform"></span>
+            <span>检测平台</span>
             <i class="triangle"></i>
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
           <div @click.stop="" class="children">
-            <router-link to="/taskM/foo/done" data-code='done' class="block">
-              已完成
+            <router-link to="/dataM/foo/grandE" data-code='grandE' class="block">
+              GrandExome
             </router-link>
-            <router-link to='/taskM/foo/doing' data-code="doing" class="block">
-              未完成
+            <router-link to='/dataM/foo/hg19' data-code="hg19" class="block">
+              hg19_MT
             </router-link>
           </div>
         </li>
         <li>
           <div class="father">
-            <span class="img task-automate"></span>
-            <span>自动化报告</span>
+            <span class="img capture-region"></span>
+            <span>捕获区域管理</span>
             <i class="triangle"></i>
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
-          <div @click.stop="" class="children">
-            <router-link to="/taskM/foo/done" data-code='' class="block">
-              在线报告查询
-            </router-link>
-            <router-link to='/taskM/foo/doing' data-code="" class="block">
-              报告统计
-            </router-link>
+        </li>
+        <li>
+          <div class="father">
+            <span class="img capture-up"></span>
+            <span>数据上传</span>
+            <i class="triangle"></i>
+            <img src="../../static/img/under-left-1.png" alt="">
           </div>
         </li>
       </ul>
@@ -56,16 +64,13 @@
     data:function () {
       return{
         pageObj: {  //页面的code对应的name
-          done: 'taskM-done',
-          doing: 'taskM-doing'
+          grandE: 'dataM-grandE',
+          hg19: 'dataM-hg19'
         }
       }
     },
     mounted: function () {
       this.getActive();
-    },
-    updated:function () {
-      this.getActive()
     },
     methods: {
       getActive: function () {  //通过子页面判断左边具体的active
@@ -74,7 +79,8 @@
           if (name === currentPath) {
             $(".children").find('a').each(function () {
               if ($(this).data('code') === code) {
-                $(this).addClass('active')
+                $(this).addClass('active');
+                $(this).closest('li').addClass('active')
               }
             });
           }
@@ -86,11 +92,17 @@
 
 <style scoped lang="less">
   .under-left {
-    .task-detail{
-      background: url(../../static/img/all-1.png) 0 320px;
+    .data-centre{
+      background: url(../../static/img/all-1.png) 0 266px;
     }
-    .task-automate{
-      background: url(../../static/img/all-1.png) 0 293px;
+    .test-platform{
+      background: url(../../static/img/all-1.png) 0 240px;
+    }
+    .capture-region{
+      background: url(../../static/img/all-1.png) 0 212px;
+    }
+    .capture-up{
+      background: url(../../static/img/all-1.png) 0 186px;
     }
     .active {
       .father{
@@ -102,11 +114,17 @@
           -o-transform:rotate(180deg); 	/* Opera */
         }
       }
-      .task-detail{
-        background: url(../../static/img/all-1.png) 18px 320px;
+      .data-centre{
+        background: url(../../static/img/all-1.png) 18px 266px;
       }
-      .task-automate{
-        background: url(../../static/img/all-1.png) 18px 293px;
+      .test-platform{
+        background: url(../../static/img/all-1.png) 18px 240px;
+      }
+      .capture-region{
+        background: url(../../static/img/all-1.png) 18px 212px;
+      }
+      .capture-up{
+        background: url(../../static/img/all-1.png) 18px 186px;
       }
     }
   }

@@ -30,16 +30,37 @@
         inGene: ''
       }
     },
-    created: function () { //刷新当前页面时候判断需不需要加载头部
-//      this.inLogin = localStorage.uname;
+    created: function () {
+      this.baseBind();
+    },
+    mounted: function () {
+      this.baseBind()
+    },
+    updated:function () {
+      this.baseBind()
     },
     watch: {
-//      '$route' (to, from) { //路由变化的时候判断需不需要加载头部
-//        this.inLogin = localStorage.uname
-//        if (from.name === 'login') {  //重新登录之后token不刷新
-//          axios.defaults.headers = {'Authorization': localStorage.token};
-//        }
-//      }
+      '$route' (to, from) { //路由变化的时候判断需不需要加载头部
+        this.inLogin = !new Boolean(localStorage.token)
+        if (from.name === 'login') {  //重新登录之后token不刷新
+          axios.defaults.headers = {'Authorization': localStorage.token};
+        }
+      }
+    },
+    methods: {
+      baseBind: function () {
+        /*点击tr加背景色*/
+        $("table tbody").on("click", 'tr', function () {
+          if (!$(this).hasClass('not-base')) {
+            if ($(this).hasClass('in')) {
+              $(this).removeClass('in')
+            } else {
+              $(this).closest('tbody').find('.in').removeClass('in')
+              $(this).addClass('in');
+            }
+          }
+        });
+      }
     }
   }
 
@@ -48,11 +69,12 @@
 <style lang="less">
   @triangle-color: rgb(0, 118, 192);
   @border: rgb(168, 185, 209);
+  @tableSha: rgb(185, 184, 184);
   @in: rgb(14, 125, 195);
   @color: rgb(49, 49, 49);
   @tdBorder: rgb(225, 226, 227);
-  @trHover: rgb(255,245,231);
-  @trIn: rgb(255,236,210);
+  @trHover: rgb(255, 245, 231);
+  @trIn: rgb(255, 236, 210);
 
   html {
     height: 100%;
@@ -86,23 +108,21 @@
             list-style: none;
           }
         }
+        .rea{
+          position: relative;
+        }
         .my-btn {
-          width: 92px;
-          height: 30px;
-          padding: 4px 8px;
-          background-color: rgb(234, 84, 66);
-          border: 1px solid rgb(223, 61, 37);
-          color: #fff;
-          img {
-            margin: 0 5px 2px 0;
+          cursor: pointer;
+          &:hover, &:focus {
+            box-shadow: 0 0 3px 1px @tableSha;
           }
         }
         /*表格样式*/
         table {
           margin-top: 15px;
-          border: 1px solid @border;
-          border-radius: 10px;
-          box-shadow: 0 0 15px 1px @border;
+          border: 1px solid @tableSha;
+          border-radius: 5px;
+          box-shadow: 0 0 10px 1px @tableSha;
           width: 100%;
           max-width: 100%;
           border-spacing: 0;
@@ -112,7 +132,7 @@
             background-color: rgb(230, 239, 245);
             tr {
               th {
-                padding: 8px 0 8px 17px;
+                padding: 5px 0 5px 17px;
                 border-bottom: 2px solid rgb(206, 219, 227);
               }
               th:first-child {
@@ -124,12 +144,57 @@
               th:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
               }
+              th{
+                .img1 {  //th上面显示的图
+                  width: 29px;
+                  height: 32px;
+                  background: url(../static/img/th-2.png);
+                  float: right;
+                  margin-top: -6px;
+                  margin-bottom: -6px;
+                  cursor: pointer;
+                  position: relative;
+                  &:hover{
+                    .hide-content{
+                      display: block;
+                    }
+                  }
+                  .hide-content{
+                    position: absolute;
+                    top: 32px;
+                    display: none;
+                    .img2{
+                      cursor: pointer;
+                      background-color: transparent;
+                      z-index: 11;
+                      margin-left: 6px;
+                    }
+                    ul{
+                      margin: -5px 0 0 -30px;
+                      border: 1px solid @tableSha;
+                      box-shadow: 0 0 10px 1px @tableSha;
+                      padding: 0;
+                      z-index: 10;
+                      background-color: #fff;
+                      font-weight: normal;
+                      cursor: pointer;
+                      li{
+                        padding: 5px 20px;
+                        white-space:nowrap;
+                        &:hover{
+                          background-color: @trIn;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
           tbody {
             tr {
               td {
-                padding: 8px 8px 8px 17px;
+                padding: 5px 8px 5px 17px;
               }
               td:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
@@ -138,7 +203,7 @@
                 background-color: @trHover;
               }
             }
-            tr.in{
+            tr.in {
               background-color: @trIn;
             }
             tr:not(:last-child) {

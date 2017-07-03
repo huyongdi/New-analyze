@@ -11,7 +11,7 @@
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
           <div class="children">
-            <router-link v-for="pipeline in leftObj.pipelineArr" :key="pipeline.id" :to="{name:pipeline.vue_name}" @click.stop="leftSpan"
+            <router-link v-for="pipeline in leftObj.pipelineArr" :key="pipeline.id" :to="{name:pipeline.vue_name}"
                          class="block" :data-code="pipeline.code">
               {{pipeline.name}}
             </router-link>
@@ -52,7 +52,7 @@
         leftObj: {
           pipelineArr: []
         },
-        pageObj: {  //页面的name对应的code
+        pageObj: {  //页面的code对应的name
           grandmgd: 'dataA-sgList',
           grandmito: 'dataA-mtList'
         }
@@ -112,11 +112,6 @@
           _children.find('span').first().addClass('active')
         }
       },
-      leftSpan: function (event) {
-        const _children = $(event.target).parent();
-        _children.find('.active').removeClass('active');
-        $(event.target).addClass('active');
-      }
     }
   }
 </script>
@@ -141,6 +136,15 @@
       }
       .analyze-tool{
         background: url(../../static/img/all-1.png) 18px 346px;
+      }
+      .father{
+        img{
+          transform:rotate(180deg);
+          -ms-transform:rotate(180deg); 	/* IE 9 */
+          -moz-transform:rotate(180deg); 	/* Firefox */
+          -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+          -o-transform:rotate(180deg); 	/* Opera */
+        }
       }
     }
   }

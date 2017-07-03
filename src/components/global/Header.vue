@@ -20,14 +20,14 @@
         <img class="right-img" src="../../../static/img/header-2.png"/>
       </li>
       <li>
-        <router-link to="/dataA">
+        <router-link to="/dataA/foo/sgList">
           <span class="img-dataAnalysis li-img"></span>
           <span>数据分析</span>
         </router-link>
         <img class="right-img" src="../../../static/img/header-2.png"/>
       </li>
       <li>
-        <router-link to="/">
+        <router-link to="/taskM/foo/done">
           <span class="img-taskManage li-img"></span>
           <span>任务管理</span>
         </router-link>
@@ -82,7 +82,7 @@
     created: function () {
       this.uname = localStorage.uname;
       if (!localStorage.token) {
-        this.$router.push({path: '/login?next=' + this.$route.path})
+//        this.$router.push({path: '/login?next=' + this.$route.path})
       }
     },
     methods: {
@@ -90,7 +90,7 @@
         if (confirm('确定要退出登录吗？')) {
           localStorage.removeItem('token');
           localStorage.removeItem('uname');
-          this.$router.push({path: '/login?next=' + this.$route.path})
+          this.$router.push({path: '/?next=' + this.$route.path})
         }
       },
     }
@@ -131,6 +131,10 @@
         color: rgb(0, 118, 192);
         .img-dataAnalysis {
           background: url(../../../static/img/header-4-1.png) no-repeat center;
+        }
+        .img-taskManage {
+          background-size: 28px 19px;
+          background: url(../../../static/img/header-7-1.png) no-repeat center;
         }
       }
       li {

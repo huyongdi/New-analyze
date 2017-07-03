@@ -60,7 +60,7 @@
     },
     computed: {
       allPage: function () {
-        return Math.ceil(this.childCount / 20);
+        return Math.ceil(this.childCount / 20) ? Math.ceil(this.childCount / 20): 1;
       }
     }
   }

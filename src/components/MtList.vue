@@ -10,15 +10,9 @@
         <span class="all-check inline po">
           <span class="all-check-yes hide"></span>
         </span>
-        <button class="my-btn btn submit" @click="submit">
-          <img src="../../static/img/red-submit.png" alt="">提交
-        </button>
-        <button class="my-btn btn refresh" @click="refresh">
-          <img src="../../static/img/red-refresh.png" alt="">数据刷新
-        </button>
-        <button class="my-btn btn pull-right condition" @click="filter">
-          <img src="../../static/img/red-con.png" alt="">筛选条件
-        </button>
+        <img src="../../static/img/submit.png" alt="" class="my-btn submit" @click="submit">
+        <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
+        <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">
       </div>
       <table id="sg-table">
         <thead>
@@ -30,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="list in results" @click="addIn">
+        <tr v-for="list in results" @click="addIn" class="not-base">
           <td class="check-td">
             <span :data-datafile='list.code' :data-prefix='list.sampleCode' class="check-span check-no"></span>
           </td>

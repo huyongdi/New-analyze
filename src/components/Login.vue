@@ -57,7 +57,7 @@
                 <p>密码:</p>
                 <input @keyup.enter="login" class="form-control" type="password" v-model="inputPassword">
               </label>
-              <img @click="login" class="login-img po" src="../../static/img/login-2.png" alt="">
+              <img @click="login" class="my-btn login-img po" src="../../static/img/login-2.png" alt="">
             </div>
 
             <div class="alert">
@@ -111,7 +111,7 @@
         }).then(function (resp) {
           localStorage.token = resp.data.data.token;
           localStorage.uname = resp.data.data.personnel;
-          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/';
+          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/dataA/foo/sgList';
           _vue.$router.push({path: nextPath})
         }).catch(function (error) {
           _vue.catchFun(error);

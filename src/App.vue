@@ -100,6 +100,8 @@
       margin: 0;
       padding: 0;
       font-family: "AdobeHeitiStd";
+      background: url("../static/img/html-bc.png");
+      background-size: 100% 100%;
       #app {
         height: 100%;
         /*自定义class*/
@@ -115,6 +117,11 @@
         a {
           text-decoration: none;
         }
+        .common-a{
+          &:hover{
+            text-decoration: underline;
+          }
+        }
         ul {
           li {
             list-style: none;
@@ -128,6 +135,14 @@
           &:hover, &:focus {
             box-shadow: 0 0 3px 1px @tableSha;
           }
+        }
+        .shadow{
+          border: 1px solid @tableSha;
+          border-radius: 5px;
+          box-shadow: 0 0 10px 1px @tableSha;
+        }
+        .bc-fff{
+          background-color: #fff;
         }
         /*表格样式*/
         table {
@@ -245,6 +260,7 @@
               color: @color;
               cursor: pointer;
               border-right: 1px solid @border;
+              background-color: #fff;
               li.active {
                 .father {
                   .triangle {

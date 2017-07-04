@@ -23,7 +23,7 @@
           <!--<img src="../../static/img/red-con.png" alt="">筛选条件-->
         <!--</button>-->
       </div>
-      <table id="sg-table">
+      <table id="sg-table" class="bc-fff">
         <thead>
         <tr>
           <th></th>

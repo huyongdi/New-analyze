@@ -56,11 +56,6 @@ export default new Router({
           name: 'dataA-mtList',
           component: MtList
         },
-        {
-          path: 'sgResult',
-          name: 'dataA-sgResult',
-          component: SgResult
-        }
       ]
     },
     { /*任务管理*/
@@ -77,6 +72,11 @@ export default new Router({
           path: 'doing',
           name: 'taskM-doing',
           component: Doing
+        },
+        {
+          path: 'sgResult',
+          name: 'dataA-sgResult',
+          component: SgResult
         }
       ]
     },

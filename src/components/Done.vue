@@ -11,7 +11,7 @@
         <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
         <!--<img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">-->
       </div>
-      <table id="done-table">
+      <table id="done-table" class="bc-fff">
         <thead>
         <tr>
           <th>任务号</th>
@@ -36,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="result in results" @click="toResult(result.type)">
+        <tr v-for="result in results" @click="toResult(result.type,result.id)">
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
@@ -57,7 +57,7 @@
             <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
             <!--<i v-if="result.status == 'error'" class="fa fa-refresh po" title="重新运行"-->
             <!--:data-id=result.id></i>-->
-            <img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id @click="removeTask">
+            <img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id @click.stop="removeTask">
           </td>
         </tr>
         </tbody>
@@ -150,9 +150,9 @@
           _vue.catchFun(error);
         })
       },
-      toResult: function (type) {
-        let url = type === 0 ? '/dataA/foo/sgResult' : '/dataA/foo/gmResult';
-        this.$router.push(url)
+      toResult: function (type,id) {
+        let url = type === 0 ? '/taskM/foo/sgResult' : '/dataA/foo/gmResult';
+        this.$router.push({path:url,query:{id:id}})
       }
     }
   }

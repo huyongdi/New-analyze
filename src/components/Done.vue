@@ -11,7 +11,7 @@
         <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
         <!--<img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">-->
       </div>
-      <table id="done-table" class="bc-fff">
+      <table id="done-table" class="bc-fff my-table">
         <thead>
         <tr>
           <th>任务号</th>

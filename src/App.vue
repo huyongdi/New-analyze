@@ -71,6 +71,9 @@
             _currentLi.addClass('active');
           }
         });
+        /*设置左侧的高度*/
+//        $(".under-left").css('height',document.body.clientHeight )
+//        console.log(11111)
       },
     }
   }
@@ -87,15 +90,14 @@
   @tdBorder: rgb(225, 226, 227);
   @trHover: rgb(255, 245, 231);
   @trIn: rgb(255, 236, 210);
-
   html {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     body {
-      height: 100%;
+      min-height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
@@ -103,7 +105,7 @@
       background: url("../static/img/html-bc.png");
       background-size: 100% 100%;
       #app {
-        height: 100%;
+        min-height: 100%;
         /*自定义class*/
         .po {
           cursor: pointer;
@@ -121,6 +123,9 @@
           &:hover{
             text-decoration: underline;
           }
+        }
+        .bold{
+          font-weight: bold;
         }
         ul {
           li {
@@ -145,7 +150,7 @@
           background-color: #fff;
         }
         /*表格样式*/
-        table {
+        table.my-table {
           margin-top: 15px;
           border: 1px solid @tableSha;
           border-radius: 5px;
@@ -249,17 +254,16 @@
           height: 100%;
           .under {
             border-top: 1px solid @border;
-            height: calc(~'100vh - 52px');
+            min-height: calc(~'100vh - 52px');
             .under-left {
-              /*display: inline-block;*/
               float: left;
               width: 250px;
-              height: 100%;
+              min-height: calc(~'100vh - 52px');
+              /*height: 100%;*/
               margin: 0;
               padding: 0;
               color: @color;
               cursor: pointer;
-              border-right: 1px solid @border;
               background-color: #fff;
               li.active {
                 .father {
@@ -315,12 +319,14 @@
               }
             }
             .under-right {
-              /*display: inline-block;*/
-              float: left;
+              border-left: 1px solid @border;
+              display: inline-block;
+              /*float: left;*/
               width: calc(~'100vw - 270px');
-              height: 100%;
+              min-height: 100%;
               padding-left: 30px;
               padding-top: 28px;
+              padding-bottom: 50px;
               .title {
                 color: rgb(67, 67, 67);
                 font-weight: bold;

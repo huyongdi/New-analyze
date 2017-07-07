@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="content">
-      <div class="content-left pull-left">
+      <div class="content-left pull-left bc-fff">
         <ul>
           <li @click="clickLi" class="po li-analyze active">
             <i class="img-analyze"></i>

@@ -14,7 +14,7 @@
         <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
         <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">
       </div>
-      <table id="sg-table" class="bc-fff">
+      <table id="sg-table" class="bc-fff my-table">
         <thead>
         <tr>
           <th></th>
@@ -32,7 +32,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(list,index)t in results" @click="addIn" class="not-base">
+        <tr v-for="(list,index) in results" @click="addIn" class="not-base">
           <td class="check-td">
             <span :data-datafile='list.code' :data-prefix='list.sampleCode' class="check-span check-no"></span>
           </td>

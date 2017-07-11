@@ -9,7 +9,11 @@
       <div class="title">
         <span class="title-b">任务详情</span>
         <span class="title-s">< {{sampleInfo}}</span>
+        <span class="span-a change-panel" @click="showPanelModal">修改panel</span>
       </div>
+
+      <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
+                  :originalPanelData="originalPanelData"></panelModal>
 
       <div class="all-content">
         <div class="title-list">
@@ -46,11 +50,11 @@
               </tr>
               </thead>
               <tbody>
-              <tr v-for="list in lists0">
-                <td class="td-1">{{list.type}}</td>
-                <td class="td-2">{{list.grandValue}}</td>
-                <td class="td-3" :class="{'red':!list.standard}">{{list.realValue}}
-                <td class="td-4">111</td>
+              <tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">
+                <td>{{list.type}}</td>
+                <td>{{list.grandValue}}</td>
+                <td :class="{'red':!list.standard}">{{list.realValue}}</td>
+                <td>{{list.detail}}</td>
               </tr>
               </tbody>
             </table>
@@ -66,11 +70,12 @@
 </template>
 
 <script>
-
   import page from './global/Page.vue'
+  import panelModal from './global/PanelModal.vue'
   export default {
     components: {
-      'page': page
+      'page': page,
+      'panelModal': panelModal,
     },
     data: function () {
       return {
@@ -82,11 +87,13 @@
         in1: '',
         in2: '',
         in3: '',
-        loading0: false,
+        geneInput: '',
+        originalPanelData: [],
         loading1: false,
         loading2: false,
         loading3: false,
         //content-0
+        loading0: false,
         R1: '',
         R2: '',
         insert: '',
@@ -99,7 +106,48 @@
       this.current0();
     },
     methods: {
-      getSample: function () {  //获取样本信息
+      /*修改panel*/
+      showPanelModal: function () {
+        const _vue = this;
+        this.$axios({
+          url: 'sample/genelist/' + _vue.datafile + '/'
+        }).then(function (resp) {
+          _vue.originalPanelData = [];
+          resp.data.panelCode = ["GCA04", "GDE01", "GCA02"]
+          resp.data.customGene = ['1', '2']
+          $.each(resp.data.panelCode, function (i, data) {
+            _vue.originalPanelData.push({
+              key: data,
+              value: data
+            });
+          });
+          _vue.geneInput = resp.data.customGene.join(',');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        });
+        $("#panelModal").modal('show');
+      },
+      savePanel: function (data) {
+        let panelArr = [];
+        $.each(data.panel, function (i, n) {
+          panelArr.push(n.key)
+        });
+        this.$axios({
+          url: 'sample/genelist/' + this.datafile + '/',
+          method: 'patch',
+          data: {
+            panelCode: panelArr,
+            customGene: data.gene
+          }
+        }).then(function () {
+          alert('提交成功');
+          $("#panelModal").modal('hide');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
+      //获取样本信息
+      getSample: function () {
         const _vue = this;
         this.$axios({
           url: 'application/grandmgd/' + this.ID + '/',
@@ -209,27 +257,31 @@
               grandValue: '---',
               realValue: qObj.above_1,
               standard: true
-            },{
+            }, {
               type: '5X覆盖度',
               grandValue: '---',
               realValue: qObj.above_5,
               standard: true
-            },{
+            }, {
               type: '10X覆盖度',
               grandValue: '---',
               realValue: qObj.above_10,
               standard: true
-            },{
+            }, {
               type: '30X覆盖度',
               grandValue: '---',
               realValue: qObj.above_30,
               standard: true
             }
           ];
-          _vue.lists0 = arr;
           $.each(resp.aln, function (i, data) {
-
+            $.each(arr, function (n, k) {
+              if (i === n) {
+                k.detail = data
+              }
+            })
           });
+          _vue.lists0 = arr;
           _vue.loading0 = false;
         });
       },
@@ -308,6 +360,9 @@
   @red: rgb(233, 73, 73);
   .all-content {
     margin: 15px 0 0 0;
+    .change-panel {
+      margin-left: 50px;
+    }
     .title-list {
       width: 486px;
       border-bottom: 1px solid @border;
@@ -382,34 +437,34 @@
                 color: #fff;
                 padding: 13px 0;
               }
-              .th-1{
-                background-color: rgb(255,187,52);
-                border-left: 1px solid rgb(255,187,52) ;
+              .th-1 {
+                background-color: rgb(255, 187, 52);
+                border-left: 1px solid rgb(255, 187, 52);
               }
-              .th-2{
-                background-color: rgb(241,69,108)
+              .th-2 {
+                background-color: rgb(241, 69, 108)
               }
-              .th-3{
-                background-color: rgb(0,198,148)
+              .th-3 {
+                background-color: rgb(0, 198, 148)
               }
-              .th-4{
-                background-color: rgb(44,127,210);
-                border-right: 1px solid rgb(44,127,210) ;
+              .th-4 {
+                background-color: rgb(44, 127, 210);
+                border-right: 1px solid rgb(44, 127, 210);
               }
             }
           }
           tbody {
             cursor: pointer;
-            border-left: 1px solid rgb(211,211,211);
-            border-right: 1px solid rgb(211,211,211);
-            border-bottom: 1px solid rgb(211,211,211);
+            border-left: 1px solid rgb(211, 211, 211);
+            border-right: 1px solid rgb(211, 211, 211);
+            border-bottom: 1px solid rgb(211, 211, 211);
             tr {
               td {
-                padding: 9px 0;
-                border-left: 1px solid rgb(211,211,211);
-                border-bottom: 1px dashed rgb(225,226,227);
+                padding: 9px 30px;
+                border-left: 1px solid rgb(211, 211, 211);
+                border-bottom: 1px dashed rgb(225, 226, 227);
               }
-              .td-1{
+              .td-1 {
                 padding-left: 46px;
               }
             }

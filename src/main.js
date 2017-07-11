@@ -18,6 +18,7 @@ Vue.prototype.dbHtml = 'https://www.grandbox.site/biomeddb/';
 Vue.prototype.anaHtml = 'https://www.grandbox.site/analyze/';
 Vue.prototype.manHtml = 'https://www.grandbox.site/manage/';
 
+/*自定义全局函数*/
 Vue.prototype.catchFun = function (error) {
   if (error.response) {
     let alertContent = '';
@@ -52,6 +53,19 @@ Vue.prototype.catchFun = function (error) {
   } else {
     alert(error.message);
   }
+};
+Vue.prototype.strToArr = function (str) {
+  str = $.trim(str).replace(/，/g,','); //英文逗号替换为中文
+  str = str.replace(/<\/?.+?>/g, ","); //回车替换成逗号
+  str = str.replace(/[\r\n]/g, ",");//回车替换成逗号
+  let arr = str.split(',');
+  let arr1 = [];
+  $.each(arr,function (i,data) {
+    if(data){
+      arr1.push(data);
+    }
+  });
+  return arr1
 };
 
 new Vue({

@@ -90,6 +90,7 @@
   @tdBorder: rgb(225, 226, 227);
   @trHover: rgb(255, 245, 231);
   @trIn: rgb(255, 236, 210);
+  @interleave:rgb(246,248,250);
   html {
     min-height: 100%;
     width: 100%;
@@ -107,6 +108,14 @@
       #app {
         min-height: 100%;
         /*自定义class*/
+        .span-a{
+          color: #337ab7;
+          cursor: pointer;
+          &:hover{
+            text-decoration: underline;
+            color: #23527c;
+          }
+        }
         .po {
           cursor: pointer;
         }
@@ -150,6 +159,11 @@
           background-color: #fff;
         }
         /*表格样式*/
+        table{
+          tr.interleave{
+            background-color: @interleave;
+          }
+        }
         table.my-table {
           margin-top: 15px;
           border: 1px solid @tableSha;
@@ -257,8 +271,8 @@
             min-height: calc(~'100vh - 52px');
             .under-left {
               float: left;
-              width: 250px;
-              min-height: calc(~'100vh - 52px');
+              width: 249px;
+              min-height: calc(~'100vh - 53px');
               /*height: 100%;*/
               margin: 0;
               padding: 0;
@@ -322,7 +336,7 @@
               border-left: 1px solid @border;
               display: inline-block;
               /*float: left;*/
-              width: calc(~'100vw - 270px');
+              width: calc(~'100vw - 284px');
               min-height: 100%;
               padding-left: 30px;
               padding-top: 28px;

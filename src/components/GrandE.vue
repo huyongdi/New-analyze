@@ -6,13 +6,27 @@
         <span class="title-b">检测平台</span>
         <span class="title-s">< GrandExome</span>
       </div>
-      <div class="btn-content">
-        <span class="all-check inline po">
+      <div class="btn-content rea">
+        <span class="all-check inline po" @click="clickAll">
           <span class="all-check-yes hide"></span>
         </span>
         <img src="../../static/img/deleteAll.png" alt="" class="my-btn submit" @click="deleteAll">
         <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
-        <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">
+        <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filtrate">
+        <!--筛选条件弹框-->
+        <div class="filtrate-content hide" id="filtrate-content">
+          <img src="../../static/img/th-1.png" alt="" class="up">
+          <div class="title">搜索选项</div>
+          <div class="content">
+            <div class="single">
+              <div class="left">关键字：</div>
+              <div class="right">
+                <input type="text" v-model="inputValue" @keyup.enter="search">
+              </div>
+            </div>
+          </div>
+          <img src="../../static/img/search.png" class="search-btn my-btn" alt="" @click="search">
+        </div>
       </div>
       <table id="sg-table" class="bc-fff my-table">
         <thead>
@@ -74,21 +88,132 @@
             </div>
           </td>
           <td>
-            <img src="../../static/img/edit.png" alt="">
-            <img src="../../static/img/delete.png" class="list-delete" :data-code=list.code @click='deleteFun'>
-            <!--<button type="button" class="btn my-btn my-btn-small" :data-index="index" @click="editFun(list)">-->
-            <!--<i class="fa fa-pencil fa-fw"></i>编辑-->
-
-            <!--</button>-->
-            <!--<button type="button" class="btn my-btn my-btn-small" :data-code=list.code @click='deleteFun'>-->
-            <!--<i class="fa fa-minus-square-o fa-fw"></i>删除-->
-
-            <!--</button>-->
+            <img src="../../static/img/edit.png" @click="listEdit(list.code)">
+            <img src="../../static/img/delete.png" class="list-delete" :data-code=list.code @click.stop='deleteFun'>
           </td>
         </tr>
         </tbody>
       </table>
       <page :childCount="count" :childReset="0" @childCurrent="getCurrent"></page>
+
+      <!--点击单列的编辑-->
+      <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">修改样本数据</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-3">文件编号</div>
+                <div class="col-md-9 edit-one" id="edit-code">{{editModalData.code}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"><span class="fa fa-star"></span>Capture</div>
+                <div class="col-md-9 rea">
+                  <select class="form-control" id="edit-capture" :value="editModalData.capture">
+                    <option :value="list.name" v-for="list in capList">{{list.name}}</option>
+                  </select>
+                  <a href="javascript:void(0)" class="toArea" @click="toArea">新增捕获区域</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"><span class="fa fa-star"></span>样本编号</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-sampleCode" :value="editModalData.sampleCode">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"><span class="fa fa-star"></span>受检者姓名</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-patientName" :value="editModalData.patientName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">受检者性别</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-gender" :value="editModalData.gender">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3"><span class="fa fa-star"></span>数据格式</div>
+                <div class="col-md-9">
+                  <select name="dataFormat" id="" class="form-control">
+                    <option value="fastq">fastq</option>
+                    <option value="fastqSE">fastqSE</option>
+                    <option value="vcf">vcf</option>
+                  </select>
+                  <!--<input type="text" class="form-control" id="edit-dateFormat" :value="editModalData.dataFormat">-->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">数据量</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-volume"
+                         :value="editModalData.volume == -1?' - ':editModalData.volume">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">Q30</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-q30"
+                         :value="editModalData.q30 == -1?' - ' :editModalData.q30">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">备注</div>
+                <div class="col-md-9">
+                  <textarea type="text" class="form-control" id="edit-comment"
+                            :value="editModalData.comment"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary my-btn" @click="editShowGene">基因信息</button>
+              <button type="button" class="btn btn-primary my-btn" @click="saveEdit">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--点击单列的编辑里面的基因-->
+      <!--<div class="modal fade" tabindex="-1" role="dialog" id="editGeneModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">提交基因信息</h4>
+            </div>
+            <div class="modal-body" id="modal-panel">
+              <div class="row">
+                <div class="col-md-2">
+                  <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
+                </div>
+                <div class="col-md-10 relative">
+                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData"
+                              @sendInput="receiveFuzzy"></fuzzyQuery>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">Gene信息</div>
+                <div class="col-md-10">
+                  <textarea v-model="geneInput" placeholder="请用逗号或换行隔开" class="form-control"></textarea>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary my-btn" @click.self="saveEditGene">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
     </div>
   </div>
 </template>
@@ -103,6 +228,7 @@
       return {
         results: [],
         inputValue: '',
+        editModalData:'',
         loading: false,
         count: 0,
         pageNum: 1
@@ -116,7 +242,7 @@
         const _vue = this;
         this.results = [];
         this.loading = true;
-        const axiosUrl = this.inputValue ? 'sample/datafile/' + '?page=' + this.page + '&query=' + this.inputValue
+        const axiosUrl = this.inputValue ? 'sample/datafile/' + '?page=' + this.pageNum + '&query=' + this.inputValue
           : 'sample/datafile/' + '?page=' + this.pageNum;
         this.$axios({
           url: axiosUrl,
@@ -166,8 +292,19 @@
 
         })
       },
+      search:function () {
+        this.pageNum = 1;
+        this.getList();
+        $("#filtrate-content").addClass('hide')
+      },
       refresh: function () {
         this.getList();
+      },
+      listEdit:function (code) {  /*20170712*/
+          $.each(this.results,function (i,data) {
+
+          });
+        $("#editModal").modal('show')
       },
       deleteFun: function (event) {
         const _vue = this;
@@ -178,21 +315,45 @@
             method: 'delete'
           }).then(function () {
             alert('已成功删除该样品');
-            $(event.target).parent().parent().remove();
+            $(event.target).closest(tr).remove();
           }).catch(function (error) {
             _vue.catchFun(error);
           })
         }
       },
-      filter: function () {
-
-      },
       deleteAll: function () {
-
+        let k1 = 0;
+        let k2 = 0;
+        $(".check-span").each(function () {
+          if ($(this).hasClass('check-yes')) {
+            k1 += 1;
+            _vue.$axios({
+              url: 'sample/datafile/' + $(this).data('datafile') + '/',
+              method: 'delete'
+            }).then(function () {
+              $(this).closest(tr).remove();
+              k2 += 1;
+              if (k2 === k1) {
+                alert('批量删除成功')
+              }
+            }).catch(function (error) {
+              _vue.catchFun(error);
+            })
+          }
+        })
+      },
+      filtrate: function () {
+          const _filtrate = $("#filtrate-content");
+          if(_filtrate.hasClass('hide')){
+            _filtrate.removeClass('hide')
+          }else{
+            _filtrate.addClass('hide')
+          }
       },
       addIn: function (event) {
         //给tr内容加上样式
         const _tr = $(event.target).closest('tr');
+        const _allYes = $(".all-check-yes");
         if (_tr.hasClass('in')) {
           _tr.removeClass('in');
           _tr.find('.check-span').removeClass('check-yes').addClass('check-no')
@@ -201,7 +362,6 @@
           _tr.find('.check-span').removeClass('check-no').addClass('check-yes')
         }
         //判断全选
-        const _allYes = $(".all-check-yes");
         let hasCheck = 0;
         $('.check-span').each(function () {
           if ($(this).hasClass('check-yes')) {
@@ -212,6 +372,22 @@
           _allYes.removeClass('hide')
         } else {
           _allYes.addClass('hide')
+        }
+      },
+      clickAll: function () {
+        const _allYes = $(".all-check-yes");
+        if (_allYes.hasClass('hide')) { //准备去全选
+          _allYes.removeClass('hide');
+          $('.check-span').each(function () {
+            $(this).addClass('check-yes');
+            $(this).closest('tr').addClass('in')
+          });
+        } else {
+          _allYes.addClass('hide');
+          $('.check-span').each(function () {
+            $(this).removeClass('check-yes');
+            $(this).closest('tr').removeClass('in')
+          });
         }
       }
     }
@@ -266,10 +442,46 @@
             background: url(../../static/img/all-2.png) 15px 0;
           }
         }
-        .list-delete{
+        .list-delete {
           margin: -1px 0 0 10px;
         }
       }
     }
+
+    #editModal .modal-body{
+      .row:not(:first-child){
+        border-top: 1px solid #e5e5e5;
+      }
+      .row:first-child{
+        height: 41px;
+      }
+      input,select{
+        width: 70%;
+        height: 30px;
+        margin: 5px 0;
+        line-height: 20px;
+      }
+      select{
+        padding: 2px 16px;
+      }
+      .col-md-3{
+        margin-top: 10px;
+        .fa-star{
+          color: red;
+          margin-right: 10px;
+        }
+      }
+      .toArea{
+        position: absolute;
+        top: 10px;
+        right: 5%;
+      }
+      textarea{
+        margin-top: 10px;
+        width: 90%;
+        height: 80px;
+      }
+    }
+
   }
 </style>

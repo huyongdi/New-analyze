@@ -91,6 +91,7 @@
   @trHover: rgb(255, 245, 231);
   @trIn: rgb(255, 236, 210);
   @interleave:rgb(246,248,250);
+  @fliterBorder:rgb(212,212,212);
   html {
     min-height: 100%;
     width: 100%;
@@ -263,6 +264,51 @@
             border-top-left-radius: 20px
           }
         }
+        /*筛选框样式*/
+        .filtrate-content{
+          width: 290px;
+          border: 1px solid @tableSha;
+          border-radius: 5px;
+          box-shadow: 0 0 10px 1px @tableSha;
+          position: absolute;
+          right: 0;
+          top: 40px;
+          padding: 14px 14px 20px 14px;
+          background-color: #fff;
+          z-index: 10;
+          .up{
+            position: absolute;
+            right: 20px;
+            top:-9px;
+          }
+          .title{
+            padding-bottom: 9px;
+            border-bottom: 1px solid @fliterBorder;
+          }
+          .content{
+            padding-top: 6px;
+            .left{
+              display: inline-block;
+              width: 70px;
+            }
+            .right{
+              display: inline-block;
+              width: 185px;
+              input{
+                border: 1px solid @fliterBorder;
+                border-radius: 3px;
+                width: 100%;
+              }
+            }
+            .single{
+              margin: 3px 0;
+            }
+          }
+          .search-btn{
+            margin-top: 20px;
+            margin-left: 90px;
+          }
+        }
         /*页面共用样式*/
         .all-content {
           height: 100%;
@@ -337,7 +383,7 @@
               display: inline-block;
               /*float: left;*/
               width: calc(~'100vw - 284px');
-              min-height: 100%;
+              min-height: calc(~'100vh - 53px');
               padding-left: 30px;
               padding-top: 28px;
               padding-bottom: 50px;

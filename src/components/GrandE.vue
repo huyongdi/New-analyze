@@ -10,9 +10,11 @@
         <span class="all-check inline po" @click="clickAll">
           <span class="all-check-yes hide"></span>
         </span>
-        <img src="../../static/img/deleteAll.png" alt="" class="my-btn submit" @click="deleteAll">
-        <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
-        <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filtrate">
+
+        <span class="my-btn submit"  @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
+        <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
+        <span class="my-btn pull-right condition" @click="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
+
         <!--筛选条件弹框-->
         <div class="filtrate-content hide" id="filtrate-content">
           <img src="../../static/img/th-1.png" alt="" class="up">
@@ -116,7 +118,7 @@
                   <select class="form-control" id="edit-capture" :value="editModalData.capture">
                     <option :value="list.name" v-for="list in capList">{{list.name}}</option>
                   </select>
-                  <a href="javascript:void(0)" class="toArea" @click="toArea">新增捕获区域</a>
+                  <router-link class="toArea" to="/">新增捕获区域</router-link>
                 </div>
               </div>
               <div class="row">
@@ -140,12 +142,11 @@
               <div class="row">
                 <div class="col-md-3"><span class="fa fa-star"></span>数据格式</div>
                 <div class="col-md-9">
-                  <select name="dataFormat" id="" class="form-control">
+                  <select name="dataFormat" id="edit-dateFormat" class="form-control" :value="editModalData.dataFormat">
                     <option value="fastq">fastq</option>
                     <option value="fastqSE">fastqSE</option>
                     <option value="vcf">vcf</option>
                   </select>
-                  <!--<input type="text" class="form-control" id="edit-dateFormat" :value="editModalData.dataFormat">-->
                 </div>
               </div>
               <div class="row">
@@ -172,63 +173,35 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary my-btn" @click="editShowGene">基因信息</button>
+              <button type="button" class="btn btn-primary my-btn" @click="showPanelModal">基因信息</button>
               <button type="button" class="btn btn-primary my-btn" @click="saveEdit">保存</button>
             </div>
           </div>
         </div>
       </div>
       <!--点击单列的编辑里面的基因-->
-      <!--<div class="modal fade" tabindex="-1" role="dialog" id="editGeneModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title">提交基因信息</h4>
-            </div>
-            <div class="modal-body" id="modal-panel">
-              <div class="row">
-                <div class="col-md-2">
-                  <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
-                </div>
-                <div class="col-md-10 relative">
-                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData"
-                              @sendInput="receiveFuzzy"></fuzzyQuery>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-2">Gene信息</div>
-                <div class="col-md-10">
-                  <textarea v-model="geneInput" placeholder="请用逗号或换行隔开" class="form-control"></textarea>
-                </div>
-              </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary my-btn" @click.self="saveEditGene">保存</button>
-            </div>
-          </div>
-        </div>
-      </div>-->
-
+      <panelModal @saveData="savePanel" :originalGeneInput='geneInput' :originalPanelData="originalPanelData"></panelModal>
     </div>
   </div>
 </template>
 
 <script>
   import page from './global/Page.vue'
+  import panelModal from './global/PanelModal.vue'
+
   export default {
     components: {
-      'page': page
+      'page': page,
+      'panelModal': panelModal,
     },
     data: function () {
       return {
+        geneInput:'',
+        originalPanelData:[],
         results: [],
         inputValue: '',
-        editModalData:'',
+        editModalData: '',
+        capList: [],
         loading: false,
         count: 0,
         pageNum: 1
@@ -236,8 +209,20 @@
     },
     created: function () {
       this.getList();
+      this.getCap();
     },
     methods: {
+      getCap: function () {
+        const _vue = this;
+        this.$axios({
+          url: 'sample/capture/',
+          method: 'get'
+        }).then(function (resp) {
+          _vue.capList = resp.data.results;
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
       getList: function () {
         const _vue = this;
         this.results = [];
@@ -255,7 +240,6 @@
           $.each(resp.data.results, function (i, data) {
             data.jobs = []
           });
-          console.log(resp.data.results);
           $.each(resp.data.results, function (k4, k5) {
             k5.file1 = 'https://analyze.grandbox.site/media/' + k5.file1;
             k5.file2 = 'https://analyze.grandbox.site/media/' + k5.file2;
@@ -292,7 +276,30 @@
 
         })
       },
-      search:function () {
+      saveEdit: function () {
+        const _vue = this;
+        let axiosObj = {
+          capture: $("#edit-capture").val(),
+          sampleCode: $.trim($("#edit-sampleCode").val()),
+          patientName: $.trim($("#edit-patientName").val()),
+          gender: $.trim($("#edit-gender").val()),
+          dateFormat: $.trim($("#edit-dateFormat").val()),
+          volume: $("#edit-volume").val() === ' - ' ? -1 : $.trim($("#edit-volume").val()),
+          q30: $("#edit-q30").val() === ' - ' ? -1 : $.trim($("#edit-q30").val()),
+          comment: $.trim($("#edit-comment").val()),
+        };
+        this.$axios({
+          url: 'sample/datafile/' + $("#edit-code").html() + '/',
+          method: 'patch',
+          data: axiosObj
+        }).then(function () {
+          alert('编辑成功');
+          $("#editModal").modal('hide');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
+      search: function () {
         this.pageNum = 1;
         this.getList();
         $("#filtrate-content").addClass('hide')
@@ -300,10 +307,13 @@
       refresh: function () {
         this.getList();
       },
-      listEdit:function (code) {  /*20170712*/
-          $.each(this.results,function (i,data) {
-
-          });
+      listEdit: function (code) {
+        const _vue = this;
+        $.each(this.results, function (i, data) {
+          if (data.code === code) {
+            _vue.editModalData = data;
+          }
+        });
         $("#editModal").modal('show')
       },
       deleteFun: function (event) {
@@ -315,7 +325,7 @@
             method: 'delete'
           }).then(function () {
             alert('已成功删除该样品');
-            $(event.target).closest(tr).remove();
+            $(event.target).closest('tr').remove();
           }).catch(function (error) {
             _vue.catchFun(error);
           })
@@ -343,12 +353,12 @@
         })
       },
       filtrate: function () {
-          const _filtrate = $("#filtrate-content");
-          if(_filtrate.hasClass('hide')){
-            _filtrate.removeClass('hide')
-          }else{
-            _filtrate.addClass('hide')
-          }
+        const _filtrate = $("#filtrate-content");
+        if (_filtrate.hasClass('hide')) {
+          _filtrate.removeClass('hide')
+        } else {
+          _filtrate.addClass('hide')
+        }
       },
       addIn: function (event) {
         //给tr内容加上样式
@@ -389,7 +399,45 @@
             $(this).closest('tr').removeClass('in')
           });
         }
-      }
+      },
+      /*修改panel*/
+      showPanelModal:function () {
+        const _vue = this;
+        this.$axios({
+          url: 'sample/genelist/' + _vue.editModalData.code + '/'
+        }).then(function (resp) {
+          _vue.originalPanelData=[];
+          $.each(resp.data.panelCode, function (i, data) {
+            _vue.originalPanelData.push({
+              key: data,
+              value: data
+            });
+          });
+          _vue.geneInput = resp.data.customGene.join(',');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        });
+        $("#panelModal").modal("show")
+      },
+      savePanel: function (data) {
+        let panelArr = [];
+        $.each(data.panel, function (i, n) {
+          panelArr.push(n.key)
+        });
+        this.$axios({
+          url: 'sample/genelist/' + this.editModalData.code + '/',
+          method: 'patch',
+          data: {
+            panelCode: panelArr,
+            customGene: data.gene
+          }
+        }).then(function () {
+          alert('提交成功');
+          $("#panelModal").modal('hide');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
     }
   }
 </script>
@@ -448,35 +496,38 @@
       }
     }
 
-    #editModal .modal-body{
-      .row:not(:first-child){
+    #editModal .modal-body {
+      .row:not(:first-child) {
         border-top: 1px solid #e5e5e5;
       }
-      .row:first-child{
+      .row:first-child {
         height: 41px;
+        .col-md-9 {
+          margin-top: 10px;
+        }
       }
-      input,select{
+      input, select {
         width: 70%;
         height: 30px;
         margin: 5px 0;
         line-height: 20px;
       }
-      select{
+      select {
         padding: 2px 16px;
       }
-      .col-md-3{
+      .col-md-3 {
         margin-top: 10px;
-        .fa-star{
+        .fa-star {
           color: red;
           margin-right: 10px;
         }
       }
-      .toArea{
+      .toArea {
         position: absolute;
         top: 10px;
         right: 5%;
       }
-      textarea{
+      textarea {
         margin-top: 10px;
         width: 90%;
         height: 80px;

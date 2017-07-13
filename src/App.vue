@@ -50,7 +50,7 @@
     methods: {
       baseBind: function () {
         /*点击tr加背景色*/
-        $("table tbody").on("click", 'tr', function () {
+        $("table tbody").off('click').on("click", 'tr', function () {
           if (!$(this).hasClass('not-base')) {
             if ($(this).hasClass('in')) {
               $(this).removeClass('in')
@@ -61,7 +61,8 @@
           }
         });
         /*点击左侧列表*/
-        $(".under-left").on('click','>li',function (event) {
+        $(".under-left").off('click').on('click','>li',function (event) {
+            console.log(111)
           const _currentLi = $(event.target).closest('li');
           const _children = _currentLi.find('.children');
           if(_currentLi.hasClass('active')){
@@ -71,9 +72,14 @@
             _currentLi.addClass('active');
           }
         });
-        /*设置左侧的高度*/
-//        $(".under-left").css('height',document.body.clientHeight )
-//        console.log(11111)
+        /*自定义的上传输入框*/
+        $(".upload-content").on("click",'.text',function () {
+          $(this).next().click();
+        });
+        $(".upload-content").on('change','.hide-input',function () {
+          const arr = $(this).val().split("\\");
+          $(this).parent().find('.show-name').val(arr[arr.length-1])
+        })
       },
     }
   }
@@ -145,14 +151,83 @@
         .rea{
           position: relative;
         }
-        .my-btn {
+        input,textarea{
+          border: 1px solid #d4d4d4;
+          border-radius: 3px;
+          padding: 1px 5px;
+        }
+        select::-ms-expand { display: none; }
+        .my-select{
+          border: 1px solid #d4d4d4;
+          border-radius: 3px;
+          height: 24px;
+          line-height: 24px;
+          padding-left: 5px;
+          padding-right: 24px;
+          appearance:none;
+          -moz-appearance:none;
+          -webkit-appearance:none;
+          -ms-appearance:none;
+          background: url(../static/img/select-right.png) no-repeat scroll right center transparent;
+        }
+
+        .my-btn{
+          display: inline-block;
+          width: 95px;
+          height: 28px;
+          line-height: 28px;
+          border-radius: 3px;
+          border: 1px solid #df3a24;
+          text-align: center;
+          color: #fff;
+          background:linear-gradient(to bottom,#f46554,#ea533f);
           cursor: pointer;
-          &:hover, &:focus {
-            box-shadow: 0 0 3px 1px @tableSha;
+          img{
+            margin: -3px 5px 0 0;
+          }
+          &:active{
+            background:linear-gradient(to bottom,#ea533f,#f46544);
           }
         }
+
+
+        .upload-content{
+          display: inline-block;
+          width: 50%;
+          padding: 0;
+          .show-name{
+            background-color: #fff;
+            width: 78%;
+            margin-right: -2%;
+            padding-right: 2%;
+            float: left;
+            &:focus{
+              outline: none;
+            }
+          }
+          .text{
+            cursor: pointer;
+            border: 1px solid #d4d4d4;
+            border-radius: 3px;
+            display: inline-block;
+            width: 24%;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            background-color: rgb(238,238,238);
+          }
+          .hide-input{
+            display: none;
+          }
+        }
+
         .shadow{
           border: 1px solid @tableSha;
+          border-radius: 5px;
+          box-shadow: 0 0 10px 1px @tableSha;
+        }
+        .shadow-top{
+          border-top: 5px solid rgb(0,118,192);
           border-radius: 5px;
           box-shadow: 0 0 10px 1px @tableSha;
         }
@@ -382,7 +457,7 @@
               border-left: 1px solid @border;
               display: inline-block;
               /*float: left;*/
-              width: calc(~'100vw - 284px');
+              width: calc(~'100vw - 300px');
               min-height: calc(~'100vh - 53px');
               padding-left: 30px;
               padding-top: 28px;

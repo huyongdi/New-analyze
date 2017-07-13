@@ -34,6 +34,14 @@
             <i class="triangle"></i>
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
+          <div @click.stop="" class="children">
+            <router-link to="/dataM/foo/capList" data-code='capList' class="block">
+              捕获区域数据
+            </router-link>
+            <router-link to='/dataM/foo/addCap' data-code="addCap" class="block">
+              添加捕获区域数据
+            </router-link>
+          </div>
         </li>
         <li>
           <div class="father">
@@ -41,6 +49,14 @@
             <span>数据上传</span>
             <i class="triangle"></i>
             <img src="../../static/img/under-left-1.png" alt="">
+          </div>
+          <div @click.stop="" class="children">
+            <router-link to="/dataM/foo/sUpload" data-code='sUpload' class="block">
+              单个文件上传
+            </router-link>
+            <router-link to='/dataM/foo/aUpload' data-code="aUpload" class="block">
+              多个文件批量上传
+            </router-link>
           </div>
         </li>
       </ul>
@@ -65,7 +81,11 @@
       return{
         pageObj: {  //页面的code对应的name
           grandE: 'dataM-grandE',
-          hg19: 'dataM-hg19'
+          hg19: 'dataM-hg19',
+          capList: 'dataM-capList',
+          addCap: 'dataM-addCap',
+          sUpload: 'dataM-sUpload',
+          aUpload: 'dataM-aUpload',
         }
       }
     },

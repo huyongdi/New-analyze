@@ -57,7 +57,8 @@
                 <p>密码:</p>
                 <input @keyup.enter="login" class="form-control" type="password" v-model="inputPassword">
               </label>
-              <img @click="login" class="my-btn login-img po" src="../../static/img/login-2.png" alt="">
+              <!--<img @click="login" class="my-btn login-img po" src="../../static/img/login-2.png" alt="">-->
+              <span class="my-btn" @click="login"><img src="../../static/img/red-login.png" alt="">登录</span>
             </div>
 
             <div class="alert">

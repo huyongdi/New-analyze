@@ -10,9 +10,12 @@
         <span class="all-check inline po">
           <span class="all-check-yes hide"></span>
         </span>
-        <img src="../../static/img/submit.png" alt="" class="my-btn submit" @click="submit">
-        <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
-        <img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">
+        <!--<img src="../../static/img/submit.png" alt="" class="my-btn submit" @click="submit">-->
+        <!--<img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">-->
+        <!--<img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">-->
+        <span class="my-btn submit" @click="submit"><img src="../../static/img/red-submit.png" alt="">提交</span>
+        <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
+        <span class="my-btn condition pull-right" @click="filter"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
       </div>
       <table id="sg-table" class="bc-fff my-table">
         <thead>

@@ -11,7 +11,7 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 axios.defaults.baseURL = 'https://analyze.grandbox.site/';
-axios.defaults.headers = {'Authorization': localStorage.token};
+axios.defaults.headers = {'Authorization': localStorage.token?localStorage.token:''};
 
 Vue.prototype.dbUrl = 'https://biomeddb.grandbox.site/';
 Vue.prototype.dbHtml = 'https://www.grandbox.site/biomeddb/';

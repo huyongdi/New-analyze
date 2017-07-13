@@ -5,6 +5,10 @@ import Login from '@/components/Login'
 import DataM from '@/components/DataM'
 import GrandE from '@/components/GrandE'
 import Hg19 from '@/components/Hg19'
+import CapList from '@/components/CapList'
+import AddCap from '@/components/AddCap'
+import SingleUpload from '@/components/SingleUpload'
+import AllUpload from '@/components/AllUpload'
 
 import DataA from '@/components/DataA'
 import SgList from '@/components/SgList'
@@ -38,6 +42,26 @@ export default new Router({
           path: 'hg19',
           name: 'dataM-hg19',
           component: Hg19
+        },
+        {
+          path: 'capList',
+          name: 'dataM-capList',
+          component: CapList
+        },
+        {
+          path: 'addCap',
+          name: 'dataM-addCap',
+          component: AddCap
+        },
+        {
+          path: 'sUpload',
+          name: 'dataM-sUpload',
+          component: SingleUpload
+        },
+        {
+          path: 'aUpload',
+          name: 'dataM-aUpload',
+          component: AllUpload
         },
       ]
     },

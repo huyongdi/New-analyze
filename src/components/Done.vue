@@ -8,8 +8,7 @@
         <span class="title-s">< 已完成</span>
       </div>
       <div class="btn-content">
-        <img src="../../static/img/refresh.png" alt="" class="my-btn refresh" @click="refresh">
-        <!--<img src="../../static/img/condition.png" alt="" class="my-btn condition pull-right" @click="filter">-->
+        <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
       </div>
       <table id="done-table" class="bc-fff my-table">
         <thead>

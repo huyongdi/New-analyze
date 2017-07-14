@@ -27,7 +27,7 @@
               </div>
             </div>
           </div>
-          <img src="../../static/img/search.png" class="search-btn my-btn" alt="" @click="search">
+          <span class="my-btn search-btn"><img src="../../static/img/red-con.png" alt="" @click="search">搜索</span>
         </div>
       </div>
       <table id="sg-table" class="bc-fff my-table">
@@ -341,7 +341,7 @@
               url: 'sample/datafile/' + $(this).data('datafile') + '/',
               method: 'delete'
             }).then(function () {
-              $(this).closest(tr).remove();
+              $(this).closest('tr').remove();
               k2 += 1;
               if (k2 === k1) {
                 alert('批量删除成功')
@@ -389,13 +389,13 @@
         if (_allYes.hasClass('hide')) { //准备去全选
           _allYes.removeClass('hide');
           $('.check-span').each(function () {
-            $(this).addClass('check-yes');
+            $(this).addClass('check-yes').removeClass('check-no');
             $(this).closest('tr').addClass('in')
           });
         } else {
           _allYes.addClass('hide');
           $('.check-span').each(function () {
-            $(this).removeClass('check-yes');
+            $(this).removeClass('check-yes').addClass('check-no');
             $(this).closest('tr').removeClass('in')
           });
         }

@@ -9,14 +9,19 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
-
-axios.defaults.baseURL = 'https://analyze.grandbox.site/';
+Vue.prototype.instance = axios.create({
+  baseURL: 'https://analyze.grandbox.site/',
+  headers:{'Authorization': ''}
+});
 axios.defaults.headers = {'Authorization': localStorage.token?localStorage.token:''};
-
+/*请求地址*/
+axios.defaults.baseURL = 'https://analyze.grandbox.site/';
 Vue.prototype.dbUrl = 'https://biomeddb.grandbox.site/';
-Vue.prototype.dbHtml = 'https://www.grandbox.site/biomeddb/';
-Vue.prototype.anaHtml = 'https://www.grandbox.site/analyze/';
-Vue.prototype.manHtml = 'https://www.grandbox.site/manage/';
+
+/*页面地址*/
+Vue.prototype.dbHtml = '/biomeddb/';
+Vue.prototype.anaHtml = '/analyze/';
+Vue.prototype.manHtml = '/manage/';
 
 /*自定义全局函数*/
 Vue.prototype.catchFun = function (error) {
@@ -47,7 +52,7 @@ Vue.prototype.catchFun = function (error) {
     if (error.response.status === 401) {
       if (this.$route.name !== 'login') {
         localStorage.token = '';
-        this.$router.push({path: '/login' + this.$route.path})
+        this.$router.push({path: '/login?next=' + this.$route.path})
       }
     }
   } else {

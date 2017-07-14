@@ -62,7 +62,6 @@
         });
         /*点击左侧列表*/
         $(".under-left").off('click').on('click','>li',function (event) {
-            console.log(111)
           const _currentLi = $(event.target).closest('li');
           const _children = _currentLi.find('.children');
           if(_currentLi.hasClass('active')){
@@ -389,17 +388,19 @@
           height: 100%;
           .under {
             border-top: 1px solid @border;
-            min-height: calc(~'100vh - 52px');
+            min-height: calc(~'100vh - 58px');
             .under-left {
               float: left;
               width: 249px;
-              min-height: calc(~'100vh - 53px');
+              min-height: calc(~'100vh - 58px');
               /*height: 100%;*/
               margin: 0;
               padding: 0;
               color: @color;
-              cursor: pointer;
               background-color: #fff;
+              li{
+                cursor: pointer;
+              }
               li.active {
                 .father {
                   .triangle {
@@ -447,7 +448,7 @@
                   color: inherit;
                   padding-left: 23px;
                 }
-                a.active,a:hover {
+                a.active,a:hover,.router-link-active,.router-link-active:hover {
                   color: @in;
                   background-color: @inBc;
                 }
@@ -458,7 +459,7 @@
               display: inline-block;
               /*float: left;*/
               width: calc(~'100vw - 300px');
-              min-height: calc(~'100vh - 53px');
+              min-height: calc(~'100vh - 58px');
               padding-left: 30px;
               padding-top: 28px;
               padding-bottom: 50px;

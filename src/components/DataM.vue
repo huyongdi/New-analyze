@@ -92,6 +92,11 @@
     mounted: function () {
       this.getActive();
     },
+    watch: {
+      '$route' (to, from) {
+        this.getActive();
+      }
+    },
     methods: {
       getActive: function () {  //通过子页面判断左边具体的active
         const currentPath = this.$router.currentRoute.name;
@@ -99,6 +104,7 @@
           if (name === currentPath) {
             $(".children").find('a').each(function () {
               if ($(this).data('code') === code) {
+                  $(this).parent().find('.active').removeClass('active');
                 $(this).addClass('active');
                 $(this).closest('li').addClass('active')
               }

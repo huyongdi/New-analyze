@@ -3,13 +3,13 @@
     <div class="col-md-10 single-upload">
       <div class="title">
         <span class="title-b">数据上传</span>
-        <span class="title-s">< 单文件上传</span>
+        <span class="title-s">< 单个文件上传</span>
       </div>
 
       <div class="btn-content">
-        <span class="my-btn"><img src="../../static/img/red-submit.png" alt="">提交</span>
-        <span class="my-btn" @click="save"><img src="../../static/img/red-save.png" alt="">保存</span>
-        <span class="my-btn"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
+        <span class="my-btn" @click="save"><img src="../../static/img/red-submit.png" alt="">提交</span>
+        <span class="my-btn"><img src="../../static/img/red-save.png" alt="">保存</span>
+        <span class="my-btn" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
         <span class="my-btn"><img src="../../static/img/red-back.png" alt="">返回</span>
       </div>
 
@@ -22,15 +22,15 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span>文件编号：</span>
+                  <span><span class="fa fa-star red"></span>文件编号：</span>
                   <input type="text" name="code">
                 </div>
                 <div class="inline">
-                  <span>样本编号：</span>
+                  <span><span class="fa fa-star red"></span>样本编号：</span>
                   <input type="text" name="sampleCode">
                 </div>
                 <div class="inline">
-                  <span>检测平台：</span>
+                  <span><span class="fa fa-star red"></span>检测平台：</span>
                   <select name="capture" id="" class="my-select">
                     <option value="">请选择检测平台</option>
                     <option :value="list.name" v-for="list in capList">{{list.name}}</option>
@@ -46,7 +46,7 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span>受检者姓名：</span>
+                  <span><span class="fa fa-star red"></span>受检者姓名：</span>
                   <input type="text" name="patientName">
                 </div>
                 <div class="inline">
@@ -68,7 +68,7 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span>数据格式：</span>
+                  <span><span class="fa fa-star red"></span>数据格式：</span>
                   <select name="dataFormat" class="my-select">
                     <option value="">请选择数据格式</option>
                     <option value="fastq">fastq</option>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="inline remark-content">
                   <span class="pull-left">备注：</span>
-                  <textarea class="pull-left remark-text" name="comment"></textarea>
+                  <textarea id="remark" class="pull-left remark-text" name="comment"></textarea>
                 </div>
               </div>
             </div>
@@ -98,21 +98,21 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span>文件1：</span>
+                  <span><span class="fa fa-star red"></span>文件1：</span>
                   <input type="text" name="file1">
                   <!--<div class="upload-content">-->
-                    <!--<input type="text" class="show-name">-->
-                    <!--<span class="text">选择</span>-->
-                    <!--<input type='file' name="file1" class="hide-input">-->
+                  <!--<input type="text" class="show-name">-->
+                  <!--<span class="text">选择</span>-->
+                  <!--<input type='file' name="file1" class="hide-input">-->
                   <!--</div>-->
                 </div>
                 <div class="inline">
                   <span>文件2：</span>
                   <input type="text" name="file2">
                   <!--<div class="upload-content">-->
-                    <!--<input type="text" class="show-name">-->
-                    <!--<span class="text">选择</span>-->
-                    <!--<input type='file' name="file2" class="hide-input">-->
+                  <!--<input type="text" class="show-name">-->
+                  <!--<span class="text">选择</span>-->
+                  <!--<input type='file' name="file2" class="hide-input">-->
                   <!--</div>-->
                 </div>
               </div>
@@ -129,7 +129,7 @@
   export default {
     data: function () {
       return {
-        capList:[]
+        capList: []
       }
     },
     created: function () {
@@ -148,9 +148,12 @@
         })
       },
       save: function () {
-        $("#addDataForm").find('input[type=text]').each(function () {
+        const _form = $("#addDataForm");
+        const _remark = $("#remark");
+        _form.find('input[type=text]').each(function () {
           $(this).val($.trim($(this).val()))
         });
+        _remark.val(_remark.val());
         this.$axios({
           url: 'sample/datafile/',
           method: 'post',
@@ -160,6 +163,16 @@
         }).catch(function (error) {
           _vue.catchFun(error);
         })
+      },
+      refresh: function () {
+        const _form = $("#addDataForm");
+        _form.find('input[type=text]').each(function () {
+          $(this).val('')
+        });
+        _form.find('select').each(function () {
+          $(this).val('')
+        });
+        $("#remark").val('');
       }
     }
   }
@@ -177,6 +190,10 @@
       width: 100%;
       padding: 33px 37px 43px 44px;
       .content {
+        .red{
+          color: red;
+          margin-right: 5px;
+        }
         .single {
           margin: 5px 0 23px 0;
           .inline {

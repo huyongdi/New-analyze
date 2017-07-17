@@ -214,7 +214,7 @@
     methods: {
       getCap: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'sample/capture/',
           method: 'get'
         }).then(function (resp) {
@@ -229,7 +229,7 @@
         this.loading = true;
         const axiosUrl = this.inputValue ? 'sample/datafile/' + '?page=' + this.pageNum + '&query=' + this.inputValue
           : 'sample/datafile/' + '?page=' + this.pageNum;
-        this.$axios({
+        this.myAxios({
           url: axiosUrl,
           method: 'get'
         }).then(function (resp) {
@@ -257,7 +257,7 @@
       getJob: function () {
         const _vue = this;
         $.each(_vue.results, function (i, data) {
-          _vue.$axios({
+          _vue.myAxios({
             url: 'sample/datafile/' + data.code + '/job/',
             method: 'get'
           }).then(function (resp) {
@@ -288,7 +288,7 @@
           q30: $("#edit-q30").val() === ' - ' ? -1 : $.trim($("#edit-q30").val()),
           comment: $.trim($("#edit-comment").val()),
         };
-        this.$axios({
+        this.myAxios({
           url: 'sample/datafile/' + $("#edit-code").html() + '/',
           method: 'patch',
           data: axiosObj
@@ -320,7 +320,7 @@
         const _vue = this;
         if (confirm('是否删除该样本')) {
           const code = $(event.target).data('code');
-          _vue.$axios({
+          _vue.myAxios({
             url: 'sample/datafile/' + code + '/',
             method: 'delete'
           }).then(function () {
@@ -337,7 +337,7 @@
         $(".check-span").each(function () {
           if ($(this).hasClass('check-yes')) {
             k1 += 1;
-            _vue.$axios({
+            _vue.myAxios({
               url: 'sample/datafile/' + $(this).data('datafile') + '/',
               method: 'delete'
             }).then(function () {
@@ -403,7 +403,7 @@
       /*修改panel*/
       showPanelModal:function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'sample/genelist/' + _vue.editModalData.code + '/'
         }).then(function (resp) {
           _vue.originalPanelData=[];
@@ -424,7 +424,7 @@
         $.each(data.panel, function (i, n) {
           panelArr.push(n.key)
         });
-        this.$axios({
+        this.myAxios({
           url: 'sample/genelist/' + this.editModalData.code + '/',
           method: 'patch',
           data: {

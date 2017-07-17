@@ -59,7 +59,7 @@
       receiveFuzzy: function (data) {
         const _vue = this;
         _vue.loading = true;
-        this.$axios({
+        this.myAxios({
           url: _vue.dbUrl + 'product/subpanel/?query=' + data
         }).then(function (resp) {
           _vue.panelData = [];

@@ -101,7 +101,7 @@
       getList: function () {
         this.loading = true;
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/job/?compl=false&page=' + this.pageNum+'&app=' + this.appCode
         }).then(function (resp) {
           _vue.count = resp.data.count;
@@ -134,7 +134,7 @@
       refreshTask: function (sId) {
         if (confirm('确定要重新运行任务吗?')) {
           const _vue = this;
-          this.$axios({
+          this.myAxios({
             url: 'application/job/' + sId + '/rerun/',
             method: 'get'
           }).then(function (resp) {
@@ -153,7 +153,7 @@
         const _vue = this;
         if (confirm('确定要删除该任务吗？')) {
           const sId = $(event.target).data('id');
-          this.$axios({
+          this.myAxios({
             url: 'application/job/' + sId + '/',
             method: 'delete'
           }).then(function () {
@@ -166,7 +166,7 @@
       },
       getSelect: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/app/',
         }).then(function (resp) {
           _vue.selectArr = resp.data.results;

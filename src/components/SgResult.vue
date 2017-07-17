@@ -109,7 +109,7 @@
       /*修改panel*/
       showPanelModal: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'sample/genelist/' + _vue.datafile + '/'
         }).then(function (resp) {
           _vue.originalPanelData = [];
@@ -132,7 +132,7 @@
         $.each(data.panel, function (i, n) {
           panelArr.push(n.key)
         });
-        this.$axios({
+        this.myAxios({
           url: 'sample/genelist/' + this.datafile + '/',
           method: 'patch',
           data: {
@@ -149,11 +149,11 @@
       //获取样本信息
       getSample: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/grandmgd/' + this.ID + '/',
         }).then(function (resp) {
           _vue.datafile = resp.data.datafile;
-          _vue.$axios({
+          _vue.myAxios({
             url: resp.data.job
           }).then(function (respJob) {
             _vue.sampleInfo = respJob.data.name;
@@ -163,25 +163,25 @@
       current0: function () {
         this.loading0 = true;
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/grandmgd/' + this.ID + '/fastqc/',
         }).then(function (resp) {
           _vue.R1 = resp.data.r1;
           _vue.R2 = resp.data.r2;
         });
-        this.$axios({
+        this.myAxios({
           url: 'application/grandmgd/' + this.ID + '/insertsize/',
         }).then(function (resp) {
           _vue.insert = resp.data
         });
-        this.$axios({
+        this.myAxios({
           url: 'application/grandmgd/' + this.ID + '/csv/',
         }).then(function (resp) {
           _vue.CSV = resp.data
         });
 
         //列表
-        this.$axios({
+        this.myAxios({
           url: 'application/grandmgd/' + this.ID + "/stat/",
         }).then(function (resp) {
           resp = resp.data;

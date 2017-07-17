@@ -138,7 +138,7 @@
     methods: {
       getCap: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'sample/capture/',
           method: 'get'
         }).then(function (resp) {
@@ -154,7 +154,7 @@
           $(this).val($.trim($(this).val()))
         });
         _remark.val(_remark.val());
-        this.$axios({
+        this.myAxios({
           url: 'sample/datafile/',
           method: 'post',
           data: new FormData(document.getElementById('addDataForm'))

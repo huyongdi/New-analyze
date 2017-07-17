@@ -94,7 +94,7 @@
       getList: function () {
         this.loading = true;
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/job/?compl=true&page=' + this.pageNum + '&app=' + this.appCode
         }).then(function (resp) {
           _vue.count = resp.data.count;
@@ -128,7 +128,7 @@
         const _vue = this;
         if (confirm('确定要删除该任务吗？')) {
           const sId = $(event.target).data('id');
-          this.$axios({
+          this.myAxios({
             url: 'application/job/' + sId + '/',
             method: 'delete'
           }).then(function () {
@@ -141,7 +141,7 @@
       },
       getSelect: function () {
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'application/app/',
         }).then(function (resp) {
           _vue.selectArr = resp.data.results;

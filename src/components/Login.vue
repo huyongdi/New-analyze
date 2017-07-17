@@ -102,7 +102,7 @@
     methods: {
       login: function () {
         const _vue = this;
-        this.$axios({
+        this.loginAxios({
           url: 'user/login/',
           method: 'post',
           data: {

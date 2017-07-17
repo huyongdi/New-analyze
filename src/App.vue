@@ -43,7 +43,7 @@
       '$route' (to, from) { //路由变化的时候判断需不需要加载头部
         this.inLogin = !new Boolean(localStorage.token)
         if (from.name === 'login') {  //重新登录之后token不刷新
-          axios.defaults.headers = {'Authorization': localStorage.token};
+          this.myAxios.headers = {'Authorization': localStorage.token};
         }
       }
     },

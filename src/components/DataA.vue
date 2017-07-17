@@ -64,7 +64,7 @@
     },
     created: function () {
       const _vue = this;
-      this.$axios({
+      this.myAxios({
         url: 'application/app/',
       }).then(function (resp) {
         $.each(resp.data.results, function (i, data) {

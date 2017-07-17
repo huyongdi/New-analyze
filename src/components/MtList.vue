@@ -63,7 +63,7 @@
       getList: function () {
         this.loading = true;
         const _vue = this;
-        this.$axios({
+        this.myAxios({
           url: 'sample/datafile/?app=grandmito&page=' + this.pageNum
         }).then(function (resp) {
           _vue.count = resp.data.count;
@@ -90,7 +90,7 @@
           if($(this).hasClass('check-yes')){
             let _html = $(this).parent().parent().next().html();
             count += 1;
-            _vue.$axios({
+            _vue.myAxios({
               url: 'application/grandmito/',
               method: 'post',
               data: {

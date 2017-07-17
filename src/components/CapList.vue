@@ -98,7 +98,7 @@
         _vue.lists = [];
         const axiosUrl = this.inputValue0 ? 'sample/capture/' + '?page=' + this.pageNum + '&query=' + this.inputValue
           : 'sample/capture/' + '?page=' + this.pageNum;
-        this.$axios({
+        this.myAxios({
           url: axiosUrl,
           method: 'get'
         }).then(function (resp) {
@@ -121,7 +121,7 @@
           if ($(this).hasClass('check-yes')) {
             const name = $(this).data('name');
             k1 += 1;
-            _vue.$axios({
+            _vue.myAxios({
               url: 'sample/capture/' + name + '/',
               method: 'delete'
             }).then(function () {
@@ -160,7 +160,7 @@
         const _vue = this;
         const name = $(event.target).data('name');
         if (confirm('是否删除该样本')) {
-          _vue.$axios({
+          _vue.myAxios({
             url: 'sample/capture/' + name + '/',
             method: 'delete'
           }).then(function () {

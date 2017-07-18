@@ -8,7 +8,7 @@
 
       <div class="btn-content">
         <span class="my-btn" @click="save"><img src="../../static/img/red-submit.png" alt="">提交</span>
-        <span class="my-btn"><img src="../../static/img/red-save.png" alt="">保存</span>
+        <!--<span class="my-btn"><img src="../../static/img/red-save.png" alt="">保存</span>-->
         <span class="my-btn" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
         <span class="my-btn"><img src="../../static/img/red-back.png" alt="">返回</span>
       </div>

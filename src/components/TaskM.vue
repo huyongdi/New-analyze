@@ -27,10 +27,10 @@
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
           <div @click.stop="" class="children">
-            <router-link to="/taskM/foo/done" data-code='' class="block">
+            <router-link to="/taskM/foo/reportSe" data-code='taskM-reportSe' class="block">
               在线报告查询
             </router-link>
-            <router-link to='/taskM/foo/doing' data-code="" class="block">
+            <router-link to='/taskM/foo/reportSt' data-code="taskM-reportSt" class="block">
               报告统计
             </router-link>
           </div>
@@ -57,7 +57,10 @@
       return{
         pageObj: {  //页面的code对应的name
           done: 'taskM-done',
-          doing: 'taskM-doing'
+          doing: 'taskM-doing',
+          reportSt: 'taskM-reportSt',
+          reportSe: 'taskM-reportSe',
+          SgResult: 'taskM-sgResult',
         }
       }
     },

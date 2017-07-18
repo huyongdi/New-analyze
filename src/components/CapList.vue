@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <span class="my-btn search-btn"><img src="../../static/img/red-con.png" alt="" @click="search">搜索</span>
+          <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="">搜索</span>
         </div>
       </div>
       <table id="sg-table" class="bc-fff my-table">
@@ -55,13 +55,45 @@
           <td>{{val.maker}}</td>
           <td><a :href="val.bed">下载</a></td>
           <td>
-            <img src="../../static/img/edit.png" data-index="index" @click="editFun(val)">
+            <img src="../../static/img/edit.png" :data-index="index" @click.stop="editFun(val)">
             <img src="../../static/img/delete.png" class="list-delete" :data-name="val.name" @click.stop='deleteFun'>
           </td>
         </tr>
         </tbody>
       </table>
       <page :childCount="count" :childReset="0" @childCurrent="getCurrent"></page>
+
+      <!--点击单列的编辑-->
+      <div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">修改数据</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-3">捕获芯片</div>
+                <div class="col-md-9">
+                  <input type="text" disabled class="form-control" id="edit-name" :data-oldName="editModalData.name"
+                         :value="editModalData.name">
+                </div>
+              </div>
+              <div class="row noneBottom">
+                <div class="col-md-3">出产厂家</div>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="edit-maker" :value="editModalData.maker">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" @click="saveEdit">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -96,7 +128,7 @@
         const _vue = this;
         _vue.loading = true;
         _vue.lists = [];
-        const axiosUrl = this.inputValue0 ? 'sample/capture/' + '?page=' + this.pageNum + '&query=' + this.inputValue
+        const axiosUrl = this.inputValue0 ? 'sample/capture/' + '?page=' + this.pageNum + '&query=' + this.inputValue0
           : 'sample/capture/' + '?page=' + this.pageNum;
         this.myAxios({
           url: axiosUrl,
@@ -156,15 +188,32 @@
         this.editModalData = data;
         $("#editModal").modal('show');
       },
+      saveEdit:function () {
+        const _vue = this;
+        this.myAxios({
+          url: 'sample/capture/' + $("#edit-name").data('oldname') + '/',
+          method: 'patch',
+          data: {
+            name: $("#edit-name").val(),
+            maker: $("#edit-maker").val()
+          }
+        }).then(function () {
+          alert('编辑成功');
+          _vue.getList();
+          $("#editModal").modal('hide');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
       deleteFun: function (event) {
         const _vue = this;
         const name = $(event.target).data('name');
-        if (confirm('是否删除该样本')) {
+        if (confirm('是否删除该数据')) {
           _vue.myAxios({
             url: 'sample/capture/' + name + '/',
             method: 'delete'
           }).then(function () {
-            alert('已成功删除该样品');
+            alert('已成功删除该数据');
             $(event.target).parent().parent().remove();
           }).catch(function (error) {
             _vue.catchFun(error);

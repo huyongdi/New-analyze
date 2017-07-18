@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="result in results" @click="toResult(result.type,result.id)">
+        <tr v-for="result in results" @click="toResult(result.type,result.typeId)" title="点击查看结果">
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
@@ -56,7 +56,8 @@
             <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
             <!--<i v-if="result.status == 'error'" class="fa fa-refresh po" title="重新运行"-->
             <!--:data-id=result.id></i>-->
-            <img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id @click.stop="removeTask">
+            <img src="../../static/img/delete.png" title="删除" class="remove-job" :data-id=result.id
+                 @click.stop="removeTask">
           </td>
         </tr>
         </tbody>
@@ -108,6 +109,14 @@
               b.type = 1;
               b.typeId = b.grandmitos.split('/')[b.grandmitos.split('/').length - 2];
             }
+            if (b.grandwcnvs) {
+              b.type = 2;
+              b.typeId = b.grandwcnvs.split('/')[b.grandwcnvs.split('/').length - 2];
+            }
+            if (b.grandannos) {
+              b.type = 3;
+              b.typeId = b.grandannos.split('/')[b.grandannos.split('/').length - 2];
+            }
             b.nameArr = [];
             $.each(b.name.split(' '), function (i, data) {
               b.nameArr.push(data.split(':')[1])
@@ -149,9 +158,14 @@
           _vue.catchFun(error);
         })
       },
-      toResult: function (type,id) {
-        let url = type === 0 ? '/taskM/foo/sgResult' : '/dataA/foo/gmResult';
-        this.$router.push({path:url,query:{id:id}})
+      toResult: function (type, id) {
+        let url = '';
+        if (type === 0) {
+          url = '/taskM/foo/sgResult'
+        } else if (type === 1) {
+          url = ''
+        }
+        this.$router.push({path: url, query: {id: id}})
       }
     }
   }

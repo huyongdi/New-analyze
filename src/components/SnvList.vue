@@ -1,5 +1,5 @@
 <template>
-  <grandList appCode="grandmito" title="线粒体检测"></grandList>
+  <grandList appCode="grandanno" title="SNV注释"></grandList>
 </template>
 
 <script>

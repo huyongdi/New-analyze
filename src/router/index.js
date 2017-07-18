@@ -13,11 +13,15 @@ import AllUpload from '@/components/AllUpload'
 import DataA from '@/components/DataA'
 import SgList from '@/components/SgList'
 import MtList from '@/components/MtList'
+import CnvList from '@/components/CnvList'
+import SnvList from '@/components/SnvList'
 import SgResult from '@/components/SgResult'
 
 import TaskM from '@/components/TaskM'
 import Done from '@/components/Done'
 import Doing from '@/components/Doing'
+import ReportSe from '@/components/ReportSearch'
+import ReportSt from '@/components/ReportStatistics'
 
 Vue.use(Router);
 
@@ -80,6 +84,16 @@ export default new Router({
           name: 'dataA-mtList',
           component: MtList
         },
+        {
+          path: 'cnvList',
+          name: 'dataA-cnvList',
+          component: CnvList
+        },
+        {
+          path: 'snvList',
+          name: 'dataA-snvList',
+          component: SnvList
+        },
       ]
     },
     { /*任务管理*/
@@ -87,6 +101,16 @@ export default new Router({
       name:'taskM',
       component: TaskM,
       children: [
+        {
+          path: 'reportSe',
+          name: 'taskM-reportSe',
+          component: ReportSe
+        },
+        {
+          path: 'reportSt',
+          name: 'taskM-reportSt',
+          component: ReportSt
+        },
         {
           path: 'done',
           name: 'taskM-done',
@@ -99,7 +123,7 @@ export default new Router({
         },
         {
           path: 'sgResult',
-          name: 'dataA-sgResult',
+          name: 'taskM-sgResult',
           component: SgResult
         }
       ]

@@ -1,5 +1,5 @@
 <template>
-  <grandList appCode="grandmito" title="线粒体检测"></grandList>
+  <grandList appCode="grandwcnv" title="低深度全基因CNV检测"></grandList>
 </template>
 
 <script>

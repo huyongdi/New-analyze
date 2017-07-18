@@ -8,13 +8,13 @@
 
       <div class="btn-content">
         <span class="my-btn" @click="save"><img src="../../static/img/red-submit.png" alt="">提交</span>
-        <span class="my-btn"><img src="../../static/img/red-save.png" alt="">保存</span>
+        <!--<span class="my-btn"><img src="../../static/img/red-save.png" alt="">保存</span>-->
         <span class="my-btn" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
         <span class="my-btn"><img src="../../static/img/red-back.png" alt="">返回</span>
       </div>
 
       <div class="dataContent shadow-top">
-        <form id="addDataForm">
+        <form id="addExcelForm">
           <div class="row">
             <div class="title">
               文件
@@ -24,9 +24,9 @@
                 <div class="inline">
                   <span>excel：</span>
                   <div class="upload-content">
-                    <input type="text" class="show-name">
+                    <input type="text" class="show-name" id="input-show">
                     <span class="text">选择</span>
-                    <input type='file' name="file1" class="hide-input">
+                    <input type='file' name="excel" class="hide-input" id="input-hide">
                   </div>
                 </div>
                 <div class="inline">
@@ -53,32 +53,28 @@
       }
     },
     created: function () {
-      this.getLink();
+
     },
     methods: {
-      getLink:function () {
-
+      refresh:function () {
+        $("#input-hide").val('');
+        $("#input-show").val('');
       },
       save: function () {
-        const _form = $("#addDataForm");
-        const _remark = $("#remark");
-        _form.find('input[type=text]').each(function () {
-          $(this).val($.trim($(this).val()))
-        });
-        _remark.val(_remark.val());
+        const _vue = this;
+        this.loading = true;
         this.myAxios({
-          url: 'sample/datafile/',
+          url: 'sample/datafile/excel/',
           method: 'post',
-          data: new FormData(document.getElementById('addDataForm'))
-        }).then(function () {
-          alert('提交成功');
+          data: new FormData(document.getElementById('addExcelForm'))
+        }).then(function (resp) {
+          alert(resp.data);
+          _vue.loading = false;
         }).catch(function (error) {
+          _vue.loading = false;
           _vue.catchFun(error);
         })
       },
-      refresh:function () {
-
-      }
     }
   }
 </script>

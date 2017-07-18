@@ -11,10 +11,14 @@
             <img src="../../static/img/under-left-1.png" alt="">
           </div>
           <div class="children" @click.stop="">
-            <router-link v-for="pipeline in leftObj.pipelineArr" :key="pipeline.id" :to="{name:pipeline.vue_name}"
-                         class="block" :data-code="pipeline.code">
-              {{pipeline.name}}
-            </router-link>
+            <!--<router-link v-for="pipeline in leftObj.pipelineArr" :key="pipeline.id" :to="{name:pipeline.vue_name}"-->
+                         <!--class="block" :data-code="pipeline.code">-->
+              <!--{{pipeline.name}}-->
+            <!--</router-link>-->
+            <router-link to="/dataA/foo/cnvList" class="block" data-code="grandwcnv">低深度全基因CNV检测</router-link>
+            <router-link to="/dataA/foo/sgList" class="block" data-code="grandmgd">单基因遗传病检测</router-link>
+            <router-link to="/dataA/foo/mtList" class="block" data-code="grandmito">线粒体检测</router-link>
+            <router-link to="/dataA/foo/snvList" class="block" data-code="grandanno">SNV注释</router-link>
           </div>
         </li>
         <li>
@@ -54,28 +58,30 @@
         },
         pageObj: {  //页面的code对应的name
           grandmgd: 'dataA-sgList',
-          grandmito: 'dataA-mtList'
+          grandmito: 'dataA-mtList',
+          grandwcnv: 'dataA-cnvList',
+          grandanno: 'dataA-annoList',
         }
       }
     },
     updated: function () {
       this.getActive();
-      this.getHref();
+//      this.getHref();
     },
     created: function () {
-      const _vue = this;
-      this.myAxios({
-        url: 'application/app/',
-      }).then(function (resp) {
-        $.each(resp.data.results, function (i, data) {
-            data.vue_name = '';
-          if (data.category === "pipeline") {
-            _vue.leftObj.pipelineArr.push(data)
-          }
-        });
-      }).catch(function (error) {
-        _vue.catchFun(error);
-      })
+//      const _vue = this;
+//      this.myAxios({
+//        url: 'application/app/',
+//      }).then(function (resp) {
+//        $.each(resp.data.results, function (i, data) {
+//            data.vue_name = '';
+//          if (data.category === "pipeline") {
+//            _vue.leftObj.pipelineArr.push(data)
+//          }
+//        });
+//      }).catch(function (error) {
+//        _vue.catchFun(error);
+//      })
     },
     methods: {
       getHref: function () {

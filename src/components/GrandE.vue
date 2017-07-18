@@ -85,6 +85,20 @@
                    :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
                    v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
               </router-link>
+
+              <router-link v-if="list.jobs[0].app.code === 'grandwcnv'"
+                           :to="{path:'gwResult',query:{id:list.jobs[0].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
+                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+              <router-link v-if="list.jobs[0].app.code === 'grandanno'"
+                           :to="{path:'snvResult',query:{id:list.jobs[0].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
+                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+
               <i v-if="list.jobs[0].status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
               <i v-if="list.jobs[0].status == 'error'" class="fa fa-bug text-danger">出错</i>
             </div>

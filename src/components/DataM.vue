@@ -5,14 +5,6 @@
       <ul class="under-left">
         <li>
           <div class="father">
-            <span class="img data-centre"></span>
-            <span>数据中心</span>
-            <i class="triangle"></i>
-            <img src="../../static/img/under-left-1.png" alt="">
-          </div>
-        </li>
-        <li>
-          <div class="father">
             <span class="img test-platform"></span>
             <span>检测平台</span>
             <i class="triangle"></i>

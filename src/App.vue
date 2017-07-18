@@ -153,7 +153,7 @@
         input,textarea{
           border: 1px solid #d4d4d4;
           border-radius: 3px;
-          padding: 1px 5px;
+          padding: 1px 8px;
         }
         select::-ms-expand { display: none; }
         .my-select{

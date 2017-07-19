@@ -1,3 +1,4 @@
+<!--页码-->
 <template>
   <div class="text-right">
     页数
@@ -41,6 +42,11 @@
       },
       inputValue: function () {
         this.usableInput = !(!/^\+?[1-9][0-9]*$/.test(this.inputValue) || this.inputValue > this.allPage || this.inputValue == this.currentPage);
+      },
+      childReset:function () {
+        if(this.childReset){
+          this.currentPage = 1;
+        }
       }
     },
     methods: {

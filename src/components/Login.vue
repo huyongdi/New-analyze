@@ -133,8 +133,9 @@
   .all {
     height: 100%;
     .header {
-      height: 52px;
-      line-height: 52px;
+      min-width: 1300px;
+      height: 50px;
+      line-height: 50px;
       width: 100%;
       color: #fff;
       background: url('../../static/img/header-bc.png') no-repeat center;
@@ -243,7 +244,7 @@
         float: left;
         min-height: 100%;
         padding-left: 32px;
-        width: calc(~'100vw - 267px');
+        width: calc(~'100vw - 285px');
         .login-logo {
           margin-top: 40px;
           width: 100%;

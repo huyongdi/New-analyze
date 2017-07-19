@@ -68,11 +68,11 @@
                     <span class="title" data-name="report">数据库报道</span>
                     <span class="option" data-value="true">已报道</span>
                     <span class="option" data-value="false">未报道</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                   <div class="right inline">
                     <span class="title" data-name="inheritance">遗传方式</span>
-                    <span class="option in" data-value="All">全部</span>
+                    <span class="option in default" data-value="All">全部</span>
                     <span class="option" data-value="AR">AR</span>
                     <span class="option" data-value="AD">AD</span>
                     <span class="option" data-value="XR">XR</span>
@@ -80,7 +80,7 @@
                     <span class="option" data-value="X-linked">X-LINKED</span>
                     <span class="option" data-value="Y-linked">Y-LINKED</span>
                     <span class="option" data-value="Other">其它</span>
-                    <span class="option" >不筛选</span>
+                    <span class="option">不筛选</span>
                   </div>
                 </li>
                 <li>
@@ -90,7 +90,7 @@
                     <span class="option" data-value="nonsynon">nonsynonymous</span>
                     <span class="option" data-value="splic">splicing</span>
                     <span class="option" data-value="frameshift">(non)frameshift</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                   <div class="right inline">
                     <span class="title" data-name="dbfreq">普通人群携带率低于</span>
@@ -100,7 +100,7 @@
                     <span class="option" data-value="0.01">1%</span>
                     <span class="option" data-value="0.02">2%</span>
                     <span class="option" data-value="0.05">5%</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                 </li>
                 <li>
@@ -109,7 +109,7 @@
                     <span class="option" data-value="0.9-1">0.9-1</span>
                     <span class="option" data-value="0.2-0.9">0.2-0.9</span>
                     <span class="option" data-value="0-0.2">0-0.2</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                   <div class="right inline">
                     <span class="title" data-name="grandfreq">本地人群携带率低于</span>
@@ -119,7 +119,7 @@
                     <span class="option" data-value="0.01">1%</span>
                     <span class="option" data-value="0.02">2%</span>
                     <span class="option" data-value="0.05">5%</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                 </li>
                 <li>
@@ -127,24 +127,88 @@
                     <span class="title" data-name="depth">测序深度</span>
                     <span class="option" data-value="10-20">10-20</span>
                     <span class="option" data-value=">20">>20</span>
-                    <span class="option in" >不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                   <div class="right inline">
                     <span class="title" data-name="status">状态</span>
                     <span class="option" data-value="true">已标记</span>
                     <span class="option" data-value="false">未标记</span>
-                    <span class="option in">不筛选</span>
+                    <span class="option in default">不筛选</span>
                   </div>
                 </li>
                 <li class="textarea-li">
-                  <div class="left rea">
-                    <span class="title po">基因</span>
-                    <i class="fa fa-chevron-right po"></i>
-                    <textarea placeholder='请用逗号或换行隔开'></textarea>
+                  <div class="left">
+                    <div class="click-content" @click="geneTextShow">
+                      <span class="title po">基因</span>
+                      <i class="fa fa-chevron-right po"></i>
+                    </div>
+                    <textarea placeholder='请用逗号或换行隔开' v-if="geneTextAreaShow" v-model="geneTextArea"></textarea>
                   </div>
                 </li>
               </ul>
             </div>
+            <div class="btn-content">
+              <span class="my-btn condition" @click="filter"><img src="../../static/img/red-con.png" alt="">过滤</span>
+              <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png"
+                                                                     alt="">重置</span>
+            </div>
+            <div>
+              <table class="table my-table table-2">
+                <thead>
+                <tr>
+                  <th>位点
+                    <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
+                       data-original-title="红色代表最高级，黄色代表第二级，蓝色代表第三级">
+                    </i>
+                  </th>
+                  <th>基因</th>
+                  <th>区域</th>
+                  <th>功能</th>
+                  <th class="disease-td">疾病</th>
+                  <th>CLINVAR</th>
+                  <th>HGMD</th>
+                  <th>东亚人群频率(%)</th>
+                  <th>本地人群频率(%)</th>
+                  <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="data in lists1">
+                  <td>
+                    <i v-if="data.level==0" :data-id='data.id' class="fa fa-font-awesome text-1 po" title="查看详情"></i>
+                    <i v-else-if="data.level==1" :data-id='data.id' class="fa fa-font-awesome text-2 po"
+                       title="查看详情"></i>
+                    <i v-else :data-id='data.id' class="fa fa-font-awesome po text-3" title="查看详情"></i>
+                    <span v-if="data.localsnv">{{data.localsnv.name}}</span>
+                  </td>
+                  <td v-if="data.annotations">
+                    <a target="_blank" v-if="data.annotations.geneSymbol"
+                       :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
+                  </td>
+                  <td v-if="data.annotations">
+                    {{data.annotations.region}}
+                  </td>
+                  <td v-if="data.annotations">
+                    {{data.annotations.func}}
+                  </td>
+                  <diseaseTd :geneResp="data.geneResp"></diseaseTd>
+                  <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
+                  <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
+                  <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
+                  <td>{{data.annotations.grandfreq | getPercent}}</td>
+                  <td
+                    :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
+                  active4: data.status=='invalid'}">
+                    {{data.status | getStatus}}
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+            <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
+
           </div>
           <div class="content-3" :class="{hide:!in2}">我是3</div>
           <div class="content-4" :class="{hide:!in3}">我是4</div>
@@ -158,10 +222,13 @@
 <script>
   import page from './global/Page.vue'
   import panelModal from './global/PanelModal.vue'
+  import diseaseTd from './global/DiseaseTd.vue'
+
   export default {
     components: {
       'page': page,
       'panelModal': panelModal,
+      'diseaseTd': diseaseTd,
     },
     data: function () {
       return {
@@ -187,11 +254,19 @@
         //content-1
         loading1: false,
         lists1: [],
+        geneTextArea: '',
+        geneTextAreaShow: false,
+        count1: 0,
+        page1: 1,
+        reset1: 0
       }
     },
     created: function () {
       this.getSample();
       this.current0();
+    },
+    mounted: function () {
+      this.bindCurrent1();//绑定变异详情的过滤点击事件
     },
     methods: {
       /*修改panel*/
@@ -247,6 +322,29 @@
             _vue.sampleInfo = respJob.data.name;
           })
         });
+      },
+      changeContent: function (event) {
+        const _current = $(event.target);
+        const current = _current.data("type");
+        _current.parent().find('.active').removeClass('active');
+        _current.addClass('active');
+        this.in0 = '';
+        this.in1 = '';
+        this.in2 = '';
+        this.in3 = '';
+        if (current === 0) {
+          this.in0 = true;
+          this.current0();
+        } else if (current === 1) {
+          this.in1 = true;
+          this.current1();
+        } else if (current === 2) {
+          this.in2 = true;
+          this.current2();
+        } else if (current === 3) {
+          this.in3 = true;
+          this.current3();
+        }
       },
       current0: function () {
         this.loading0 = true;
@@ -373,38 +471,6 @@
           _vue.loading0 = false;
         });
       },
-      current1: function () {
-
-      },
-      current2: function () {
-
-      },
-      current3: function () {
-
-      },
-      changeContent: function (event) {
-        const _current = $(event.target);
-        const current = _current.data("type");
-        _current.parent().find('.active').removeClass('active');
-        _current.addClass('active');
-        this.in0 = '';
-        this.in1 = '';
-        this.in2 = '';
-        this.in3 = '';
-        if (current === 0) {
-          this.in0 = true;
-          this.current0();
-        } else if (current === 1) {
-          this.in1 = true;
-          this.current1();
-        } else if (current === 2) {
-          this.in2 = true;
-          this.current2();
-        } else if (current === 3) {
-          this.in3 = true;
-          this.current3();
-        }
-      },
       getValue: function (final) {
         const obj = {};
         $.each(final, function (i, data) {
@@ -435,6 +501,152 @@
           }
         });
         return obj;
+      },
+      current1: function () {
+        if (this.lists1.length === 0) {
+          this.getList1();
+        }
+      },
+      getList1: function () {
+        this.loading1 = true;
+        let urlParam = '';
+        $('.option').each(function () {
+          if ($(this).html() !== '不筛选' && $(this).hasClass('in')) {
+            urlParam += '&' + $(this).parent().find('.title').data('name') + '=' + $(this).data('value');
+          }
+        });
+        if (this.geneTextAreaShow && this.geneTextArea) {
+          urlParam += '&genes=' + this.strToArr(this.geneTextArea)
+        }
+        //条件判断结束
+        const _vue = this;
+        this.lists1 = [];
+        this.myAxios({
+          url: 'application/grandmgd/' + this.ID + '/snv/',
+        }).then(function (resp) {
+          let str = '';
+          $.each(resp.data.query_params, function (i, value) {
+            str += i + '=' + value + "&"
+          });
+          _vue.myAxios({
+            url: resp.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+          }).then(function (resp) {
+            if (resp.data.count === 0) {
+              _vue.loading1 = false
+            }
+            _vue.count1 = resp.data.count;
+            let genePostData = [];
+            $.each(resp.data.results, function (i, value) {
+              //处理highlight和active得到级别(highlight为true的时候active必定为true)
+              if (value.highlight && value.active) {
+                value.level = 0
+              } else if (!value.highlight && value.active) {
+                value.level = 1
+              } else if (!value.highlight && !value.active) {
+                value.level = 2
+              }
+              $.each(value.annotations.geneId, function (n, k) {
+                genePostData.push(k)
+              });
+              value.geneResp = [];
+            });
+            _vue.lists1 = resp.data.results;
+            _vue.myAxios({
+              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
+              method: 'post',
+              data: {
+                geneids: genePostData
+              }
+            }).then(function (respA) {
+              let count0 = 0;
+              let count1 = 0;
+              $.each(respA.data, function () {
+                count1 += 1;
+              });
+              $.each(respA.data, function (k1, k2) {
+                count0 += 1;
+                $.each(resp.data.results, function (n1, n2) {
+                  $.each(n2.annotations.geneId, function (n3, n4) {
+                    if (k1 == n4) {
+                      n2.geneResp.push({
+                        geneId: n4,
+                        geneData: k2
+                      });
+                    }
+                  })
+                });
+                if (count0 === count1) {
+                  _vue.loading1 = false
+                }
+              });
+            });
+          });
+        });
+      },
+      getCurrent: function (data) {
+        this.page1 = data;
+        this.reset1 = 0;
+        this.getList1();
+      },
+      filter: function () {
+        this.page1 = 1;
+        this.reset1 = 1;
+        this.getList1();
+      },
+      resetFilter: function () {
+        this.geneTextArea = '';
+        this.geneTextAreaShow = false;
+        $(".default").each(function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        })
+      },
+      bindCurrent1: function () {
+        $('.option').on("click", function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        });
+      },
+      geneTextShow: function () {
+        this.geneTextAreaShow = !this.geneTextAreaShow;
+      },
+      current2: function () {
+
+      },
+      current3: function () {
+
+      },
+    },
+    updated: function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    },
+    filters: {
+      getPercent: function (data) {
+        if (data == 0) {
+          return 0;
+        }
+        data = data * 100;
+        data = data.toFixed(2);
+        return data
+      },
+      getStatus: function (status) {
+        switch (status) {
+          case 'major':
+            return '主要的';
+            break;
+          case 'minor':
+            return '次要的';
+            break;
+          case 'benign':
+            return '良性的';
+            break;
+          case 'invalid':
+            return '无效的';
+            break;
+          case '':
+            return '未作标记';
+            break;
+        }
       }
     }
 
@@ -559,47 +771,73 @@
           }
         }
       }
-      .content-2{
-        .filter-content{
+      .content-2 {
+        table {
+          .text-1, .active1 {
+            color: #f1456c;
+          }
+          .text-2, .active2 {
+            color: #ffbb34;
+          }
+          .text-3, .active3 {
+            color: #2c7fd2;
+          }
+          .active4 {
+            color: #d3d3d3;
+          }
+        }
+        .filter-content {
           font-size: 12px;
-          ul{
+          ul {
             margin-top: 10px;
             padding-left: 0;
-            li{
-              .title{
+            li {
+              .title {
                 font-weight: bold;
                 display: inline-block;
                 margin: 12px 20px 12px 0;
               }
-              .option{
+              .option {
                 padding: 5px 10px;
                 border: 1px solid #fff;
                 cursor: pointer;
-                &:hover{
+                &:hover {
                   border: 1px solid #b9b8b8;
                 }
               }
-              .option.in{
+              .option.in {
                 border: 1px solid #0076c0;
                 color: #2c7fd2;
                 font-weight: bold;
               }
-              .fa-chevron-right{
+              .fa-chevron-right {
                 color: #2c7fd2;
               }
-              textarea{
-                min-height: 100px;
-                width: 80%;
-                position: absolute;
-                margin: 10px 0 0 30px;
-              }
-              .left{
+              .left {
                 width: 50%;
               }
             }
-            .textarea-li{
-              height: 120px;
+            .textarea-li {
+              overflow: hidden;
+              .click-content {
+                float: left;
+                cursor: pointer;
+              }
+              textarea {
+                min-height: 100px;
+                width: 80%;
+                float: left;
+                margin-left: 28px;
+                margin-top: 10px;
+              }
             }
+          }
+        }
+        .btn-content {
+          clear: both;
+          margin-top: 20px;
+          .condition {
+            margin-right: 30px;
           }
         }
       }

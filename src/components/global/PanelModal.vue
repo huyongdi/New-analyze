@@ -1,3 +1,4 @@
+<!--通过引入模糊搜索建立的panel搜索框-->
 <template>
   <!--点击修改panel的模态框-->
   <div class="modal fade " aria-labelledby="gridSystemModalLabe5" tabindex="-1" role="dialog" id="panelModal">

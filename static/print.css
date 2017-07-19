@@ -1,0 +1,231 @@
+/*自定义变量*/
+.border {
+  border: 1px solid #fff;
+}
+.small-title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+.small-font {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+}
+.footer-line {
+  line-height: 20px;
+}
+/*样式内容*/
+#report-content {
+  padding-left: 56px;
+  font-family: '宋体';
+  font-size: 20px;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+table td,
+table th {
+  border: 1px solid black;
+  padding: 6px 4px;
+  text-align: center;
+}
+table thead {
+  background-color: #62b275;
+  font-weight: inherit;
+  color: #fff;
+}
+.bold {
+  font-weight: bold;
+  color: inherit;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.text-right {
+  text-align: right;
+}
+.btn-content button {
+  margin-left: 10px;
+}
+.footer {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+  line-height: 20px;
+  padding-top: 10px;
+  width: 1450px;
+  position: absolute;
+  bottom: 0;
+  left: 50PX;
+  border-top: 1px solid #333;
+}
+.print-content-basic {
+  border: 1px solid #fff;
+  padding: 0;
+  width: 1073px;
+  height: 1500px;
+  /*1566*/
+  margin: 0 auto;
+  position: relative;
+}
+.print-content-basic .all-content {
+  margin: 50px 50px 30px 50px;
+  /*第三四页样式*/
+  /*第一页样式*/
+}
+.print-content-basic .all-content .detail-basic {
+  clear: both;
+  padding-top: 40px;
+}
+.print-content-basic .all-content .detail-basic .title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.print-content-basic .all-content .detail-basic .reference {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+}
+.print-content-basic .all-content .footer {
+  width: 973px;
+  margin-bottom: 30px;
+}
+.print-content-basic .all-content .detail-content {
+  clear: both;
+  padding-top: 50px;
+}
+.print-content-basic .all-content .detail-content > .title {
+  font-size: 31px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+.print-content-basic .all-content .detail-content .basic-info {
+  margin-top: 30px;
+  border-top: 4px solid #62b275;
+  border-bottom: 4px solid #62b275;
+}
+.print-content-basic .all-content .detail-content .basic-info .basic-info-row {
+  margin: 12px 0 18px 0;
+}
+.print-content-basic .all-content .detail-content .basic-info .basic-info-row div {
+  display: inline-block;
+  width: 315px;
+  vertical-align: top;
+}
+.print-content-basic .all-content .detail-content .clinic {
+  margin-top: 20px;
+}
+.print-content-basic .all-content .detail-content .clinic .title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+.print-content-basic .all-content .detail-content .clinic .clinic-detail {
+  line-height: 35px;
+}
+.print-content-basic .all-content .detail-content .result-info {
+  margin-top: 20px;
+}
+.print-content-basic .all-content .detail-content .result-info .title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.print-content-basic .all-content .detail-content .result-remark {
+  margin-top: 20px;
+}
+.print-content-basic .all-content .detail-content .result-remark .title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.print-content-basic .all-content .detail-content .result-remark .remark-detail {
+  text-indent: 40px;
+  line-height: 35px;
+}
+.print-content-basic .all-content .footer-print1 {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 30px;
+  left: 0;
+  margin: 0 50px;
+}
+.print-content-basic .all-content .footer-print1 .notice {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+}
+.print-content-basic .all-content .footer-print1 .notice span {
+  font-weight: bold;
+}
+.print-content-basic .all-content .footer-print1 .notice sup {
+  display: inline-block;
+  font-size: 13px;
+}
+.print-content-basic .all-content .footer-print1 .info {
+  margin-top: 20px;
+}
+.print-content-basic .all-content .footer-print1 .info .info-title {
+  text-align: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+.print-content-basic .all-content .footer-print1 .info .info-title div {
+  display: inline-block;
+  width: 220px;
+}
+.print-content-basic .all-content .footer-print1 .info .info-content {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+  margin-top: 5px;
+  line-height: 20px;
+}
+.print-content-2 {
+  padding: 0;
+  width: 1550px;
+  height: 1060px;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid #fff;
+}
+.print-content-2 .footer {
+  padding-bottom: 30px;
+}
+.print-content-2 .all-content {
+  margin: 30px 50px 30px 50px;
+}
+.print-content-2 .all-content .detail {
+  clear: both;
+  padding-top: 25px;
+}
+.print-content-2 .all-content .detail .detail-title {
+  margin-bottom: 10px;
+}
+.print-content-2 .all-content .detail .detail-title .big {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+.print-content-2 .all-content .detail .detail-title .small {
+  margin-left: 10px;
+}
+.print-content-2 .all-content .detail .notice {
+  line-height: 30px;
+  color: #444;
+  font-size: 18px;
+  margin-top: 20px;
+}

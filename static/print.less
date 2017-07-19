@@ -1,0 +1,228 @@
+/*自定义变量*/
+@green: rgb(98, 178, 117);
+@ignoreColor: #444;
+.border {
+  border: 1px solid #fff;
+}
+
+.small-title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.small-font {
+  line-height: 30px;
+  color: @ignoreColor;
+  font-size: 18px;
+}
+
+.footer-line {
+  line-height: 20px;
+}
+
+/*样式内容*/
+#report-content {
+  padding-left: 56px;
+  font-family: '宋体';
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  td, th {
+    border: 1px solid black;
+    padding: 6px 4px;
+    text-align: center;
+  }
+  thead {
+    background-color: @green;
+    font-weight: inherit;
+    color: #fff;
+  }
+}
+
+.bold {
+  font-weight: bold;
+  color: inherit;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn-content {
+  button {
+    margin-left: 10px;
+  }
+}
+
+.footer {
+  .small-font;
+  .footer-line;
+  padding-top: 10px;
+  width: 1450px;
+  position: absolute;
+  bottom: 0;
+  left: 50PX;
+  border-top: 1px solid #333;
+}
+
+.print-content-basic {
+  .border;
+  padding: 0;
+  width: 1073px;
+  height: 1500px; /*1566*/
+  margin: 0 auto;
+  position: relative;
+  .all-content {
+    margin: 50px 50px 30px 50px;
+    /*第三四页样式*/
+    .detail-basic {
+      clear: both;
+      padding-top: 40px;
+      .title {
+        .small-title;
+        margin-bottom: 20px;
+      }
+      .reference {
+        .small-font
+      }
+    }
+    .footer {
+      width: 973px;
+      margin-bottom: 30px;
+    }
+    /*第一页样式*/
+    .detail-content {
+      clear: both;
+      padding-top: 50px;
+      > .title {
+        font-size: 31px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        //letter-spacing:5px
+      }
+      .basic-info {
+        margin-top: 30px;
+        border-top: 4px solid @green;
+        border-bottom: 4px solid @green;
+        .basic-info-row {
+          margin: 12px 0 18px 0;
+          div {
+            display: inline-block;
+            width: 315px;
+            vertical-align: top;
+          }
+        }
+      }
+      .clinic {
+        margin-top: 20px;
+        .title {
+          .small-title
+        }
+        .clinic-detail {
+          line-height: 35px;
+        }
+      }
+      .result-info {
+        margin-top: 20px;
+        .title {
+          .small-title;
+          display: inline-block;
+          margin-bottom: 10px;
+        }
+      }
+      .result-remark {
+        margin-top: 20px;
+        .title {
+          .small-title;
+          display: inline-block;
+          margin-bottom: 10px;
+        }
+        .remark-detail {
+          text-indent: 40px;
+          line-height: 35px;
+        }
+      }
+    }
+    .footer-print1 {
+      position: absolute;
+      bottom: 0;
+      padding-bottom: 30px;
+      left: 0;
+      margin: 0 50px;
+      .notice {
+        .small-font;
+        span {
+          font-weight: bold;
+        }
+        sup {
+          display: inline-block;
+          //margin: -10px;
+          font-size: 13px;
+        }
+      }
+      .info {
+        margin-top: 20px;
+        .info-title {
+          text-align: center;
+          border-bottom: 1px solid #333;
+          padding-bottom: 5px;
+          div {
+            display: inline-block;
+            width: 220px;
+          }
+        }
+        .info-content {
+          .small-font;
+          margin-top: 5px;
+          .footer-line
+        }
+      }
+    }
+  }
+}
+
+.print-content-2 {
+  padding: 0;
+  width: 1550px;
+  height: 1060px;
+  margin: 0 auto;
+  position: relative;
+  .border;
+  .footer {
+    padding-bottom: 30px;
+  }
+  .all-content {
+    margin: 30px 50px 30px 50px;
+    .detail {
+      clear: both;
+      padding-top: 25px;
+      .detail-title {
+        margin-bottom: 10px;
+        .big {
+          .small-title
+        }
+        .small {
+          margin-left: 10px;
+        }
+      }
+      .notice {
+        .small-font;
+        margin-top: 20px;
+      }
+    }
+  }
+}

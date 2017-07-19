@@ -1,0 +1,198 @@
+[
+    {
+       "name":"PVS1",
+       "en":" null variant (nonsense, frameshift, canonical ±1 or 2 splice sites, initiation codon, single or multiexon deletion) in a gene where LOF is a known mechanism of disease",
+       "cn":"功能缺失变异（包括：无义变异、移码变异、剪接变异、起始编码变异、外显子缺失变异）；且功能丧失（Loss of function）是该基因导致疾病的已知的致病机制；",
+       "level":"Very strong",
+       "value":"15"
+    },
+    {
+       "name":"PS1",
+       "en":"Same amino acid change as a previously established pathogenic variant regardless of nucleotide change",
+       "cn":"同样导致先前已经确定为致病突变位点的氨基酸变化的核苷酸变化",
+       "level":"Strong",
+       "value":"8"
+     },
+    {
+       "name":"PS2",
+       "en":" De novo (both maternity and paternity confirmed) in a patient with the disease and no family history",
+       "cn":"临床吻合且无家族史的患者所携带的新发突变（经父母验证）",
+       "level":"Strong",
+       "value":"8"
+     },
+    {
+       "name":"PS3",
+       "en":"Well-established in vitro or in vivo functional studies supportive of a damaging effect on the gene or gene product",
+       "cn":"体内或体外实验证明影响蛋白产物功能的变异",
+       "level":"Strong",
+       "value":"8"
+     },
+    {
+       "name":"PS4",
+       "en":"The prevalence of the variant in affected individuals is significantly increased compared with the prevalence in controls",
+       "cn":"患者中的分布频率显著高于正常对照人群的分布频率（未达到显著的为支持性证据）",
+       "level":"Strong",
+       "value":"8"
+     },
+    {
+       "name":"PM1",
+       "en":" Located in a mutational hot spot and/or critical and well-established functional domain (e.g., active site of an enzyme) without benign variation",
+       "cn":"位于突变热点和/或关键和既定的功能域（例如，酶的活性位点）的非良性突变位点",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PM2",
+       "en":"Absent from controls (or at extremely low frequency if recessive) in Exome Sequencing Project, 1000 Genomes Project, or Exome Aggregation Consortium",
+       "cn":"在外显子组测序计划（Exome ?Sequencing Project），千人基因组计划（1000 Genomes Project），或外显子组聚合联盟（Exome ?Aggregation Consortium）的相关数据库中未见正常人群携带率（或人群携带率极低的隐性遗传基因突变）",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PM3",
+       "en":" For recessive disorders, detected in trans with a pathogenic variant",
+       "cn":"对于隐性遗传疾病，检测到复合杂合的致病突变位点",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PM4",
+       "en":"Protein length changes as a result of in-frame deletions/insertions in a nonrepeat region or stop-loss variants",
+       "cn":"非重复区域或stop-loss突变位点（stop-loss ?variants）中的框内缺失/插入导致的蛋白质长度变化",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PM5",
+       "en":" Novel missense change at an amino acid residue where a different missense change determined to be pathogenic has been seen before",
+       "cn":"在之前已经被确定为错义突变致病的氨基酸残基上，新发现的不同的错义突变。",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PM6",
+       "en":"Assumed de novo, but without confirmation of paternity and maternity",
+       "cn":"假定是新发突变，但是缺少父母验证",
+       "level":"Moderate",
+       "value":"4"
+     },
+    {
+       "name":"PP1",
+       "en":"Cosegregation with disease in multiple affected family members in a gene definitively known to cause the disease",
+       "cn":"已知确定致病的基因在多个受累家系成员中的疾病共分离.",
+       "level":"Supporting",
+       "value":"3"
+     },
+    {
+       "name":"PP2",
+       "en":"Missense variant in a gene that has a low rate of benign missense variation and in which missense variants are a common mechanism of disease",
+       "cn":"在错义突变位点良性率低且为疾病共性机理的基因上的错义突变位点",
+       "level":"Supporting",
+       "value":"3"
+     },
+    {
+       "name":"PP3",
+       "en":" Multiple lines of computational evidence support a deleterious effect on the gene or gene product (conservation, evolutionary, splicing impact, etc.)",
+       "cn":"多系计算证据支持对基因或基因产物的有害效应（保护，进化，影响剪接等等）",
+       "level":"Supporting",
+       "value":"3"
+     },
+    {
+       "name":"PP4",
+       "en":"Patient’s phenotype or family history is highly specific for a disease with a single genetic etiology",
+       "cn":"对于某单基因遗传病，患者的表型或家族史非常明确",
+       "level":"Supporting",
+       "value":"3"
+     },
+    {
+       "name":"PP5",
+       "en":"Reputable source recently reports variant as pathogenic, but the evidence is not available to the laboratory to perform an independent evaluation",
+       "cn":"可信来源近期报道致病的突变位点，但是此项无法被实验室用于完成一次独立的评价。",
+       "level":"Supporting",
+       "value":"3"
+     },
+    {
+       "name":"BP1",
+       "en":"Missense variant in a gene for which primarily truncating variants are known to cause disease",
+       "cn":"在之前已知的截断（truncating）突变位点致病的基因上的错义突变位点",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP2",
+       "en":"Observed in trans with a pathogenic variant for a fully penetrant dominant gene/disorder or observed in cis with a pathogenic variant in any inheritance pattern",
+       "cn":"对于完全外显的显性遗传基因/疾病，检测到复合杂合的致病突变位点；或者在任何遗传规律下，检测到的在同一条染色体上的致病突变位点",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP3",
+       "en":"In-frame deletions/insertions in a repetitive region without a known function",
+       "cn":"在未知明确功能的重复区域上的框内缺失/插入",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP4",
+       "en":" Multiple lines of computational evidence suggest no impact on gene or gene product (conservation, evolutionary, splicing impact, etc.)",
+       "cn":"多系计算证据显示对基因或基因产物无影响（保护，进化，影响剪接等等）",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP5",
+       "en":" Variant found in a case with an alternate molecular basis for disease",
+       "cn":"发现于个案中的与疾病的分子基础相异（an ?alternate molecular basis for disease）的突变位点",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP6",
+       "en":"Reputable source recently reports variant as benign, but the evidence is not available to the laboratory to perform an independent evaluation",
+       "cn":"可信来源近期报道良性的突变位点，但是此项无法被实验室用于完成一次独立的评价",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BP7",
+       "en":"A synonymous (silent) variant for which splicing prediction algorithms predict no impact to the splice consensus sequence nor the creation of a new splice site AND the nucleotide is not highly conserved",
+       "cn":"剪接预测算法预测对剪接共有序列和创建新的剪接位点均无影响的同义（silent）突变位点,并且相应的核苷酸并不高度保守",
+       "level":"supporting",
+       "value":"-2"
+     },
+    {
+       "name":"BS1",
+       "en":"Allele frequency is greater than expected for disorder",
+       "cn":"人群携带率（Allele frequency等位基因频率）大于发病率",
+       "level":"strong",
+       "value":"-4"
+     },
+    {
+       "name":"BS2",
+       "en":"Observed in a healthy adult individual for a recessive (homozygous), dominant (heterozygous), or X-linked (hemizygous) disorder, with full penetrance expected at an early age",
+       "cn":"在健康成年个体中发现的，导致预期在早年完全外显的疾病的，隐性遗传（纯合或复合杂合突变致病），显性遗传（单杂合突变即可致病），或X连锁（半合子突变致病的基因突变",
+       "level":"strong",
+       "value":"-4"
+     },
+    {
+       "name":"BS3",
+       "en":"Well-established in vitro or in vivo functional studies show no damaging effect on protein function or splicing",
+       "cn":"完善的体外或体内功能研究表明在蛋白质功能或剪接作用上无损伤效应",
+       "level":"strong",
+       "value":"-4"
+     },
+    {
+       "name":"BS4",
+       "en":" Lack of segregation in affected members of a family",
+       "cn":"受累家系成员中的分离实验的不支持",
+       "level":"strong",
+       "value":"-4"
+     },
+    {
+       "name":"BA1",
+       "en":"Allele frequency is >5% in Exome Sequencing Project, 1000 Genomes Project, or Exome Aggregation Consortium",
+       "cn":"在外显子组测序计划（Exome ?Sequencing Project），千人基因组计划（1000 Genomes Project），或外显子组聚合联盟（Exome ?Aggregation Consortium）的相关数据库中，正 常人群携带率（Allele ?frequency等位基因频率）>5%",
+       "level":"Stand-alone",
+       "value":"-8"
+     }
+ ]

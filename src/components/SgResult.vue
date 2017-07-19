@@ -59,7 +59,93 @@
               </tbody>
             </table>
           </div>
-          <div class="content-2" :class="{hide:!in1}">我是2</div>
+          <div class="content-2" :class="{hide:!in1}">
+            <div class="filter-content">
+              <div class="bold">过滤条件：</div>
+              <ul>
+                <li>
+                  <div class="left inline">
+                    <span class="title" data-name="report">数据库报道</span>
+                    <span class="option" data-value="true">已报道</span>
+                    <span class="option" data-value="false">未报道</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                  <div class="right inline">
+                    <span class="title" data-name="inheritance">遗传方式</span>
+                    <span class="option in" data-value="All">全部</span>
+                    <span class="option" data-value="AR">AR</span>
+                    <span class="option" data-value="AD">AD</span>
+                    <span class="option" data-value="XR">XR</span>
+                    <span class="option" data-value="XD">XD</span>
+                    <span class="option" data-value="X-linked">X-LINKED</span>
+                    <span class="option" data-value="Y-linked">Y-LINKED</span>
+                    <span class="option" data-value="Other">其它</span>
+                    <span class="option" >不筛选</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="left inline">
+                    <span class="title" data-name="func">突变类型</span>
+                    <span class="option" data-value="stop">stop*</span>
+                    <span class="option" data-value="nonsynon">nonsynonymous</span>
+                    <span class="option" data-value="splic">splicing</span>
+                    <span class="option" data-value="frameshift">(non)frameshift</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                  <div class="right inline">
+                    <span class="title" data-name="dbfreq">普通人群携带率低于</span>
+                    <span class="option" data-value="0">0</span>
+                    <span class="option" data-value="0.0001">0.01%</span>
+                    <span class="option" data-value="0.001">0.1%</span>
+                    <span class="option" data-value="0.01">1%</span>
+                    <span class="option" data-value="0.02">2%</span>
+                    <span class="option" data-value="0.05">5%</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="left inline">
+                    <span class="title" data-name="ratio">突变比例</span>
+                    <span class="option" data-value="0.9-1">0.9-1</span>
+                    <span class="option" data-value="0.2-0.9">0.2-0.9</span>
+                    <span class="option" data-value="0-0.2">0-0.2</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                  <div class="right inline">
+                    <span class="title" data-name="grandfreq">本地人群携带率低于</span>
+                    <span class="option" data-value="0">0</span>
+                    <span class="option" data-value="0.0001">0.01%</span>
+                    <span class="option" data-value="0.001">0.1%</span>
+                    <span class="option" data-value="0.01">1%</span>
+                    <span class="option" data-value="0.02">2%</span>
+                    <span class="option" data-value="0.05">5%</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="left inline">
+                    <span class="title" data-name="depth">测序深度</span>
+                    <span class="option" data-value="10-20">10-20</span>
+                    <span class="option" data-value=">20">>20</span>
+                    <span class="option in" >不筛选</span>
+                  </div>
+                  <div class="right inline">
+                    <span class="title" data-name="status">状态</span>
+                    <span class="option" data-value="true">已标记</span>
+                    <span class="option" data-value="false">未标记</span>
+                    <span class="option in">不筛选</span>
+                  </div>
+                </li>
+                <li class="textarea-li">
+                  <div class="left rea">
+                    <span class="title po">基因</span>
+                    <i class="fa fa-chevron-right po"></i>
+                    <textarea placeholder='请用逗号或换行隔开'></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
           <div class="content-3" :class="{hide:!in2}">我是3</div>
           <div class="content-4" :class="{hide:!in3}">我是4</div>
         </div>
@@ -89,7 +175,6 @@
         in3: '',
         geneInput: '',
         originalPanelData: [],
-        loading1: false,
         loading2: false,
         loading3: false,
         //content-0
@@ -99,6 +184,9 @@
         insert: '',
         CSV: '',
         lists0: [],
+        //content-1
+        loading1: false,
+        lists1: [],
       }
     },
     created: function () {
@@ -467,6 +555,50 @@
               .td-1 {
                 padding-left: 46px;
               }
+            }
+          }
+        }
+      }
+      .content-2{
+        .filter-content{
+          font-size: 12px;
+          ul{
+            margin-top: 10px;
+            padding-left: 0;
+            li{
+              .title{
+                font-weight: bold;
+                display: inline-block;
+                margin: 12px 20px 12px 0;
+              }
+              .option{
+                padding: 5px 10px;
+                border: 1px solid #fff;
+                cursor: pointer;
+                &:hover{
+                  border: 1px solid #b9b8b8;
+                }
+              }
+              .option.in{
+                border: 1px solid #0076c0;
+                color: #2c7fd2;
+                font-weight: bold;
+              }
+              .fa-chevron-right{
+                color: #2c7fd2;
+              }
+              textarea{
+                min-height: 100px;
+                width: 80%;
+                position: absolute;
+                margin: 10px 0 0 30px;
+              }
+              .left{
+                width: 50%;
+              }
+            }
+            .textarea-li{
+              height: 120px;
             }
           }
         }

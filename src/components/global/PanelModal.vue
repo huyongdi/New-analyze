@@ -16,7 +16,7 @@
               <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
             </div>
             <div class="col-md-10 relative">
-              <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData"
+              <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData" title="已选panel"
                           @sendInput="receiveFuzzy"></fuzzyQuery>
             </div>
           </div>

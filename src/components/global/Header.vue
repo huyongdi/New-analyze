@@ -99,8 +99,9 @@
 
 <style scoped lang="less">
   .header {
-    height: 52px;
-    line-height: 52px;
+    min-width: 1300px;
+    height: 50px;
+    line-height: 50px;
     width: 100%;
     color: #fff;
     background: url('../../../static/img/header-bc.png') no-repeat center;

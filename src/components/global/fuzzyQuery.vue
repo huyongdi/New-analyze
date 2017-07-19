@@ -1,16 +1,19 @@
 <template>
-  <div class="fuzzy-content">
+  <div class="fuzzy-content" id="fuzzy-content">
     <div class="left">
-      <div class="title">待选项</div>
-      <input type="text" class="form-control" :placeholder='placeholder' v-model="fuzzyInput" @keyup="sendInput">
+      <div class="searchBorder" id="search_gene">
+        <input class="form-control input_hasImg" :placeholder='placeholder' v-model="fuzzyInput">
+        <button class="search-btn myBtn" @click.stop="sendInput"></button>
+      </div>
+
       <ul>
         <li v-for="list in leftData" :data-key="list.key" @click="toRight(list)">{{list.value}}</li>
       </ul>
     </div>
     <div class="right">
-      <div class="title">已选项</div>
+      <div class="has-title">{{title}}</div>
       <ul>
-        <li v-for="list in rightData" @click.stop="rightRemove(list.key)">
+        <li v-for="list in rightData" :data-key="list.key" @click="rightRemove(list.key)">
           <span>{{list.value}}</span>
           <span>&times;</span>
         </li>
@@ -22,7 +25,7 @@
 
 <script>
   export default {
-    props: ['leftData', 'placeholder', 'rightData'],
+    props: ['leftData', 'placeholder', 'rightData','title'],
     data: function () {
       return {
         fuzzyInput: '',
@@ -32,7 +35,7 @@
       toRight: function (list) {
         let flag = true;
         const _vue = this;
-        $.each(this.rightData, function (i, data) {
+        $.each(_vue.rightData, function (i, data) {
           if (list.key === data.key) {
             alert('请不要重复添加');
             flag = false;
@@ -49,9 +52,10 @@
             _vue.rightData.splice(i, 1);
           }
         });
+
       },
       sendInput: function () {
-        this.$emit('sendInput', this.fuzzyInput) //函数名和父元素的@一致
+        this.$emit('sendInput', this.fuzzyInput) //函数名和父元素的@onEnter一致
       }
     },
   }
@@ -59,16 +63,18 @@
 
 <style scoped lang="less">
   @border: #d3d3d3;
-  .fuzzy-content {
+  @bc:rgb(240,244,247);
+  #fuzzy-content {
     overflow: hidden;
     > div {
       float: left;
     }
-    .title {
-      padding-left: 20px;
+    .has-title {
       border-bottom: 1px solid @border;
-      height: 30px;
-      line-height: 30px;
+      height: 40px;
+      line-height: 40px;
+      background: @bc;
+      text-align: center;
     }
     ul {
       padding: 0;
@@ -85,33 +91,65 @@
         line-height: 25px;
         &:hover {
           background-color: rgb(44, 127, 210);
-          /*background-color: rgb(240,244,247);*/
           color: #fff;
         }
       }
     }
     .left {
-      height: 230px;
-      width: 45%;
-      margin-right: 5%;
+      height: 310px;
+      width: 50%;
       border: 1px solid @border;
-      input {
-        width: 90%;
-        height: 25px;
-        line-height: 25px;
-        margin: 5px 0 5px 5%;
-      }
+      border-right: none;
       ul {
-        height: 163px;
+        height: 268px;
         border-top: 1px solid @border;
+        background-color: @bc;
       }
+      .searchBorder {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        .input_hasImg {
+          display: inline-block;
+          width: 80%;
+          border: none;
+          height: 40px;
+          outline: none;
+          box-shadow: none;
+          padding-left: 20px;
+        }
+        .myBtn {
+          display: inline-block;
+          padding: 4px 12px;
+          margin-bottom: 0;
+          font-size: 13px;
+          color: #fff;
+          font-weight: 400;
+          line-height: 1.42857143;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          border: 1px solid transparent;
+          border-radius: 3px;
+        }
+        .search-btn {
+          position: absolute;
+          width: 36px;
+          height: 36px;
+          background: url(../../../static/img/fu-search.png) no-repeat center;
+          background-size: 36px 36px;
+          margin: 2px 6px 2px 6px;
+          right: 0;
+        }
+      }
+
     }
     .right {
-      height: 230px;
-      width: 45%;
+      height: 310px;
+      width: 50%;
       border: 1px solid @border;
       ul {
-        height: 198px;
+        height: 268px;
         li {
           position: relative;
           &:hover {

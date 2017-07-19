@@ -37,6 +37,9 @@
                       <span v-else> - </span>
                     </td>
                   </tr>
+                  <tr v-if="lists0.length === 0" class="center">
+                    <td colspan="6">该位点在其它样本中没有信息</td>
+                  </tr>
                   </tbody>
                 </table>
 
@@ -51,6 +54,9 @@
                   <tr v-for="list in lists1">
                     <td>{{list.originalReadDepth}}</td>
                     <td>{{list.readDepth}}</td>
+                  </tr>
+                  <tr v-if="lists1.length === 0" class="center">
+                    <td colspan="2">该位点在其它样本中没有信息</td>
                   </tr>
                   </tbody>
                 </table>
@@ -126,5 +132,8 @@
 <style scoped lang="less">
 .table-content{
   width: 100%;
+  .center{
+    text-align: center;
+  }
 }
 </style>

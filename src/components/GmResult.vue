@@ -885,11 +885,11 @@
           _vue.coverLoading = false;
           if (resp.notfound.length === 0) {
             $("#id_alert").addClass('hide');
-            _vue.allData = resp.found;
           } else {
             $("#id_alert").removeClass('hide');
             _vue.notfound = resp.notfound;
           }
+            _vue.allData = resp.found;
         });
       },
       conClick: function (event) {

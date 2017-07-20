@@ -197,8 +197,8 @@
           .color{
             position: absolute;
             border-radius: 50%;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             top: 3.5px;
             left: -15px;
           }

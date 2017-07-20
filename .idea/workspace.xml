@@ -2,113 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a77af26c-a373-4a11-9c9d-1402fc6ca267" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.5ff970b7ac2d479e52c237776081b078.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.5ff970b7ac2d479e52c237776081b078.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/all-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-choose.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-create.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-down-purple.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-down-skyBlue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-remark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/analyze.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/arrow-down.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/arrow-up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/aside-task-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/aside-task-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/background-login.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-analyze-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-analyze-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-data-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-data-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-database-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-database-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-manage-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-manage-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-task-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft-task-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_analyze.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_data.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_database.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_home.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_manage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseLeft_task.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/baseRight_bc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/data-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/data-sreach-bc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/database-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/findBtn.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/gene-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/gene-gray.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/gene-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/grandbox-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/grandomics.ico" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-analyze.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-base-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-data.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-database.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-footer-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-manage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-report.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-task.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-title.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-gray.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-all.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-img-analyze.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-img-database.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-in.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left-line.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/left.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/leftSmall-singleGene.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/login-bc.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/login-header.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/login-logo-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/login-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/login-title.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/logo-new.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-1-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-2-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-3-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/manage-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/mutate-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/mutate-gray.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/mutate-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/panel-blue.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/panel-gray.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/panel-white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/panel.-graypng" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/report-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/report-2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/single-gene.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-checkDefault.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-checkHover.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-delete.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-gray.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-hasDone.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-small.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.84f4b117c739faf3bdb0.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.84f4b117c739faf3bdb0.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.96677b7c6ed4d70e512b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.96677b7c6ed4d70e512b.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.fc06bd20e9d72f701c81.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.fc06bd20e9d72f701c81.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/数据模版.xlsx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/GmResult.vue" afterPath="$PROJECT_DIR$/src/components/GmResult.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SgResult.vue" afterPath="$PROJECT_DIR$/src/components/SgResult.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/static/js/app.62b2c10b4648ef5ef4cc.js.map" afterPath="$PROJECT_DIR$/dist/static/js/app.62b2c10b4648ef5ef4cc.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/static/js/manifest.d0ed198a332fbe76e62f.js.map" afterPath="$PROJECT_DIR$/dist/static/js/manifest.d0ed198a332fbe76e62f.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -125,8 +25,8 @@
       <file leaf-file-name="SgResult.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="1432" column="47" lean-forward="false" selection-start-line="1432" selection-start-column="47" selection-end-line="1432" selection-end-column="47" />
+            <state relative-caret-position="178">
+              <caret line="1416" column="30" lean-forward="false" selection-start-line="1416" selection-start-column="30" selection-end-line="1416" selection-end-column="30" />
               <folding>
                 <element signature="e#19441#19447#0" expanded="true" />
                 <element signature="e#20600#20606#0" expanded="true" />
@@ -136,7 +36,19 @@
                 <element signature="e#46243#46250#1" expanded="true" />
                 <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#50042#50085#0" expanded="true" />
+                <marker date="1500541714715" expanded="false" signature="69698:71388" ph="{...}" />
+                <marker date="1500541714715" expanded="false" signature="71428:73151" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Svg.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Svg.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -508,28 +420,9 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
+            <state relative-caret-position="173">
               <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="22" />
-              <folding>
-                <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-                <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-                <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-                <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -547,8 +440,8 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="145" column="38" lean-forward="false" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
+            <state relative-caret-position="127">
+              <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -568,6 +461,17 @@
       <find>patchEdit</find>
       <find>geneCoverEnter</find>
       <find>filterData</find>
+      <find>showHPO</find>
+      <find>hpo_detail</find>
+      <find>sortSyn</find>
+      <find>sortArr</find>
+      <find>tOcnv</find>
+      <find>/svg</find>
+      <find>pos</find>
+      <find>IMG</find>
+      <find>/image/?pos=</find>
+      <find>color0</find>
+      <find>.color0</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Grandomics7052\Desktop\workspace\GrandBox-Analyze-HTML</dir>
@@ -584,6 +488,7 @@
         <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/components/global/LocusModal.vue" />
         <option value="$PROJECT_DIR$/src/components/GmResult.vue" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
       </list>
     </option>
@@ -684,6 +589,13 @@
             <path>
               <item name="GrandBox-Analyze-HTML" type="b2602c69:ProjectViewProjectNode" />
               <item name="GrandBox-Analyze-HTML" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GrandBox-Analyze-HTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GrandBox-Analyze-HTML" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -734,7 +646,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7081000" />
+    <option name="totallyTimeSpent" value="17325000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -751,6 +663,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -788,40 +701,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -871,26 +750,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -928,26 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -983,26 +824,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,26 +892,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="22" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,6 +909,8 @@
             <element signature="e#46243#46250#1" expanded="true" />
             <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#50042#50085#0" expanded="true" />
+            <marker date="1500541714715" expanded="false" signature="69698:71388" ph="{...}" />
+            <marker date="1500541714715" expanded="false" signature="71428:73151" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1546,45 +1351,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="22" />
-          <folding>
-            <marker date="1500522934781" expanded="true" signature="824:832" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="944:955" ph="/*...*/" />
-            <marker date="1500522934781" expanded="true" signature="998:1996" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1022:1957" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1087:1396" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1145:1204" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1208:1390" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1296:1341" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1402:1690" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1453:1628" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1534:1579" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1632:1684" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1787:1953" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1829:1947" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="1963:1994" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2038:2328" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2262:2310" ph="{...}" />
-            <marker date="1500522934781" expanded="true" signature="2276:2306" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/webpack.dev.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1611,14 +1381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="145" column="38" lean-forward="false" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -1631,10 +1393,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/acmg_rank.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Svg.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="1432" column="47" lean-forward="false" selection-start-line="1432" selection-start-column="47" selection-end-line="1432" selection-end-column="47" />
+        <state relative-caret-position="178">
+          <caret line="1416" column="30" lean-forward="false" selection-start-line="1416" selection-start-column="30" selection-end-line="1416" selection-end-column="30" />
           <folding>
             <element signature="e#19441#19447#0" expanded="true" />
             <element signature="e#20600#20606#0" expanded="true" />
@@ -1644,6 +1446,8 @@
             <element signature="e#46243#46250#1" expanded="true" />
             <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#3;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#50042#50085#0" expanded="true" />
+            <marker date="1500541714715" expanded="false" signature="69698:71388" ph="{...}" />
+            <marker date="1500541714715" expanded="false" signature="71428:73151" ph="{...}" />
           </folding>
         </state>
       </provider>

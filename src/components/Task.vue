@@ -47,6 +47,9 @@
                 <span v-if="result.grandannos">
                     {{ result.id}} / {{result.grandannoId}}
                 </span>
+                <span v-if="result.grandtrios">
+                    {{ result.id}} / {{result.grandtrioId}}
+                </span>
               </td>
               <td>{{result.app}}</td>
               <td>{{result.name}}</td>
@@ -95,6 +98,9 @@
                 <span v-if="result.grandannos">
                     {{ result.id}} / {{result.grandannoId}}
                 </span>
+                <span v-if="result.grandtrios">
+                    {{ result.id}} / {{result.grandtrioId}}
+                </span>
               </td>
               <td>{{result.app}}</td>
               <td>{{result.name}}</td>
@@ -113,8 +119,9 @@
                              class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>
                 <router-link v-if="result.grandannos" :to="{path:'/snvResult',query:{id:result.grandannoId}}"
                              class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>
-                <!--<i v-if="result.status == 'error'" class="fa fa-refresh po" @click="refreshTask" title="重新运行"-->
-                   <!--:data-id=result.id></i>-->
+                <router-link v-if="result.grandtrios" :to="{path:'/trioResult',query:{id:result.grandtrioId}}"
+                             class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>
+
                 <i class="fa fa-remove text-danger remove-job po" title="删除任务" @click="removeTask"
                    :data-id=result.id></i>
               </td>
@@ -235,6 +242,9 @@
             if (b.grandannos) {
               b.grandannoId = b.grandannos.split('/')[b.grandannos.split('/').length - 2];
             }
+            if (b.grandtrios) {
+              b.grandtrioId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
+            }
           });
           _vue.doingList = resp.data.results;
           _vue.doingLoading = false;
@@ -311,6 +321,9 @@
             }
             if (b.grandannos) {
               b.grandannoId = b.grandannos.split('/')[b.grandannos.split('/').length - 2];
+            }
+            if (b.grandtrios) {
+              b.grandtrioId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
             }
 
           });

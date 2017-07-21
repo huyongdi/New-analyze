@@ -66,7 +66,8 @@
           <router-link to="/sgList" class="a-bot">单基因遗传病检测</router-link>
           <router-link to="/gmList" class="a-bot">线粒体检测</router-link>
           <router-link to="/snvList" class="a-bot">SNV注释</router-link>
-          <router-link to="/gwList">低深度全基因CNV检测</router-link>
+          <router-link to="/gwList" class="a-bot">低深度全基因CNV检测</router-link>
+          <router-link to="/trioList">核心家系分析</router-link>
 
         </div>
       </li>

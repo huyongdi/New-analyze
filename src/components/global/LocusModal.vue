@@ -85,11 +85,11 @@
       },
       watch:{
         snv:function () {
-          $("#table-0").addClass('hide');
-          $("#table-1").removeClass('hide');
           const _vue = this;
           _vue.loading = true;
-          if(this.type){ //1是cnv
+          if(this.type && this.type !=0){ //1是cnv
+            $("#table-0").addClass('hide');
+            $("#table-1").removeClass('hide');
             _vue.$axios({
               url:'report/cnvwesinfo/records/?datafile='+_vue.datafile+'&cnv='+_vue.snv
             }).then(function (resp) {

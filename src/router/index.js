@@ -14,8 +14,10 @@ import GetInterVar from '@/components/GetInterVar'
 import Report from '@/components/Report'
 import GwList from '@/components/GwList'
 import SnvList from '@/components/SnvList'
+import TrioList from '@/components/TrioList'
 import GwResult from '@/components/GwResult'
 import SnvResult from '@/components/SnvResult'
+import TrioResult from '@/components/TrioResult'
 import ReportTest from '@/components/ReportTest'
 
 Vue.use(Router);
@@ -73,6 +75,11 @@ export default new Router({
       component: SgList
     },
     {
+      path: '/trioList',
+      name: 'trioList',
+      component: TrioList
+    },
+    {
       path: '/getInterVar',
       name: 'getInterVar',
       component: GetInterVar
@@ -106,6 +113,11 @@ export default new Router({
       path: '/snvResult',
       name: 'snvResult',
       component: SnvResult
+    },
+    {
+      path: '/trioResult',
+      name: 'trioResult',
+      component: TrioResult
     }
   ]
 })

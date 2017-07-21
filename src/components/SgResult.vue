@@ -1798,19 +1798,14 @@
       },
       saveEditGene: function () {
         const _vue = this;
-//        this.geneInput = this.geneInput.replace('，', ',');
-//
-//        this.geneInput = this.geneInput.replace(/<\/?.+?>/g, ",");
-//        this.geneInput = this.geneInput.replace(/[\r\n]/g, ",");
-//
-//        let geneArr = this.geneInput.split(',');
+
         let panelArr = [];
-//        if (geneArr.length === 1 && geneArr[0] === '') {
-//          geneArr = [];
-//        }
-        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+
+        $('#right-ul').find('li').each(function () {
           panelArr.push($(this).data('key'))
         });
+
+
 
         this.$axios({
           url: 'sample/genelist/' + this.datafile + '/',

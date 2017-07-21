@@ -924,7 +924,11 @@
       saveEditGene: function () {
         const _vue = this;
         let panelArr = [];
-        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+//        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+//          panelArr.push($(this).data('key'))
+//        });
+
+        $('#right-ul').find('li').each(function () {
           panelArr.push($(this).data('key'))
         });
 

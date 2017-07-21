@@ -14,7 +14,7 @@
     </div>
     <div class="right">
       <div class="title">{{title}}</div>
-      <ul>
+      <ul id="right-ul">
         <li v-for="list in rightData" :data-key="list.key" @click="rightRemove(list.key)">
           <span>{{list.value}}</span>
           <span>&times;</span>

@@ -1142,7 +1142,11 @@
 //        if (geneArr.length === 1 && geneArr[0] === '') {
 //          geneArr = [];
 //        }
-        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+//        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+//          panelArr.push($(this).data('key'))
+//        });
+
+        $('#right-ul').find('li').each(function () {
           panelArr.push($(this).data('key'))
         });
 

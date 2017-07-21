@@ -163,7 +163,7 @@
         if (type === 0) {
           url = '/taskM/foo/sgResult'
         } else if (type === 1) {
-          url = ''
+          url = '/taskM/foo/mtResult'
         }
         this.$router.push({path: url, query: {id: id}})
       }

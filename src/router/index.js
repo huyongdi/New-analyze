@@ -24,6 +24,7 @@ import Doing from '@/components/Doing'
 import LocusSvg from '@/components/LocusSvg'
 import GetInterVar from '@/components/GetInterVar'
 import SgResult from '@/components/SgResult'
+import MtResult from '@/components/MtResult'
 
 
 Vue.use(Router);
@@ -138,6 +139,11 @@ export default new Router({
           path: 'sgResult',
           name: 'taskM-sgResult',
           component: SgResult
+        },
+        {
+          path: 'mtResult',
+          name: 'taskM-mtResult',
+          component: MtResult
         }
       ]
     },

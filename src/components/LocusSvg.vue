@@ -31,13 +31,12 @@
     created: function () {
       const _vue = this;
       const id = this.$route.query.id;
-      console.log(id);
       if (!id) {
         alert('页面错误');
         this.$router.push('/')
       }
       const pos = this.$route.query.pos;
-      const myUrl = this.$route.query.t === 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
+      const myUrl = this.$route.query.t == 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
         : 'application/grandmgd/' + id + '/svg/?pos=' + pos;
       this.myAxios({
         url: myUrl,

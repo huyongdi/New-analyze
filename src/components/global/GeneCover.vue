@@ -68,7 +68,7 @@
 
 <script>
   export default {
-    props: ['ID'],
+    props: ['ID','app'],
     data: function () {
       return {
         filtrateShow3: false,
@@ -87,7 +87,7 @@
         const _vue = this;
         this.coverLoading = true;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/cov/',
+          url: 'application/'+this.app+'/' + this.ID + '/cov/',
           method: 'post',
           data: {'gene': _vue.strToArr(this.geneTextAreaContent3)}
         }).then(function (resp) {

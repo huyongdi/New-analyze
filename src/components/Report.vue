@@ -173,8 +173,10 @@
         }).then(function (resp) {
           if(resp.data.status === 'error'){
           }else{
-            let arr = resp.data.data.birthday.split('-');
-            resp.data.data.birthday = arr[0]+'年'+arr[1]+'月'+arr[2]+'号'
+            if(resp.data.data.birthday){
+              let arr = resp.data.data.birthday.split('-');
+              resp.data.data.birthday = arr[0]+'年'+arr[1]+'月'+arr[2]+'号';
+            }
             _vue.sampleData = resp.data.data;
           }
         }).catch(function (error) {

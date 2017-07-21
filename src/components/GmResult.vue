@@ -4,7 +4,7 @@
     <loading v-if="QCLoading"></loading>
     <loading v-if="coverLoading"></loading>
     <loading v-if="detailLoading"></loading>
-    <location imgClass="analyzeTool-small" currentPage="单基因遗传病检测结果"></location>
+    <location imgClass="analyzeTool-small" currentPage="线粒体检测结果"></location>
     <locusModal :datafile="datafile" :snv="snv" type="0"></locusModal>
 
 
@@ -60,8 +60,8 @@
                                                   data-toggle="tab">质控统计</a></li>
         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"
                                    @click="toDetail">变异详情</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">基因覆盖度查询</a>
-        </li>
+        <!--<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">基因覆盖度查询</a>-->
+        <!--</li>-->
       </ul>
 
       <!-- Tab panes -->

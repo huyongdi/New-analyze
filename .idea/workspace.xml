@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.0eda06243fa2f8684307.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.0eda06243fa2f8684307.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.445868cb5b8034190182.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.445868cb5b8034190182.js.map" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Svg.vue" afterPath="$PROJECT_DIR$/src/components/Svg.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/GmResult.vue" afterPath="$PROJECT_DIR$/src/components/GmResult.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,12 +33,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Svg.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Svg.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Svg.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GmResult.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+              <folding>
+                <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#23083#23090#1" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#32776#32819#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,6 +91,7 @@
       <find>modal-panel</find>
       <find>提交成功</find>
       <find>最后编辑人</find>
+      <find>MITIMPACT</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Grandomics7052\Desktop\workspace\GrandBox-Analyze-HTML</dir>
@@ -90,9 +111,9 @@
         <option value="$PROJECT_DIR$/src/components/global/fuzzyQuery.vue" />
         <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
         <option value="$PROJECT_DIR$/src/components/DataList.vue" />
-        <option value="$PROJECT_DIR$/src/components/GmResult.vue" />
         <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
         <option value="$PROJECT_DIR$/src/components/Svg.vue" />
+        <option value="$PROJECT_DIR$/src/components/GmResult.vue" />
       </list>
     </option>
   </component>
@@ -139,6 +160,22 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="dist" type="cbb8eebc:String" user="dist" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
             </path>
           </expand>
           <select />
@@ -220,12 +257,20 @@
       <workItem from="1500510581898" duration="3859000" />
       <workItem from="1500596903313" duration="4654000" />
       <workItem from="1500607723876" duration="310000" />
-      <workItem from="1500608062197" duration="534000" />
+      <workItem from="1500608062197" duration="2060000" />
     </task>
+    <task id="LOCAL-00001" summary="测试提交">
+      <created>1500608613316</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1500608613316</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23458000" />
+    <option name="totallyTimeSpent" value="24984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -255,6 +300,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="测试提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -616,18 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-          <folding>
-            <element signature="e#23072#23079#1" expanded="true" />
-            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#32765#32808#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/global/LocusModal.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -660,9 +697,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Svg.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="408">
+          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="76" column="17" lean-forward="true" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+          <folding>
+            <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#23083#23090#1" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#0;n#table#0;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#32776#32819#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

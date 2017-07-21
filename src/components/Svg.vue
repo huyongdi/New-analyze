@@ -19,6 +19,7 @@
 <script>
   import topLocation from './global/location'
 
+
   export default {
     data: function () {
       return {

@@ -98,18 +98,21 @@
   @interleave:rgb(246,248,250);
   @fliterBorder:rgb(212,212,212);
   html {
+    min-width: 1350px;
+    background:linear-gradient(to bottom,#f0f0f0,#ffffff);
     min-height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     /*overflow-x: hidden;*/
     body {
+      background: url("../static/img/html-bc.png");
+      /*background:linear-gradient(to bottom,#e9e9e9,#fafafa);*/
       min-height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
       font-family: "AdobeHeitiStd";
-      background: url("../static/img/html-bc.png");
       background-size: 100% 100%;
       #app {
         min-height: 100%;
@@ -130,6 +133,15 @@
         }
         .block {
           display: block;
+        }
+        .fr{
+          float: right;
+        }
+        .fl{
+          float: left;
+        }
+        .center{
+          text-align: center;
         }
         a {
           text-decoration: none;
@@ -188,8 +200,6 @@
             background:linear-gradient(to bottom,#ea533f,#f46544);
           }
         }
-
-
         .upload-content{
           display: inline-block;
           width: 50%;
@@ -314,6 +324,7 @@
           }
           tbody {
             cursor: pointer;
+            font-size: 12px;
             tr {
               td {
                 padding: 5px 8px 5px 17px;
@@ -362,11 +373,11 @@
           .content{
             padding-top: 6px;
             .left{
-              display: inline-block;
+              float: left;
               width: 70px;
             }
             .right{
-              display: inline-block;
+              float: left;
               width: 185px;
               input{
                 border: 1px solid @fliterBorder;
@@ -376,6 +387,7 @@
             }
             .single{
               margin: 3px 0;
+              min-height: 28px;
             }
           }
           .search-btn{
@@ -416,7 +428,8 @@
               .father {
                 height: 40px;
                 line-height: 40px;
-                border-bottom: 1px solid @border;
+                border-bottom: 1px solid #d3d4d4;
+                border-top: 1px solid #fbfbfb;
                 font-weight: bold;
                 .img {
                   float: left;
@@ -441,7 +454,8 @@
               }
               .children {
                 display: none;
-                border-bottom: 1px solid @border;
+                border-top: 1px solid #fbfbfb;
+                border-bottom: 1px solid #d3d4d4;
                 a {
                   height: 25px;
                   line-height: 25px;
@@ -455,10 +469,11 @@
               }
             }
             .under-right {
-              border-left: 1px solid @border;
+              border-left: 1px solid rgb(211,212,212);
               display: inline-block;
               /*float: left;*/
               width: calc(~'100vw - 300px');
+              min-width: 1100px;
               min-height: calc(~'100vh - 58px');
               padding-left: 30px;
               padding-top: 28px;

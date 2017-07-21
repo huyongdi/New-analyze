@@ -15,13 +15,16 @@ import SgList from '@/components/SgList'
 import MtList from '@/components/MtList'
 import CnvList from '@/components/CnvList'
 import SnvList from '@/components/SnvList'
-import SgResult from '@/components/SgResult'
 
 import TaskM from '@/components/TaskM'
-import Done from '@/components/Done'
-import Doing from '@/components/Doing'
 import ReportSe from '@/components/ReportSearch'
 import ReportSt from '@/components/ReportStatistics'
+import Done from '@/components/Done'
+import Doing from '@/components/Doing'
+import LocusSvg from '@/components/LocusSvg'
+import GetInterVar from '@/components/GetInterVar'
+import SgResult from '@/components/SgResult'
+
 
 Vue.use(Router);
 
@@ -120,6 +123,16 @@ export default new Router({
           path: 'doing',
           name: 'taskM-doing',
           component: Doing
+        },
+        {
+          path: 'locusSvg',
+          name: 'taskM-locusSvg',
+          component: LocusSvg
+        },
+        {
+          path: 'getInterVar',
+          name: 'taskM-getInterVar',
+          component: GetInterVar
         },
         {
           path: 'sgResult',

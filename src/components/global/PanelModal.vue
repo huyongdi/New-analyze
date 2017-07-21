@@ -30,7 +30,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary my-btn" @click="saveEditGene">保存</button>
+          <button type="button" class="btn btn-primary" @click="saveEditGene">保存</button>
         </div>
       </div>
     </div>

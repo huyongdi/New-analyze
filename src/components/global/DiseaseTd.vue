@@ -14,19 +14,19 @@
                   [{{diseaseSingle.inheritances.gene_ab.join(',')}}]
           </span>
           <!--Pfeiffer综合征有中文名-->
-          <a class="po" v-if="diseaseSingle.omim.titles.chinese"
-             @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)"
+          <a class="po common-a" v-if="diseaseSingle.omim.titles.chinese"
+             @click="showHPO(diseaseSingle)"
              data-toggle="tooltip"
              data-placement="top" :data-original-title='diseaseSingle.phenotype'>
             {{diseaseSingle.omim.titles.chinese}}
           </a>
           <!--Pfeiffer综合征没有中文名-->
-          <a v-else @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>
+          <a class="po common-a" v-else @click="showHPO(diseaseSingle)">{{diseaseSingle.phenotype}}</a>
           <!--(100100)-->
           (
           <a target="_blank"
              :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
-             class="color-a">{{diseaseSingle.omim.mimNumber}}
+             class="common-a">{{diseaseSingle.omim.mimNumber}}
           </a>
           )
         </div>
@@ -35,28 +35,35 @@
                 :data-original-title="diseaseSingle.inheritances.phenotype.join(',')">
             [{{diseaseSingle.inheritances.phenotype_ab.join(',')}}]
           </span>
-          <a class="po" v-if="diseaseSingle.omim.titles.chinese"
-             @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)"
+          <a class="po common-a" v-if="diseaseSingle.omim.titles.chinese"
+             @click="showHPO(diseaseSingle)"
              data-toggle="tooltip" data-placement="top"
              :data-original-title='diseaseSingle.phenotype'>
             {{diseaseSingle.omim.titles.chinese}}
           </a>
-          <a v-else
-             @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>
+          <a class='common-a po' v-else
+             @click="showHPO(diseaseSingle)">{{diseaseSingle.phenotype}}</a>
           (
           <a target="_blank"
              :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
-             class="color-a">{{diseaseSingle.omim.mimNumber}}</a>
+             class="common-a">{{diseaseSingle.omim.mimNumber}}</a>
           )
         </div>
       </div>
     </div>
+
   </td>
 </template>
 
 <script>
   export default {
-    props: ['geneResp']
+    props: ['geneResp'],
+    methods:{
+      showHPO:function (data) {
+        this.$emit('sendPhenotypeMapSingle', data);
+        $("#hpo_detail").modal('show');
+      }
+    }
   }
 </script>
 

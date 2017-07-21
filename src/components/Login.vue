@@ -132,8 +132,8 @@
   @font-color: rgb(21, 65, 65);
   .all {
     height: 100%;
-    .header {
       min-width: 1300px;
+    .header {
       height: 50px;
       line-height: 50px;
       width: 100%;
@@ -245,6 +245,7 @@
         min-height: 100%;
         padding-left: 32px;
         width: calc(~'100vw - 285px');
+        min-width: 1050px;
         .login-logo {
           margin-top: 40px;
           width: 100%;

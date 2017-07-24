@@ -385,63 +385,75 @@
         const _vue = this;
         this.lists1 = [];
         this.myAxios({
-          url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam,
-        }).then(function (resp) {
-          _vue.count1 = resp.data.count;
-          if(!_vue.count1){
-            _vue.loading1 = false
-          }
-          let genePostData = [];
-          $.each(resp.data.results, function (i, value) {
-            //gene名和id綁定起來
-            value.geneVue = [];
-            $.each(value.annotations.geneSymbol, function (n1, n2) {
-              $.each(value.annotations.geneId, function (n3, n4) {
-                if (n1 === n3) {
-                  value.geneVue.push({
-                    name: n2,
-                    id: n4
-                  });
-                }
-              })
-            });
-            //疾病信息
-            value.geneResp = [];
-            $.each(value.annotations.geneId, function (n, k) {
-              genePostData.push(k)
-            });
+          url: 'application/grandwcnv/' + this.ID + '/cnv/',
+        }).then(function (respAll) {
+          let str = '';
+          $.each(respAll.data.query_params, function (i, value) {
+            str += i + '=' + value + "&"
           });
-          _vue.lists1 = resp.data.results;
           _vue.myAxios({
-            url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
-            method: 'post',
-            data: {
-              geneids: genePostData
+            url: respAll.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+//            url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam,
+          }).then(function (resp) {
+            _vue.count1 = resp.data.count;
+            if(!_vue.count1){
+              _vue.loading1 = false
             }
-          }).then(function (respA) {
-            let count0 = 0;
-            let count1 = 0;
-            $.each(respA.data,function () {
-              count1+=1;
-            });
-            $.each(respA.data, function (k1, k2) {
-              count0 += 1;
-              $.each(resp.data.results, function (n1, n2) {
-                $.each(n2.annotations.geneId, function (n3, n4) {
-                  if (k1 == n4) {
-                    n2.geneResp.push({
-                      geneId: n4,
-                      geneData: k2
+            let genePostData = [];
+            $.each(resp.data.results, function (i, value) {
+              //gene名和id綁定起來
+              value.geneVue = [];
+              $.each(value.annotations.geneSymbol, function (n1, n2) {
+                $.each(value.annotations.geneId, function (n3, n4) {
+                  if (n1 === n3) {
+                    value.geneVue.push({
+                      name: n2,
+                      id: n4
                     });
                   }
                 })
               });
-              if(count0 === count1){
-                _vue.loading1 = false;
-              }
+              //疾病信息
+              value.geneResp = [];
+              $.each(value.annotations.geneId, function (n, k) {
+                genePostData.push(k)
+              });
             });
-          });
-        })
+            _vue.lists1 = resp.data.results;
+            _vue.myAxios({
+              url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
+              method: 'post',
+              data: {
+                geneids: genePostData
+              }
+            }).then(function (respA) {
+              let count0 = 0;
+              let count1 = 0;
+              $.each(respA.data,function () {
+                count1+=1;
+              });
+              $.each(respA.data, function (k1, k2) {
+                count0 += 1;
+                $.each(resp.data.results, function (n1, n2) {
+                  $.each(n2.annotations.geneId, function (n3, n4) {
+                    if (k1 == n4) {
+                      n2.geneResp.push({
+                        geneId: n4,
+                        geneData: k2
+                      });
+                    }
+                  })
+                });
+                if(count0 === count1){
+                  _vue.loading1 = false;
+                }
+              });
+            });
+          })
+
+        });
+
+
       },
       filtrateShow1Fun: function () {
         this.filtrateShow1 = !this.filtrateShow1

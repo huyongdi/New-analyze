@@ -137,5 +137,11 @@
   .center{
     text-align: center;
   }
+  table{
+    table-layout: fixed;
+    td,th{
+      word-break: break-all;
+    }
+  }
 }
 </style>

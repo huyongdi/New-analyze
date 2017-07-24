@@ -273,10 +273,10 @@
                 border-bottom: 2px solid rgb(206, 219, 227);
               }
               th:first-child {
-                border-top-left-radius: 10px;
+                /*border-top-left-radius: 10px;*/
               }
               th:last-child {
-                border-top-right-radius: 10px;
+                /*border-top-right-radius: 10px;*/
               }
               th:not(:first-child) {
                 border-left: 1px dashed @tdBorder;

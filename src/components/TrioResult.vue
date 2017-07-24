@@ -13,53 +13,53 @@
       </div>
       <div class="all-content">
         <div class="title-list">
-          <div @click="changeContent" data-type="0" class="title-single active">质控统计</div>
-          <div @click="changeContent" data-type="1" class="title-single">变异详情</div>
-          <div @click="changeContent" data-type="2" class="title-single">XHMM CNV</div>
-          <div @click="changeContent" data-type="3" class="title-single">基因覆盖度查询</div>
+          <!--<div @click="changeContent" data-type="0" class="title-single active">质控统计</div>-->
+          <div @click="changeContent" data-type="1" class="title-single active" >变异详情</div>
+          <!--<div @click="changeContent" data-type="2" class="title-single">XHMM CNV</div>-->
+          <!--<div @click="changeContent" data-type="3" class="title-single">基因覆盖度查询</div>-->
         </div>
         <div class="detail-content">
-          <div class="content-0" :class="{hide:!in0}">
-            <div class="bold">质控详情</div>
-            <ul class="bold">
-              <li>
-                <span class="red">红字</span>：代表未达标
-              </li>
-              <li>
-                FASTQC：<a :href='R1' target="_blank" class="common-a r1">R1:fastq</a>
-                <a target="_blank" :href="R2" class="common-a">R2:fastq</a>
-              </li>
-              <li>
-                INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
-              </li>
-              <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
-              </li>
-              <li>
-                基因分析报告 : <router-link target="_blank" class="common-a"
-                                      :to="{path:'report',query:{code:datafile,app:'grandmgd'}}">点击查看</router-link>
+          <!--<div class="content-0" :class="{hide:!in0}">-->
+            <!--<div class="bold">质控详情</div>-->
+            <!--<ul class="bold">-->
+              <!--<li>-->
+                <!--<span class="red">红字</span>：代表未达标-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--FASTQC：<a :href='R1' target="_blank" class="common-a r1">R1:fastq</a>-->
+                <!--<a target="_blank" :href="R2" class="common-a">R2:fastq</a>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>-->
+              <!--</li>-->
+              <!--<li>-->
+                <!--基因分析报告 : <router-link target="_blank" class="common-a"-->
+                                      <!--:to="{path:'report',query:{code:datafile,app:'grandtrio'}}">点击查看</router-link>-->
 
-              </li>
-            </ul>
-            <table>
-              <thead>
-              <tr>
-                <th class="th-1">类别</th>
-                <th class="th-2">GrandOmics指控参数</th>
-                <th class="th-3">真实值</th>
-                <th class="th-4">分析详情</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">
-                <td>{{list.type}}</td>
-                <td>{{list.grandValue}}</td>
-                <td :class="{'red':!list.standard}">{{list.realValue}}</td>
-                <td>{{list.detail}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
+              <!--</li>-->
+            <!--</ul>-->
+            <!--<table>-->
+              <!--<thead>-->
+              <!--<tr>-->
+                <!--<th class="th-1">类别</th>-->
+                <!--<th class="th-2">GrandOmics指控参数</th>-->
+                <!--<th class="th-3">真实值</th>-->
+                <!--<th class="th-4">分析详情</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+              <!--<tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">-->
+                <!--<td>{{list.type}}</td>-->
+                <!--<td>{{list.grandValue}}</td>-->
+                <!--<td :class="{'red':!list.standard}">{{list.realValue}}</td>-->
+                <!--<td>{{list.detail}}</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</div>-->
           <div class="content-1" :class="{hide:!in1}">
             <div class="rea">
               <span class="my-btn pull-right condition" @click="filtrateShow1Fun"><img src="../../static/img/red-con.png"
@@ -102,22 +102,29 @@
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="ratio">突变比例：</div>
+                    <div class="left" data-name="denvo">新发突变：</div>
                     <div class="right">
-                      <span class="option" data-value="0.9-1">0.9-1</span>
-                      <span class="option" data-value="0.2-0.9">0.2-0.9</span>
-                      <span class="option" data-value="0-0.2">0-0.2</span>
+                      <span class="option" data-value="true">筛选</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
-                  <div class="single">
-                    <div class="left" data-name="depth">测序深度：</div>
-                    <div class="right">
-                      <span class="option" data-value="10-20">10-20</span>
-                      <span class="option" data-value=">20">>20</span>
-                      <span class="option in default">不筛选</span>
-                    </div>
-                  </div>
+                  <!--<div class="single">-->
+                    <!--<div class="left" data-name="ratio">突变比例：</div>-->
+                    <!--<div class="right">-->
+                      <!--<span class="option" data-value="0.9-1">0.9-1</span>-->
+                      <!--<span class="option" data-value="0.2-0.9">0.2-0.9</span>-->
+                      <!--<span class="option" data-value="0-0.2">0-0.2</span>-->
+                      <!--<span class="option in default">不筛选</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="single">-->
+                    <!--<div class="left" data-name="depth">测序深度：</div>-->
+                    <!--<div class="right">-->
+                      <!--<span class="option" data-value="10-20">10-20</span>-->
+                      <!--<span class="option" data-value=">20">>20</span>-->
+                      <!--<span class="option in default">不筛选</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
                   <div class="single">
                     <div class="left" data-name="dbfreq">普通人群携带率低于：</div>
                     <div class="right">
@@ -167,154 +174,185 @@
             <table class="table my-table" id="table-1">
               <thead>
               <tr>
-                <th>位点
-                  <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
-                     data-original-title="红色代表最高级，黄色代表第二级，蓝色代表第三级">
-                  </i>
-                </th>
+                <th>位点</th>
                 <th>基因</th>
                 <th>区域</th>
                 <th>功能</th>
                 <th class="disease-td">疾病</th>
-                <th>CLINVAR</th>
-                <th>HGMD</th>
-                <th>东亚人群频率(%)</th>
-                <th>本地人群频率(%)</th>
+                <th><span v-if="lists1.length !== 0">{{lists1[0].father.patient}}</span></th>
+                <th><span v-if="lists1.length !== 0">{{lists1[0].mother.patient}}</span></th>
                 <th>状态</th>
               </tr>
               </thead>
               <tbody>
               <tr v-for="data in lists1">
                 <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,0)"
-                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                  <a class="po common-a" v-if="data.localsnv"
+                  <i :data-id="data.id" class="fa fa-font-awesome po text-3" title="查看详情" @click="showDetail"></i>
+                  <a class="po" v-if="data.localsnv"
                      @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
-                    {{data.localsnv.name}}
-                  </a>
+                    {{data.localsnv.name,0}}</a>
                 </td>
-                <td v-if="data.annotations">
-                  <a class="common-a" target="_blank" v-if="data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.func}}
-                </td>
-                <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
-                <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
-                <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
-                <td>{{data.annotations.grandfreq | getPercent}}</td>
-                <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
-                  active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
-                </td>
+                <!--<td v-if="data.annotations">-->
+                  <!--<a target="_blank" class="block" v-if="data.geneVue"-->
+                     <!--v-for="single in data.geneVue"-->
+                     <!--:href="dbHtml+'#/gene?query=' + single.id">{{single.name}}</a>-->
+                <!--</td>-->
+                <!--<td v-if="data.annotations">-->
+                  <!--{{data.annotations.region}}-->
+                <!--</td>-->
+                <!--<td>{{data.annotations.func}}</td>-->
+                <!--<td class="disease-td">-->
+                  <!--<div v-for="(disease,index) in data.geneResp" v-if="disease.geneData.phenotypeMap.length !== 0">-->
+<!--<span :data-geneId="disease.geneId"-->
+      <!--:class="{color0:index===0,color1:index%4===1,color2:index%4===2,color3:index%4===3,color4:index%4===0&&index!==0}">-->
+                    <!--</span>-->
+                    <!--<div v-for="diseaseSingle in disease.geneData.phenotypeMap">-->
+                      <!--<div v-if="diseaseSingle.inheritances.gene.length!=0">-->
+              <!--<span class="po font-700 a-color" data-toggle="tooltip" data-placement="top"-->
+                    <!--:data-original-title="diseaseSingle.inheritances.gene.join(',')">-->
+              <!--[{{diseaseSingle.inheritances.gene_ab.join(',')}}]-->
+              <!--</span>-->
+                        <!--<a class="po" v-if="diseaseSingle.omim.titles.chinese"-->
+                           <!--@click="showHPOCNV(diseaseSingle.omim.mimNumber,diseaseSingle)"-->
+                           <!--data-toggle="tooltip"-->
+                           <!--data-placement="top" :data-original-title='diseaseSingle.phenotype'>-->
+                          <!--{{diseaseSingle.omim.titles.chinese}}-->
+                        <!--</a>-->
+                        <!--<a v-else-->
+                           <!--@click="showHPOCNV(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>-->
+                        <!--(<a target="_blank"-->
+                            <!--:href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"-->
+                            <!--class="color-a">{{diseaseSingle.omim.mimNumber}}-->
+                      <!--</a>)-->
+                      <!--</div>-->
+                      <!--<div v-else>-->
+              <!--<span class="po font-700 a-color" data-toggle="tooltip" data-placement="top"-->
+                    <!--:data-original-title="diseaseSingle.inheritances.phenotype.join(',')">-->
+              <!--[{{diseaseSingle.inheritances.phenotype_ab.join(',')}}]-->
+              <!--</span>-->
+                        <!--<a class="po" v-if="diseaseSingle.omim.titles.chinese"-->
+                           <!--@click="showHPOCNV(diseaseSingle.omim.mimNumber,diseaseSingle)"-->
+                           <!--data-toggle="tooltip" data-placement="top"-->
+                           <!--:data-original-title='diseaseSingle.phenotype'>-->
+                          <!--{{diseaseSingle.omim.titles.chinese}}-->
+                        <!--</a>-->
+                        <!--<a v-else-->
+                           <!--@click="showHPOCNV(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>-->
+                        <!--(<a target="_blank"-->
+                            <!--:href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"-->
+                            <!--class="color-a">{{diseaseSingle.omim.mimNumber}}</a>)-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</td>-->
+                <!--<td>父：{{data.father.exists|getPure}}</td>-->
+                <!--<td>母：{{data.mother.exists|getPure}}</td>-->
+                <!--<td-->
+                  <!--:class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',-->
+                  <!--active4: data.status=='invalid'}">-->
+                  <!--{{data.status | getStatus}}-->
+                <!--</td>-->
               </tr>
 
               </tbody>
             </table>
             <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
           </div>
-          <div class="content-2" :class="{hide:!in2}">
+          <!--<div class="content-2" :class="{hide:!in2}">-->
+            <!--<div class="rea">-->
+              <!--<span class="my-btn pull-right condition" @click="filtrateShow2Fun"><img src="../../static/img/red-con.png"-->
+                                                                                       <!--alt="">筛选条件</span>-->
+              <!--&lt;!&ndash;筛选条件弹框&ndash;&gt;-->
+              <!--<div class="filtrate-content" v-show="filtrateShow2" id="filtrate-content-2">-->
+                <!--<img src="../../static/img/th-1.png" alt="" class="up">-->
+                <!--<div class="title">搜索选项</div>-->
+                <!--<div class="content">-->
+                  <!--<div class="single">-->
+                    <!--<div class="left" data-name="alt">变异类型：</div>-->
+                    <!--<div class="right">-->
+                      <!--<span class="option" data-value="del">DEL</span>-->
+                      <!--<span class="option" data-value="dup">DUP</span>-->
+                      <!--<span class="option in default">不筛选</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="single">-->
+                    <!--<div class="left" data-name="status">状态：</div>-->
+                    <!--<div class="right">-->
+                      <!--<span class="option" data-value="true">已标记</span>-->
+                      <!--<span class="option" data-value="false">未标记</span>-->
+                      <!--<span class="option in default">不筛选</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="single">-->
+                    <!--<div class="left" data-name="genes">基因：</div>-->
+                    <!--<div class="right">-->
+                      <!--<textarea placeholder='请用逗号或换行隔开'  v-model="geneTextAreaContent2"></textarea>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<span class="my-btn search-btn" @click="filter2"><img src="../../static/img/red-con.png" alt="">搜索</span>-->
+                <!--<span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png" alt="">重置</span>-->
+              <!--</div>-->
+            <!--</div>-->
 
-            <div class="rea">
-              <span class="my-btn pull-right condition" @click="filtrateShow2Fun"><img src="../../static/img/red-con.png"
-                                                                                       alt="">筛选条件</span>
-              <!--筛选条件弹框-->
-              <div class="filtrate-content" v-show="filtrateShow2" id="filtrate-content-2">
-                <img src="../../static/img/th-1.png" alt="" class="up">
-                <div class="title">搜索选项</div>
-                <div class="content">
-                  <div class="single">
-                    <div class="left" data-name="alt">变异类型：</div>
-                    <div class="right">
-                      <span class="option" data-value="del">DEL</span>
-                      <span class="option" data-value="dup">DUP</span>
-                      <span class="option in default">不筛选</span>
-                    </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="status">状态：</div>
-                    <div class="right">
-                      <span class="option" data-value="true">已标记</span>
-                      <span class="option" data-value="false">未标记</span>
-                      <span class="option in default">不筛选</span>
-                    </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="genes">基因：</div>
-                    <div class="right">
-                      <textarea placeholder='请用逗号或换行隔开'  v-model="geneTextAreaContent2"></textarea>
-                    </div>
-                  </div>
-                </div>
-                <span class="my-btn search-btn" @click="filter2"><img src="../../static/img/red-con.png" alt="">搜索</span>
-                <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png" alt="">重置</span>
-              </div>
-            </div>
+            <!--<table class="table my-table" id="table-2">-->
+              <!--<thead>-->
+              <!--<tr>-->
+                <!--<th>-->
+                  <!--位点-->
+                  <!--<i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"-->
+                     <!--data-original-title="红色代表最高优先级，黄色代表第二优先级，蓝色代表第三优先级">-->
+                  <!--</i>-->
+                <!--</th>-->
+                <!--<th>长度</th>-->
+                <!--<th>基因</th>-->
+                <!--<th>区域</th>-->
+                <!--<th class="disease-td">疾病</th>-->
+                <!--<th>基因型</th>-->
+                <!--<th>深度(原始)</th>-->
+                <!--<th>深度(标准化)</th>-->
+                <!--<th>状态</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+              <!--<tr v-for="data in lists2">-->
+                <!--<td>-->
+                  <!--<i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,1)"-->
+                     <!--:class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>-->
+                  <!--<a class="po common-a" v-if="data.localcnv"-->
+                     <!--@click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">-->
+                    <!--{{data.localcnv.name}}-->
+                  <!--</a>-->
+                <!--</td>-->
+                <!--<td>-->
+                  <!--<span v-if="data.localcnv">{{data.localcnv.length}}</span>-->
+                <!--</td>-->
+                <!--<td v-if="data.annotations">-->
+                  <!--<a target="_blank" class="block" v-if="data.annotations.geneSymbol"-->
+                     <!--v-for="single in data.annotations.geneSymbol"-->
+                     <!--:href="dbHtml+'#/gene?query=' + single">{{single}}</a>-->
+                <!--</td>-->
+                <!--<td v-if="data.annotations">-->
+                  <!--{{data.annotations.region}}-->
+                <!--</td>-->
+                <!--<diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>-->
 
-            <table class="table my-table" id="table-2">
-              <thead>
-              <tr>
-                <th>
-                  位点
-                  <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
-                     data-original-title="红色代表最高优先级，黄色代表第二优先级，蓝色代表第三优先级">
-                  </i>
-                </th>
-                <th>长度</th>
-                <th>基因</th>
-                <th>区域</th>
-                <th class="disease-td">疾病</th>
-                <th>基因型</th>
-                <th>深度(原始)</th>
-                <th>深度(标准化)</th>
-                <th>状态</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="data in lists2">
-                <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,1)"
-                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                  <a class="po common-a" v-if="data.localcnv"
-                     @click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">
-                    {{data.localcnv.name}}
-                  </a>
-                </td>
-                <td>
-                  <span v-if="data.localcnv">{{data.localcnv.length}}</span>
-                </td>
-                <td v-if="data.annotations">
-                  <a target="_blank" class="block" v-if="data.annotations.geneSymbol"
-                     v-for="single in data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + single">{{single}}</a>
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
-                </td>
-                <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-
-                <td>{{data.genoType}}</td>
-                <td>{{data.originalReadDepth}}</td>
-                <td>{{data.readDepth}}</td>
-                <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
-                  active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>
-          </div>
-          <div class="content-3" :class="{hide:!in3}">
-            <geneCover :ID="ID" app="grandmgd"></geneCover>
-          </div>
+                <!--<td>{{data.genoType}}</td>-->
+                <!--<td>{{data.originalReadDepth}}</td>-->
+                <!--<td>{{data.readDepth}}</td>-->
+                <!--<td-->
+                  <!--:class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',-->
+                  <!--active4: data.status=='invalid'}">-->
+                  <!--{{data.status | getStatus}}-->
+                <!--</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+            <!--<page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>-->
+          <!--</div>-->
+          <!--<div class="content-3" :class="{hide:!in3}">-->
+            <!--<geneCover :ID="ID" app="grandtrio"></geneCover>-->
+          <!--</div>-->
         </div>
       </div>
     </div>
@@ -323,7 +361,7 @@
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
     <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd"></mutateModal>
+    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandtrio"></mutateModal>
     <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
                     :ID="ID"></mutateModalCNV>
   </div>
@@ -359,8 +397,8 @@
         ID: this.$route.query.id,
         datafile: '',
         sampleInfo: '',
-        in0: true,
-        in1: '',
+        in0: false,
+        in1: true,
         in2: '',
         in3: '',
         geneInput: '',
@@ -396,7 +434,7 @@
     },
     created: function () {
       this.getSample();
-      this.current0();
+      this.current1();
     },
     mounted: function () {
       this.bindCurrent();//绑定变异详情的过滤点击事件
@@ -450,7 +488,7 @@
       getSample: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/',
+          url: 'application/grandtrio/' + this.ID + '/',
         }).then(function (resp) {
           _vue.datafile = resp.data.datafile;
           _vue.myAxios({
@@ -508,25 +546,25 @@
         this.loading0 = true;
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/fastqc/',
+          url: 'application/grandtrio/' + this.ID + '/fastqc/',
         }).then(function (resp) {
           _vue.R1 = resp.data.r1;
           _vue.R2 = resp.data.r2;
         });
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/insertsize/',
+          url: 'application/grandtrio/' + this.ID + '/insertsize/',
         }).then(function (resp) {
           _vue.insert = resp.data
         });
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/csv/',
+          url: 'application/grandtrio/' + this.ID + '/csv/',
         }).then(function (resp) {
           _vue.CSV = resp.data
         });
 
         //列表
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + "/stat/",
+          url: 'application/grandtrio/' + this.ID + "/stat/",
         }).then(function (resp) {
           resp = resp.data;
           const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
@@ -679,34 +717,45 @@
         //条件判断结束
         const _vue = this;
         this.lists1 = [];
-        this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/snv/',
-        }).then(function (resp) {
+
+        _vue.myAxios({
+          url: 'application/grandtrio/' + this.ID + '/snv/',
+        }).then(function (respAll) {
           let str = '';
-          $.each(resp.data.query_params, function (i, value) {
+          $.each(respAll.data.query_params, function (i, value) {
             str += i + '=' + value + "&"
           });
+
           _vue.myAxios({
-            url: resp.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+            url: respAll.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+//            url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam
           }).then(function (resp) {
-            if (resp.data.count === 0) {
-              _vue.loading1 = false
+            _vue.cnvCount = resp.data.count;
+            if(_vue.cnvCount === 0){
+              _vue.loading1 = false;
             }
-            _vue.count1 = resp.data.count;
+            let id = 0;
             let genePostData = [];
             $.each(resp.data.results, function (i, value) {
-              //处理highlight和active得到级别(highlight为true的时候active必定为true)
-              if (value.highlight && value.active) {
-                value.level = 0
-              } else if (!value.highlight && value.active) {
-                value.level = 1
-              } else if (!value.highlight && !value.active) {
-                value.level = 2
-              }
+              id += 1;
+              value.id = id;
+              //gene名和id綁定起來
+              value.geneVue = [];
+              $.each(value.annotations.geneSymbol, function (n1, n2) {
+                $.each(value.annotations.geneId, function (n3, n4) {
+                  if (n1 === n3) {
+                    value.geneVue.push({
+                      name: n2,
+                      id: n4
+                    });
+                  }
+                })
+              });
+              //疾病信息
+              value.geneResp = [];
               $.each(value.annotations.geneId, function (n, k) {
                 genePostData.push(k)
               });
-              value.geneResp = [];
             });
             _vue.lists1 = resp.data.results;
             _vue.myAxios({
@@ -734,12 +783,17 @@
                   })
                 });
                 if (count0 === count1) {
-                  _vue.loading1 = false
+                  _vue.loading1 = false;
                 }
               });
             });
+          }).catch(function (error) {
+            _vue.catchFun(error);
           });
+
         });
+
+
       },
       filtrateShow1Fun: function () {
         this.filtrateShow1 = !this.filtrateShow1
@@ -801,7 +855,7 @@
         const _vue = this;
         this.lists2 = [];
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/cnv/',
+          url: 'application/grandtrio/' + this.ID + '/cnv/',
         }).then(function (resp) {
           let str = '';
           $.each(resp.data.query_params, function (i, value) {

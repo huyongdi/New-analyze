@@ -17,7 +17,7 @@
                target="_blank" title="查看变异数据库">查看变异数据库
             </a>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
             位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.name}}</span>
           </div>
 
@@ -36,11 +36,11 @@
             </router-link>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'||app==='grandtrio'">
             基因：<a target="_blank" v-if='moduleData.annotations' class="common-a"
                   :href="dbHtml+'#/gene?query=' + moduleData.annotations.geneSymbol.join(',')">{{moduleData.annotations.geneSymbol.join(',')}}</a>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'||app==='grandtrio'">
             <span>NCBI GENE ID:</span>
             <span v-if="moduleData.annotations">
                 <span v-for="(gene,index) in moduleData.annotations.geneId">
@@ -49,11 +49,11 @@
                 </span>
               </span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito' || app==='grandwcnv'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito' || app==='grandwcnv'||app==='grandanno'||app==='grandtrio'">
             区域：<span v-if="moduleData.annotations">{{moduleData.annotations.region}}</span>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'||app==='grandtrio'">
             功能：<span v-if="moduleData.annotations">{{moduleData.annotations.func}}</span>
           </div>
           <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
@@ -119,7 +119,7 @@
               CLINVAR：<span v-if="moduleData.annotations">{{moduleData.annotations.clinvar}}</span>
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'||app==='grandtrio'">
               <div class="">变异信息：(常用转录本：
                 <span v-if="moduleData.geneResp" v-for="list in moduleData.geneResp">
                             <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">
@@ -137,6 +137,91 @@
             <div class="col-md-12" v-if="app==='grandwcnv'">
               DGV：<span v-if="moduleData.annotations" class="break-all">{{moduleData.annotations.dgv.join(',')}}</span>
             </div>
+
+
+          <table class="table my-table" v-if="app==='grandtrio'">
+            <thead>
+            <tr>
+              <th>关系</th>
+              <th>姓名</th>
+              <th>是否存在</th>
+              <th>纯/杂合</th>
+              <th>质量</th>
+              <th>深度</th>
+              <th>gatkFilter</th>
+              <th>变异比例</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>受检者</td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.patient}}</span></td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.exists ? '存在' : '不存在'}}</span></td>
+              <td><span v-if="moduleData.patient"> - </span></td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.quality}}</span></td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.depth}}</span></td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.gatkFilter}}</span></td>
+              <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.ratio}}</span></td>
+            </tr>
+            <tr>
+              <td>父亲</td>
+              <td><span v-if="moduleData.father">{{moduleData.father.patient}}</span></td>
+              <td><span v-if="moduleData.father">{{moduleData.father.exists ? '存在' : '不存在'}}</span></td>
+              <td><span v-if="moduleData.father">
+                        <span v-if="moduleData.father.snvinfo">{{moduleData.father.snvinfo.isHomo ? moduleData.father.snvinfo.isHomo : '-'}}</span>
+                        <span v-else=""> - </span>
+                      </span>
+              </td>
+              <td><span v-if="moduleData.father">
+                        <span v-if="moduleData.father.snvinfo">{{moduleData.father.snvinfo.quality}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.father">
+                        <span v-if="moduleData.father.snvinfo">{{moduleData.father.snvinfo.depth}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.father">
+                         <span v-if="moduleData.father.snvinfo">{{moduleData.father.snvinfo.gatkFilter}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.father">
+                        <span v-if="moduleData.father.snvinfo">{{moduleData.father.snvinfo.ratio}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+            </tr>
+            <tr>
+              <td>母亲</td>
+              <td><span v-if="moduleData.mother">{{moduleData.mother.patient}}</span></td>
+              <td><span v-if="moduleData.mother">{{moduleData.mother.exists ? '存在' : '不存在'}}</span></td>
+              <td>
+                        <span v-if="moduleData.mother">
+                          <span v-if="moduleData.mother.snvinfo">{{moduleData.mother.snvinfo.isHomo ? moduleData.mother.snvinfo.isHomo : '-'}}</span>
+                          <span v-else=""> - </span>
+                        </span>
+              </td>
+              <td><span v-if="moduleData.mother">
+                        <span v-if="moduleData.mother.snvinfo">{{moduleData.mother.snvinfo.quality}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.mother">
+                        <span v-if="moduleData.mother.snvinfo">{{moduleData.mother.snvinfo.depth}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.mother">
+                         <span v-if="moduleData.mother.snvinfo">{{moduleData.mother.snvinfo.gatkFilter}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+              <td><span v-if="moduleData.mother">
+                        <span v-if="moduleData.mother.snvinfo">{{moduleData.mother.snvinfo.ratio}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+            </tr>
+
+
+            </tbody>
+          </table>
+
+
 
           <div class="edit">
             <div class="edit-title">

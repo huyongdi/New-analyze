@@ -262,11 +262,13 @@
       }
     },
     created: function () {
-      this.getSample();
-      this.current0();
+//      this.getSample();
+//      this.current0();
     },
     mounted: function () {
       this.bindCurrent();//绑定变异详情的过滤点击事件
+      this.getSample();
+      this.current0();
     },
     methods: {
       //查看位点信息

@@ -25,6 +25,7 @@ import LocusSvg from '@/components/LocusSvg'
 import GetInterVar from '@/components/GetInterVar'
 import SgResult from '@/components/SgResult'
 import MtResult from '@/components/MtResult'
+import CnvResult from '@/components/CnvResult'
 
 
 Vue.use(Router);
@@ -144,6 +145,11 @@ export default new Router({
           path: 'mtResult',
           name: 'taskM-mtResult',
           component: MtResult
+        },
+        {
+          path: 'cnvResult',
+          name: 'taskM-cnvResult',
+          component: CnvResult
         }
       ]
     },

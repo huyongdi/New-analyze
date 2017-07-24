@@ -115,6 +115,18 @@
               b.type = 1;
               b.typeId = b.grandmitos.split('/')[b.grandmitos.split('/').length - 2];
             }
+            if (b.grandwcnvs) {
+              b.type = 2;
+              b.typeId = b.grandwcnvs.split('/')[b.grandwcnvs.split('/').length - 2];
+            }
+            if (b.grandannos) {
+              b.type = 3;
+              b.typeId = b.grandannos.split('/')[b.grandannos.split('/').length - 2];
+            }
+            if(b.grandtrios){
+              b.type = 4;
+              b.typeId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
+            }
             b.nameArr = [];
             $.each(b.name.split(' '), function (i, data) {
               b.nameArr.push(data.split(':')[1])

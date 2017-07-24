@@ -117,6 +117,10 @@
               b.type = 3;
               b.typeId = b.grandannos.split('/')[b.grandannos.split('/').length - 2];
             }
+            if(b.grandtrios){
+              b.type = 4;
+              b.typeId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
+            }
             b.nameArr = [];
             $.each(b.name.split(' '), function (i, data) {
               b.nameArr.push(data.split(':')[1])
@@ -164,6 +168,8 @@
           url = '/taskM/foo/sgResult'
         } else if (type === 1) {
           url = '/taskM/foo/mtResult'
+        } else if(type === 2){
+          url = '/taskM/foo/cnvResult'
         }
         this.$router.push({path: url, query: {id: id}})
       }

@@ -125,6 +125,9 @@
             color: #23527c;
           }
         }
+        .break-all{
+          word-break: break-all;
+        }
         .po {
           cursor: pointer;
         }

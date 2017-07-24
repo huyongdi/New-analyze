@@ -72,22 +72,22 @@
               </div>
 
               <!--<div class="row-div row">-->
-                <!--<span class="row-name col-md-2">突变比例</span>-->
-                <!--<div class="row-content col-md-10">-->
-                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.9-1">0.9-1</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.2-0.9">0.2-0.9</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0-0.2">0-0.2</span>-->
-                  <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
-                <!--</div>-->
+              <!--<span class="row-name col-md-2">突变比例</span>-->
+              <!--<div class="row-content col-md-10">-->
+              <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.9-1">0.9-1</span>-->
+              <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.2-0.9">0.2-0.9</span>-->
+              <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0-0.2">0-0.2</span>-->
+              <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
+              <!--</div>-->
               <!--</div>-->
 
               <!--<div class="row-div row">-->
-                <!--<span class="row-name col-md-2">测序深度</span>-->
-                <!--<div class="row-content col-md-10">-->
-                  <!--<span class="condition" @click="conClick" data-name="depth" data-value="10-20">10-20</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="depth" data-value=">20">>20</span>-->
-                  <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
-                <!--</div>-->
+              <!--<span class="row-name col-md-2">测序深度</span>-->
+              <!--<div class="row-content col-md-10">-->
+              <!--<span class="condition" @click="conClick" data-name="depth" data-value="10-20">10-20</span>-->
+              <!--<span class="condition" @click="conClick" data-name="depth" data-value=">20">>20</span>-->
+              <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
+              <!--</div>-->
               <!--</div>-->
 
               <div class="row-div row">
@@ -104,21 +104,21 @@
             </div>
             <div class="filter-right col-md-6 col-md-offset-">
               <!--<div class="row-div row">-->
-                <!--<span class="row-name col-md-3">遗传方式</span>-->
-                <!--<div class="row-content col-md-9">-->
-                  <!--<span class="condition on con-default" @click="conClick" data-name="inheritance"-->
-                        <!--data-value="All">全部</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AR">AR</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AD">AD</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XR">XR</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XD">XD</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance"-->
-                        <!--data-value="X-linked">X-LINKED</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance"-->
-                        <!--data-value="Y-linked">Y-LINKED</span>-->
-                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="Other">其它</span>-->
-                  <!--<span class="condition" @click="conClick">不筛选</span>-->
-                <!--</div>-->
+              <!--<span class="row-name col-md-3">遗传方式</span>-->
+              <!--<div class="row-content col-md-9">-->
+              <!--<span class="condition on con-default" @click="conClick" data-name="inheritance"-->
+              <!--data-value="All">全部</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AR">AR</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AD">AD</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XR">XR</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XD">XD</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance"-->
+              <!--data-value="X-linked">X-LINKED</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance"-->
+              <!--data-value="Y-linked">Y-LINKED</span>-->
+              <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="Other">其它</span>-->
+              <!--<span class="condition" @click="conClick">不筛选</span>-->
+              <!--</div>-->
               <!--</div>-->
 
 
@@ -171,8 +171,8 @@
               <th>区域</th>
               <th>功能</th>
               <th class="disease-td">疾病</th>
-              <th><span v-if="cnvData">{{cnvData[0].father.patient}}</span></th>
-              <th><span v-if="cnvData">{{cnvData[0].mother.patient}}</span></th>
+              <th><span v-if="cnvData.length !==0">{{cnvData[0].father.patient}}</span></th>
+              <th><span v-if="cnvData.length !==0">{{cnvData[0].mother.patient}}</span></th>
               <th>状态</th>
             </tr>
             </thead>
@@ -238,8 +238,20 @@
                   </div>
                 </div>
               </td>
-              <td>父：{{data.father.exists|getPure}}</td>
-              <td>母：{{data.mother.exists|getPure}}</td>
+              <td>父：
+                <span v-if="data.father.snvinfo">
+                  <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
+                <span v-else=""> - </span>
+              </td>
+              <td>母：
+                <span v-if="data.mother.snvinfo">
+                  <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
+                <span v-else=""> - </span>
+              </td>
               <td
                 :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">
@@ -293,161 +305,198 @@
                   </div>
 
 
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="">变异信息：(常用转录本：
-                          <span v-if="CNVmoduleData.geneResp" v-for="list in CNVmoduleData.geneResp">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="">变异信息：(常用转录本：
+                        <span v-if="CNVmoduleData.geneResp" v-for="list in CNVmoduleData.geneResp">
                   <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">
                   </span>
                   <span
                     v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript ? list.geneData.tags.transcript : '无'}}</span>
                   </span>
-                          )
-                        </div>
-                        <div v-if="CNVmoduleData.annotations && CNVmoduleData.annotations.change">
-                          <div v-for="single in CNVmoduleData.annotations.change">{{single}}</div>
-                        </div>
-
+                        )
                       </div>
-                    </div>
-
-                    <table class="table myTable">
-                      <thead>
-                      <tr>
-                        <th>关系</th>
-                        <th>姓名</th>
-                        <th>是否存在</th>
-                        <th>质量</th>
-                        <th>深度</th>
-                        <th>gatkFilter</th>
-                        <th>变异比例</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>受检者</td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.patient}}</span></td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.exists ? '存在' : '不存在'}}</span></td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.quality}}</span></td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.depth}}</span></td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.gatkFilter}}</span></td>
-                        <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.ratio}}</span></td>
-                      </tr>
-                      <tr>
-                        <td>父亲</td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.patient}}</span></td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.exists ? '存在' : '不存在'}}</span></td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.snvinfo.quality}}</span></td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.snvinfo.depth}}</span></td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.snvinfo.gatkFilter}}</span></td>
-                        <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.snvinfo.ratio}}</span></td>
-                      </tr>
-                      <tr>
-                        <td>母亲</td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.patient}}</span></td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.exists ? '存在' : '不存在'}}</span></td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.snvinfo.quality}}</span></td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.snvinfo.depth}}</span></td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.snvinfo.gatkFilter}}</span></td>
-                        <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.snvinfo.ratio}}</span></td>
-                      </tr>
-
-
-                      </tbody>
-                    </table>
-
-                    <!--<div class="row specialRow">-->
-                    <!--DGV：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.dgv.join(',')}}</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="img-content">-->
-
-                    <!--<img :src=IMG alt="">-->
-                    <!--</div>-->
-
-                    <div class="edit">
-                      <div class="edit-title">
-                        编辑<span>(最后编辑人:"{{CNVmoduleData.lastEditor ? CNVmoduleData.lastEditor : '无'}}")：</span>
-                      </div>
-                      <div class="edit-content">
-                        <div>评论：</div>
-                        <textarea class="form-control" :data-id=CNVmoduleData.id id="commentCNV"
-                                  rows="3">{{CNVmoduleData.comment}}</textarea>
+                      <div v-if="CNVmoduleData.annotations && CNVmoduleData.annotations.change">
+                        <div v-for="single in CNVmoduleData.annotations.change">{{single}}</div>
                       </div>
 
-                      <div class="edit-content" :data-id="CNVmoduleData.id" id="">
-                        <div>状态：</div>
-                        <select class="form-control" id="CNV_select">
-                          <option value="major">主要的</option>
-                          <option value="minor">次要的</option>
-                          <option value="benign">良性的</option>
-                          <option value="invalid">无效的</option>
-                          <option value="">未作标记</option>
-                        </select>
-                      </div>
                     </div>
                   </div>
-                  <div class="modal-footer analyze-footer">
-                    <button type="button" class="btn btn-primary" :data-url="CNVmoduleData.url"
-                            @click="patchEditCNV(CNVmoduleData.url,CNVmoduleData.id)"
-                            id="save_designCNV">保存修改
-                    </button>
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+
+                  <table class="table myTable">
+                    <thead>
+                    <tr>
+                      <th>关系</th>
+                      <th>姓名</th>
+                      <th>是否存在</th>
+                      <th>纯/杂合</th>
+                      <th>质量</th>
+                      <th>深度</th>
+                      <th>gatkFilter</th>
+                      <th>变异比例</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>受检者</td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.patient}}</span></td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.exists ? '存在' : '不存在'}}</span></td>
+                      <td><span v-if="CNVmoduleData.patient"> - </span></td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.quality}}</span></td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.depth}}</span></td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.gatkFilter}}</span></td>
+                      <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.ratio}}</span></td>
+                    </tr>
+                    <tr>
+                      <td>父亲</td>
+                      <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.patient}}</span></td>
+                      <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.exists ? '存在' : '不存在'}}</span></td>
+                      <td><span v-if="CNVmoduleData.father">
+                        <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.isHomo ? CNVmoduleData.father.snvinfo.isHomo : '-'}}</span>
+                        <span v-else=""> - </span>
+                      </span>
+                      </td>
+                      <td><span v-if="CNVmoduleData.father">
+                        <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.quality}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.father">
+                        <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.depth}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.father">
+                         <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.gatkFilter}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.father">
+                        <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.ratio}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                    </tr>
+                    <tr>
+                      <td>母亲</td>
+                      <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.patient}}</span></td>
+                      <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.exists ? '存在' : '不存在'}}</span></td>
+                      <td>
+                        <span v-if="CNVmoduleData.mother">
+                          <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.isHomo ? CNVmoduleData.mother.snvinfo.isHomo : '-'}}</span>
+                          <span v-else=""> - </span>
+                        </span>
+                      </td>
+                      <td><span v-if="CNVmoduleData.mother">
+                        <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.quality}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.mother">
+                        <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.depth}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.mother">
+                         <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.gatkFilter}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                      <td><span v-if="CNVmoduleData.mother">
+                        <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.ratio}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
+                    </tr>
+
+
+                    </tbody>
+                  </table>
+
+                  <!--<div class="row specialRow">-->
+                  <!--DGV：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.dgv.join(',')}}</span>-->
+                  <!--</div>-->
+
+                  <!--<div class="img-content">-->
+
+                  <!--<img :src=IMG alt="">-->
+                  <!--</div>-->
+
+                  <div class="edit">
+                    <div class="edit-title">
+                      编辑<span>(最后编辑人:"{{CNVmoduleData.lastEditor ? CNVmoduleData.lastEditor : '无'}}")：</span>
+                    </div>
+                    <div class="edit-content">
+                      <div>评论：</div>
+                      <textarea class="form-control" :data-id=CNVmoduleData.id id="commentCNV"
+                                rows="3">{{CNVmoduleData.comment}}</textarea>
+                    </div>
+
+                    <div class="edit-content" :data-id="CNVmoduleData.id" id="">
+                      <div>状态：</div>
+                      <select class="form-control" id="CNV_select">
+                        <option value="major">主要的</option>
+                        <option value="minor">次要的</option>
+                        <option value="benign">良性的</option>
+                        <option value="invalid">无效的</option>
+                        <option value="">未作标记</option>
+                      </select>
+                    </div>
                   </div>
+                </div>
+                <div class="modal-footer analyze-footer">
+                  <button type="button" class="btn btn-primary" :data-url="CNVmoduleData.url"
+                          @click="patchEditCNV(CNVmoduleData.url,CNVmoduleData.id)"
+                          id="save_designCNV">保存修改
+                  </button>
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
                 </div>
               </div>
             </div>
-
-            <!--查看HPO的模态框-->
-            <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="hpo_detail_cnv" role="dialog"
-                 aria-labelledby="gridSystemModalLabel4">
-              <div class="modal-dialog modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                      aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel4">详情</h4>
-                  </div>
-                  <div class="modal-body">
-                    <table class="table table-bordered myTable">
-                      <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>ClinicalPhenotye</th>
-                        <th>HPO</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr v-if="clinicalSynopsis.length === 0" class="center">
-                        <td colspan="3">暂无数据</td>
-                      </tr>
-                      <tr v-else="" class="font-12" v-for="data in sortSyn(clinicalSynopsis)">
-                        <td>{{data.name}}</td>
-                        <td>
-                          <div v-for="singleData in data">{{singleData.clinicalPhenotye}}
-                          </div>
-                        </td>
-                        <td>
-                          <div v-for="singleData in data">
-                            <span v-if="singleData.hpo">{{singleData.hpo}}({{singleData.hpoName}})</span>
-                            <span v-else> - </span>
-                          </div>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <div class="modal-footer analyze-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
+
+          <!--查看HPO的模态框-->
+          <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="hpo_detail_cnv" role="dialog"
+               aria-labelledby="gridSystemModalLabel4">
+            <div class="modal-dialog modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="gridSystemModalLabel4">详情</h4>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-bordered myTable">
+                    <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>ClinicalPhenotye</th>
+                      <th>HPO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-if="clinicalSynopsis.length === 0" class="center">
+                      <td colspan="3">暂无数据</td>
+                    </tr>
+                    <tr v-else="" class="font-12" v-for="data in sortSyn(clinicalSynopsis)">
+                      <td>{{data.name}}</td>
+                      <td>
+                        <div v-for="singleData in data">{{singleData.clinicalPhenotye}}
+                        </div>
+                      </td>
+                      <td>
+                        <div v-for="singleData in data">
+                          <span v-if="singleData.hpo">{{singleData.hpo}}({{singleData.hpoName}})</span>
+                          <span v-else> - </span>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer analyze-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -481,7 +530,7 @@
         cnvPage: 1,
         cnvCount: 0,
         cnvReset: 0,
-        cnvData: '',
+        cnvData: [],
         CNVmoduleData: '',
         clinicalSynopsis: '',
 
@@ -572,69 +621,81 @@
         if ($("#fliter-gene").hasClass('on')) {
           urlParam += '&genes=' + textArea
         }
-        //条件判断结束
 
         this.$axios({
-          url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage+urlParam
-        }).then(function (resp) {
-          _vue.cnvCount = resp.data.count;
-          let id = 0;
-          let genePostData = [];
-          $.each(resp.data.results, function (i, value) {
-            id += 1;
-            value.id = id;
-            //gene名和id綁定起來
-            value.geneVue = [];
-            $.each(value.annotations.geneSymbol, function (n1, n2) {
-              $.each(value.annotations.geneId, function (n3, n4) {
-                if (n1 === n3) {
-                  value.geneVue.push({
-                    name: n2,
-                    id: n4
-                  });
-                }
-              })
-            });
-            //疾病信息
-            value.geneResp = [];
-            $.each(value.annotations.geneId, function (n, k) {
-              genePostData.push(k)
-            });
+          url: 'application/grandtrio/' + this.ID + '/snv/',
+        }).then(function (respAll) {
+          let str = '';
+          $.each(respAll.data.query_params, function (i, value) {
+            str += i + '=' + value + "&"
           });
-          _vue.cnvData = resp.data.results;
-
           _vue.$axios({
-            url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
-            method: 'post',
-            data: {
-              geneids: genePostData
+            url: respAll.data.query_url + '?' + str + 'page=' + _vue.cnvPage + urlParam,
+//          url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage+urlParam
+          }).then(function (resp) {
+            _vue.cnvCount = resp.data.count;
+            if (_vue.cnvCount === 0) {
+              _vue.loading = false
             }
-          }).then(function (respA) {
-            let count0 = 0;
-            let count1 = 0;
-            $.each(respA.data, function (k3, k4) {
-              count1 += 1;
-            });
-            $.each(respA.data, function (k1, k2) {
-              count0 += 1;
-              $.each(resp.data.results, function (n1, n2) {
-                $.each(n2.annotations.geneId, function (n3, n4) {
-                  if (k1 == n4) {
-                    n2.geneResp.push({
-                      geneId: n4,
-                      geneData: k2
+            let id = 0;
+            let genePostData = [];
+            $.each(resp.data.results, function (i, value) {
+              id += 1;
+              value.id = id;
+              //gene名和id綁定起來
+              value.geneVue = [];
+              $.each(value.annotations.geneSymbol, function (n1, n2) {
+                $.each(value.annotations.geneId, function (n3, n4) {
+                  if (n1 === n3) {
+                    value.geneVue.push({
+                      name: n2,
+                      id: n4
                     });
                   }
                 })
               });
-              if (count0 === count1) {
-                _vue.loading = false;
-              }
+              //疾病信息
+              value.geneResp = [];
+              $.each(value.annotations.geneId, function (n, k) {
+                genePostData.push(k)
+              });
             });
+            _vue.cnvData = resp.data.results;
+            _vue.$axios({
+              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
+              method: 'post',
+              data: {
+                geneids: genePostData
+              }
+            }).then(function (respA) {
+              let count0 = 0;
+              let count1 = 0;
+              $.each(respA.data, function (k3, k4) {
+                count1 += 1;
+              });
+              $.each(respA.data, function (k1, k2) {
+                count0 += 1;
+                $.each(resp.data.results, function (n1, n2) {
+                  $.each(n2.annotations.geneId, function (n3, n4) {
+                    if (k1 == n4) {
+                      n2.geneResp.push({
+                        geneId: n4,
+                        geneData: k2
+                      });
+                    }
+                  })
+                });
+                if (count0 === count1) {
+                  _vue.loading = false;
+                }
+              });
+            });
+          }).catch(function (error) {
+            _vue.catchFun(error);
           });
-        }).catch(function (error) {
-          _vue.catchFun(error);
         });
+
+
       },
       getCurrentDetail: function (data) {
         this.cnvPage = data;
@@ -788,14 +849,19 @@
       $('[data-toggle="tooltip"]').tooltip();
     },
     filters: {
-      getPure:function (exists) {
-        if(exists){
-          return '是'
-        }else{
-          if(exists === ''){
-            return ' - '
-          }
-          return '否'
+      getPure: function (isHomo) {
+//        if(exists){
+//          return '是'
+//        }else{
+//          if(exists === ''){
+//            return ' - '
+//          }
+//          return '否'
+//        }
+        if (isHomo) {
+          return isHomo
+        } else {
+          return ' - '
         }
       },
       getStatus: function (status) {
@@ -852,7 +918,6 @@
       padding-top: 35px;
     }
   }
-
 
   .all-content {
     .nav-tabs {

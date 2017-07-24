@@ -422,31 +422,40 @@
         const _vue = this;
         this.loading = true;
         this.$axios({
-          url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage
-        }).then(function (resp) {
-          _vue.cnvCount = resp.data.count;
-          let id = 0;
-          let genePostData = [];
-          $.each(resp.data.results, function (i, value) {
-            id += 1;
-            value.id = id;
-            //gene名和id綁定起來
-            value.geneVue = [];
-            $.each(value.annotations.geneSymbol, function (n1, n2) {
-              $.each(value.annotations.geneId, function (n3, n4) {
-                if (n1 === n3) {
-                  value.geneVue.push({
-                    name: n2,
-                    id: n4
-                  });
-                }
-              })
-            });
-            //疾病信息
-            value.geneResp = [];
-            $.each(value.annotations.geneId, function (n, k) {
-              genePostData.push(k)
-            });
+          url: 'application/grandwcnv/' + this.ID + '/cnv/',
+        }).then(function (respAll) {
+          let str = '';
+          $.each(respAll.data.query_params, function (i, value) {
+            str += i + '=' + value + "&"
+          });
+
+          _vue.$axios({
+            url: respAll.data.query_url + '?' + str + 'page=' + _vue.cnvPage,
+//          url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage
+          }).then(function (resp) {
+            _vue.cnvCount = resp.data.count;
+            let id = 0;
+            let genePostData = [];
+            $.each(resp.data.results, function (i, value) {
+              id += 1;
+              value.id = id;
+              //gene名和id綁定起來
+              value.geneVue = [];
+              $.each(value.annotations.geneSymbol, function (n1, n2) {
+                $.each(value.annotations.geneId, function (n3, n4) {
+                  if (n1 === n3) {
+                    value.geneVue.push({
+                      name: n2,
+                      id: n4
+                    });
+                  }
+                })
+              });
+              //疾病信息
+              value.geneResp = [];
+              $.each(value.annotations.geneId, function (n, k) {
+                genePostData.push(k)
+              });
 //            $.each(value.annotations.geneUrl, function (k, data) {
 //              _vue.$axios({
 //                url: data,
@@ -458,42 +467,45 @@
 //                }
 //              });
 //            });
-          });
-          _vue.cnvData = resp.data.results;
+            });
+            _vue.cnvData = resp.data.results;
 
-          _vue.$axios({
-            url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
-            method: 'post',
-            data: {
-              geneids: genePostData
-            }
-          }).then(function (respA) {
-            let count0 = 0;
-            let count1 = 0;
-            $.each(respA.data,function (k3,k4) {
-              count1+=1;
-            });
-            $.each(respA.data, function (k1, k2) {
-              count0 += 1;
-              $.each(resp.data.results, function (n1, n2) {
-                $.each(n2.annotations.geneId, function (n3, n4) {
-                  if (k1 == n4) {
-//                    n2.geneResp.push(k2);
-                    n2.geneResp.push({
-                      geneId: n4,
-                      geneData: k2
-                    });
-                  }
-                })
-              });
-              if(count0 === count1){
-                _vue.loading = false;
+            _vue.$axios({
+              url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
+              method: 'post',
+              data: {
+                geneids: genePostData
               }
+            }).then(function (respA) {
+              let count0 = 0;
+              let count1 = 0;
+              $.each(respA.data,function (k3,k4) {
+                count1+=1;
+              });
+              $.each(respA.data, function (k1, k2) {
+                count0 += 1;
+                $.each(resp.data.results, function (n1, n2) {
+                  $.each(n2.annotations.geneId, function (n3, n4) {
+                    if (k1 == n4) {
+//                    n2.geneResp.push(k2);
+                      n2.geneResp.push({
+                        geneId: n4,
+                        geneData: k2
+                      });
+                    }
+                  })
+                });
+                if(count0 === count1){
+                  _vue.loading = false;
+                }
+              });
             });
+          }).catch(function (error) {
+            _vue.catchFun(error);
           });
-        }).catch(function (error) {
-          _vue.catchFun(error);
+
         });
+
       },
       getCurrentDetail: function (data) {
         this.cnvPage = data;

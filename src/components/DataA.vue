@@ -19,6 +19,7 @@
             <router-link to="/dataA/foo/sgList" class="block" data-code="grandmgd">单基因遗传病检测</router-link>
             <router-link to="/dataA/foo/mtList" class="block" data-code="grandmito">线粒体检测</router-link>
             <router-link to="/dataA/foo/snvList" class="block" data-code="grandanno">SNV注释</router-link>
+            <router-link to="/dataA/foo/trioList" class="block" data-code="grandtrio">核心家系分析</router-link>
           </div>
         </li>
         <li>
@@ -61,6 +62,7 @@
           grandmito: 'dataA-mtList',
           grandwcnv: 'dataA-cnvList',
           grandanno: 'dataA-annoList',
+          grandtrio: 'dataA-trioList',
         }
       }
     },

@@ -11,13 +11,13 @@
         </div>
         <div class="modal-body" id="id_modal">
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             <a class="analyze-mutate po common-a" v-if="moduleData.localsnv" :href="dbHtml+'#/mutateDetail?query='+moduleData.localsnv.chrom + ':'
                        + moduleData.localsnv.start + ':' + moduleData.localsnv.ref + ':' + moduleData.localsnv.alt"
                target="_blank" title="查看变异数据库">查看变异数据库
             </a>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.name}}</span>
           </div>
 
@@ -25,8 +25,8 @@
             位点：<span v-if="moduleData.localcnv">{{moduleData.localcnv.name}}</span>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
-            <router-link v-if="moduleData.localsnv && app==='grandmgd'" class="common-a" :to="{path:'/taskM/foo/locusSvg',query:{pos: moduleData.localsnv.chrom +
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+            <router-link v-if="moduleData.localsnv && (app==='grandmgd'||app==='grandanno')" class="common-a" :to="{path:'/taskM/foo/locusSvg',query:{pos: moduleData.localsnv.chrom +
                        ':' + moduleData.localsnv.start+ '-' + moduleData.localsnv.end,id:ID}}" target="_blank"
                          title="查看位点覆盖图">查看位点覆盖图
             </router-link>
@@ -36,11 +36,11 @@
             </router-link>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             基因：<a target="_blank" v-if='moduleData.annotations' class="common-a"
                   :href="dbHtml+'#/gene?query=' + moduleData.annotations.geneSymbol.join(',')">{{moduleData.annotations.geneSymbol.join(',')}}</a>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'">
             <span>NCBI GENE ID:</span>
             <span v-if="moduleData.annotations">
                 <span v-for="(gene,index) in moduleData.annotations.geneId">
@@ -49,17 +49,17 @@
                 </span>
               </span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito' || app==='grandwcnv'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito' || app==='grandwcnv'||app==='grandanno'">
             区域：<span v-if="moduleData.annotations">{{moduleData.annotations.region}}</span>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             功能：<span v-if="moduleData.annotations">{{moduleData.annotations.func}}</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             纯/杂合：{{moduleData.isHomo}}
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             深度：{{moduleData.depth}}
           </div>
 
@@ -78,35 +78,35 @@
                   :href="dbHtml+'#/gene?query=' + moduleData.annotations.geneSymbol.join(',')">{{moduleData.annotations.geneSymbol.join(',')}}</a>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             质量：{{moduleData.quality}}
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             变异比例：
             <span v-if="moduleData.ratio">{{moduleData.ratio.toFixed(3)}}</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
             MCAP：<span v-if="moduleData.annotations">{{moduleData.annotations.mcap}}</span>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
             HGMD：<span v-if="moduleData.annotations">{{moduleData.annotations.hgmd}}</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
             东亚人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.dbfreq | percentData}}%</span>
           </div>
           <div class="col-md-4" v-if="app==='grandmito'">
             人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.mtdb | percentData}}%</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
             本地人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.grandfreq | percentData}}%</span>
           </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
               gatkFilter：{{moduleData.gatkFilter}}
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
               ACMG：<span v-if="moduleData.intervars">{{moduleData.intervars.intervar}}
               (<router-link class="common-a" target="_blank"
                             :to="{path:'/taskM/foo/getIntervar',query:{query:moduleData.intervars.rank.join(',')}}">
@@ -115,11 +115,11 @@
             </span>
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
               CLINVAR：<span v-if="moduleData.annotations">{{moduleData.annotations.clinvar}}</span>
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandwcnv'||app==='grandanno'">
               <div class="">变异信息：(常用转录本：
                 <span v-if="moduleData.geneResp" v-for="list in moduleData.geneResp">
                             <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">

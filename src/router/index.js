@@ -15,6 +15,7 @@ import SgList from '@/components/SgList'
 import MtList from '@/components/MtList'
 import CnvList from '@/components/CnvList'
 import SnvList from '@/components/SnvList'
+import TrioList from '@/components/TrioList'
 
 import TaskM from '@/components/TaskM'
 import ReportSe from '@/components/ReportSearch'
@@ -26,6 +27,8 @@ import GetInterVar from '@/components/GetInterVar'
 import SgResult from '@/components/SgResult'
 import MtResult from '@/components/MtResult'
 import CnvResult from '@/components/CnvResult'
+import SnvResult from '@/components/SnvResult'
+import TrioResult from '@/components/TrioResult'
 
 
 Vue.use(Router);
@@ -99,6 +102,11 @@ export default new Router({
           name: 'dataA-snvList',
           component: SnvList
         },
+        {
+          path: 'trioList',
+          name: 'dataA-trioList',
+          component: TrioList
+        },
       ]
     },
     { /*任务管理*/
@@ -150,7 +158,17 @@ export default new Router({
           path: 'cnvResult',
           name: 'taskM-cnvResult',
           component: CnvResult
-        }
+        },
+        {
+          path: 'snvResult',
+          name: 'taskM-snvResult',
+          component: SnvResult
+        },
+        {
+          path: 'trioResult',
+          name: 'taskM-trioResult',
+          component: TrioResult
+        },
       ]
     },
   ]

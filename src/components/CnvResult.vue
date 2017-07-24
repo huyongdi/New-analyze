@@ -270,8 +270,6 @@
           url: 'sample/genelist/' + _vue.datafile + '/'
         }).then(function (resp) {
           _vue.originalPanelData = [];
-          resp.data.panelCode = ["GCA04", "GDE01", "GCA02"]
-          resp.data.customGene = ['1', '2']
           $.each(resp.data.panelCode, function (i, data) {
             _vue.originalPanelData.push({
               key: data,
@@ -377,11 +375,17 @@
       },
       getList1: function () {
         this.loading1 = true;
+        let urlParam = '';
+        $('#filtrate-content').find('.option').each(function () {
+          if ($(this).html() !== '不筛选' && $(this).hasClass('in')) {
+            urlParam += '&' + $(this).parent().prev().data('name') + '=' + $(this).data('value');
+          }
+        });
         //条件判断结束
         const _vue = this;
         this.lists1 = [];
         this.myAxios({
-          url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.page1,
+          url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam,
         }).then(function (resp) {
           _vue.count1 = resp.data.count;
           if(!_vue.count1){
@@ -624,7 +628,7 @@
         }
       }
       #filtrate-content {
-        width: 510px;
+        width: 520px;
         .search-btn {
           margin-left: 130px;
         }
@@ -643,7 +647,7 @@
             margin-top: 6px;
           }
           .right {
-            width: 340px;
+            width: 350px;
           }
         }
       }

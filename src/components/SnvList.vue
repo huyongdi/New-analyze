@@ -1,5 +1,5 @@
 <template>
-  <grandList appCode="grandanno" title="SNV注释"></grandList>
+  <grandList appCode="grand" title="SNV注释"></grandList>
 </template>
 
 <script>

@@ -3,7 +3,7 @@
   <div class="fuzzy-content" id="fuzzy-content">
     <div class="left">
       <div class="searchBorder" id="search_gene">
-        <input class="form-control input_hasImg" :placeholder='placeholder' v-model="fuzzyInput">
+        <input class="form-control input_hasImg" :placeholder='placeholder' v-model="fuzzyInput" @keyup.enter="sendInput">
         <button class="search-btn myBtn" @click.stop="sendInput"></button>
       </div>
 

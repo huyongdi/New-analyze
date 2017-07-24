@@ -415,8 +415,6 @@
           url: 'sample/genelist/' + _vue.datafile + '/'
         }).then(function (resp) {
           _vue.originalPanelData = [];
-          resp.data.panelCode = ["GCA04", "GDE01", "GCA02"]
-          resp.data.customGene = ['1', '2']
           $.each(resp.data.panelCode, function (i, data) {
             _vue.originalPanelData.push({
               key: data,
@@ -1017,7 +1015,7 @@
         }
       }
       #filtrate-content{
-         width: 510px;
+         width: 520px;
          .search-btn{
            margin-left: 130px;
          }
@@ -1036,7 +1034,7 @@
              margin-top: 6px;
            }
            .right{
-             width: 340px;
+             width: 350px;
            }
          }
        }

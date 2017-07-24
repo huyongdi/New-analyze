@@ -4,7 +4,7 @@
     <loading v-if="loading0"></loading>
     <loading v-if="loading1"></loading>
     <loading v-if="loading3"></loading>
-    <div class="done-list col-md-10 ">
+    <div class="done-list col-md-10">
       <div class="title">
         <span class="title-b">任务详情</span>
         <span class="title-s">< {{sampleInfo}}</span>
@@ -14,48 +14,29 @@
         <div class="title-list">
           <div @click="changeContent" data-type="0" class="title-single active">质控统计</div>
           <div @click="changeContent" data-type="1" class="title-single">变异详情</div>
-          <!--<div @click="changeContent" data-type="3" class="title-single">基因覆盖度查询</div>-->
         </div>
         <div class="detail-content">
           <div class="content-0" :class="{hide:!in0}">
             <div class="bold">质控详情</div>
             <ul class="bold">
               <li>
-                <span class="red">红字</span>：代表未达标
-              </li>
-              <li>
-                FASTQC：<a :href='R1' target="_blank" class="common-a r1">R1:fastq</a>
-                <a target="_blank" :href="R2" class="common-a">R2:fastq</a>
-              </li>
-              <li>
-                INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
-              </li>
-              <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
-              </li>
-              <li>
                 基因分析报告 :
                 <router-link target="_blank" class="common-a"
-                             :to="{path:'report',query:{code:datafile,app:'grandmito'}}">点击查看
+                             :to="{path:'report',query:{code:datafile,app:'grandanno'}}">点击查看
                 </router-link>
-
               </li>
             </ul>
             <table>
               <thead>
               <tr>
                 <th class="th-1">类别</th>
-                <th class="th-2">GrandOmics指控参数</th>
-                <th class="th-3">真实值</th>
-                <th class="th-4">分析详情</th>
+                <th class="th-2">值</th>
               </tr>
               </thead>
               <tbody>
-              <tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">
-                <td>{{list.type}}</td>
-                <td>{{list.grandValue}}</td>
-                <td :class="{'red':!list.standard}">{{list.realValue}}</td>
-                <td>{{list.detail}}</td>
+              <tr v-for="(list,index) in lists0" :class="{'trIn':index%2}">
+                <td>{{list.name}}</td>
+                <td>{{list.value}}</td>
               </tr>
               </tbody>
             </table>
@@ -71,7 +52,7 @@
                 <div class="title">搜索选项</div>
                 <div class="content">
                   <div class="single">
-                    <div class="left" data-name="clinvar">CLINVAR：</div>
+                    <div class="left" data-name="report">数据库报道：</div>
                     <div class="right">
                       <span class="option" data-value="true">已报道</span>
                       <span class="option" data-value="false">未报道</span>
@@ -79,18 +60,43 @@
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="mitipact">MITIPACT：</div>
+                    <div class="left" data-name="inheritance">遗传方式：</div>
                     <div class="right">
-                      <span class="option" data-value="true">已报道</span>
-                      <span class="option" data-value="false">未报道</span>
+                      <span class="option in default" data-value="All">全部</span>
+                      <span class="option" data-value="AR">AR</span>
+                      <span class="option" data-value="AD">AD</span>
+                      <span class="option" data-value="XR">XR</span>
+                      <span class="option" data-value="XD">XD</span>
+                      <span class="option" data-value="X-linked">X-LINKED</span>
+                      <span class="option" data-value="Y-linked">Y-LINKED</span>
+                      <span class="option" data-value="Other">其它</span>
+                      <span class="option">不筛选</span>
+                    </div>
+                  </div>
+                  <div class="single">
+                    <div class="left" data-name="func">突变类型：</div>
+                    <div class="right">
+                      <span class="option" data-value="stop">stop*</span>
+                      <span class="option" data-value="nonsynon">nonsynonymous</span>
+                      <span class="option" data-value="splic">splicing</span>
+                      <span class="option" data-value="frameshift">(non)frameshift</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="mitomap">MITOMAP：</div>
+                    <div class="left" data-name="ratio">突变比例：</div>
                     <div class="right">
-                      <span class="option" data-value="true">已报道</span>
-                      <span class="option" data-value="false">未报道</span>
+                      <span class="option" data-value="0.9-1">0.9-1</span>
+                      <span class="option" data-value="0.2-0.9">0.2-0.9</span>
+                      <span class="option" data-value="0-0.2">0-0.2</span>
+                      <span class="option in default">不筛选</span>
+                    </div>
+                  </div>
+                  <div class="single">
+                    <div class="left" data-name="depth">测序深度：</div>
+                    <div class="right">
+                      <span class="option" data-value="10-20">10-20</span>
+                      <span class="option" data-value=">20">>20</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
@@ -107,7 +113,7 @@
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="grandfreq">普通人群携带率低于：</div>
+                    <div class="left" data-name="grandfreq">本地人群携带率低于：</div>
                     <div class="right">
                       <span class="option" data-value="0">0</span>
                       <span class="option" data-value="0.0001">0.01%</span>
@@ -118,7 +124,21 @@
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
+                  <div class="single">
+                    <div class="left" data-name="status">状态：</div>
+                    <div class="right">
+                      <span class="option" data-value="true">已标记</span>
+                      <span class="option" data-value="false">未标记</span>
+                      <span class="option in default">不筛选</span>
+                    </div>
+                  </div>
+                  <div class="single">
+                    <div class="left" data-name="genes">基因：</div>
+                    <div class="right">
+                      <textarea placeholder='请用逗号或换行隔开'  v-model="geneTextArea"></textarea>
 
+                    </div>
+                  </div>
                 </div>
                 <span class="my-btn search-btn" @click="filter"><img src="../../static/img/red-con.png" alt="">搜索</span>
                 <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png"
@@ -139,18 +159,16 @@
                 <th>功能</th>
                 <th class="disease-td">疾病</th>
                 <th>CLINVAR</th>
+                <th>HGMD</th>
+                <th>东亚人群频率(%)</th>
                 <th>本地人群频率(%)</th>
-                <th>MITIMPACT</th>
-                <th>MITOMAP</th>
-                <th>人群频率(%)</th>
                 <th>状态</th>
               </tr>
               </thead>
               <tbody>
-
               <tr v-for="data in lists1">
                 <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url)"
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,0)"
                      :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
                   <a class="po common-a" v-if="data.localsnv"
                      @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
@@ -169,18 +187,9 @@
                 </td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
                 <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
-                <td v-if="data.annotations"> - </td>
-                <td v-if="data.annotations">
-                  <div v-for="single in data.annotations.mitimpact.split(';')">
-                    {{single}}
-                  </div>
-                </td>
-                <td v-if="data.annotations">
-                  <div v-for="single in data.annotations.mitomap.split(';')">
-                    {{single}}
-                  </div>
-                </td>
-                <td v-if="data.annotations">{{data.annotations.mtdb | getPercent}}</td>
+                <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
+                <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
+                <td>{{data.annotations.grandfreq | getPercent}}</td>
                 <td
                   :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">
@@ -192,9 +201,6 @@
             </table>
             <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
           </div>
-          <!--<div class="content-3" :class="{hide:!in3}">-->
-            <!--<geneCover :ID="ID" app="grandmito"></geneCover>-->
-          <!--</div>-->
         </div>
       </div>
     </div>
@@ -203,7 +209,7 @@
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
     <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmito"></mutateModal>
+    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandanno"></mutateModal>
   </div>
 </template>
 
@@ -317,7 +323,7 @@
       getSample: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/',
+          url: 'application/grandanno/' + this.ID + '/',
         }).then(function (resp) {
           _vue.datafile = resp.data.datafile;
           _vue.myAxios({
@@ -371,157 +377,17 @@
         this.loading0 = true;
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/fastqc/',
-        }).then(function (resp) {
-          _vue.R1 = resp.data.r1;
-          _vue.R2 = resp.data.r2;
-        });
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/insertsize/',
-        }).then(function (resp) {
-          _vue.insert = resp.data
-        });
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/csv/',
-        }).then(function (resp) {
-          _vue.CSV = resp.data
-        });
-
-        //列表
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + "/stat/",
+          url: 'application/grandanno/' + this.ID + "/stat/",
         }).then(function (resp) {
           resp = resp.data;
-          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
-          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
-          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
-          qObj.baseGender = resp.data.gender;
-          qObj.gender = resp.data.gender;
-          if (qObj.Sample_gender === 'Male') {
-            qObj.Sample_gender = '男'
-          } else if (qObj.Sample_gender === 'Female') {
-            qObj.Sample_gender = '女'
-          } else {
-            qObj.Sample_gender = '未知'
-          }
-          //如果性别和20X都不对
-          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
-            alert('指数严重不合格！')
-          }
-          const arr = [
-            {
-              type: '20X覆盖度',
-              grandValue: '≥≈95%',
-              realValue: qObj.above_20,
-              standard: qObj.above_20 >= 95
-            }, {
-              type: '性别',
-              grandValue: qObj.baseGender,
-              realValue: qObj.above_20,
-              standard: qObj.Sample_gender == qObj.gender
-            }, {
-              type: 'Q30',
-              grandValue: '≥85%',
-              realValue: qObj.q30,
-              standard: qObj.q30 >= 85
-            }, {
-              type: '数据量(M)',
-              grandValue: '≥10G',
-              realValue: qObj.volume,
-              standard: qObj.volume >= 10000
-            }, {
-              type: 'Duplication%',
-              grandValue: '≤20%',
-              realValue: qObj.duplication,
-              standard: qObj.duplication <= 0.2
-            }, {
-              type: 'Total Reads%',
-              grandValue: '---',
-              realValue: qObj.total,
-              standard: true
-            }, {
-              type: 'QC passed Reads%',
-              grandValue: '---',
-              realValue: qObj.qc,
-              standard: true
-            }, {
-              type: 'Mapped Reads%',
-              grandValue: '---',
-              realValue: qObj.mapped,
-              standard: true
-            }, {
-              type: '捕获效率',
-              grandValue: '≥70%',
-              realValue: qObj.target,
-              standard: qObj.target >= 0.7
-            }, {
-              type: '平均深度',
-              grandValue: '≥75X',
-              realValue: qObj.depth,
-              standard: qObj.depth >= 75
-            }, {
-              type: '1X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_1,
-              standard: true
-            }, {
-              type: '5X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_5,
-              standard: true
-            }, {
-              type: '10X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_10,
-              standard: true
-            }, {
-              type: '30X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_30,
-              standard: true
-            }
-          ];
-          $.each(resp.aln, function (i, data) {
-            $.each(arr, function (n, k) {
-              if (i === n) {
-                k.detail = data
-              }
+          $.each(resp,function (k,n) {
+            _vue.lists0.push({
+              name:k,
+              value:n
             })
           });
-          _vue.lists0 = arr;
           _vue.loading0 = false;
         });
-      },
-      getValue: function (final) {
-        const obj = {};
-        $.each(final, function (i, data) {
-          if (data.name === 'mapped reads') {
-            obj.mapped = data.value.raw
-          } else if (data.name === 'QC passed reads') {
-            obj.qc = data.value
-          } else if (data.name === 'total reads') {
-            obj.total = data.value
-          } else if (data.name === 'duplication rate') {
-            obj.duplication = data.value
-          } else if (data.name === 'target reads ratio') {
-            obj.target = data.value
-          } else if (data.name === 'depth') {
-            obj.depth = data.value
-          } else if (data.name === '%_bases_above_1') {
-            obj.above_1 = data.value
-          } else if (data.name === '%_bases_above_5') {
-            obj.above_5 = data.value
-          } else if (data.name === '%_bases_above_10') {
-            obj.above_10 = data.value
-          } else if (data.name === '%_bases_above_20') {
-            obj.above_20 = data.value
-          } else if (data.name === '%_bases_above_30') {
-            obj.above_30 = data.value
-          } else if (data.name === 'Sample_gender') {
-            obj.Sample_gender = data.value
-          }
-        });
-        return obj;
       },
       current1: function () {
         if (this.lists1.length === 0) {
@@ -543,7 +409,7 @@
         const _vue = this;
         this.lists1 = [];
         this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/snv/',
+          url: 'application/grandanno/' + this.ID + '/snv/',
         }).then(function (resp) {
           let str = '';
           $.each(resp.data.query_params, function (i, value) {

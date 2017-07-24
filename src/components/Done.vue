@@ -170,6 +170,10 @@
           url = '/taskM/foo/mtResult'
         } else if(type === 2){
           url = '/taskM/foo/cnvResult'
+        } else if(type === 3){
+          url = '/taskM/foo/snvResult'
+        }else if(type === 4){
+          url = '/taskM/foo/trioResult'
         }
         this.$router.push({path: url, query: {id: id}})
       }

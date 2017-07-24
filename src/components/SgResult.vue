@@ -1468,8 +1468,6 @@
         });
         this.moduleData = codeData;
 
-        console.log(codeData)
-
         $("#detail_select").find('option').each(function () {
           if ($(this).val() == codeData.status) {
             $(this).attr('selected', 'selected')

@@ -19,6 +19,150 @@
       <!-- Tab panes -->
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="messages">
+
+          <div class="row font-12">
+            <div class="filter-left col-md-6">
+              <div class="row-div title row">
+                <span class="row-name col-md-2 bold">过滤条件：</span>
+              </div>
+              <div class="row-div row">
+                <span class="row-name col-md-2">数据库报道</span>
+                <div class="row-content col-md-10">
+                  <span class="condition" @click="conClick" data-name="report" data-value="true">已报道</span>
+                  <span class="condition" @click="conClick" data-name="report" data-value="false">未报道</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+              <div class="row-div row">
+                <span class="row-name col-md-2">突变类型</span>
+                <div class="row-content col-md-10">
+                  <span class="condition" @click="conClick" data-name="func" data-value="stop">stop*</span>
+                  <span class="condition" @click="conClick" data-name="func" data-value="nonsynon">nonsynonymous</span>
+                  <span class="condition" @click="conClick" data-name="func" data-value="splic">splicing</span>
+                  <span class="condition" @click="conClick" data-name="func"
+                        data-value="frameshift">(non)frameshift</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+
+              <div class="row-div row">
+                <span class="row-name col-md-2">新发突变</span>
+                <div class="row-content col-md-10">
+                  <span class="condition" data-name="denvo" data-value="true">筛选</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+
+              <div class="row-div row">
+                <span class="row-name col-md-2">遗传方式</span>
+                <div class="row-content col-md-10">
+                  <span class="condition on con-default" @click="conClick" data-name="inheritance"
+                        data-value="All">全部</span>
+                  <span class="condition" @click="conClick" data-name="inheritance" data-value="AR">AR</span>
+                  <span class="condition" @click="conClick" data-name="inheritance" data-value="AD">AD</span>
+                  <span class="condition" @click="conClick" data-name="inheritance" data-value="XR">XR</span>
+                  <span class="condition" @click="conClick" data-name="inheritance" data-value="XD">XD</span>
+                  <span class="condition" @click="conClick" data-name="inheritance"
+                        data-value="X-linked">X-LINKED</span>
+                  <span class="condition" @click="conClick" data-name="inheritance"
+                        data-value="Y-linked">Y-LINKED</span>
+                  <span class="condition" @click="conClick" data-name="inheritance" data-value="Other">其它</span>
+                  <span class="condition" @click="conClick">不筛选</span>
+                </div>
+              </div>
+
+              <!--<div class="row-div row">-->
+                <!--<span class="row-name col-md-2">突变比例</span>-->
+                <!--<div class="row-content col-md-10">-->
+                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.9-1">0.9-1</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0.2-0.9">0.2-0.9</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="ratio" data-value="0-0.2">0-0.2</span>-->
+                  <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<div class="row-div row">-->
+                <!--<span class="row-name col-md-2">测序深度</span>-->
+                <!--<div class="row-content col-md-10">-->
+                  <!--<span class="condition" @click="conClick" data-name="depth" data-value="10-20">10-20</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="depth" data-value=">20">>20</span>-->
+                  <!--<span class="condition on con-default" @click="conClick">不筛选</span>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <div class="row-div row">
+                   <span @click="showTextArea" class="row-name col-md-2 fliter-gene" id="fliter-gene" title="点击出现输入框">
+                     <span>过滤基因</span>
+                     <i class="fa-li fa fa-chevron-right gene-i"></i>
+                   </span>
+                <div class="row-content col-md-9 hide" id="gene-name">
+                  <textarea type="text" class="my-form-control gene-name"
+                            placeholder="请用逗号或换行隔开"></textarea>
+                </div>
+              </div>
+
+            </div>
+            <div class="filter-right col-md-6 col-md-offset-">
+              <!--<div class="row-div row">-->
+                <!--<span class="row-name col-md-3">遗传方式</span>-->
+                <!--<div class="row-content col-md-9">-->
+                  <!--<span class="condition on con-default" @click="conClick" data-name="inheritance"-->
+                        <!--data-value="All">全部</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AR">AR</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="AD">AD</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XR">XR</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="XD">XD</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance"-->
+                        <!--data-value="X-linked">X-LINKED</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance"-->
+                        <!--data-value="Y-linked">Y-LINKED</span>-->
+                  <!--<span class="condition" @click="conClick" data-name="inheritance" data-value="Other">其它</span>-->
+                  <!--<span class="condition" @click="conClick">不筛选</span>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
+              <div class="row-div row">
+                <span class="row-name col-md-3">普通人群携带率低于</span>
+                <div class="row-content col-md-9">
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0">0</span>
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.0001">0.01%</span>
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.001">0.1%</span>
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.01">1%</span>
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.02">2%</span>
+                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.05">5%</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+
+              <div class="row-div row">
+                <span class="row-name col-md-3">本地人群携带率低于</span>
+                <div class="row-content col-md-9">
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0">0</span>
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0.0001">0.01%</span>
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0.001">0.1%</span>
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0.01">1%</span>
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0.02">2%</span>
+                  <span class="condition" @click="conClick" data-name="grandfreq" data-value="0.05">5%</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+
+              <div class="row-div row">
+                <span class="row-name col-md-3">状态</span>
+                <div class="row-content col-md-9">
+                  <span class="condition" @click="conClick" data-name="status" data-value="true">已标记</span>
+                  <span class="condition" @click="conClick" data-name="status" data-value="false">未标记</span>
+                  <span class="condition on con-default" @click="conClick">不筛选</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-content">
+            <button class="btn btn-color con-submit" @click="detailFilter">过&nbsp;&nbsp;滤</button>
+            <button class="btn btn-color-r con-submit" @click="resetCon">重&nbsp;&nbsp;置</button>
+          </div>
+
           <table class="table table-gene task-result-table myTable" id="aberrance1">
             <thead>
             <tr>
@@ -27,8 +171,6 @@
               <th>区域</th>
               <th>功能</th>
               <th class="disease-td">疾病</th>
-              <!--<th>父亲</th>-->
-              <!--<th>母亲</th>-->
               <th><span v-if="cnvData">{{cnvData[0].father.patient}}</span></th>
               <th><span v-if="cnvData">{{cnvData[0].mother.patient}}</span></th>
               <th>状态</th>
@@ -96,10 +238,8 @@
                   </div>
                 </div>
               </td>
-              <!--<td>{{data.father.patient}}</td>-->
-              <!--<td>{{data.mother.patient}}</td>-->
-              <td>{{data.father.exists ? '是' : '否'}}</td>
-              <td>{{data.mother.exists ? '是' : '否'}}</td>
+              <td>父：{{data.father.exists|getPure}}</td>
+              <td>母：{{data.mother.exists|getPure}}</td>
               <td
                 :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">
@@ -134,7 +274,6 @@
                       功能：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.func}}</span>
                     </div>
                   </div>
-
 
                   <div class="row">
                     <div class="col-md-4">
@@ -371,7 +510,40 @@
 //      this.stat(); //获取stat信息
     },
     methods: {
-
+      conClick: function (event) {
+        if ($(event.target).hasClass('on')) {
+        } else {
+          $(event.target).parent().find('.on').removeClass('on');
+          $(event.target).addClass('on')
+        }
+      },
+      detailFilter: function () {
+        this.detailReset = 1;
+        this.detailPage = 1;
+        this.toCNV();
+      },
+      showTextArea: function () {
+        const $text = $("#gene-name");
+        const $click = $('#fliter-gene');
+        if ($text.hasClass('hide')) {
+          $text.removeClass('hide');
+          $click.addClass('on')
+        } else {
+          $text.addClass('hide');
+          $click.removeClass('on')
+        }
+      },
+      resetCon: function () {
+        $('#profile').find(".on").each(function () {
+          if ($(this).hasClass("row-name")) { //gene输入框
+            $(this).click();
+            $("#gene-name").find("textarea").val('')
+          } else {
+            $(this).parent().find('.on').removeClass('on');
+            $(this).parent().find('.con-default').addClass('on');
+          }
+        })
+      },
       showLocus0: function (snv) {
         this.snv = snv;
         $("#locusM").modal('show')
@@ -389,8 +561,21 @@
       toCNV: function () {
         const _vue = this;
         this.loading = true;
+
+        let urlParam = '';
+        $('#messages').find('.condition').each(function () {
+          if ($(this).html() !== '不筛选' && $(this).hasClass('on')) {
+            urlParam += '&' + $(this).data('name') + '=' + $(this).data('value');
+          }
+        });
+        let textArea = _vue.strToArr($("#gene-name").find('textarea').val());
+        if ($("#fliter-gene").hasClass('on')) {
+          urlParam += '&genes=' + textArea
+        }
+        //条件判断结束
+
         this.$axios({
-          url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage
+          url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.cnvPage+urlParam
         }).then(function (resp) {
           _vue.cnvCount = resp.data.count;
           let id = 0;
@@ -603,6 +788,16 @@
       $('[data-toggle="tooltip"]').tooltip();
     },
     filters: {
+      getPure:function (exists) {
+        if(exists){
+          return '是'
+        }else{
+          if(exists === ''){
+            return ' - '
+          }
+          return '否'
+        }
+      },
       getStatus: function (status) {
         switch (status) {
           case 'major':
@@ -658,11 +853,6 @@
     }
   }
 
-  #messages {
-    > div.row.font-12 {
-      padding-top: 30px;
-    }
-  }
 
   .all-content {
     .nav-tabs {
@@ -712,9 +902,6 @@
       padding-top: 15px;
       margin-left: 0;
       margin-right: 0;
-      border-left: 1px solid @border;
-      border-right: 1px solid @border;
-      border-bottom: 1px solid @border;
       padding-bottom: 40px;
       .filter-right {
         .row-div:first-child {

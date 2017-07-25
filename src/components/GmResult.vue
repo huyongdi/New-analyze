@@ -519,7 +519,7 @@
                     </div>
                     <div class="col-md-4">
                       <router-link v-if="moduleData.localsnv" :to="{path:'/svg',query:{pos: moduleData.localsnv.chrom +
-                       ':' + moduleData.localsnv.start+ '-' + moduleData.localsnv.end,id:ID}}" target="_blank"
+                       ':' + moduleData.localsnv.start+ '-' + moduleData.localsnv.end,id:ID,t:1}}" target="_blank"
                                    title="查看位点覆盖图">查看位点覆盖图
                       </router-link>
                     </div>

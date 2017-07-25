@@ -38,7 +38,8 @@
         this.$router.push('/')
       }
       const pos = this.$route.query.pos;
-      const myUrl = this.$route.query.t === 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
+      console.log(this.$route.query.t)
+      const myUrl = this.$route.query.t == 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
         : 'application/grandmgd/' + id + '/svg/?pos=' + pos;
       this.$axios({
         url: myUrl,

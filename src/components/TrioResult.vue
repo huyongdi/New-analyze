@@ -1,7 +1,7 @@
 <template>
   <div class="right-content">
     <loading v-if="loading"></loading>
-    <location imgClass="analyzeTool-small" currentPage="低深度全基因CNV检测结果"></location>
+    <location imgClass="analyzeTool-small" currentPage="核心家系分析结果"></location>
     <locusModal :datafile="datafile" :snv="snv" type=0></locusModal>
 
     <div class="all-content">
@@ -13,7 +13,7 @@
         <!--<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"-->
         <!--data-toggle="tab">质控统计</a></li>-->
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"
-                                   @click="toCNV">质控详情</a>
+                                   @click="toCNV">变异详情</a>
         </li>
       </ul>
       <!-- Tab panes -->
@@ -48,7 +48,7 @@
               <div class="row-div row">
                 <span class="row-name col-md-2">新发突变</span>
                 <div class="row-content col-md-10">
-                  <span class="condition" data-name="denvo" data-value="true" @click="conClick">筛选</span>
+                  <span class="condition" data-name="denovo" data-value="true" @click="conClick">筛选</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
                 </div>
               </div>

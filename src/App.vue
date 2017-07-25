@@ -1,6 +1,6 @@
 <!--suppress ALL -->
 <template>
-  <div id="app" @keyup.27="abc">
+  <div id="app">
     <nav-header v-if="inLogin"></nav-header>
     <router-view></router-view>
   </div>
@@ -80,9 +80,6 @@
           $(this).parent().find('.show-name').val(arr[arr.length-1])
         })
       },
-      abc:function () {
-        console.log(1111111111)
-      }
     }
   }
 

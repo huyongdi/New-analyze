@@ -15,8 +15,8 @@ Vue.prototype.instance = axios.create({
 });
 axios.defaults.headers = {'Authorization': localStorage.token?localStorage.token:''};
 /*请求地址*/
-axios.defaults.baseURL = 'http://test.analyze.grandbox.site:8081';
-Vue.prototype.dbUrl = 'http://test.biomeddb.grandbox.site:8081';
+axios.defaults.baseURL = 'http://test.analyze.grandbox.site:8081/';
+Vue.prototype.dbUrl = 'http://test.biomeddb.grandbox.site:8081/';
 
 /*页面地址*/
 Vue.prototype.dbHtml = '/biomeddb/';

@@ -1307,6 +1307,9 @@
               value.geneResp = [];
             });
 
+
+            console.log(_vue.dbUrl+'knowledge/gene/dictbygeneids/')
+
             _vue.CNVAllData = resp.data.results;
             _vue.$axios({
               url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
@@ -1541,6 +1544,7 @@
               });
               value.geneResp = [];
             });
+            console.log(_vue.dbUrl+'knowledge/gene/dictbygeneids/')
             _vue.detailAllData = resp.data.results;
             _vue.$axios({
               url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',

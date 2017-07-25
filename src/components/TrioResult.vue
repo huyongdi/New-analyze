@@ -103,7 +103,7 @@
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="denvo">新发突变：</div>
+                    <div class="left" data-name="denovo">新发突变：</div>
                     <div class="right">
                       <span class="option" data-value="true">筛选</span>
                       <span class="option in default">不筛选</span>
@@ -180,8 +180,8 @@
                 <th>区域</th>
                 <th>功能</th>
                 <th class="disease-td">疾病</th>
-                <th><span v-if="lists1.length !== 0">{{lists1[0].father.patient}}</span></th>
-                <th><span v-if="lists1.length !== 0">{{lists1[0].mother.patient}}</span></th>
+                <th><span v-if="lists1.length !== 0">父：{{lists1[0].father.patient}}</span></th>
+                <th><span v-if="lists1.length !== 0">母：{{lists1[0].mother.patient}}</span></th>
                 <th>状态</th>
               </tr>
               </thead>
@@ -204,14 +204,14 @@
                 </td>
                 <td>{{data.annotations.func}}</td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td>父：
+                <td>
                   <span v-if="data.father.snvinfo">
                     <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
                     <span v-else=""> - </span>
                   </span>
                   <span v-else=""> - </span>
                 </td>
-                <td>母：
+                <td>
                   <span v-if="data.mother.snvinfo">
                     <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
                     <span v-else=""> - </span>

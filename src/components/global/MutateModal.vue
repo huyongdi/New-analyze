@@ -321,5 +321,8 @@
     .edit-title {
       margin-bottom: 10px;
     }
+    .my-table{
+      float: right;
+    }
   }
 </style>

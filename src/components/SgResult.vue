@@ -1137,7 +1137,7 @@
         ],
       }
     },
-    created: function () {
+    mounted: function () {
 
       if (!this.ID) {
         alert('页面错误');

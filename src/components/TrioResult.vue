@@ -6,8 +6,8 @@
 
     <div class="all-content">
       <div class="sampleInfo">
-        样本信息：{{sampleInfo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父：<span v-if="cnvData[0].father">{{cnvData[0].father.patient}}</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;母：<span v-if="cnvData[0].mother">{{cnvData[0].mother.patient}}</span>
+        样本信息：{{sampleInfo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父：<span v-if="cnvData[0]&&cnvData[0].father">{{cnvData[0].father.patient}}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;母：<span v-if="cnvData[0]&&cnvData[0].mother">{{cnvData[0].mother.patient}}</span>
       </div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
@@ -172,8 +172,7 @@
               <th>区域</th>
               <th>功能</th>
               <th class="disease-td">疾病</th>
-              <th>纯/杂合(父)</th>
-              <th>纯/杂合(母)</th>
+              <th>纯/杂合(受检者/父/母)</th>
               <th>状态</th>
             </tr>
             </thead>
@@ -240,13 +239,16 @@
                 </div>
               </td>
               <td>
+                <span v-if="data.patient.snvinfo">
+                  <span v-if="data.patient.snvinfo.isHomo">{{data.patient.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
+                <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
                 <span v-if="data.father.snvinfo">
                   <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>
                 </span>
-                <span v-else=""> - </span>
-              </td>
-              <td>
+                <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
                 <span v-if="data.mother.snvinfo">
                   <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>
@@ -383,7 +385,11 @@
                       <td>受检者</td>
                       <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.patient}}</span></td>
                       <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.exists ? '存在' : '不存在'}}</span></td>
-                      <td><span v-if="CNVmoduleData.patient"> - </span></td>
+                      <td><span v-if="CNVmoduleData.patient">
+                         <span
+                           v-if="CNVmoduleData.patient.snvinfo">{{CNVmoduleData.patient.snvinfo.isHomo ? CNVmoduleData.patient.snvinfo.isHomo : '-'}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
                       <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.quality}}</span></td>
                       <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.depth}}</span></td>
                       <td><span v-if="CNVmoduleData.patient">{{CNVmoduleData.patient.snvinfo.gatkFilter}}</span></td>
@@ -627,7 +633,7 @@
         }
       },
       resetCon: function () {
-        $('#profile').find(".on").each(function () {
+        $('#messages').find(".on").each(function () {
           if ($(this).hasClass("row-name")) { //gene输入框
             $(this).click();
             $("#gene-name").find("textarea").val('')

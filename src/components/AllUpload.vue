@@ -13,7 +13,7 @@
         <span class="my-btn"><img src="../../static/img/red-back.png" alt="">返回</span>
       </div>
 
-      <div class="dataContent shadow-top">
+      <div class="dataContent shadow-top bc-fff">
         <form id="addExcelForm">
           <div class="row">
             <div class="title">

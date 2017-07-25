@@ -29,8 +29,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary" @click="saveEditGene">保存</button>
+          <!--<button type="button" class="my-btn btn-default pull-left" data-dismiss="modal">关闭</button>-->
+          <!--<button type="button" class="my-btn" @click="saveEditGene">保存</button>-->
+          <span class="my-btn pull-left" data-dismiss="modal"><img src="../../../static/img/red-close.png" alt="">关闭</span>
+          <span class="my-btn" @click="saveEditGene"><img src="../../../static/img/red-save.png" alt="">保存</span>
         </div>
       </div>
     </div>

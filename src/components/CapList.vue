@@ -11,12 +11,12 @@
           <span class="all-check-yes hide"></span>
         </span>
 
-        <span class="my-btn submit"  @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
+        <span class="my-btn submit" @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
         <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
-        <span class="my-btn pull-right condition" @click="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
+        <span class="my-btn pull-right condition" @click.stop="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
 
         <!--筛选条件弹框-->
-        <div class="filtrate-content hide" id="filtrate-content">
+        <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
           <img src="../../static/img/th-1.png" alt="" class="up">
           <div class="title">搜索选项</div>
           <div class="content">
@@ -88,8 +88,9 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary" @click="saveEdit">保存</button>
+              <span class="my-btn pull-left" data-dismiss="modal"><img src="../../static/img/red-close.png"
+                                                                       alt="">关闭</span>
+              <span class="my-btn" @click="saveEdit"><img src="../../static/img/red-save.png" alt="">保存</span>
             </div>
           </div>
         </div>
@@ -124,7 +125,7 @@
       this.getList();
     },
     methods: {
-      getList:function () {
+      getList: function () {
         const _vue = this;
         _vue.loading = true;
         _vue.lists = [];
@@ -172,12 +173,7 @@
         this.getList();
       },
       filtrate: function () {
-        const _filtrate = $("#filtrate-content");
-        if (_filtrate.hasClass('hide')) {
-          _filtrate.removeClass('hide')
-        } else {
-          _filtrate.addClass('hide')
-        }
+        this.switchHide('filtrate-content')
       },
       search: function () {
         this.pageNum = 1;
@@ -188,7 +184,7 @@
         this.editModalData = data;
         $("#editModal").modal('show');
       },
-      saveEdit:function () {
+      saveEdit: function () {
         const _vue = this;
         this.myAxios({
           url: 'sample/capture/' + $("#edit-name").data('oldname') + '/',
@@ -226,13 +222,13 @@
           _allYes.removeClass('hide');
           $('.check-span').each(function () {
             $(this).addClass('check-yes').removeClass('check-no');
-            $(this).closest('tr').addClass('in')
+//            $(this).closest('tr').addClass('in')
           });
         } else {
           _allYes.addClass('hide');
           $('.check-span').each(function () {
             $(this).removeClass('check-yes').addClass('check-no');
-            $(this).closest('tr').removeClass('in')
+//            $(this).closest('tr').removeClass('in')
           });
         }
       },

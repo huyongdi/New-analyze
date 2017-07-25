@@ -2,10 +2,10 @@
 <template>
   <div>
     <div class="rea">
-      <span class="my-btn pull-right condition" id="filter-btn" @click="filtrateShow3Fun"><img
+      <span class="my-btn pull-right condition" id="filter-btn" @click.stop="filtrateShow3Fun"><img
         src="../../../static/img/red-con.png" alt="">筛选条件</span>
       <!--筛选条件弹框-->
-      <div class="filtrate-content" v-show="filtrateShow3" id="filtrate-content-2">
+      <div class="filtrate-content hide" @click.stop="" id="filtrate-content-geneCover">
         <img src="../../../static/img/th-1.png" alt="" class="up">
         <div class="title">搜索选项</div>
         <div class="content">
@@ -104,7 +104,8 @@
         });
       },
       filtrateShow3Fun: function () {
-        this.filtrateShow3 = !this.filtrateShow3
+//        this.filtrateShow3 = !this.filtrateShow3
+        this.switchHide('filtrate-content-geneCover')
       }
     },
     filters: {

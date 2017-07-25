@@ -101,6 +101,7 @@
               if (ajax === count) {
                 alert('任务已全部提交');
                 _vue.getList();
+                _vue.$router.push({path: '/taskM/foo/doing'})
               }
             }).catch(function () {
               alert('样本' + _html + '未提交成功');

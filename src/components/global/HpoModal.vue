@@ -40,7 +40,8 @@
           </table>
         </div>
         <div class="modal-footer analyze-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+          <span class="my-btn pull-left" data-dismiss="modal"><img src="../../../static/img/red-close.png" alt="">关闭</span>
+          <!--<button type="button" class="my-btn pull-left" data-dismiss="modal">关闭</button>-->
         </div>
       </div>
     </div>

@@ -52,11 +52,11 @@
           </div>
           <div class="content-1" :class="{hide:!in1}">
             <div class="rea">
-              <span class="my-btn pull-right condition" @click="filtrateShow1Fun"><img
+              <span class="my-btn pull-right condition" @click.stop="filtrateShow1Fun"><img
                 src="../../static/img/red-con.png"
                 alt="">筛选条件</span>
               <!--筛选条件弹框-->
-              <div class="filtrate-content" v-show="filtrateShow1" id="filtrate-content">
+              <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
                 <img src="../../static/img/th-1.png" alt="" class="up">
                 <div class="title">搜索选项</div>
                 <div class="content">
@@ -458,7 +458,8 @@
 
       },
       filtrateShow1Fun: function () {
-        this.filtrateShow1 = !this.filtrateShow1
+//        this.filtrateShow1 = !this.filtrateShow1
+        this.switchHide('filtrate-content')
       },
       showDetail: function (url) {
         const _vue = this;

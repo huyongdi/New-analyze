@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <template>
   <div id="app">
-    <nav-header v-if="inLogin"></nav-header>
+    <!--<nav-header v-if="inLogin"></nav-header>-->
     <router-view></router-view>
   </div>
 </template>
@@ -26,7 +26,7 @@
     },
     data: function () {
       return {
-        inLogin: '',
+//        inLogin: '',
         inGene: ''
       }
     },
@@ -41,7 +41,7 @@
     },
     watch: {
       '$route' (to, from) { //路由变化的时候判断需不需要加载头部
-        this.inLogin = !new Boolean(localStorage.token)
+//        this.inLogin = !new Boolean(localStorage.token)
         if (from.name === 'login') {  //重新登录之后token不刷新
           this.myAxios.headers = {'Authorization': localStorage.token};
         }
@@ -67,7 +67,7 @@
           if(_currentLi.hasClass('active')){
             _currentLi.removeClass('active')
           }else{
-            $(".under-left").find("li.active").removeClass('active');
+//            $(".under-left").find("li.active").removeClass('active');
             _currentLi.addClass('active');
           }
         });
@@ -78,6 +78,10 @@
         $(".upload-content").on('change','.hide-input',function () {
           const arr = $(this).val().split("\\");
           $(this).parent().find('.show-name').val(arr[arr.length-1])
+        });
+        /*点击其它地方筛选关闭*/
+        $("#app:not('.filtrate-content')").on("click",function () {
+          $('.filtrate-content').addClass('hide')
         })
       },
     }
@@ -479,7 +483,7 @@
               width: calc(~'100vw - 300px');
               min-width: 1100px;
               min-height: calc(~'100vh - 58px');
-              padding-left: 30px;
+              padding-left: 32px;
               padding-top: 28px;
               padding-bottom: 50px;
               .title {

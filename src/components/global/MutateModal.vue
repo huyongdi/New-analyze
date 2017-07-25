@@ -246,11 +246,13 @@
           </div>
         </div>
         <div class="modal-footer analyze-footer">
-          <button type="button" class="btn btn-primary" :data-url="moduleData.url"
-                  @click="patchEdit(moduleData.url,moduleData.id)"
-                  id="save_design">保存修改
-          </button>
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+          <!--<button type="button" class="btn btn-primary" :data-url="moduleData.url"-->
+                  <!--@click="patchEdit(moduleData.url,moduleData.id)"-->
+                  <!--id="save_design">保存修改-->
+          <!--</button>-->
+          <span class="my-btn" :data-url="moduleData.url" @click="patchEdit(moduleData.url,moduleData.id)"><img src="../../../static/img/red-save.png" alt="">保存</span>
+          <span class="my-btn pull-left" data-dismiss="modal"><img src="../../../static/img/red-close.png" alt="">关闭</span>
+          <!--<button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>-->
         </div>
       </div>
     </div>

@@ -13,10 +13,10 @@
 
         <span class="my-btn submit"  @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
         <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
-        <span class="my-btn pull-right condition" @click="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
+        <span class="my-btn pull-right condition" @click.stop="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
 
         <!--筛选条件弹框-->
-        <div class="filtrate-content hide" id="filtrate-content">
+        <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
           <img src="../../static/img/th-1.png" alt="" class="up">
           <div class="title">搜索选项</div>
           <div class="content">
@@ -98,6 +98,46 @@
                    :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
                    v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
               </router-link>
+              <router-link v-if="list.jobs[0].app.code === 'grandtrio'"
+                           :to="{path:'snvResult',query:{id:list.jobs[0].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
+                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+
+              <router-link v-if="list.jobs[1].app.code === 'grandmgd'"
+                           :to="{path:'sgResult',query:{id:list.jobs[1].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
+                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+              <router-link v-if="list.jobs[1].app.code === 'grandmito'"
+                           :to="{path:'gmResult',query:{id:list.jobs[1].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
+                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+              <router-link v-if="list.jobs[1].app.code === 'grandwcnv'"
+                           :to="{path:'gwResult',query:{id:list.jobs[1].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
+                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+              <router-link v-if="list.jobs[1].app.code === 'grandanno'"
+                           :to="{path:'snvResult',query:{id:list.jobs[1].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
+                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+              <router-link v-if="list.jobs[1].app.code === 'grandtrio'"
+                           :to="{path:'snvResult',query:{id:list.jobs[1].paramId}}">
+                <i data-toggle="tooltip" data-placement="top"
+                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
+                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
+              </router-link>
+
+
+
 
               <i v-if="list.jobs[0].status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
               <i v-if="list.jobs[0].status == 'error'" class="fa fa-bug text-danger">出错</i>
@@ -186,9 +226,12 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
-              <button type="button" class="btn btn-primary" @click="showPanelModal">基因信息</button>
-              <button type="button" class="btn btn-primary" @click="saveEdit">保存</button>
+              <span class="my-btn pull-left" data-dismiss="modal"><img src="../../static/img/red-close.png" alt="">关闭</span>
+              <span class="my-btn" @click="showPanelModal"><img src="../../static/img/red-choose.png" alt="">基因信息</span>
+              <span class="my-btn" @click="saveEdit"><img src="../../static/img/red-save.png" alt="">保存</span>
+              <!--<button type="button" class="my-btn pull-left" data-dismiss="modal">关闭</button>-->
+              <!--<button type="button" class="my-btn" @click="showPanelModal">基因信息</button>-->
+              <!--<button type="button" class="my-btn" @click="saveEdit">保存</button>-->
             </div>
           </div>
         </div>
@@ -367,12 +410,7 @@
         })
       },
       filtrate: function () {
-        const _filtrate = $("#filtrate-content");
-        if (_filtrate.hasClass('hide')) {
-          _filtrate.removeClass('hide')
-        } else {
-          _filtrate.addClass('hide')
-        }
+        this.switchHide('filtrate-content')
       },
       addIn: function (event) {
         //给tr内容加上样式
@@ -404,13 +442,13 @@
           _allYes.removeClass('hide');
           $('.check-span').each(function () {
             $(this).addClass('check-yes').removeClass('check-no');
-            $(this).closest('tr').addClass('in')
+//            $(this).closest('tr').addClass('in')
           });
         } else {
           _allYes.addClass('hide');
           $('.check-span').each(function () {
             $(this).removeClass('check-yes').addClass('check-no');
-            $(this).closest('tr').removeClass('in')
+//            $(this).closest('tr').removeClass('in')
           });
         }
       },

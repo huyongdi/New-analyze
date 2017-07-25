@@ -48,7 +48,7 @@
               <div class="row-div row">
                 <span class="row-name col-md-2">新发突变</span>
                 <div class="row-content col-md-10">
-                  <span class="condition" data-name="denvo" data-value="true">筛选</span>
+                  <span class="condition" data-name="denvo" data-value="true" @click="conClick">筛选</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
                 </div>
               </div>
@@ -196,8 +196,8 @@
               <td>{{data.annotations.func}}</td>
               <td class="disease-td">
                 <div v-for="(disease,index) in data.geneResp" v-if="disease.geneData.phenotypeMap.length !== 0">
-<span :data-geneId="disease.geneId"
-      :class="{color0:index===0,color1:index%4===1,color2:index%4===2,color3:index%4===3,color4:index%4===0&&index!==0}">
+                  <span :data-geneId="disease.geneId" v-if="data.annotations.geneId.length !==1"
+                      :class="{color0:index===0,color1:index%4===1,color2:index%4===2,color3:index%4===3,color4:index%4===0&&index!==0}">
                     </span>
                   <div v-for="diseaseSingle in disease.geneData.phenotypeMap">
                     <div v-if="diseaseSingle.inheritances.gene.length!=0">
@@ -277,17 +277,24 @@
                 <div class="modal-body">
                   <div class="row">
                     <div class="col-md-4">
+                      <a class="analyze-mutate po" v-if="CNVmoduleData.localsnv" :href="dbHtml+'#/mutateDetail?query='+CNVmoduleData.localsnv.chrom + ':'
+                       + CNVmoduleData.localsnv.start + ':' + CNVmoduleData.localsnv.ref + ':' + CNVmoduleData.localsnv.alt"
+                         target="_blank" title="查看变异数据库">
+                        查看变异数据库
+                      </a>
+                    </div>
+                    <div class="col-md-4">
                       位点：<span v-if="CNVmoduleData.localsnv">{{CNVmoduleData.localsnv.name}}</span>
                     </div>
                     <div class="col-md-4">
                       区域：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.region}}</span>
                     </div>
-                    <div class="col-md-4">
-                      功能：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.func}}</span>
-                    </div>
                   </div>
 
                   <div class="row">
+                    <div class="col-md-4">
+                      功能：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.func}}</span>
+                    </div>
                     <div class="col-md-4">
                       基因：<a target="_blank" v-if='CNVmoduleData.annotations'
                             :href="dbHtml+'#/gene?query=' + CNVmoduleData.annotations.geneSymbol.join(',')">
@@ -304,6 +311,40 @@
                     </div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-md-4">
+                      MCAP：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.mcap}}</span>
+                    </div>
+                    <div class="col-md-4">
+                      HGMD：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.hgmd}}</span>
+                    </div>
+                    <div class="col-md-4">
+                      东亚人群频率：<span v-if="CNVmoduleData.annotations">
+                      {{CNVmoduleData.annotations.dbfreq | filterData}}%
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      本地人群频率：<span v-if="CNVmoduleData.annotations">
+                      {{CNVmoduleData.annotations.grandfreq | filterData}}%</span>
+                    </div>
+                    <div class="col-md-4">
+                      CLINVAR：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.clinvar}}</span>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-11">
+                      ACMG：
+                      <span v-if="CNVmoduleData.intervars">{{CNVmoduleData.intervars.intervar}}(
+                         <router-link target="_blank"
+                                      :to="{path:'/getIntervar',query:{query:CNVmoduleData.intervars.rank.join(',')}}">
+                          {{CNVmoduleData.intervars.rank.join(',')}}</router-link>
+                        )</span>
+                    </div>
+                  </div>
 
                   <div class="row">
                     <div class="col-md-12">
@@ -352,7 +393,8 @@
                       <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.patient}}</span></td>
                       <td><span v-if="CNVmoduleData.father">{{CNVmoduleData.father.exists ? '存在' : '不存在'}}</span></td>
                       <td><span v-if="CNVmoduleData.father">
-                        <span v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.isHomo ? CNVmoduleData.father.snvinfo.isHomo : '-'}}</span>
+                        <span
+                          v-if="CNVmoduleData.father.snvinfo">{{CNVmoduleData.father.snvinfo.isHomo ? CNVmoduleData.father.snvinfo.isHomo : '-'}}</span>
                         <span v-else=""> - </span>
                       </span>
                       </td>
@@ -379,7 +421,8 @@
                       <td><span v-if="CNVmoduleData.mother">{{CNVmoduleData.mother.exists ? '存在' : '不存在'}}</span></td>
                       <td>
                         <span v-if="CNVmoduleData.mother">
-                          <span v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.isHomo ? CNVmoduleData.mother.snvinfo.isHomo : '-'}}</span>
+                          <span
+                            v-if="CNVmoduleData.mother.snvinfo">{{CNVmoduleData.mother.snvinfo.isHomo ? CNVmoduleData.mother.snvinfo.isHomo : '-'}}</span>
                           <span v-else=""> - </span>
                         </span>
                       </td>

@@ -33,7 +33,7 @@
                       {{list.ratio?list.ratio.toFixed(4):'-'}}
                     </td>
                     <td>
-                      <span v-if="list.gatkFilter">{{list.gatkFilter}}%</span>
+                      <span v-if="list.gatkFilter">{{list.gatkFilter}}</span>
                       <span v-else> - </span>
                     </td>
                   </tr>

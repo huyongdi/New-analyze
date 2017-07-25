@@ -430,7 +430,7 @@
                 </td>
                 <td class="disease-td">
                   <div v-for="(disease,index) in data.geneResp" v-if="disease.geneData.phenotypeMap.length !== 0">
-                    <span :data-geneId="disease.geneId"
+                    <span :data-geneId="disease.geneId" v-if="data.annotations.geneId.length !==1"
                       :class="{color0:index===0,color1:index%4===1,color2:index%4===2,color3:index%4===3,color4:index%4===0&&index!==0}">
                     </span>
                     <div v-for="diseaseSingle in disease.geneData.phenotypeMap">

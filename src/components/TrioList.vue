@@ -4,8 +4,19 @@
     <location imgClass="analyzeTool-small" currentPage="核心家系分析检测列表"></location>
 
     <div class="all-content">
-
-      <button class="btn btn-color todo-btn" @click="submitFun">提&nbsp;&nbsp;交</button>
+      <div class="has-checked pull-left">
+        已选信息：
+        <div>
+          受检者：&nbsp;&nbsp;&nbsp;&nbsp;{{show0}}
+        </div>
+        <div>
+          父亲：&nbsp;&nbsp;&nbsp;&nbsp;{{show1}}
+        </div>
+        <div>
+          母亲：&nbsp;&nbsp;&nbsp;&nbsp;{{show2}}
+        </div>
+      </div>
+      <button class="btn btn-color todo-btn pull-right" @click="submitFun">提&nbsp;&nbsp;交</button>
 
       <div class="row trio-content">
         <div class="col-md-4">
@@ -15,7 +26,7 @@
             <button class="search-btn myBtn" @click.stop="search(input0,0)"></button>
           </div>
           <ul id="ul0">
-            <li v-for="list in list0" @click="addIn" :data-prefix="list.sampleCode" :data-datafile="list.code">
+            <li v-for="list in list0" @click="addIn" :data-type="0" :data-prefix="list.sampleCode" :data-datafile="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list0.length ==0">暂无数据</li>
@@ -28,7 +39,7 @@
             <button class="search-btn myBtn" @click.stop="search(input1,1)"></button>
           </div>
           <ul id="ul1">
-            <li v-for="list in list1" @click="addIn" :data-father="list.code">
+            <li v-for="list in list1" @click="addIn" :data-type="1" :data-father="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list1.length ==0">暂无数据</li>
@@ -41,7 +52,7 @@
             <button class="search-btn myBtn" @click.stop="search(input2,2)"></button>
           </div>
           <ul id="ul2">
-            <li v-for="list in list2" @click="addIn" :data-mother="list.code">
+            <li v-for="list in list2" @click="addIn" :data-type="2" :data-mother="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list2.length ==0">暂无数据</li>
@@ -72,6 +83,10 @@
         list1:[],
         input2: '',
         list2:[],
+
+        show0:'',
+        show1:'',
+        show2:'',
       }
     },
     created: function () {
@@ -106,7 +121,16 @@
       },
       addIn:function (event) {
         $(event.target).closest('ul').find('.in').removeClass('in');
-        $(event.target).closest('li').addClass('in')
+        $(event.target).closest('li').addClass('in');
+
+        const type = $(event.target.closest('li')).data('type');
+        if(type == 0){
+          this.show0 = $(event.target.closest('li')).html()
+        }else if(type == 1){
+          this.show1 = $(event.target.closest('li')).html()
+        }else if(type == 2){
+          this.show2 = $(event.target.closest('li')).html()
+        }
       },
       search: function (data,type) {
         this.loading = true;
@@ -139,7 +163,8 @@
             mother: $('#ul2').find('.in').data('mother'),
           }
         }).then(function () {
-          alert('任务已提交')
+          alert('任务已提交');
+          _vue.$router.push({path: '/task'})
         }).catch(function (error) {
           _vue.catchFun(error)
         })
@@ -155,6 +180,11 @@
 </script>
 
 <style scoped lang="less">
+  .has-checked{
+    >div{
+      margin: 3px 40px;
+    }
+  }
   .trio-content {
     clear: both;
     .searchBorder {

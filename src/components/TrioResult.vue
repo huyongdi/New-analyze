@@ -6,7 +6,8 @@
 
     <div class="all-content">
       <div class="sampleInfo">
-        样本信息：{{sampleInfo}}
+        样本信息：{{sampleInfo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父：<span v-if="cnvData[0].father">{{cnvData[0].father.patient}}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;母：<span v-if="cnvData[0].mother">{{cnvData[0].mother.patient}}</span>
       </div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
@@ -37,7 +38,7 @@
                 <span class="row-name col-md-2">突变类型</span>
                 <div class="row-content col-md-10">
                   <span class="condition" @click="conClick" data-name="func" data-value="stop">stop*</span>
-                  <span class="condition" @click="conClick" data-name="func" data-value="nonsynon">nonsynonymous</span>
+                  <span class="condition" @click="conClick" data-name="func" data-value="nonsyn">nonsynonymous</span>
                   <span class="condition" @click="conClick" data-name="func" data-value="splic">splicing</span>
                   <span class="condition" @click="conClick" data-name="func"
                         data-value="frameshift">(non)frameshift</span>
@@ -171,8 +172,8 @@
               <th>区域</th>
               <th>功能</th>
               <th class="disease-td">疾病</th>
-              <th><span v-if="cnvData.length !==0">父：{{cnvData[0].father.patient}}</span></th>
-              <th><span v-if="cnvData.length !==0">母：{{cnvData[0].mother.patient}}</span></th>
+              <th>纯/杂合(父)</th>
+              <th>纯/杂合(母)</th>
               <th>状态</th>
             </tr>
             </thead>

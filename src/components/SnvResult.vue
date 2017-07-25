@@ -102,7 +102,7 @@
                 <span class="row-name col-md-2">突变类型</span>
                 <div class="row-content col-md-10">
                   <span class="condition" @click="conClick" data-name="func" data-value="stop">stop*</span>
-                  <span class="condition" @click="conClick" data-name="func" data-value="nonsynon">nonsynonymous</span>
+                  <span class="condition" @click="conClick" data-name="func" data-value="nonsyn">nonsynonymous</span>
                   <span class="condition" @click="conClick" data-name="func" data-value="splic">splicing</span>
                   <span class="condition" @click="conClick" data-name="func"
                         data-value="frameshift">(non)frameshift</span>

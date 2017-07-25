@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> prd
     <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.a184404b783c40cc5667cdcc454d7f67.css" afterPath="" />
@@ -131,20 +134,37 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-gray.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-hasDone.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-small.png" afterPath="" />
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.4c235c4e3fca7532cdc3.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.4c235c4e3fca7532cdc3.js.map" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.009298205dd90bd3d7b6.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.009298205dd90bd3d7b6.js.map" afterPath="" />
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.24c4092f543db3bdaabc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.24c4092f543db3bdaabc.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.9032e3fa582ac487f44d.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.9032e3fa582ac487f44d.js.map" afterPath="" />
+>>>>>>> prd
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.f9bb5e1cae1c63fc2ad4.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.f9bb5e1cae1c63fc2ad4.js.map" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.less" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/数据模版.xlsx" afterPath="" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/DataList.vue" afterPath="$PROJECT_DIR$/src/components/DataList.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
     </list>
 =======
     <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="" />
+>>>>>>> prd
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/DataList.vue" afterPath="$PROJECT_DIR$/src/components/DataList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SgResult.vue" afterPath="$PROJECT_DIR$/src/components/SgResult.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SnvResult.vue" afterPath="$PROJECT_DIR$/src/components/SnvResult.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TrioList.vue" afterPath="$PROJECT_DIR$/src/components/TrioList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TrioResult.vue" afterPath="$PROJECT_DIR$/src/components/TrioResult.vue" />
+    </list>
 >>>>>>> prd
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -159,19 +179,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Login.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Login.vue">
+      <file leaf-file-name="SnvResult.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/SnvResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="122" column="14" lean-forward="false" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="196">
+              <caret line="104" column="95" lean-forward="false" selection-start-line="104" selection-start-column="95" selection-end-line="104" selection-end-column="95" />
+              <folding>
+                <element signature="e#28044#28087#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="3587">
               <caret line="254" column="10" lean-forward="false" selection-start-line="254" selection-start-column="10" selection-end-line="254" selection-end-column="10" />
@@ -186,8 +209,18 @@
 =======
             <state relative-caret-position="355">
               <caret line="61" column="11" lean-forward="false" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
+=======
+            <state relative-caret-position="340">
+              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+>>>>>>> prd
               <folding>
+                <element signature="e#424#430#0" expanded="true" />
+                <element signature="e#430#436#0" expanded="true" />
+                <element signature="e#436#442#0" expanded="true" />
+                <element signature="e#442#448#0" expanded="true" />
+                <element signature="e#448#454#0" expanded="true" />
                 <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+<<<<<<< HEAD
                 <element signature="e#31779#32049#0" expanded="false" />
                 <element signature="e#33169#33219#0" expanded="false" />
                 <element signature="e#33337#34001#0" expanded="false" />
@@ -197,11 +230,22 @@
                 <marker date="1500965187521" expanded="true" signature="39876:39949" ph="..." />
                 <marker date="1500965187521" expanded="true" signature="39963:39974" ph="..." />
 >>>>>>> prd
+=======
+                <element signature="e#31856#32126#0" expanded="false" />
+                <element signature="e#33246#33296#0" expanded="false" />
+                <element signature="e#33414#34078#0" expanded="false" />
+                <element signature="e#34151#34337#0" expanded="false" />
+                <element signature="e#34474#34520#0" expanded="false" />
+                <element signature="e#34574#35088#0" expanded="false" />
+                <marker date="1500978110841" expanded="true" signature="39953:40026" ph="..." />
+                <marker date="1500978110841" expanded="true" signature="40040:40051" ph="..." />
+>>>>>>> prd
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.js">
@@ -209,6 +253,19 @@
             <state relative-caret-position="357">
               <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding />
+=======
+      <file leaf-file-name="TrioList.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TrioList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+              <folding>
+                <element signature="e#2534#2577#0" expanded="true" />
+                <element signature="e#3005#3034#0" expanded="false" />
+                <element signature="e#3077#3881#0" expanded="false" />
+                <element signature="e#5937#6813#0" expanded="false" />
+              </folding>
+>>>>>>> prd
             </state>
           </provider>
         </entry>
@@ -216,23 +273,46 @@
       <file leaf-file-name="DataList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="223">
               <caret line="453" column="63" lean-forward="false" selection-start-line="453" selection-start-column="63" selection-end-line="453" selection-end-column="63" />
               <folding />
+=======
+            <state relative-caret-position="187">
+              <caret line="522" column="15" lean-forward="false" selection-start-line="522" selection-start-column="15" selection-end-line="522" selection-end-column="15" />
+              <folding>
+                <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#20090#20133#0" expanded="true" />
+                <marker date="1500977844001" expanded="false" signature="8842:8849" ph="×" />
+                <marker date="1500977844001" expanded="false" signature="12566:12573" ph="×" />
+                <marker date="1500977844001" expanded="false" signature="14156:14163" ph="×" />
+                <marker date="1500977844001" expanded="false" signature="19367:19374" ph="×" />
+              </folding>
+>>>>>>> prd
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="12" column="63" lean-forward="false" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+=======
+      <file leaf-file-name="SgList.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/SgList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+>>>>>>> prd
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="webpack.base.conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build/webpack.base.conf.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -248,12 +328,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="680">
               <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+=======
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+>>>>>>> prd
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/dist/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -265,6 +353,22 @@
             <state relative-caret-position="102">
               <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="18" />
 >>>>>>> prd
+=======
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+>>>>>>> prd
               <folding />
             </state>
           </provider>
@@ -274,10 +378,14 @@
         <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="8738">
               <caret line="514" column="26" lean-forward="false" selection-start-line="514" selection-start-column="26" selection-end-line="514" selection-end-column="26" />
 =======
             <state relative-caret-position="196">
+=======
+            <state relative-caret-position="10047">
+>>>>>>> prd
               <caret line="591" column="22" lean-forward="false" selection-start-line="591" selection-start-column="22" selection-end-line="591" selection-end-column="22" />
 >>>>>>> prd
               <folding />
@@ -289,23 +397,27 @@
         <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="697">
               <caret line="41" column="42" lean-forward="false" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
               <folding />
 =======
             <state relative-caret-position="196">
               <caret line="552" column="22" lean-forward="false" selection-start-line="552" selection-start-column="22" selection-end-line="552" selection-end-column="22" />
+=======
+            <state relative-caret-position="188">
+              <caret line="237" column="95" lean-forward="false" selection-start-line="237" selection-start-column="95" selection-end-line="237" selection-end-column="95" />
+>>>>>>> prd
               <folding>
-                <element signature="n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#51479#53632#0" expanded="false" />
-                <element signature="e#62459#63272#0" expanded="false" />
-                <element signature="e#69753#71443#0" expanded="false" />
-                <element signature="e#71483#73206#0" expanded="false" />
-                <element signature="e#73251#73739#0" expanded="false" />
-                <element signature="e#73793#74395#0" expanded="false" />
-                <element signature="e#74975#75487#0" expanded="false" />
+                <element signature="e#51477#53630#0" expanded="false" />
+                <element signature="e#62457#63270#0" expanded="false" />
+                <element signature="e#69751#71441#0" expanded="false" />
+                <element signature="e#71481#73204#0" expanded="false" />
+                <element signature="e#73249#73737#0" expanded="false" />
+                <element signature="e#73791#74393#0" expanded="false" />
+                <element signature="e#74973#75485#0" expanded="false" />
                 <element signature="n#style#0;n#!!top" expanded="false" />
               </folding>
 >>>>>>> prd
@@ -325,6 +437,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <find>border</find>
       <find>searchBorder</find>
       <find>hover</find>
@@ -337,6 +450,8 @@
       <find>conClick</find>
       <find>resetCon</find>
       <find>detailFilter</find>
+=======
+>>>>>>> prd
       <find>showTextArea</find>
       <find>.row.font-12</find>
       <find>sendInput</find>
@@ -362,13 +477,25 @@
       <find>ACMG：</find>
       <find>NCBI GENE ID:</find>
       <find>den</find>
+<<<<<<< HEAD
+>>>>>>> prd
+=======
+      <find>分析结果</find>
+      <find>list</find>
+      <find>v-for</find>
+      <find>val.jobs[0]</find>
+      <find>console</find>
+      <find>提交</find>
+      <find>nonsyn</find>
 >>>>>>> prd
     </findStrings>
     <replaceStrings>
       <replace>grandtrio</replace>
+      <replace>listabc</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\Grandomics7052\Desktop\workspace\GrandBox-Analyze-HTML</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\GrandBox-Analyze-HTML\src\components</dir>
       <dir>C:\Users\Grandomics7052\Desktop\workspace\GrandBox-Analyze-HTML\src</dir>
     </dirStrings>
   </component>
@@ -386,23 +513,29 @@
         <option value="$PROJECT_DIR$/src/components/Task.vue" />
         <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/components/global/footer.vue" />
-        <option value="$PROJECT_DIR$/src/components/TrioList.vue" />
         <option value="$PROJECT_DIR$/src/components/global/LocusModal.vue" />
-        <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
         <option value="$PROJECT_DIR$/src/components/GwResult.vue" />
-        <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
         <option value="$PROJECT_DIR$/build/utils.js" />
         <option value="$PROJECT_DIR$/config/index.js" />
         <option value="$PROJECT_DIR$/src/components/Login.vue" />
         <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/components/GmResult.vue" />
         <option value="$PROJECT_DIR$/src/components/Svg.vue" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main.js" />
         <option value="$PROJECT_DIR$/src/components/DataList.vue" />
 =======
         <option value="$PROJECT_DIR$/index.html" />
+>>>>>>> prd
+=======
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/components/TrioList.vue" />
+        <option value="$PROJECT_DIR$/src/components/DataList.vue" />
+        <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
 >>>>>>> prd
       </list>
     </option>
@@ -445,46 +578,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="dist" type="cbb8eebc:String" user="dist" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="global" type="cbb8eebc:String" user="global" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="router" type="cbb8eebc:String" user="router" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -528,7 +621,50 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
+=======
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="dist" type="cbb8eebc:String" user="dist" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+              <item name="global" type="cbb8eebc:String" user="global" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="router" type="cbb8eebc:String" user="router" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> prd
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -578,6 +714,11 @@
 =======
       <workItem from="1500942733586" duration="7667000" />
       <workItem from="1500954325980" duration="3598000" />
+<<<<<<< HEAD
+>>>>>>> prd
+=======
+      <workItem from="1500965654526" duration="644000" />
+      <workItem from="1500973340072" duration="4798000" />
 >>>>>>> prd
     </task>
     <task id="LOCAL-00001" summary="测试提交">
@@ -606,9 +747,13 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="66329000" />
 =======
     <option name="totallyTimeSpent" value="68979000" />
+>>>>>>> prd
+=======
+    <option name="totallyTimeSpent" value="74421000" />
 >>>>>>> prd
   </component>
   <component name="ToolWindowManager">
@@ -617,6 +762,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -625,7 +771,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -673,13 +818,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="45" column="20" lean-forward="false" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -727,16 +865,15 @@
         <state relative-caret-position="20043">
           <caret line="1719" column="13" lean-forward="false" selection-start-line="1719" selection-start-column="6" selection-end-line="1719" selection-end-column="13" />
           <folding>
-            <element signature="n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#51479#53632#0" expanded="false" />
-            <element signature="e#62459#63272#0" expanded="false" />
-            <element signature="e#69753#71443#0" expanded="false" />
-            <element signature="e#71483#73206#0" expanded="false" />
-            <element signature="e#73251#73739#0" expanded="false" />
-            <element signature="e#73793#74395#0" expanded="false" />
-            <element signature="e#74975#75487#0" expanded="false" />
+            <element signature="e#51477#53630#0" expanded="false" />
+            <element signature="e#62457#63270#0" expanded="false" />
+            <element signature="e#69751#71441#0" expanded="false" />
+            <element signature="e#71481#73204#0" expanded="false" />
+            <element signature="e#73249#73737#0" expanded="false" />
+            <element signature="e#73791#74393#0" expanded="false" />
+            <element signature="e#74973#75485#0" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -840,6 +977,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="641">
@@ -847,6 +985,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> prd
     <entry file="file://$PROJECT_DIR$/src/components/GwList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -884,13 +1024,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SgList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Task.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -914,22 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TrioList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding>
-            <element signature="e#2597#2626#0" expanded="false" />
-            <element signature="e#2641#4989#0" expanded="false" />
-            <element signature="e#2669#3473#0" expanded="false" />
-            <element signature="e#3504#3635#0" expanded="false" />
-            <element signature="e#3672#4196#0" expanded="false" />
-            <element signature="n#style#0;n#!!top" expanded="false" />
-            <element signature="e#5085#5961#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/global/LocusModal.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -950,16 +1067,6 @@
             <element signature="e#20163#20207#0" expanded="false" />
             <element signature="e#20261#20817#0" expanded="false" />
             <element signature="e#25592#26211#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SnvResult.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="245" column="78" lean-forward="false" selection-start-line="245" selection-start-column="78" selection-end-line="245" selection-end-column="78" />
-          <folding>
-            <element signature="e#28046#28089#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1009,7 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="140" lean-forward="false" selection-start-line="0" selection-start-column="140" selection-end-line="0" selection-end-column="140" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,8 +1127,11 @@
 =======
         <state relative-caret-position="178">
           <caret line="40" column="25" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="25" />
+<<<<<<< HEAD
 >>>>>>> prd
           <folding />
+=======
+>>>>>>> prd
         </state>
       </provider>
     </entry>
@@ -1064,44 +1173,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/GmResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="10047">
           <caret line="591" column="22" lean-forward="false" selection-start-line="591" selection-start-column="22" selection-end-line="591" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SgList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/static/js/app.24c4092f543db3bdaabc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="0" column="272118" lean-forward="false" selection-start-line="0" selection-start-column="272118" selection-end-line="0" selection-end-column="272118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="522" column="15" lean-forward="false" selection-start-line="522" selection-start-column="15" selection-end-line="522" selection-end-column="15" />
+          <folding>
+            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#20090#20133#0" expanded="true" />
+            <marker date="1500977844001" expanded="false" signature="8842:8849" ph="×" />
+            <marker date="1500977844001" expanded="false" signature="12566:12573" ph="×" />
+            <marker date="1500977844001" expanded="false" signature="14156:14163" ph="×" />
+            <marker date="1500977844001" expanded="false" signature="19367:19374" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TrioList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
+          <folding>
+            <element signature="e#2534#2577#0" expanded="true" />
+            <element signature="e#3005#3034#0" expanded="false" />
+            <element signature="e#3077#3881#0" expanded="false" />
+            <element signature="e#5937#6813#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="552" column="22" lean-forward="false" selection-start-line="552" selection-start-column="22" selection-end-line="552" selection-end-column="22" />
+        <state relative-caret-position="188">
+          <caret line="237" column="95" lean-forward="false" selection-start-line="237" selection-start-column="95" selection-end-line="237" selection-end-column="95" />
           <folding>
-            <element signature="n#div#0;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#div#2;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#51479#53632#0" expanded="false" />
-            <element signature="e#62459#63272#0" expanded="false" />
-            <element signature="e#69753#71443#0" expanded="false" />
-            <element signature="e#71483#73206#0" expanded="false" />
-            <element signature="e#73251#73739#0" expanded="false" />
-            <element signature="e#73793#74395#0" expanded="false" />
-            <element signature="e#74975#75487#0" expanded="false" />
+            <element signature="e#51477#53630#0" expanded="false" />
+            <element signature="e#62457#63270#0" expanded="false" />
+            <element signature="e#69751#71441#0" expanded="false" />
+            <element signature="e#71481#73204#0" expanded="false" />
+            <element signature="e#73249#73737#0" expanded="false" />
+            <element signature="e#73791#74393#0" expanded="false" />
+            <element signature="e#74973#75485#0" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/SnvResult.vue">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="3587">
           <caret line="254" column="10" lean-forward="false" selection-start-line="254" selection-start-column="10" selection-end-line="254" selection-end-column="10" />
@@ -1127,10 +1297,17 @@
             <marker date="1500965187521" expanded="true" signature="39876:39949" ph="..." />
             <marker date="1500965187521" expanded="true" signature="39963:39974" ph="..." />
 >>>>>>> prd
+=======
+        <state relative-caret-position="196">
+          <caret line="104" column="95" lean-forward="false" selection-start-line="104" selection-start-column="95" selection-end-line="104" selection-end-column="95" />
+          <folding>
+            <element signature="e#28044#28087#0" expanded="true" />
+>>>>>>> prd
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -1151,6 +1328,28 @@
           <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="18" />
 >>>>>>> prd
           <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="e#424#430#0" expanded="true" />
+            <element signature="e#430#436#0" expanded="true" />
+            <element signature="e#436#442#0" expanded="true" />
+            <element signature="e#442#448#0" expanded="true" />
+            <element signature="e#448#454#0" expanded="true" />
+            <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#31856#32126#0" expanded="false" />
+            <element signature="e#33246#33296#0" expanded="false" />
+            <element signature="e#33414#34078#0" expanded="false" />
+            <element signature="e#34151#34337#0" expanded="false" />
+            <element signature="e#34474#34520#0" expanded="false" />
+            <element signature="e#34574#35088#0" expanded="false" />
+            <marker date="1500978110841" expanded="true" signature="39953:40026" ph="..." />
+            <marker date="1500978110841" expanded="true" signature="40040:40051" ph="..." />
+          </folding>
+>>>>>>> prd
         </state>
       </provider>
     </entry>

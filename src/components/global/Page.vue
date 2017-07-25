@@ -84,7 +84,7 @@
   .text-right {
     margin-top: 20px;
     select {
-      width: 50px;
+      width: 57px;
       margin: 0 5px;
     }
     .black {

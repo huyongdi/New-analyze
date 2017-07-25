@@ -11,7 +11,7 @@
         </div>
         <div class="modal-body" id="id_modal">
 
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'|| app==='grandtrio' ">
             <a class="analyze-mutate po common-a" v-if="moduleData.localsnv" :href="dbHtml+'#/mutateDetail?query='+moduleData.localsnv.chrom + ':'
                        + moduleData.localsnv.start + ':' + moduleData.localsnv.ref + ':' + moduleData.localsnv.alt"
                target="_blank" title="查看变异数据库">查看变异数据库
@@ -85,20 +85,20 @@
             变异比例：
             <span v-if="moduleData.ratio">{{moduleData.ratio.toFixed(3)}}</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno' || app==='grandtrio'">
             MCAP：<span v-if="moduleData.annotations">{{moduleData.annotations.mcap}}</span>
           </div>
 
-          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno' || app==='grandtrio'">
             HGMD：<span v-if="moduleData.annotations">{{moduleData.annotations.hgmd}}</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'||app==='grandanno' || app==='grandtrio'">
             东亚人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.dbfreq | percentData}}%</span>
           </div>
           <div class="col-md-4" v-if="app==='grandmito'">
             人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.mtdb | percentData}}%</span>
           </div>
-          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+          <div class="col-md-4" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
             本地人群频率：<span v-if="moduleData.annotations">{{moduleData.annotations.grandfreq | percentData}}%</span>
           </div>
 
@@ -106,7 +106,7 @@
               gatkFilter：{{moduleData.gatkFilter}}
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
               ACMG：<span v-if="moduleData.intervars">{{moduleData.intervars.intervar}}
               (<router-link class="common-a" target="_blank"
                             :to="{path:'/taskM/foo/getIntervar',query:{query:moduleData.intervars.rank.join(',')}}">
@@ -115,7 +115,7 @@
             </span>
             </div>
 
-            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno'">
+            <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
               CLINVAR：<span v-if="moduleData.annotations">{{moduleData.annotations.clinvar}}</span>
             </div>
 

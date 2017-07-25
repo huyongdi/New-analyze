@@ -264,19 +264,20 @@
           max-width: 100%;
           border-spacing: 0;
           border-collapse: separate;
-          overflow: hidden;
+          /*overflow: hidden;*/
           thead {
             background-color: rgb(230, 239, 245);
+            overflow: hidden;
             tr {
               th {
                 padding: 5px 0 5px 17px;
                 border-bottom: 2px solid rgb(206, 219, 227);
               }
               th:first-child {
-                /*border-top-left-radius: 10px;*/
+                border-top-left-radius: 5px;
               }
               th:last-child {
-                /*border-top-right-radius: 10px;*/
+                border-top-right-radius: 5px;
               }
               th:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
@@ -352,7 +353,7 @@
             }
           }
           table tr:first-child th:first-child {
-            border-top-left-radius: 20px
+            border-top-left-radius: 5px
           }
         }
         /*筛选框样式*/

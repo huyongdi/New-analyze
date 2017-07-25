@@ -157,7 +157,7 @@
         sampleData:''
       }
     },
-    created: function () {
+    mounted: function () {
       if (!this.id) {
         alert('页面错误');
         this.$router.push('/')

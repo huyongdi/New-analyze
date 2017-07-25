@@ -29,7 +29,7 @@
     components: {
       'location': topLocation,
     },
-    created: function () {
+    mounted: function () {
       const _vue = this;
       const id = this.$route.query.id;
       console.log(id);

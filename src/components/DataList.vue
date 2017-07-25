@@ -451,8 +451,8 @@
             data.jobs = []
           });
           $.each(resp.data.results, function (k4, k5) {
-            k5.file1 = 'test.analyze.grandbox.site/media/' + k5.file1;
-            k5.file2 = 'test.analyze.grandbox.site/media/' + k5.file2;
+            k5.file1 = 'http://test.analyze.grandbox.site:8081/media/' + k5.file1;
+            k5.file2 = 'http://test.analyze.grandbox.site:8081/media/' + k5.file2;
           });
           _vue.lists = resp.data.results;
           _vue.listsTemp = resp.data.results;

@@ -171,8 +171,8 @@
               <th>区域</th>
               <th>功能</th>
               <th class="disease-td">疾病</th>
-              <th><span v-if="cnvData.length !==0">{{cnvData[0].father.patient}}</span></th>
-              <th><span v-if="cnvData.length !==0">{{cnvData[0].mother.patient}}</span></th>
+              <th><span v-if="cnvData.length !==0">父：{{cnvData[0].father.patient}}</span></th>
+              <th><span v-if="cnvData.length !==0">母：{{cnvData[0].mother.patient}}</span></th>
               <th>状态</th>
             </tr>
             </thead>
@@ -238,14 +238,14 @@
                   </div>
                 </div>
               </td>
-              <td>父：
+              <td>
                 <span v-if="data.father.snvinfo">
                   <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>
                 </span>
                 <span v-else=""> - </span>
               </td>
-              <td>母：
+              <td>
                 <span v-if="data.mother.snvinfo">
                   <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>

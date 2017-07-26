@@ -137,13 +137,6 @@
                    v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
               </router-link>
 
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandtrio'"
-                           :to="{path:'snvResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-
               <span v-if="val.jobs[0].status == 'running'" class="text-success">
                 <i class="fa fa-spinner fa-pulse"></i>运行中
               </span>

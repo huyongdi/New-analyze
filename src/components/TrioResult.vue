@@ -63,7 +63,10 @@
                 <span class="row-name col-md-2 bold">过滤条件：</span>
               </div>
               <div class="row-div row">
-                <span class="row-name col-md-2">数据库报道</span>
+                <!--<span class="row-name col-md-2">数据库报道</span>-->
+                <span class="row-name col-md-2">
+                  <span id="dataBase" class="po a-color" data-toggle="tooltip" data-placement="top" data-original-title="报道：CLINVAR,HGMD数据库">数据库报道</span>
+                </span>
                 <div class="row-content col-md-10">
                   <span class="condition" @click="conClick" data-name="report" data-value="true">已报道</span>
                   <span class="condition" @click="conClick" data-name="report" data-value="false">未报道</span>
@@ -165,9 +168,6 @@
                   <span class="condition" @click="conClick" data-name="dbfreq" data-value="0">0</span>
                   <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.0001">0.01%</span>
                   <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.001">0.1%</span>
-                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.01">1%</span>
-                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.02">2%</span>
-                  <span class="condition" @click="conClick" data-name="dbfreq" data-value="0.05">5%</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
                 </div>
               </div>
@@ -1563,5 +1563,8 @@
 
   .active4 {
     color: #d3d3d3;
+  }
+  #dataBase:hover{
+    text-decoration: underline;
   }
 </style>

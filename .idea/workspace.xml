@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.fce855cdc17919d34f1bbd66a96cc4f6.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.fce855cdc17919d34f1bbd66a96cc4f6.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.66d0d0d8cb0abb5fb8c9.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.66d0d0d8cb0abb5fb8c9.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.c1ad6c9d8dc159b988ea.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.c1ad6c9d8dc159b988ea.js.map" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/DataList.vue" afterPath="$PROJECT_DIR$/src/components/DataList.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Report.vue" afterPath="$PROJECT_DIR$/src/components/Report.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ReportTest.vue" afterPath="$PROJECT_DIR$/src/components/ReportTest.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TrioResult.vue" afterPath="$PROJECT_DIR$/src/components/TrioResult.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -38,8 +46,8 @@
       <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="727" column="8" lean-forward="false" selection-start-line="727" selection-start-column="8" selection-end-line="727" selection-end-column="8" />
+            <state relative-caret-position="498">
+              <caret line="1567" column="30" lean-forward="false" selection-start-line="1567" selection-start-column="30" selection-end-line="1567" selection-end-column="30" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="e#2085#2091#0" expanded="true" />
@@ -47,21 +55,20 @@
                 <element signature="e#2097#2103#0" expanded="true" />
                 <element signature="e#2103#2109#0" expanded="true" />
                 <element signature="e#2109#2115#0" expanded="true" />
-                <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#16130#16136#0" expanded="true" />
-                <element signature="e#16136#16142#0" expanded="true" />
-                <element signature="e#16413#16419#0" expanded="true" />
-                <element signature="e#16419#16425#0" expanded="true" />
-                <element signature="e#32958#33509#0" expanded="false" />
-                <element signature="e#33547#34055#0" expanded="false" />
-                <element signature="e#34089#34601#0" expanded="false" />
-                <element signature="e#34635#35357#0" expanded="false" />
-                <element signature="e#36562#36832#0" expanded="false" />
-                <element signature="e#37952#38002#0" expanded="false" />
-                <element signature="e#38120#38784#0" expanded="false" />
-                <element signature="e#38857#39043#0" expanded="false" />
-                <marker date="1501030639503" expanded="true" signature="44659:44732" ph="..." />
-                <marker date="1501030639503" expanded="true" signature="44746:44757" ph="..." />
+                <element signature="e#16043#16049#0" expanded="true" />
+                <element signature="e#16049#16055#0" expanded="true" />
+                <element signature="e#16326#16332#0" expanded="true" />
+                <element signature="e#16332#16338#0" expanded="true" />
+                <element signature="e#32871#33422#0" expanded="false" />
+                <element signature="e#33460#33968#0" expanded="false" />
+                <element signature="e#34002#34514#0" expanded="false" />
+                <element signature="e#34548#35270#0" expanded="false" />
+                <element signature="e#36475#36745#0" expanded="false" />
+                <element signature="e#37865#37915#0" expanded="false" />
+                <element signature="e#38033#38697#0" expanded="false" />
+                <element signature="e#38770#38956#0" expanded="false" />
+                <marker date="1501031875338" expanded="true" signature="44572:44645" ph="..." />
+                <marker date="1501031875338" expanded="true" signature="44659:44670" ph="..." />
               </folding>
             </state>
           </provider>
@@ -90,9 +97,23 @@
       <file leaf-file-name="Report.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Report.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="76" column="32" lean-forward="true" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+            <state relative-caret-position="373">
+              <caret line="260" column="21" lean-forward="false" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataList.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+              <folding>
+                <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#19635#19678#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sendInput</find>
-      <find>code</find>
       <find>snvmtinfo</find>
       <find>list0</find>
       <find>cnvData</find>
@@ -138,6 +157,8 @@
       <find>页面错误</find>
       <find>father</find>
       <find>showPanel</find>
+      <find>普通人群携带率低</find>
+      <find>clin</find>
     </findStrings>
     <replaceStrings>
       <replace>grandtrio</replace>
@@ -169,15 +190,15 @@
         <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/components/TrioList.vue" />
-        <option value="$PROJECT_DIR$/src/components/DataList.vue" />
         <option value="$PROJECT_DIR$/src/components/GmResult.vue" />
         <option value="$PROJECT_DIR$/src/components/GwResult.vue" />
         <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
         <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
         <option value="$PROJECT_DIR$/src/components/Svg.vue" />
         <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
         <option value="$PROJECT_DIR$/src/components/ReportTest.vue" />
+        <option value="$PROJECT_DIR$/src/components/DataList.vue" />
+        <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
         <option value="$PROJECT_DIR$/src/components/Report.vue" />
       </list>
     </option>
@@ -360,7 +381,7 @@
       <workItem from="1500978420090" duration="154000" />
       <workItem from="1500979177358" duration="830000" />
       <workItem from="1501029524072" duration="1037000" />
-      <workItem from="1501030810534" duration="205000" />
+      <workItem from="1501030810534" duration="1539000" />
     </task>
     <task id="LOCAL-00001" summary="测试提交">
       <created>1500608613316</created>
@@ -387,7 +408,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76647000" />
+    <option name="totallyTimeSpent" value="77981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -748,24 +769,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="522" column="15" lean-forward="false" selection-start-line="522" selection-start-column="15" selection-end-line="522" selection-end-column="15" />
-          <folding>
-            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#20090#20133#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TrioList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
           <caret line="131" column="20" lean-forward="false" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
           <folding>
-            <element signature="e#2534#2577#0" expanded="true" />
+            <element signature="e#2534#2577#0" expanded="false" />
             <element signature="e#3005#3034#0" expanded="false" />
             <element signature="e#3077#3881#0" expanded="false" />
             <element signature="e#5937#6813#0" expanded="false" />
@@ -813,32 +822,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="727" column="8" lean-forward="false" selection-start-line="727" selection-start-column="8" selection-end-line="727" selection-end-column="8" />
+        <state relative-caret-position="274">
+          <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#2085#2091#0" expanded="true" />
-            <element signature="e#2091#2097#0" expanded="true" />
-            <element signature="e#2097#2103#0" expanded="true" />
-            <element signature="e#2103#2109#0" expanded="true" />
-            <element signature="e#2109#2115#0" expanded="true" />
-            <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#16130#16136#0" expanded="true" />
-            <element signature="e#16136#16142#0" expanded="true" />
-            <element signature="e#16413#16419#0" expanded="true" />
-            <element signature="e#16419#16425#0" expanded="true" />
-            <element signature="e#32958#33509#0" expanded="false" />
-            <element signature="e#33547#34055#0" expanded="false" />
-            <element signature="e#34089#34601#0" expanded="false" />
-            <element signature="e#34635#35357#0" expanded="false" />
-            <element signature="e#36562#36832#0" expanded="false" />
-            <element signature="e#37952#38002#0" expanded="false" />
-            <element signature="e#38120#38784#0" expanded="false" />
-            <element signature="e#38857#39043#0" expanded="false" />
-            <marker date="1501030639503" expanded="true" signature="44659:44732" ph="..." />
-            <marker date="1501030639503" expanded="true" signature="44746:44757" ph="..." />
+            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#19635#19678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,10 +842,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="1567" column="30" lean-forward="false" selection-start-line="1567" selection-start-column="30" selection-end-line="1567" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#2085#2091#0" expanded="true" />
+            <element signature="e#2091#2097#0" expanded="true" />
+            <element signature="e#2097#2103#0" expanded="true" />
+            <element signature="e#2103#2109#0" expanded="true" />
+            <element signature="e#2109#2115#0" expanded="true" />
+            <element signature="e#16043#16049#0" expanded="true" />
+            <element signature="e#16049#16055#0" expanded="true" />
+            <element signature="e#16326#16332#0" expanded="true" />
+            <element signature="e#16332#16338#0" expanded="true" />
+            <element signature="e#32871#33422#0" expanded="false" />
+            <element signature="e#33460#33968#0" expanded="false" />
+            <element signature="e#34002#34514#0" expanded="false" />
+            <element signature="e#34548#35270#0" expanded="false" />
+            <element signature="e#36475#36745#0" expanded="false" />
+            <element signature="e#37865#37915#0" expanded="false" />
+            <element signature="e#38033#38697#0" expanded="false" />
+            <element signature="e#38770#38956#0" expanded="false" />
+            <marker date="1501031875338" expanded="true" signature="44572:44645" ph="..." />
+            <marker date="1501031875338" expanded="true" signature="44659:44670" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Report.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="76" column="32" lean-forward="true" selection-start-line="76" selection-start-column="32" selection-end-line="76" selection-end-column="32" />
+        <state relative-caret-position="373">
+          <caret line="260" column="21" lean-forward="false" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
           <folding />
         </state>
       </provider>

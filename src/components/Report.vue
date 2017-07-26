@@ -10,41 +10,28 @@
 
     <div class="sample-content">
       <span class="title">送检信息：</span>
-      <div class="row">
-        <div class="col-md-4">
-          姓名：{{sampleData.name}}
-        </div>
-        <div class="col-md-4">
-          性别：{{sampleData.gender}}
-        </div>
-        <div class="col-md-4">
-          出生年月: {{sampleData.birthday}}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          样本编号：{{sampleData.sn}}
-        </div>
-        <div class="col-md-4">
-          民族：{{sampleData.nation}}
-        </div>
-        <div class="col-md-4">
-          样品类型:
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          检测项目：{{sampleData.item}}
-        </div>
-        <div class="col-md-4">
-          检测方法：{{sampleData?'靶向捕获-高通量测序':''}}
-        </div>
-        <div class="col-md-4">
-          送检医院: {{sampleData.unit_name}}
-        </div>
-      </div>
-    </div>
 
+
+      <table class="table myTable" id="sample-table">
+        <tbody>
+        <tr>
+          <td>姓名：{{sampleData.name}}</td>
+          <td>性别：{{sampleData.gender}}</td>
+          <td>出生年月: {{sampleData.birthday}}</td>
+        </tr>
+        <tr>
+          <td>样本编号：{{sampleData.sn}}</td>
+          <td>民族：{{sampleData.nation}}</td>
+          <td>样品类型:</td>
+        </tr>
+        <tr>
+          <td>检测项目：{{sampleData.item}}</td>
+          <td>检测方法：{{sampleData ? '靶向捕获-高通量测序' : ''}}</td>
+          <td>送检医院: {{sampleData.unit_name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="sample-content">
       <span class="title">临床信息：</span>
       <span>{{sampleData.remark}}</span>
@@ -69,7 +56,7 @@
       </thead>
       <tbody>
       <tr v-for="(list,index) in allData.majors">
-        <td>{{index+1}}</td>
+        <td>{{index + 1}}</td>
         <td>{{list.gene.symbol}}</td>
         <td>{{list.transcript}}</td>
         <td>{{list.position}}</td>
@@ -101,7 +88,7 @@
       </thead>
       <tbody>
       <tr v-for="(list,index) in allData.minors">
-        <td>{{index+1}}</td>
+        <td>{{index + 1}}</td>
         <td>{{list.gene.symbol}}</td>
         <td>{{list.transcript}}</td>
         <td>{{list.position}}</td>
@@ -117,7 +104,7 @@
         </td>
         <td>
           <div v-for="a in list.diseases">
-            <span >{{a.title}}({{a.mimNumber}})</span>
+            <span>{{a.title}}({{a.mimNumber}})</span>
           </div>
         </td>
       </tr>
@@ -152,9 +139,9 @@
         geneArr: [],
         minorsDiseases: [],
         loading: false,
-        token:'',
+        token: '',
 
-        sampleData:''
+        sampleData: ''
       }
     },
     mounted: function () {
@@ -166,16 +153,16 @@
       this.sampleInfo();
     },
     methods: {
-      sampleInfo:function () {
+      sampleInfo: function () {
         const _vue = this;
         _vue.$axios({
-          url:'report/reportsnv/patient/?datafile='+_vue.id
+          url: 'report/reportsnv/patient/?datafile=' + _vue.id
         }).then(function (resp) {
-          if(resp.data.status === 'error'){
-          }else{
-            if(resp.data.data.birthday){
+          if (resp.data.status === 'error') {
+          } else {
+            if (resp.data.data.birthday) {
               let arr = resp.data.data.birthday.split('-');
-              resp.data.data.birthday = arr[0]+'年'+arr[1]+'月'+arr[2]+'号';
+              resp.data.data.birthday = arr[0] + '年' + arr[1] + '月' + arr[2] + '号';
             }
             _vue.sampleData = resp.data.data;
           }
@@ -264,8 +251,15 @@
     .refresh-content {
       text-align: center;
     }
-    .sample-content{
+    .sample-content {
       margin: 20px 0;
+    }
+    #sample-table{
+      border: none;
+      th, td {
+        text-align: left;
+        border: none;
+      }
     }
     table {
       th, td {

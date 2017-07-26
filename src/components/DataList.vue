@@ -73,74 +73,41 @@
           <td>
             <span v-if="val.jobs && val.jobs.length==0">待分析</span>
             <div v-else="" class="dropdown" @mouseenter="showResult" @mouseleave="hideResult">
-              <router-link v-if="val.jobs[0].app.code === 'grandmgd'"
-                           :to="{path:'sgResult',query:{id:val.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[0].app.name+'('+val.jobs[0].paramId+')'"
-                   v-if="val.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[0].app.code === 'grandmito'"
-                           :to="{path:'gmResult',query:{id:val.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[0].app.name+'('+val.jobs[0].paramId+')'"
-                   v-if="val.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[0].app.code === 'grandwcnv'"
-                           :to="{path:'gwResult',query:{id:val.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[0].app.name+'('+val.jobs[0].paramId+')'"
-                   v-if="val.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[0].app.code === 'grandanno'"
-                           :to="{path:'snvResult',query:{id:val.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[0].app.name+'('+val.jobs[0].paramId+')'"
-                   v-if="val.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[0].app.code === 'grandtrio'"
-                           :to="{path:'snvResult',query:{id:val.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[0].app.name+'('+val.jobs[0].paramId+')'"
-                   v-if="val.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-
-
-
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandmgd'"
-                           :to="{path:'sgResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandmito'"
-                           :to="{path:'gmResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandwcnv'"
-                           :to="{path:'gwResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandanno'"
-                           :to="{path:'snvResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="val.jobs[1]&&val.jobs[1].app.code === 'grandtrio'"
-                           :to="{path:'snvResult',query:{id:val.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="val.jobs[1].app.name+'('+val.jobs[1].paramId+')'"
-                   v-if="val.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-
-              <span v-if="val.jobs[0].status == 'running'" class="text-success">
-                <i class="fa fa-spinner fa-pulse"></i>运行中
-              </span>
-              <i v-if="val.jobs[0].status == 'error'" class="fa fa-bug text-danger">出错</i>
+              <div v-for="listJob in val.jobs">
+                <router-link v-if="listJob.app.code === 'grandmgd'"
+                             :to="{path:'sgResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandmito'"
+                             :to="{path:'gmResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandwcnv'"
+                             :to="{path:'gwResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandanno'"
+                             :to="{path:'snvResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandtrio'"
+                             :to="{path:'snvResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <i v-if="listJob.status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
+                <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger">出错</i>
+                <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success" title="等待"></i>
+              </div>
 
             </div>
           </td>

@@ -5,9 +5,45 @@
     <locusModal :datafile="datafile" :snv="snv" type=0></locusModal>
 
     <div class="all-content">
+      <div class="modal fade " aria-labelledby="gridSystemModalLabe5" tabindex="-1" role="dialog" id="editGeneModal1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="gridSystemModalLabel5">提交基因信息</h4>
+            </div>
+            <div class="modal-body" id="modal-panel">
+              <div class="row">
+                <div class="col-md-2">
+                  <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
+                </div>
+                <div class="col-md-10 relative">
+                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData" title="已选panel"
+                              @sendInput="receiveFuzzy"></fuzzyQuery>
+                </div>
+              </div>
+              <div class="row noneBottom">
+                <div class="col-md-2">Gene信息</div>
+                <div class="col-md-10">
+                  <textarea v-model="geneInput" placeholder="请用逗号或换行隔开" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary my-btn" @click="saveEditGene">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="sampleInfo">
         样本信息：{{sampleInfo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;父：<span v-if="cnvData[0]&&cnvData[0].father">{{cnvData[0].father.patient}}</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;母：<span v-if="cnvData[0]&&cnvData[0].mother">{{cnvData[0].mother.patient}}</span>
+        <a id="showPanel" class="po" @click="showPanel">修改panel</a>
+
+
       </div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
@@ -609,6 +645,89 @@
 //      this.stat(); //获取stat信息
     },
     methods: {
+
+      /*模糊查询 修改panel*/
+      showPanel: function () {
+        const _vue = this;
+        this.$axios({
+          url: 'sample/genelist/' + _vue.datafile + '/'
+        }).then(function (resp) {
+          _vue.originalPanelData = [];
+          $.each(resp.data.panelCode, function (i, data) {
+            _vue.originalPanelData.push({
+              key: data,
+              value: data
+            });
+          });
+          _vue.geneInput = resp.data.customGene.join(',');
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        });
+        $("#editGeneModal1").modal('show')
+      },
+      receiveFuzzy: function (data) {
+        const _vue = this;
+        _vue.loading = true;
+        this.$axios({
+          url: _vue.dbUrl + 'product/subpanel/?query=' + data
+        }).then(function (resp) {
+          _vue.panelData = [];
+          $.each(resp.data.results, function (n, data) {
+            _vue.panelData.push({
+              key: data.code,
+              value: data.name_cn
+            })
+          });
+          _vue.loading = false;
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        })
+      },
+      showSubpanel: function () {
+        const _vue = this;
+        _vue.loading = true;
+        this.$axios({
+          url: _vue.dbUrl + 'product/subpanel/?query=' + this.panelInput
+        }).then(function (resp) {
+          _vue.panelData = [];
+          $.each(resp.data.results, function (n, k) {
+            _vue.panelData.push({
+              key: k.code,
+              label: k.name_cn,
+            });
+          });
+          _vue.loading = false;
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        })
+      },
+      saveEditGene: function () {
+        const _vue = this;
+        let panelArr = [];
+//        $("#modal-panel").find('.fuzzy-content .right ul li').each(function () {
+//          panelArr.push($(this).data('key'))
+//        });
+
+        $('#right-ul').find('li').each(function () {
+          panelArr.push($(this).data('key'))
+        });
+
+        this.$axios({
+          url: 'sample/genelist/' + this.datafile + '/',
+          method: 'patch',
+          data: {
+            panelCode: panelArr,
+            customGene: _vue.strToArr(this.geneInput),
+          }
+        }).then(function () {
+          alert('提交成功');
+          $("#editGeneModal1").modal('hide')
+        }).catch(function (error) {
+          _vue.catchFun(error);
+        })
+      },
+
+
       conClick: function (event) {
         if ($(event.target).hasClass('on')) {
         } else {

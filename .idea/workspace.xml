@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TrioResult.vue" afterPath="$PROJECT_DIR$/src/components/TrioResult.vue" />
-    </list>
+    <list default="true" id="88becdeb-7942-4cce-bf6b-1baa988544a7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="200" column="96" lean-forward="false" selection-start-line="200" selection-start-column="96" selection-end-line="200" selection-end-column="96" />
+            <state relative-caret-position="-595">
+              <caret line="221" column="21" lean-forward="false" selection-start-line="221" selection-start-column="21" selection-end-line="221" selection-end-column="21" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="e#2085#2091#0" expanded="true" />
@@ -58,9 +56,29 @@
                 <element signature="e#38375#38425#0" expanded="false" />
                 <element signature="e#38543#39207#0" expanded="false" />
                 <element signature="e#39280#39466#0" expanded="false" />
-                <marker date="1501039600672" expanded="true" signature="45082:45155" ph="..." />
-                <marker date="1501039600672" expanded="true" signature="45169:45180" ph="..." />
+                <marker date="1501045485122" expanded="true" signature="45082:45155" ph="..." />
+                <marker date="1501045485122" expanded="true" signature="45169:45180" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="635">
+              <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Task.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="56" column="90" lean-forward="false" selection-start-line="56" selection-start-column="78" selection-end-line="56" selection-end-column="90" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -120,8 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>snvmtinfo</find>
-      <find>list0</find>
       <find>cnvData</find>
       <find>todeta</find>
       <find>messages</find>
@@ -150,6 +166,8 @@
       <find>showPanel</find>
       <find>普通人群携带率低</find>
       <find>clin</find>
+      <find>已完成</find>
+      <find>正在运行</find>
     </findStrings>
     <replaceStrings>
       <replace>grandtrio</replace>
@@ -231,6 +249,46 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="dist" type="cbb8eebc:String" user="dist" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+              <item name="global" type="cbb8eebc:String" user="global" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="router" type="cbb8eebc:String" user="router" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,46 +334,6 @@
               <item name="GrandBox-Analyze-HTML" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="dist" type="cbb8eebc:String" user="dist" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="global" type="cbb8eebc:String" user="global" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="router" type="cbb8eebc:String" user="router" />
             </path>
           </expand>
           <select />
@@ -375,6 +393,7 @@
       <workItem from="1501030810534" duration="1539000" />
       <workItem from="1501032506679" duration="2682000" />
       <workItem from="1501038138697" duration="1653000" />
+      <workItem from="1501047181703" duration="1052000" />
     </task>
     <task id="LOCAL-00001" summary="测试提交">
       <created>1500608613316</created>
@@ -401,10 +420,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82316000" />
+    <option name="totallyTimeSpent" value="83368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -412,7 +432,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2437432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2437432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -626,14 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Task.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="244" column="28" lean-forward="false" selection-start-line="244" selection-start-column="18" selection-end-line="244" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -713,13 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3621">
-          <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -791,14 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="119" lean-forward="false" selection-start-line="0" selection-start-column="119" selection-end-line="0" selection-end-column="119" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/static/js/app.7cdaf7b78bd8a58f826a.js" />
     <entry file="file://$PROJECT_DIR$/src/components/SnvResult.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -815,22 +812,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
-          <folding>
-            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#19635#19678#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ReportTest.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="119" lean-forward="false" selection-start-line="0" selection-start-column="119" selection-end-line="0" selection-end-column="119" />
           <folding />
         </state>
       </provider>
@@ -843,10 +836,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2176">
+          <caret line="134" column="61" lean-forward="false" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+          <folding>
+            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#19635#19678#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="200" column="96" lean-forward="false" selection-start-line="200" selection-start-column="96" selection-end-line="200" selection-end-column="96" />
+        <state relative-caret-position="-595">
+          <caret line="221" column="21" lean-forward="false" selection-start-line="221" selection-start-column="21" selection-end-line="221" selection-end-column="21" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="e#2085#2091#0" expanded="true" />
@@ -866,9 +871,25 @@
             <element signature="e#38375#38425#0" expanded="false" />
             <element signature="e#38543#39207#0" expanded="false" />
             <element signature="e#39280#39466#0" expanded="false" />
-            <marker date="1501039600672" expanded="true" signature="45082:45155" ph="..." />
-            <marker date="1501039600672" expanded="true" signature="45169:45180" ph="..." />
+            <marker date="1501045485122" expanded="true" signature="45082:45155" ph="..." />
+            <marker date="1501045485122" expanded="true" signature="45169:45180" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="635">
+          <caret line="216" column="18" lean-forward="false" selection-start-line="216" selection-start-column="18" selection-end-line="216" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Task.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="56" column="90" lean-forward="false" selection-start-line="56" selection-start-column="78" selection-end-line="56" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>

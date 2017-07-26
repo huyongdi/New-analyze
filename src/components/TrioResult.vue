@@ -116,10 +116,9 @@
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="gatk">gatkFilter：</div>
+                    <div class="left" data-name="gatkpass">gatkFilter：</div>
                     <div class="right">
-                      <span class="option" data-value="pass">PASS</span>
-                      <span class="option" data-value="true">全部</span>
+                      <span class="option" data-value="true">PASS</span>
                       <span class="option" data-value="false">其它</span>
                       <span class="option in default">不筛选</span>
                     </div>

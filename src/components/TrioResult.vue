@@ -821,7 +821,7 @@
         this.page1 = 1;
         this.reset1 = 1;
         this.getList1();
-        this.filtrateShow1 = false;
+        $("#filtrate-content").addClass('hide')
       },
       current2: function () {
         if (this.lists2.length === 0) {

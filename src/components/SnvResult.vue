@@ -77,7 +77,7 @@
                     <div class="left" data-name="func">突变类型：</div>
                     <div class="right">
                       <span class="option" data-value="stop">stop*</span>
-                      <span class="option" data-value="nonsynon">nonsynonymous</span>
+                      <span class="option" data-value="nonsyn">nonsynonymous</span>
                       <span class="option" data-value="splic">splicing</span>
                       <span class="option" data-value="frameshift">(non)frameshift</span>
                       <span class="option in default">不筛选</span>

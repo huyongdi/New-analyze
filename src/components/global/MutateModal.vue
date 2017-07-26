@@ -157,7 +157,11 @@
               <td>受检者</td>
               <td><span v-if="moduleData.patient">{{moduleData.patient.patient}}</span></td>
               <td><span v-if="moduleData.patient">{{moduleData.patient.exists ? '存在' : '不存在'}}</span></td>
-              <td><span v-if="moduleData.patient"> - </span></td>
+              <td><span v-if="moduleData.patient">
+                         <span
+                           v-if="moduleData.patient.snvinfo">{{moduleData.patient.snvinfo.isHomo ? moduleData.patient.snvinfo.isHomo : '-'}}</span>
+                        <span v-else=""> - </span>
+                      </span></td>
               <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.quality}}</span></td>
               <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.depth}}</span></td>
               <td><span v-if="moduleData.patient">{{moduleData.patient.snvinfo.gatkFilter}}</span></td>

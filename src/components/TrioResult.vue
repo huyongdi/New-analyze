@@ -71,7 +71,10 @@
                 <div class="title">搜索选项</div>
                 <div class="content">
                   <div class="single">
-                    <div class="left" data-name="report">数据库报道：</div>
+                    <div class="left" data-name="report">
+                      <a id="dataBase" class="po" data-toggle="tooltip" data-placement="top" data-original-title="报道：CLINVAR,HGMD数据库">数据库报道</a>
+                    </div>
+
                     <div class="right">
                       <span class="option" data-value="true">已报道</span>
                       <span class="option" data-value="false">未报道</span>
@@ -96,7 +99,7 @@
                     <div class="left" data-name="func">突变类型：</div>
                     <div class="right">
                       <span class="option" data-value="stop">stop*</span>
-                      <span class="option" data-value="nonsynon">nonsynonymous</span>
+                      <span class="option" data-value="nonsyn">nonsynonymous</span>
                       <span class="option" data-value="splic">splicing</span>
                       <span class="option" data-value="frameshift">(non)frameshift</span>
                       <span class="option in default">不筛选</span>
@@ -132,9 +135,6 @@
                       <span class="option" data-value="0">0</span>
                       <span class="option" data-value="0.0001">0.01%</span>
                       <span class="option" data-value="0.001">0.1%</span>
-                      <span class="option" data-value="0.01">1%</span>
-                      <span class="option" data-value="0.02">2%</span>
-                      <span class="option" data-value="0.05">5%</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
@@ -180,8 +180,7 @@
                 <th>区域</th>
                 <th>功能</th>
                 <th class="disease-td">疾病</th>
-                <th><span v-if="lists1.length !== 0">父：{{lists1[0].father.patient}}</span></th>
-                <th><span v-if="lists1.length !== 0">母：{{lists1[0].mother.patient}}</span></th>
+                <th>纯/杂合(受检者/父/母)</th>
                 <th>状态</th>
               </tr>
               </thead>
@@ -205,17 +204,20 @@
                 <td>{{data.annotations.func}}</td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
                 <td>
-                  <span v-if="data.father.snvinfo">
-                    <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
-                    <span v-else=""> - </span>
-                  </span>
+                <span v-if="data.patient.snvinfo">
+                  <span v-if="data.patient.snvinfo.isHomo">{{data.patient.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>
-                </td>
-                <td>母：
+                </span>
+                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
+                  <span v-if="data.father.snvinfo">
+                  <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
+                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
                   <span v-if="data.mother.snvinfo">
-                    <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
-                    <span v-else=""> - </span>
-                  </span>
+                  <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
                   <span v-else=""> - </span>
                 </td>
                 <td

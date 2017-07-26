@@ -11,7 +11,7 @@
           <span class="all-check-yes hide"></span>
         </span>
 
-        <span class="my-btn submit"  @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
+        <span class="my-btn submit" @click="deleteAll"><img src="../../static/img/red-delete.png" alt="">批量删除</span>
         <span class="my-btn refresh" @click="refresh"><img src="../../static/img/red-refresh.png" alt="">数据刷新</span>
         <span class="my-btn pull-right condition" @click.stop="filtrate"><img src="../../static/img/red-con.png" alt="">筛选条件</span>
 
@@ -27,7 +27,7 @@
               </div>
             </div>
           </div>
-          <span class="my-btn search-btn"><img src="../../static/img/red-con.png" alt="" @click="search">搜索</span>
+          <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="" >搜索</span>
         </div>
       </div>
       <table id="sg-table" class="bc-fff my-table">
@@ -73,72 +73,39 @@
           <td>
             <span v-if="list.jobs && list.jobs.length==0">待分析</span>
             <div v-else="" class="dropdown">
-              <router-link v-if="list.jobs[0].app.code === 'grandmgd'"
-                           :to="{path:'sgResult',query:{id:list.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
-                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[0].app.code === 'grandmito'"
-                           :to="{path:'gmResult',query:{id:list.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
-                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
 
-              <router-link v-if="list.jobs[0].app.code === 'grandwcnv'"
-                           :to="{path:'gwResult',query:{id:list.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
-                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[0].app.code === 'grandanno'"
-                           :to="{path:'snvResult',query:{id:list.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
-                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[0].app.code === 'grandtrio'"
-                           :to="{path:'snvResult',query:{id:list.jobs[0].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[0].app.name+'('+list.jobs[0].paramId+')'"
-                   v-if="list.jobs[0].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-
-              <router-link v-if="list.jobs[1].app.code === 'grandmgd'"
-                           :to="{path:'sgResult',query:{id:list.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
-                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[1].app.code === 'grandmito'"
-                           :to="{path:'gmResult',query:{id:list.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
-                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[1].app.code === 'grandwcnv'"
-                           :to="{path:'gwResult',query:{id:list.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
-                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[1].app.code === 'grandanno'"
-                           :to="{path:'snvResult',query:{id:list.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
-                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-              <router-link v-if="list.jobs[1].app.code === 'grandtrio'"
-                           :to="{path:'snvResult',query:{id:list.jobs[1].paramId}}">
-                <i data-toggle="tooltip" data-placement="top"
-                   :data-original-title="list.jobs[1].app.name+'('+list.jobs[1].paramId+')'"
-                   v-if="list.jobs[1].status == 'completed'" class="fa fa-check text-success po">已完成</i>
-              </router-link>
-
-
-
-
+              <div v-for="listJob in list.jobs">
+                <router-link v-if="listJob.app.code === 'grandmgd'"
+                             :to="{path:'sgResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandmito'"
+                             :to="{path:'gmResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandwcnv'"
+                             :to="{path:'gwResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandanno'"
+                             :to="{path:'snvResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+                <router-link v-if="listJob.app.code === 'grandtrio'"
+                             :to="{path:'snvResult',query:{id:listJob.paramId}}">
+                  <i data-toggle="tooltip" data-placement="top"
+                     :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
+                     v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
+                </router-link>
+              </div>
               <i v-if="list.jobs[0].status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
               <i v-if="list.jobs[0].status == 'error'" class="fa fa-bug text-danger">出错</i>
             </div>
@@ -226,7 +193,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <span class="my-btn pull-left" data-dismiss="modal"><img src="../../static/img/red-close.png" alt="">关闭</span>
+              <span class="my-btn pull-left" data-dismiss="modal"><img src="../../static/img/red-close.png"
+                                                                       alt="">关闭</span>
               <span class="my-btn" @click="showPanelModal"><img src="../../static/img/red-choose.png" alt="">基因信息</span>
               <span class="my-btn" @click="saveEdit"><img src="../../static/img/red-save.png" alt="">保存</span>
               <!--<button type="button" class="my-btn pull-left" data-dismiss="modal">关闭</button>-->
@@ -237,7 +205,8 @@
         </div>
       </div>
       <!--点击单列的编辑里面的基因-->
-      <panelModal @saveData="savePanel" :originalGeneInput='geneInput' :originalPanelData="originalPanelData"></panelModal>
+      <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
+                  :originalPanelData="originalPanelData"></panelModal>
     </div>
   </div>
 </template>
@@ -253,8 +222,8 @@
     },
     data: function () {
       return {
-        geneInput:'',
-        originalPanelData:[],
+        geneInput: '',
+        originalPanelData: [],
         results: [],
         inputValue: '',
         editModalData: '',
@@ -264,7 +233,7 @@
         pageNum: 1
       }
     },
-    created: function () {
+    mounted: function () {
       this.getList();
       this.getCap();
     },
@@ -453,12 +422,12 @@
         }
       },
       /*修改panel*/
-      showPanelModal:function () {
+      showPanelModal: function () {
         const _vue = this;
         this.myAxios({
           url: 'sample/genelist/' + _vue.editModalData.code + '/'
         }).then(function (resp) {
-          _vue.originalPanelData=[];
+          _vue.originalPanelData = [];
           $.each(resp.data.panelCode, function (i, data) {
             _vue.originalPanelData.push({
               key: data,
@@ -490,7 +459,10 @@
           _vue.catchFun(error);
         })
       },
-    }
+    },
+    updated: function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    },
   }
 </script>
 

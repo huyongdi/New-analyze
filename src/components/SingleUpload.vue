@@ -22,15 +22,15 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>文件编号：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->文件编号：</span>
                   <input type="text" name="code">
                 </div>
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>样本编号：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->样本编号：</span>
                   <input type="text" name="sampleCode">
                 </div>
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>检测平台：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->检测平台：</span>
                   <select name="capture" id="" class="my-select">
                     <option value="">请选择检测平台</option>
                     <option :value="list.name" v-for="list in capList">{{list.name}}</option>
@@ -46,7 +46,7 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>受检者姓名：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->受检者姓名：</span>
                   <input type="text" name="patientName">
                 </div>
                 <div class="inline">
@@ -68,7 +68,7 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>数据格式：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->数据格式：</span>
                   <select name="dataFormat" class="my-select">
                     <option value="">请选择数据格式</option>
                     <option value="fastq">fastq</option>
@@ -98,7 +98,7 @@
             <div class="content">
               <div class="single">
                 <div class="inline">
-                  <span><span class="fa fa-star red"></span>文件1：</span>
+                  <span><!--<span class="fa fa-star red"></span>-->文件1：</span>
                   <input type="text" name="file1">
                   <!--<div class="upload-content">-->
                   <!--<input type="text" class="show-name">-->

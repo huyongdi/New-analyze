@@ -8,7 +8,10 @@
     <div class="done-list col-md-10 ">
       <div class="title">
         <span class="title-b">任务详情</span>
-        <span class="title-s">< {{sampleInfo}}</span>
+        <span class="title-s">< {{sampleInfo}}
+          <span>父：<span v-if="lists1[0]&&lists1[0].father">{{lists1[0].father.patient}}</span></span>
+          <span>母：<span v-if="lists1[0]&&lists1[0].mother">{{lists1[0].mother.patient}}</span></span>
+        </span>
         <span class="span-a change-panel" @click="showPanelModal">修改panel</span>
       </div>
       <div class="all-content">
@@ -109,6 +112,15 @@
                     <div class="left" data-name="denovo">新发突变：</div>
                     <div class="right">
                       <span class="option" data-value="true">筛选</span>
+                      <span class="option in default">不筛选</span>
+                    </div>
+                  </div>
+                  <div class="single">
+                    <div class="left" data-name="gatk">gatkFilter：</div>
+                    <div class="right">
+                      <span class="option" data-value="pass">PASS</span>
+                      <span class="option" data-value="true">全部</span>
+                      <span class="option" data-value="false">其它</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
@@ -961,6 +973,12 @@
   @tableSha: rgb(185, 184, 184);
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
+  .title-s{
+    >span{
+      display: inline-block;
+      margin-left: 20px;
+    }
+  }
   .all-content {
     margin: 15px 0 0 0;
     .change-panel {

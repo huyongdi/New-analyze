@@ -134,7 +134,7 @@
                 <div class="col-md-9 edit-one" id="edit-code">{{editModalData.code}}</div>
               </div>
               <div class="row">
-                <div class="col-md-3"><span class="fa fa-star"></span>Capture</div>
+                <div class="col-md-3"><!--<span class="fa fa-star"></span>-->Capture</div>
                 <div class="col-md-9 rea">
                   <select class="form-control" id="edit-capture" :value="editModalData.capture">
                     <option :value="list.name" v-for="list in capList">{{list.name}}</option>
@@ -143,13 +143,13 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3"><span class="fa fa-star"></span>样本编号</div>
+                <div class="col-md-3"><!--<span class="fa fa-star"></span>-->样本编号</div>
                 <div class="col-md-9">
                   <input type="text" class="form-control" id="edit-sampleCode" :value="editModalData.sampleCode">
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3"><span class="fa fa-star"></span>受检者姓名</div>
+                <div class="col-md-3"><!--<span class="fa fa-star"></span>-->受检者姓名</div>
                 <div class="col-md-9">
                   <input type="text" class="form-control" id="edit-patientName" :value="editModalData.patientName">
                 </div>
@@ -161,7 +161,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3"><span class="fa fa-star"></span>数据格式</div>
+                <div class="col-md-3"><!--<span class="fa fa-star"></span>-->数据格式</div>
                 <div class="col-md-9">
                   <select name="dataFormat" id="edit-dateFormat" class="form-control" :value="editModalData.dataFormat">
                     <option value="fastq">fastq</option>

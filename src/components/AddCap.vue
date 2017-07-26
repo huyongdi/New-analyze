@@ -107,6 +107,10 @@
       .dataContent {
         width: 100%;
         padding: 33px 37px 43px 44px;
+        .title{
+          background-color: rgb(245,245,245);
+          padding: 5px 10px;
+        }
         .content {
           .single {
             margin: 50px 0 23px 0;

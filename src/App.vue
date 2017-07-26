@@ -173,6 +173,9 @@
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           padding: 1px 8px;
+          &:focus{
+            outline: none;
+          }
         }
         select::-ms-expand { display: none; }
         .my-select{
@@ -187,6 +190,9 @@
           -webkit-appearance:none;
           -ms-appearance:none;
           background: url(../static/img/select-right.png) no-repeat scroll right center transparent;
+          &:focus{
+            outline: none;
+          }
         }
 
         .my-btn{

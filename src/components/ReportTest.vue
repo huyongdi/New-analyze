@@ -20,7 +20,7 @@
             </div>
             <div class="basic-info-row">
               <div>样本编号：M173A4354</div>
-              <div>名族：汉</div>
+              <div>民族：汉</div>
               <div>样品类型：外周血</div>
             </div>
             <div class="basic-info-row">

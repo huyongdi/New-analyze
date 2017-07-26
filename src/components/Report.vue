@@ -26,7 +26,7 @@
           样本编号：{{sampleData.sn}}
         </div>
         <div class="col-md-4">
-          名族：{{sampleData.nation}}
+          民族：{{sampleData.nation}}
         </div>
         <div class="col-md-4">
           样品类型:

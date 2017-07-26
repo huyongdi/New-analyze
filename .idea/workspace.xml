@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.a184404b783c40cc5667cdcc454d7f67.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.a184404b783c40cc5667cdcc454d7f67.css.map" afterPath="" />
@@ -210,6 +211,8 @@
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 >>>>>>> prd
+=======
+>>>>>>> prd
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TrioResult.vue" afterPath="$PROJECT_DIR$/src/components/TrioResult.vue" />
     </list>
 >>>>>>> prd
@@ -246,6 +249,7 @@
       <file leaf-file-name="TrioResult.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -334,6 +338,10 @@
             <state relative-caret-position="444">
               <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
 >>>>>>> prd
+=======
+            <state relative-caret-position="119">
+              <caret line="200" column="96" lean-forward="false" selection-start-line="200" selection-start-column="96" selection-end-line="200" selection-end-column="96" />
+>>>>>>> prd
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="e#2085#2091#0" expanded="true" />
@@ -341,6 +349,7 @@
                 <element signature="e#2097#2103#0" expanded="true" />
                 <element signature="e#2103#2109#0" expanded="true" />
                 <element signature="e#2109#2115#0" expanded="true" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                 <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -390,6 +399,22 @@
                 <element signature="e#39377#39563#0" expanded="false" />
                 <marker date="1501037813357" expanded="true" signature="45179:45252" ph="..." />
                 <marker date="1501037813357" expanded="true" signature="45266:45277" ph="..." />
+>>>>>>> prd
+=======
+                <element signature="e#16553#16559#0" expanded="true" />
+                <element signature="e#16559#16565#0" expanded="true" />
+                <element signature="e#16836#16842#0" expanded="true" />
+                <element signature="e#16842#16848#0" expanded="true" />
+                <element signature="e#33381#33932#0" expanded="false" />
+                <element signature="e#33970#34478#0" expanded="false" />
+                <element signature="e#34512#35024#0" expanded="false" />
+                <element signature="e#35058#35780#0" expanded="false" />
+                <element signature="e#36985#37255#0" expanded="false" />
+                <element signature="e#38375#38425#0" expanded="false" />
+                <element signature="e#38543#39207#0" expanded="false" />
+                <element signature="e#39280#39466#0" expanded="false" />
+                <marker date="1501039600672" expanded="true" signature="45082:45155" ph="..." />
+                <marker date="1501039600672" expanded="true" signature="45169:45180" ph="..." />
 >>>>>>> prd
               </folding>
             </state>
@@ -461,6 +486,7 @@
       <file leaf-file-name="Report.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Report.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="2703">
               <caret line="159" column="11" lean-forward="false" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
 =======
@@ -471,6 +497,9 @@
         <entry file="file://$PROJECT_DIR$/src/components/Report.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="373">
+=======
+            <state relative-caret-position="4420">
+>>>>>>> prd
               <caret line="260" column="21" lean-forward="false" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
 >>>>>>> prd
               <folding />
@@ -1200,47 +1229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="dist" type="cbb8eebc:String" user="dist" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="components" type="cbb8eebc:String" user="components" />
-              <item name="global" type="cbb8eebc:String" user="global" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
-              <item name="src" type="cbb8eebc:String" user="src" />
-              <item name="router" type="cbb8eebc:String" user="router" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1294,8 +1282,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="Scratches" />
 =======
+=======
+>>>>>>> prd
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -1337,6 +1328,7 @@
         </subPane>
       </pane>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> prd
 =======
 =======
@@ -1344,6 +1336,9 @@
       <pane id="Scratches" />
 >>>>>>> prd
 =======
+>>>>>>> prd
+=======
+      <pane id="Scratches" />
 >>>>>>> prd
     </panes>
   </component>
@@ -1419,6 +1414,10 @@
 >>>>>>> prd
 =======
       <workItem from="1501032506679" duration="2682000" />
+<<<<<<< HEAD
+>>>>>>> prd
+=======
+      <workItem from="1501038138697" duration="1653000" />
 >>>>>>> prd
     </task>
     <task id="LOCAL-00001" summary="测试提交">
@@ -1453,6 +1452,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="66329000" />
 =======
     <option name="totallyTimeSpent" value="68979000" />
@@ -1474,6 +1474,9 @@
 >>>>>>> prd
 =======
     <option name="totallyTimeSpent" value="80663000" />
+>>>>>>> prd
+=======
+    <option name="totallyTimeSpent" value="82316000" />
 >>>>>>> prd
   </component>
   <component name="ToolWindowManager">
@@ -2050,7 +2053,7 @@
 =======
     <entry file="file://$PROJECT_DIR$/src/components/Report.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
+        <state relative-caret-position="4420">
           <caret line="260" column="21" lean-forward="false" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
           <folding />
         </state>
@@ -2059,8 +2062,8 @@
 >>>>>>> prd
     <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="195" column="0" lean-forward="true" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="200" column="96" lean-forward="false" selection-start-line="200" selection-start-column="96" selection-end-line="200" selection-end-column="96" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="e#2085#2091#0" expanded="true" />
@@ -2068,20 +2071,20 @@
             <element signature="e#2097#2103#0" expanded="true" />
             <element signature="e#2103#2109#0" expanded="true" />
             <element signature="e#2109#2115#0" expanded="true" />
-            <element signature="e#16650#16656#0" expanded="true" />
-            <element signature="e#16656#16662#0" expanded="true" />
-            <element signature="e#16933#16939#0" expanded="true" />
-            <element signature="e#16939#16945#0" expanded="true" />
-            <element signature="e#33478#34029#0" expanded="false" />
-            <element signature="e#34067#34575#0" expanded="false" />
-            <element signature="e#34609#35121#0" expanded="false" />
-            <element signature="e#35155#35877#0" expanded="false" />
-            <element signature="e#37082#37352#0" expanded="false" />
-            <element signature="e#38472#38522#0" expanded="false" />
-            <element signature="e#38640#39304#0" expanded="false" />
-            <element signature="e#39377#39563#0" expanded="false" />
-            <marker date="1501037813357" expanded="true" signature="45179:45252" ph="..." />
-            <marker date="1501037813357" expanded="true" signature="45266:45277" ph="..." />
+            <element signature="e#16553#16559#0" expanded="true" />
+            <element signature="e#16559#16565#0" expanded="true" />
+            <element signature="e#16836#16842#0" expanded="true" />
+            <element signature="e#16842#16848#0" expanded="true" />
+            <element signature="e#33381#33932#0" expanded="false" />
+            <element signature="e#33970#34478#0" expanded="false" />
+            <element signature="e#34512#35024#0" expanded="false" />
+            <element signature="e#35058#35780#0" expanded="false" />
+            <element signature="e#36985#37255#0" expanded="false" />
+            <element signature="e#38375#38425#0" expanded="false" />
+            <element signature="e#38543#39207#0" expanded="false" />
+            <element signature="e#39280#39466#0" expanded="false" />
+            <marker date="1501039600672" expanded="true" signature="45082:45155" ph="..." />
+            <marker date="1501039600672" expanded="true" signature="45169:45180" ph="..." />
           </folding>
 >>>>>>> prd
         </state>

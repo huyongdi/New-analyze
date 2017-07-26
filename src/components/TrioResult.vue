@@ -197,9 +197,8 @@
               <div class="row-div row">
                 <span class="row-name col-md-3">gatkFilter</span>
                 <div class="row-content col-md-9">
-                  <span class="condition" @click="conClick" data-name="gatk" data-value="pass">PASS</span>
-                  <span class="condition" @click="conClick" data-name="gatk" data-value="true">全部</span>
-                  <span class="condition" @click="conClick" data-name="gatk" data-value="false">其它</span>
+                  <span class="condition" @click="conClick" data-name="gatkpass" data-value="true">PASS</span>
+                  <span class="condition" @click="conClick" data-name="gatkpass" data-value="false">其它</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
                 </div>
               </div>

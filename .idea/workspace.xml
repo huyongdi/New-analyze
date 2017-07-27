@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.a184404b783c40cc5667cdcc454d7f67.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.a184404b783c40cc5667cdcc454d7f67.css.map" afterPath="" />
@@ -22,6 +23,11 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.55b04028960505b246e609c7a807290a.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.55b04028960505b246e609c7a807290a.css.map" afterPath="" />
+>>>>>>> prd
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/acmg_rank.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.32c69fe1eb9807bd910ca1e8cb53bbaa.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/css/app.32c69fe1eb9807bd910ca1e8cb53bbaa.css.map" afterPath="" />
 >>>>>>> prd
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/fonts/fontawesome-webfont.674f50d.eot" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/fonts/fontawesome-webfont.af7ae50.woff2" afterPath="" />
@@ -92,6 +98,25 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-task.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-title.c434c3e.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/home-title.png" afterPath="" />
+<<<<<<< HEAD
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-12.8091faf.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-12.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-13.52428cf.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-13.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-4.bff39ee.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-5.43a5af7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-5.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-6.c36ae20.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNew-7.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNwe-11.0fe3ec6.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/homeNwe-11.png" afterPath="" />
+>>>>>>> prd
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-blue.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-gray.png" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/hpo-white.png" afterPath="" />
@@ -150,6 +175,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/img/task-small.png" afterPath="" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.4c235c4e3fca7532cdc3.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.4c235c4e3fca7532cdc3.js.map" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.009298205dd90bd3d7b6.js" afterPath="" />
@@ -202,6 +228,17 @@
 >>>>>>> prd
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.37b4fc06fecde93f3308.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/app.37b4fc06fecde93f3308.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.cbbc32e21a0b94797d06.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/manifest.cbbc32e21a0b94797d06.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.076e81ec4e5478eaaa56.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/js/vendor.076e81ec4e5478eaaa56.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/print.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/static/数据模版.xlsx" afterPath="" />
+>>>>>>> prd
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Home.vue" afterPath="$PROJECT_DIR$/src/components/Home.vue" />
 >>>>>>> prd
     </list>
@@ -267,6 +304,7 @@
       <file leaf-file-name="Home.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Home.vue">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -448,6 +486,10 @@
 =======
             <state relative-caret-position="289">
               <caret line="178" column="4" lean-forward="false" selection-start-line="178" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
+=======
+            <state relative-caret-position="272">
+              <caret line="144" column="25" lean-forward="false" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
+>>>>>>> prd
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -1390,6 +1432,7 @@
     <panes>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1435,6 +1478,43 @@
               <item name="GrandBox-Analyze-HTML" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="router" type="462c0819:PsiDirectoryNode" />
+=======
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="dist" type="cbb8eebc:String" user="dist" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="components" type="cbb8eebc:String" user="components" />
+              <item name="global" type="cbb8eebc:String" user="global" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="GrandBox-Analyze-HTML" type="cbb8eebc:String" user="GrandBox-Analyze-HTML" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="router" type="cbb8eebc:String" user="router" />
+>>>>>>> prd
             </path>
           </expand>
           <select />
@@ -1444,6 +1524,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> prd
       <pane id="Scratches" />
 =======
 =======
@@ -1557,6 +1640,7 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -1600,6 +1684,8 @@
 <<<<<<< HEAD
 >>>>>>> prd
       <pane id="Scratches" />
+>>>>>>> prd
+=======
 >>>>>>> prd
 =======
 >>>>>>> prd
@@ -1700,6 +1786,10 @@
 >>>>>>> prd
 =======
       <workItem from="1501118651453" duration="15596000" />
+<<<<<<< HEAD
+>>>>>>> prd
+=======
+      <workItem from="1501147962143" duration="93000" />
 >>>>>>> prd
     </task>
     <task id="LOCAL-00001" summary="测试提交">
@@ -1727,6 +1817,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1772,18 +1863,20 @@
 =======
     <option name="totallyTimeSpent" value="102520000" />
 >>>>>>> prd
+=======
+    <option name="totallyTimeSpent" value="102613000" />
+>>>>>>> prd
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24265505" sideWeight="0.50421494" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24265505" sideWeight="0.50632244" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24265505" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24265505" sideWeight="0.49367756" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1793,6 +1886,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -2235,7 +2329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="21" lean-forward="false" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2243,7 +2336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="119" lean-forward="false" selection-start-line="0" selection-start-column="119" selection-end-line="0" selection-end-column="119" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2254,7 +2346,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4420">
           <caret line="260" column="21" lean-forward="false" selection-start-line="260" selection-start-column="21" selection-end-line="260" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2323,7 +2414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2331,7 +2421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2339,7 +2428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="123" column="22" lean-forward="false" selection-start-line="123" selection-start-column="17" selection-end-line="123" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2375,8 +2463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="178" column="4" lean-forward="false" selection-start-line="178" selection-start-column="4" selection-end-line="184" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="144" column="25" lean-forward="false" selection-start-line="144" selection-start-column="25" selection-end-line="144" selection-end-column="25" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />

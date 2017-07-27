@@ -56,79 +56,69 @@
           <div class="right">
             <img src="../../static/img/homeNew-5.png" alt="">
           </div>
-          <<<<<<< HEAD
-          <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a href="javascript:void(0)" class="homeContent-li">
-              <span class="middle-content-img middle-content-img-report"></span>
-              <h4><strong>报&nbsp;告</strong></h4>
-              <span class="middle-content-detail">查看检测分析报告，</span>
-              <span class="middle-content-detail">快速调取检测报告，一键导出。</span>
-            </a>
-            =======
-          </div>
+        </div>
 
-          <div class="content-common" id="common-1" @click="toPage(1)">
-            <div class="left">
-              <div class="first">
-                管理系统
-              </div>
-              <div class="two">
-                <div class="two-title">人员管理</div>
-                <img src="../../static/img/homeNew-4.png" alt="">
-                <div class="two-title">组织机构管理</div>
-                <img src="../../static/img/homeNew-4.png" alt="">
-                <div class="two-title">样本管理</div>
-              </div>
-              >>>>>>> prd
+        <div class="content-common" id="common-1" @click="toPage(1)">
+          <div class="left">
+            <div class="first">
+              管理系统
             </div>
-            <div class="right">
-              <img src="../../static/img/homeNew-5.png" alt="">
+            <div class="two">
+              <div class="two-title">人员管理</div>
+              <img src="../../static/img/homeNew-4.png" alt="">
+              <div class="two-title">组织机构管理</div>
+              <img src="../../static/img/homeNew-4.png" alt="">
+              <div class="two-title">样本管理</div>
             </div>
           </div>
+          <div class="right">
+            <img src="../../static/img/homeNew-5.png" alt="">
+          </div>
+        </div>
 
-          <div class="content-common" id="common-2" @click="toPage(2)">
-            <div class="left">
-              <div class="first">
-                分析平台
-              </div>
-              <div class="two">
-                <div class="two-title">数据分析</div>
-                <img src="../../static/img/homeNew-4.png" alt="">
-                <div class="two-title">检测平台</div>
-                <img src="../../static/img/homeNew-4.png" alt="">
-                <div class="two-title">分析任务</div>
-              </div>
+        <div class="content-common" id="common-2" @click="toPage(2)">
+          <div class="left">
+            <div class="first">
+              分析平台
             </div>
-            <div class="right">
-              <img src="../../static/img/homeNew-5.png" alt="">
+            <div class="two">
+              <div class="two-title">数据分析</div>
+              <img src="../../static/img/homeNew-4.png" alt="">
+              <div class="two-title">检测平台</div>
+              <img src="../../static/img/homeNew-4.png" alt="">
+              <div class="two-title">分析任务</div>
             </div>
           </div>
-          <div class="content-common" id="common-3" @click="toPage(3)">
-            <div class="left">
-              <div class="first">
-                医学大数据库
-              </div>
-              <div class="two">
-                <div class="two-title">基因数据</div>
-                <img src="../../static/img/homeNew-6.png" alt="">
-                <div class="two-title">产品数据</div>
-                <img src="../../static/img/homeNew-6.png" alt="">
-                <div class="two-title">表型、变异查找</div>
-              </div>
+          <div class="right">
+            <img src="../../static/img/homeNew-5.png" alt="">
+          </div>
+        </div>
+        <div class="content-common" id="common-3" @click="toPage(3)">
+          <div class="left">
+            <div class="first">
+              医学大数据库
+            </div>
+            <div class="two">
+              <div class="two-title">基因数据</div>
+              <img src="../../static/img/homeNew-6.png" alt="">
+              <div class="two-title">产品数据</div>
+              <img src="../../static/img/homeNew-6.png" alt="">
+              <div class="two-title">表型、变异查找</div>
             </div>
           </div>
         </div>
       </div>
-
-
-      <!--底部内容-->
-      <div class="footer">
-        <span class="content-1">版权所有：北京希望组生物科技有限公司</span>
-        <img class="content-2" src="../../static/img/home-footer-logo.png">
-        <span class="content-3">联系我们：网址：www.grandomics.com&nbsp;&nbsp;|&nbsp;&nbsp;电话：010-57746524&nbsp;&nbsp;|&nbsp;&nbsp;邮箱：support@grandomics.com</span>
-      </div>
-
     </div>
+
+
+    <!--底部内容-->
+    <div class="footer">
+      <span class="content-1">版权所有：北京希望组生物科技有限公司</span>
+      <img class="content-2" src="../../static/img/home-footer-logo.png">
+      <span class="content-3">联系我们：网址：www.grandomics.com&nbsp;&nbsp;|&nbsp;&nbsp;电话：010-57746524&nbsp;&nbsp;|&nbsp;&nbsp;邮箱：support@grandomics.com</span>
+    </div>
+
+  </div>
   </div>
 </template>
 
@@ -147,12 +137,13 @@
       alertReport: function () {
         alert('请在样本分析结果中查看报告')
       },
+
       toPage: function (type) {
         if (type == 1) {
           window.location.href = this.manHtml + 'sample/patient'
         } else if (type == 2) {
           window.location.href = this.anaHtml + '#/dataList'
-        } else if (type == 4) {
+        } else if (type == 3) {
           window.location.href = this.dbHtml + '#/gene'
         }
       },
@@ -275,9 +266,13 @@
     .content-common {
       cursor: pointer;
       width: 370px;
+      &:hover{
+        height: 519px;
+      }
       .left {
         &:hover {
           border-top: 3px solid #fff;
+          height: 519px;
         }
         width: 280px;
         .first {

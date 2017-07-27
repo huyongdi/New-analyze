@@ -142,7 +142,7 @@
           window.location.href=this.manHtml+'sample/patient'
         }else if(type == 2){
           window.location.href=this.anaHtml+'#/dataList'
-        }else if(type ==4){
+        }else if(type ==3){
           window.location.href=this.dbHtml+'#/gene'
         }
       },

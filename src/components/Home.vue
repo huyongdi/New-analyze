@@ -265,9 +265,13 @@
     .content-common {
       cursor: pointer;
       width: 370px;
+      &:hover{
+        height: 519px;
+      }
       .left {
         &:hover{
           border-top: 3px solid #fff;
+          height: 519px;
         }
         width: 280px;
         .first {

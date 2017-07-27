@@ -27,7 +27,7 @@
             <!--</a>-->
           </div>
           <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a href="javascript:void(0)" class="homeContent-li">
+            <a href="javascript:void(0)" class="homeContent-li" @click="alertReport">
               <span class="middle-content-img middle-content-img-report"></span>
               <h4><strong>报&nbsp;告</strong></h4>
               <span class="middle-content-detail">查看检测分析报告，</span>
@@ -87,6 +87,9 @@
     methods:{
       alert:function () {
         alert('请查看左侧导航')
+      },
+      alertReport:function () {
+        alert('请在样本分析结果中查看报告')
       }
     }
   }

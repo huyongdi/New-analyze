@@ -104,9 +104,12 @@
                      :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
                 </router-link>
-                <i v-if="listJob.status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
-                <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger">出错</i>
-                <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success" title="等待"></i>
+                <!--运行中要特殊对待-->
+                <span  v-if="listJob.status == 'running'">
+                <i class="fa fa-spinner fa-pulse text-success"></i>运行中
+                </span>
+                <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger text-success">出错</i>
+                <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success" title="等待">等待</i>
               </div>
 
             </div>
@@ -223,7 +226,8 @@
                   <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
                 </div>
                 <div class="col-md-10 relative">
-                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData" title="已选panel"
+                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData"
+                              title="已选panel"
                               @sendInput="receiveFuzzy"></fuzzyQuery>
                 </div>
               </div>
@@ -384,6 +388,7 @@
   import search from './global/search'
   import pagenation from './global/pagenation'
   import fuzzyQuery from './global/fuzzyQuery.vue'
+
   export default {
     components: {
       'location': topLocation,
@@ -415,7 +420,7 @@
         //模糊搜索
         subPanelList: [],
         //捕获区域（检测平台列表）
-        capList:[]
+        capList: []
       }
     },
     created: function () {
@@ -426,7 +431,7 @@
       $('[data-toggle="tooltip"]').tooltip();
     },
     methods: {
-      getCapture:function () {
+      getCapture: function () {
         const _vue = this;
         this.$axios({
           url: 'sample/capture/',
@@ -506,7 +511,7 @@
         this.$axios({
           url: 'sample/genelist/' + val.code + '/'
         }).then(function (resp) {
-          _vue.originalPanelData=[];
+          _vue.originalPanelData = [];
           $.each(resp.data.panelCode, function (i, data) {
             _vue.originalPanelData.push({
               key: data,
@@ -703,7 +708,7 @@
         this.$axios({
           url: _vue.dbUrl + 'product/subpanel/?query=' + data
         }).then(function (resp) {
-            _vue.panelData = [];
+          _vue.panelData = [];
           $.each(resp.data.results, function (n, data) {
             _vue.panelData.push({
               key: data.code,
@@ -774,7 +779,7 @@
 <style scoped lang="less">
 
   #modal-panel {
-    .row{
+    .row {
       height: auto;
       border-bottom: none;
     }

@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row">
           <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a :href="manHtml" class="homeContent-li">
+            <a :href="manHtml+'sample/patient'" class="homeContent-li">
               <span class="middle-content-img middle-content-img-manage"></span>
               <h4><strong>管理系统</strong></h4>
               <span class="middle-content-detail">提供方便且高效的数据管理方法，个性化的实时样本管理，</span>
@@ -15,49 +15,49 @@
               <span class="middle-content-detail">根据最新信息制定决策</span>
             </a>
           </div>
-          <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <!--<a href="#" class="homeContent-li">-->
-            <router-link class="homeContent-li" :to="{path:'/dataList'}">
-              <span class="middle-content-img middle-content-img-data"></span>
-              <h4><strong>数&nbsp;据</strong></h4>
-              <span class="middle-content-detail">上传和管理临床、样本、数据信息，</span>
-              <span class="middle-content-detail">能够可靠管理数据、资源和工作流程，</span>
-              <span class="middle-content-detail">极大减少工作成本。</span>
-            </router-link>
+          <!--<div class=" col-xs-4 col-sm-4 col-md-4 ps">-->
+            <!--&lt;!&ndash;<a href="#" class="homeContent-li">&ndash;&gt;-->
+            <!--<router-link class="homeContent-li" :to="{path:'/dataList'}">-->
+              <!--<span class="middle-content-img middle-content-img-data"></span>-->
+              <!--<h4><strong>数&nbsp;据</strong></h4>-->
+              <!--<span class="middle-content-detail">上传和管理临床、样本、数据信息，</span>-->
+              <!--<span class="middle-content-detail">能够可靠管理数据、资源和工作流程，</span>-->
+              <!--<span class="middle-content-detail">极大减少工作成本。</span>-->
+            <!--</router-link>-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--</div>-->
+          <!--<div class=" col-xs-4 col-sm-4 col-md-4 ps">-->
+            <!--<a href="javascript:void(0)" class="homeContent-li" @click="alertReport">-->
+              <!--<span class="middle-content-img middle-content-img-report"></span>-->
+              <!--<h4><strong>报&nbsp;告</strong></h4>-->
+              <!--<span class="middle-content-detail">查看检测分析报告，</span>-->
+              <!--<span class="middle-content-detail">快速调取检测报告，一键导出。</span>-->
             <!--</a>-->
-          </div>
-          <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a href="javascript:void(0)" class="homeContent-li" @click="alertReport">
-              <span class="middle-content-img middle-content-img-report"></span>
-              <h4><strong>报&nbsp;告</strong></h4>
-              <span class="middle-content-detail">查看检测分析报告，</span>
-              <span class="middle-content-detail">快速调取检测报告，一键导出。</span>
-            </a>
-          </div>
+          <!--</div>-->
 
           <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a href="javascript:void(0)" class="homeContent-li" @click="alert">
+            <a :href="anaHtml+'#/dataList'" class="homeContent-li">
               <span class="middle-content-img middle-content-img-analyze"></span>
-              <h4><strong>分&nbsp;析</strong></h4>
+              <h4><strong>分析系统</strong></h4>
               <span class="middle-content-detail">可视化分析测序数据，</span>
               <span class="middle-content-detail">同步分析流程，监控分析数据，提高检测验证、</span>
               <span class="middle-content-detail">样本生物分析和结果报告的效率。</span>
             </a>
           </div>
+          <!--<div class=" col-xs-4 col-sm-4 col-md-4 ps">-->
+            <!--&lt;!&ndash;<a href="#" class="homeContent-li">&ndash;&gt;-->
+            <!--<router-link class="homeContent-li" :to="{path:'/task'}">-->
+              <!--<span class="middle-content-img middle-content-img-task"></span>-->
+              <!--<h4><strong>任&nbsp;务</strong></h4>-->
+              <!--<span class="middle-content-detail">管理和监控分析任务，实时准确的跟踪分析结果，</span>-->
+              <!--<span class="middle-content-detail">有效地提高工作效率，实现精细化管理。</span>-->
+            <!--</router-link>-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+          <!--</div>-->
           <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <!--<a href="#" class="homeContent-li">-->
-            <router-link class="homeContent-li" :to="{path:'/task'}">
-              <span class="middle-content-img middle-content-img-task"></span>
-              <h4><strong>任&nbsp;务</strong></h4>
-              <span class="middle-content-detail">管理和监控分析任务，实时准确的跟踪分析结果，</span>
-              <span class="middle-content-detail">有效地提高工作效率，实现精细化管理。</span>
-            </router-link>
-            <!--</a>-->
-          </div>
-          <div class=" col-xs-4 col-sm-4 col-md-4 ps">
-            <a href="javascript:void(0)" class="homeContent-li" @click="alert">
+            <a :href="dbHtml+'#/gene'" class="homeContent-li">
               <span class="middle-content-img middle-content-img-database"></span>
-              <h4><strong>数&nbsp;据&nbsp;库</strong></h4>
+              <h4><strong>医学大数据库</strong></h4>
               <span class="middle-content-detail">管理和监控分析任务，实时准确的跟踪分析结果，</span>
               <span class="middle-content-detail">有效地提高工作效率，实现精细化管理。</span>
             </a>

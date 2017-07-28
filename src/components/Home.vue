@@ -3,6 +3,7 @@
     <div class="base-section">
       <span class="base-section-title">构建安全、稳定的基因大数据分析管理系统</span>
     </div>
+<<<<<<< HEAD
     <div class="middle-content">
       <div id="home-new">
         <div id="left-content-1" class="content-1">
@@ -74,40 +75,137 @@
           <div class="right">
             <img src="../../static/img/homeNew-5.png" alt="">
           </div>
-        </div>
+=======
+    <div class="middle-content" id="middle-content">
+      <!--   <div id="home-new">
 
-        <div class="content-common" id="common-2" @click="toPage(2)">
-          <div class="left">
-            <div class="first">
-              分析平台
-            </div>
-            <div class="two">
-              <div class="two-title">数据分析</div>
-              <img src="../../static/img/homeNew-6.png" alt="">
-              <div class="two-title">检测平台</div>
-              <img src="../../static/img/homeNew-6.png" alt="">
-              <div class="two-title">分析任务</div>
-            </div>
-          </div>
-          <div class="right">
-            <img src="../../static/img/homeNew-5.png" alt="">
-          </div>
+           <div id="left-content-1" class="content-1">
+             <div class="left">
+               <div class="first">
+                 <div class="title">Grandbox平台</div>
+                 <div class="f12">是医学数据分析的操作系统，构建核心应用，整合精准内容，形成医学大数据。提供数据一体化、云端一体化、云服务一体化的数据分析管理产品。</div>
+               </div>
+               <div class="two">
+                 <div class="two-single">
+                   <div class="two-left">
+                     <img src="../../static/img/homeNwe-11.png" alt="">
+                   </div>
+                   <div class="two-right">
+                     <div class="two-right-title">
+                       管理系统
+                     </div>
+                     <div class="two-right-content f12">
+                       可视化分析测序数据，同步分析流程，监控分析数据，提高检测验证、样本生物分析和结果报告的效率。
+                     </div>
+                   </div>
+                 </div>
+                 <div class="two-single two-single-two">
+                   <div class="two-left">
+                     <img src="../../static/img/homeNew-12.png" alt="">
+                   </div>
+                   <div class="two-right">
+                     <div class="two-right-title">
+                       分析平台
+                     </div>
+                     <div class="two-right-content f12">
+                       提供方便且高效的数据管理方法，个性化的实时样本管理，简化日常工作流程，更加有效的管理和捕获数据并进行沟通。根据最新信息制定决策。
+                     </div>
+                   </div>
+                 </div>
+                 <div class="two-single two-single-three">
+                   <div class="two-left">
+                     <img src="../../static/img/homeNew-13.png" alt="">
+                   </div>
+                   <div class="two-right">
+                     <div class="two-right-title">
+                       医学大数据库
+                     </div>
+                     <div class="two-right-content f12">
+                       构建私有医学数据库，可以对不同数据源进行转化与合并，帮助将海量的企业数据转化为及时、有效的业务决策
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="right">
+               <img src="../../static/img/homeNew-5.png" alt="">
+             </div>
+           </div>
+
+           <div class="content-common" id="common-1" @click="toPage(1)">
+             <div class="left">
+               <div class="first">
+                管理系统
+               </div>
+               <div class="two">
+                 <div class="two-title">人员管理</div>
+                 <img src="../../static/img/homeNew-4.png" alt="">
+                 <div class="two-title">组织机构管理</div>
+                 <img src="../../static/img/homeNew-4.png" alt="">
+                 <div class="two-title">样本管理</div>
+               </div>
+             </div>
+             <div class="right">
+               <img src="../../static/img/homeNew-5.png" alt="">
+             </div>
+           </div>
+
+           <div class="content-common" id="common-2" @click="toPage(2)">
+             <div class="left">
+               <div class="first">
+                 分析平台
+               </div>
+               <div class="two">
+                 <div class="two-title">数据分析</div>
+                 <img src="../../static/img/homeNew-6.png" alt="">
+                 <div class="two-title">检测平台</div>
+                 <img src="../../static/img/homeNew-6.png" alt="">
+                 <div class="two-title">分析任务</div>
+               </div>
+             </div>
+             <div class="right">
+               <img src="../../static/img/homeNew-5.png" alt="">
+             </div>
+           </div>
+           <div class="content-common" id="common-3" @click="toPage(3)">
+             <div class="left">
+               <div class="first">
+                 医学大数据库
+               </div>
+               <div class="two">
+                 <div class="two-title">基因数据</div>
+                 <img src="../../static/img/homeNew-7.png" alt="">
+                 <div class="two-title">产品数据</div>
+                 <img src="../../static/img/homeNew-7.png" alt="">
+                 <div class="two-title">表型、变异查找</div>
+               </div>
+             </div>
+           </div>
+         </div>-->
+
+      <div class="title">
+        <div class="title-one">Grandbox 平台</div>
+        <div class="title-two">是医学数据分析的操作系统，构建核心应用，整合精准内容，形成医学大数据。提供数据一体化、云端一体化、云服务一体化的数据分析管理产品。</div>
+      </div>
+
+      <div class="content">
+        <div class="content-1" @click="toPage(1)">
+          <img src="../../static/img/home-32.jpg" alt="">
+          <span class="content-title">管理系统</span>
+          <span class="content-content">提供方便且高效的数据管理方法，个性化的实时样本管理，简化日常工作流程，更加有效的管理和捕获数据并改进沟通。根据最新信息制定决策。</span>
         </div>
-        <div class="content-common" id="common-3" @click="toPage(3)">
-          <div class="left">
-            <div class="first">
-              医学大数据库
-            </div>
-            <div class="two">
-              <div class="two-title">基因数据</div>
-              <img src="../../static/img/homeNew-7.png" alt="">
-              <div class="two-title">产品数据</div>
-              <img src="../../static/img/homeNew-7.png" alt="">
-              <div class="two-title">表型、变异查找</div>
-            </div>
-          </div>
+        <div class="content-1" @click="toPage(2)">
+          <img src="../../static/img/home-33.jpg" alt="">
+          <span class="content-title">分析平台</span>
+          <span class="content-content">可视化分析测序数据，同步分析流程，监控分析数据，提高检测验证、样本生物分析和结果报告的效率。</span>
+        </div>
+        <div class="content-1" @click="toPage(3)">
+          <img src="../../static/img/home-31.png" alt="">
+          <span class="content-title">医学大数据库</span>
+          <span class="content-content">提供方便且高效的数据管理方法，个性化的实时样本管理，简化日常工作流程，更加有效的管理和捕获数据并改进沟通。根据最新信息制定决策。</span>
         </div>
       </div>
+
     </div>
 
 
@@ -137,7 +235,6 @@
       alertReport: function () {
         alert('请在样本分析结果中查看报告')
       },
-
       toPage: function (type) {
         if (type == 1) {
           window.location.href = this.manHtml + 'sample/patient'
@@ -188,6 +285,59 @@
 </script>
 
 <style scoped lang="less">
+
+  .middle-content#middle-content {
+    .title {
+      width: 42vw;
+      margin: 60px auto 80px;
+      .title-one {
+        font-size: 24px;
+        color: rgb(42, 127, 210);
+        text-align: center;
+      }
+      .title-two {
+        margin-top: 10px;
+        font-size: 12px;
+        color: rgb(137, 137, 137);
+      }
+    }
+    .content {
+      width: 68vw;
+      margin: 0 auto;
+      .content-1:not(:last-child){
+        margin-right: 7.6vw;
+      }
+      .content-1 {
+        &:hover{
+          border: 1px dashed #2c7fd2;
+        }
+        cursor: pointer;
+        vertical-align: top;
+        display: inline-block;
+        width: 17vw;
+        position: relative;
+        border: 1px dashed rgb(181, 182, 182);
+        text-align: center;
+        padding: 0 30px;
+        img {
+          margin-top: 40px;
+        }
+        .content-title {
+          display: block;
+          font-size: 16px;
+          color: rgb(67, 67, 67);
+          margin: 20px 0;
+        }
+        .content-content {
+          display: block;
+          text-align: left;
+          font-size: 12px;
+          color: rgb(125, 125, 125);
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
 
   /*中间样式20170727*/
   #home-new {
@@ -266,7 +416,7 @@
     .content-common {
       cursor: pointer;
       width: 370px;
-      &:hover{
+      &:hover {
         height: 519px;
       }
       .left {

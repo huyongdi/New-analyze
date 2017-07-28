@@ -105,8 +105,8 @@
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
                 </router-link>
                 <!--运行中要特殊对待-->
-                <span  v-if="listJob.status == 'running'">
-                <i class="fa fa-spinner fa-pulse text-success"></i>运行中
+                <span  v-if="listJob.status == 'running'" class="text-success">
+                <i class="fa fa-spinner fa-pulse "></i>运行中
                 </span>
                 <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger text-success">出错</i>
                 <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success" title="等待">等待</i>

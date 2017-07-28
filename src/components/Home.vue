@@ -84,9 +84,9 @@
             </div>
             <div class="two">
               <div class="two-title">数据分析</div>
-              <img src="../../static/img/homeNew-4.png" alt="">
+              <img src="../../static/img/homeNew-6.png" alt="">
               <div class="two-title">检测平台</div>
-              <img src="../../static/img/homeNew-4.png" alt="">
+              <img src="../../static/img/homeNew-6.png" alt="">
               <div class="two-title">分析任务</div>
             </div>
           </div>
@@ -101,9 +101,9 @@
             </div>
             <div class="two">
               <div class="two-title">基因数据</div>
-              <img src="../../static/img/homeNew-6.png" alt="">
+              <img src="../../static/img/homeNew-7.png" alt="">
               <div class="two-title">产品数据</div>
-              <img src="../../static/img/homeNew-6.png" alt="">
+              <img src="../../static/img/homeNew-7.png" alt="">
               <div class="two-title">表型、变异查找</div>
             </div>
           </div>

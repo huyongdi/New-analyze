@@ -13,11 +13,11 @@
           删除数据
 
         </button>
-        <button type="button" class="btn my-btn" @click="addDataFun">
-          <i class="fa fa-plus-square-o"></i>
-          添加数据
+        <!--<button type="button" class="btn my-btn" @click="addDataFun">-->
+          <!--<i class="fa fa-plus-square-o"></i>-->
+          <!--添加数据-->
 
-        </button>
+        <!--</button>-->
         <button type="button" class="btn my-btn" @click="addExcelFun">
           <i class="fa fa-file-excel-o"></i>
           提交Excel文件
@@ -36,7 +36,7 @@
           <th>数据量(Mbp)</th>
           <th>Q30%</th>
           <th>备注</th>
-          <th>下载</th>
+          <!--<th>下载</th>-->
           <th>分析结果</th>
           <th>操作</th>
         </tr>
@@ -58,18 +58,18 @@
             <span v-else="">{{val.q30}}</span>
           </td>
           <td>{{val.comment ? val.comment : ' - '}}</td>
-          <td>
-            <div class="dropdown" @mouseenter="showFile" @mouseleave="hideFile">
-              <span class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="true">文件
-                <span class="caret"></span>
-              </span>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a :href="val.file1" v-if="val.file1">文件1</a></li>
-                <li><a :href="val.file2" v-if="val.file2">文件2</a></li>
-              </ul>
-            </div>
-          </td>
+          <!--<td>-->
+            <!--<div class="dropdown" @mouseenter="showFile" @mouseleave="hideFile">-->
+              <!--<span class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"-->
+                    <!--aria-expanded="true">文件-->
+                <!--<span class="caret"></span>-->
+              <!--</span>-->
+              <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
+                <!--<li><a :href="val.file1" v-if="val.file1">文件1</a></li>-->
+                <!--<li><a :href="val.file2" v-if="val.file2">文件2</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</td>-->
           <td>
             <span v-if="val.jobs && val.jobs.length==0">待分析</span>
             <div v-else="" class="dropdown" @mouseenter="showResult" @mouseleave="hideResult">
@@ -105,8 +105,8 @@
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
                 </router-link>
                 <!--运行中要特殊对待-->
-                <span  v-if="listJob.status == 'running'">
-                <i class="fa fa-spinner fa-pulse text-success"></i>运行中
+                <span  v-if="listJob.status == 'running'" class="text-success">
+                <i class="fa fa-spinner fa-pulse "></i>运行中
                 </span>
                 <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger text-success">出错</i>
                 <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success" title="等待">等待</i>

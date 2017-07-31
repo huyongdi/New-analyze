@@ -147,7 +147,7 @@
               <div class="row">
                 <div class="col-md-3">Capture</div>
                 <div class="col-md-9 relative">
-                  <select class="form-control" id="edit-capture" :value="editModalData.capture">
+                  <select class="form-control" id="edit-capture" :value="editModalData.capture" disabled="disabled">
                     <option value="">请选择</option>
 
                     <option :value="list.name" v-for="list in capList">{{list.name}}</option>
@@ -160,46 +160,46 @@
               <div class="row">
                 <div class="col-md-3">样本编号</div>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="edit-sampleCode" :value="editModalData.sampleCode">
+                  <input type="text" class="form-control" id="edit-sampleCode" :value="editModalData.sampleCode" disabled="disabled">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3">受检者姓名</div>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="edit-patientName" :value="editModalData.patientName">
+                  <input type="text" class="form-control" id="edit-patientName" :value="editModalData.patientName" disabled="disabled">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3">受检者性别</div>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="edit-gender" :value="editModalData.gender">
+                  <input type="text" class="form-control" id="edit-gender" :value="editModalData.gender" disabled="disabled">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3">数据格式</div>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" id="edit-dateFormat" :value="editModalData.dataFormat">
+                  <input type="text" class="form-control" id="edit-dateFormat" :value="editModalData.dataFormat" disabled="disabled">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3">数据量</div>
                 <div class="col-md-9">
                   <input type="text" class="form-control" id="edit-volume"
-                         :value="editModalData.volume == -1?' - ':editModalData.volume">
+                         :value="editModalData.volume == -1?' - ':editModalData.volume" disabled="disabled">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3">Q30</div>
                 <div class="col-md-9">
                   <input type="text" class="form-control" id="edit-q30"
-                         :value="editModalData.q30 == -1?' - ' :editModalData.q30">
+                         :value="editModalData.q30 == -1?' - ' :editModalData.q30" disabled="disabled">
                 </div>
               </div>
               <div class="row noneBottom">
                 <div class="col-md-3">备注</div>
                 <div class="col-md-9">
                   <textarea type="text" class="form-control" id="edit-comment"
-                            :value="editModalData.comment"></textarea>
+                            :value="editModalData.comment" disabled="disabled"></textarea>
                 </div>
               </div>
             </div>

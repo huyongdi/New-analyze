@@ -388,9 +388,11 @@
                     <div class="col-md-11">
                       ACMG：
                       <span v-if="CNVmoduleData.intervars">{{CNVmoduleData.intervars.intervar}}(
-                         <router-link target="_blank"
+
+                         <router-link target="_blank" v-if="CNVmoduleData.intervars.rank"
                                       :to="{path:'/getIntervar',query:{query:CNVmoduleData.intervars.rank.join(',')}}">
                           {{CNVmoduleData.intervars.rank.join(',')}}</router-link>
+                        <span v-else=""> . </span>
                         )</span>
                     </div>
                   </div>

@@ -3,79 +3,6 @@
     <div class="base-section">
       <span class="base-section-title">构建安全、稳定的基因大数据分析管理系统</span>
     </div>
-<<<<<<< HEAD
-    <div class="middle-content">
-      <div id="home-new">
-        <div id="left-content-1" class="content-1">
-          <div class="left">
-            <div class="first">
-              <div class="title">Grandbox平台</div>
-              <div class="f12">是医学数据分析的操作系统，构建核心应用，整合精准内容，形成医学大数据。提供数据一体化、云端一体化、云服务一体化的数据分析管理产品。</div>
-            </div>
-            <div class="two">
-              <div class="two-single">
-                <div class="two-left">
-                  <img src="../../static/img/homeNwe-11.png" alt="">
-                </div>
-                <div class="two-right">
-                  <div class="two-right-title">
-                    管理系统
-                  </div>
-                  <div class="two-right-content f12">
-                    可视化分析测序数据，同步分析流程，监控分析数据，提高检测验证、样本生物分析和结果报告的效率。
-                  </div>
-                </div>
-              </div>
-              <div class="two-single two-single-two">
-                <div class="two-left">
-                  <img src="../../static/img/homeNew-12.png" alt="">
-                </div>
-                <div class="two-right">
-                  <div class="two-right-title">
-                    分析平台
-                  </div>
-                  <div class="two-right-content f12">
-                    提供方便且高效的数据管理方法，个性化的实时样本管理，简化日常工作流程，更加有效的管理和捕获数据并进行沟通。根据最新信息制定决策。
-                  </div>
-                </div>
-              </div>
-              <div class="two-single two-single-three">
-                <div class="two-left">
-                  <img src="../../static/img/homeNew-13.png" alt="">
-                </div>
-                <div class="two-right">
-                  <div class="two-right-title">
-                    医学大数据库
-                  </div>
-                  <div class="two-right-content f12">
-                    构建私有医学数据库，可以对不同数据源进行转化与合并，帮助将海量的企业数据转化为及时、有效的业务决策
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="right">
-            <img src="../../static/img/homeNew-5.png" alt="">
-          </div>
-        </div>
-
-        <div class="content-common" id="common-1" @click="toPage(1)">
-          <div class="left">
-            <div class="first">
-              管理系统
-            </div>
-            <div class="two">
-              <div class="two-title">人员管理</div>
-              <img src="../../static/img/homeNew-4.png" alt="">
-              <div class="two-title">组织机构管理</div>
-              <img src="../../static/img/homeNew-4.png" alt="">
-              <div class="two-title">样本管理</div>
-            </div>
-          </div>
-          <div class="right">
-            <img src="../../static/img/homeNew-5.png" alt="">
-          </div>
-=======
     <div class="middle-content" id="middle-content">
       <!--   <div id="home-new">
 
@@ -216,7 +143,6 @@
       <span class="content-3">联系我们：网址：www.grandomics.com&nbsp;&nbsp;|&nbsp;&nbsp;电话：010-57746524&nbsp;&nbsp;|&nbsp;&nbsp;邮箱：support@grandomics.com</span>
     </div>
 
-  </div>
   </div>
 </template>
 

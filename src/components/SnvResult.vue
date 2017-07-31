@@ -414,9 +414,10 @@
                     <div class="col-md-11">
                       ACMG：
                       <span v-if="moduleData.intervars">{{moduleData.intervars.intervar}}(
-                         <router-link target="_blank"
+                         <router-link target="_blank" v-if="moduleData.intervars.rank"
                                       :to="{path:'/getIntervar',query:{query:moduleData.intervars.rank.join(',')}}">
                           {{moduleData.intervars.rank.join(',')}}</router-link>
+                        <span v-else=""> . </span>
                         )</span>
                     </div>
                   </div>

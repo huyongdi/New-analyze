@@ -58,18 +58,18 @@
             <span v-else="">{{val.q30}}</span>
           </td>
           <td>{{val.comment ? val.comment : ' - '}}</td>
-          <!--<td>-->
-            <!--<div class="dropdown" @mouseenter="showFile" @mouseleave="hideFile">-->
-              <!--<span class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"-->
-                    <!--aria-expanded="true">文件-->
-                <!--<span class="caret"></span>-->
-              <!--</span>-->
-              <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">-->
-                <!--<li><a :href="val.file1" v-if="val.file1">文件1</a></li>-->
-                <!--<li><a :href="val.file2" v-if="val.file2">文件2</a></li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</td>-->
+      <!--    <td>
+            <div class="dropdown" @mouseenter="showFile" @mouseleave="hideFile">
+              <span class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="true">文件
+                <span class="caret"></span>
+              </span>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><a :href="val.file1" v-if="val.file1">文件1</a></li>
+                <li><a :href="val.file2" v-if="val.file2">文件2</a></li>
+              </ul>
+            </div>
+          </td>-->
           <td>
             <span v-if="val.jobs && val.jobs.length==0">待分析</span>
             <div v-else="" class="dropdown" @mouseenter="showResult" @mouseleave="hideResult">
@@ -461,8 +461,8 @@
             data.jobs = []
           });
           $.each(resp.data.results, function (k4, k5) {
-            k5.file1 = 'https://analyze.grandbox.site/media/' + k5.file1;
-            k5.file2 = 'https://analyze.grandbox.site/media/' + k5.file2;
+            k5.file1 = 'http://test.analyze.grandbox.site:8081/media/' + k5.file1;
+            k5.file2 = 'http://test.analyze.grandbox.site:8081/media/' + k5.file2;
           });
           _vue.lists = resp.data.results;
           _vue.listsTemp = resp.data.results;

@@ -26,7 +26,8 @@
                   <a :href="dbHtml+'#/panel'" class="toPanel" target="_blank" title="点击跳转到基因页面">Panel信息</a>
                 </div>
                 <div class="col-md-10 relative">
-                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData" title="已选panel"
+                  <fuzzyQuery placeholder='请输入panel名' :leftData="panelData" :rightData="originalPanelData"
+                              title="已选panel"
                               @sendInput="receiveFuzzy"></fuzzyQuery>
                 </div>
                 <!--<input @keyup="showSubpanel" @blur="hideSubpanel" type="text" v-model="geneInput" class="form-control"-->
@@ -364,7 +365,8 @@
                      title="查看详情" @click="showDetail"></i> <!--第二级绿色-->
                   <i v-else :data-id='data.id' class="fa fa-font-awesome po text-3" title="查看详情"
                      @click="showDetail"></i><!--第三级-->
-                  <a class="po" v-if="data.localsnv" @click="showLocus0(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
+                  <a class="po" v-if="data.localsnv"
+                     @click="showLocus0(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
                     {{data.localsnv.name}}
                   </a>
                 </td>
@@ -552,9 +554,10 @@
                     <div class="col-md-11">
                       ACMG：
                       <span v-if="moduleData.intervars">{{moduleData.intervars.intervar}}(
-                         <router-link target="_blank"
+                         <router-link target="_blank" v-if="moduleData.intervars.rank"
                                       :to="{path:'/getIntervar',query:{query:moduleData.intervars.rank.join(',')}}">
                           {{moduleData.intervars.rank.join(',')}}</router-link>
+                        <span v-else=""> . </span>
                         )</span>
                     </div>
                   </div>
@@ -571,7 +574,8 @@
                         <span v-if="moduleData.geneResp" v-for="list in moduleData.geneResp">
                             <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">
                             </span>
-                          <span v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript?list.geneData.tags.transcript:'无'}}</span>
+                          <span
+                            v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript ? list.geneData.tags.transcript : '无'}}</span>
                         </span>
                         )
                       </div>
@@ -727,7 +731,8 @@
                      title="查看详情" @click="showDetailCNV"></i> <!--第二级-->
                   <i v-else :data-id='data.id' class="fa fa-font-awesome po text-3" title="查看详情"
                      @click="showDetailCNV"></i><!--第三级-->
-                  <a class="po" v-if="data.localcnv" @click="showLocus0(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">
+                  <a class="po" v-if="data.localcnv"
+                     @click="showLocus0(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">
                     {{data.localcnv.name}}
                   </a>
                 </td>
@@ -870,7 +875,8 @@
                         <span v-if="CNVmoduleData.geneResp" v-for="list in CNVmoduleData.geneResp">
                             <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">
                             </span>
-                          <span v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript?list.geneData.tags.transcript:'无'}}</span>
+                          <span
+                            v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript ? list.geneData.tags.transcript : '无'}}</span>
                         </span>
                         )
                       </div>
@@ -1047,8 +1053,8 @@
     },
     data: function () {
       return {
-        snv:'',
-        type:0,
+        snv: '',
+        type: 0,
         panelData: [],
         originalPanelData: [],
         loading: '',
@@ -1159,7 +1165,7 @@
       this.QC(); //获取质控详情数据
     },
     methods: {
-      showLocus0:function (snv,type) {
+      showLocus0: function (snv, type) {
         this.snv = snv;
         this.type = type;
         $("#locusM").modal('show')
@@ -1307,9 +1313,12 @@
               value.geneResp = [];
             });
 
+
+            console.log(_vue.dbUrl + 'knowledge/gene/dictbygeneids/')
+
             _vue.CNVAllData = resp.data.results;
             _vue.$axios({
-              url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
+              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
               method: 'post',
               data: {
                 geneids: genePostData
@@ -1433,7 +1442,7 @@
             $("#id_alert").removeClass('hide');
             _vue.notfound = resp.notfound;
           }
-            _vue.allData = resp.found;
+          _vue.allData = resp.found;
         });
       },
       conClick: function (event) {
@@ -1541,9 +1550,10 @@
               });
               value.geneResp = [];
             });
+            console.log(_vue.dbUrl + 'knowledge/gene/dictbygeneids/')
             _vue.detailAllData = resp.data.results;
             _vue.$axios({
-              url: _vue.dbUrl+'knowledge/gene/dictbygeneids/',
+              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
 
               method: 'post',
               data: {
@@ -1802,7 +1812,6 @@
         $('#right-ul').find('li').each(function () {
           panelArr.push($(this).data('key'))
         });
-
 
 
         this.$axios({

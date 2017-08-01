@@ -27,7 +27,7 @@
               </div>
             </div>
           </div>
-          <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="" >搜索</span>
+          <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="">搜索</span>
         </div>
       </div>
       <table id="sg-table" class="bc-fff my-table">
@@ -105,9 +105,13 @@
                      :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
                 </router-link>
+                <span v-if="listJob.status == 'running'">
+                  <i class="fa fa-spinner fa-pulse text-success"></i>运行中
+                </span>
+                <i v-if="listJob.status == 'error'" class="fa fa-bug text-danger">出错</i>
+                <i v-if='listJob.status == "waiting"' class="fa fa-hourglass-1 text-success">等待</i>
               </div>
-              <i v-if="list.jobs[0].status == 'running'" class="fa fa-spinner fa-pulse text-success">运行中</i>
-              <i v-if="list.jobs[0].status == 'error'" class="fa fa-bug text-danger">出错</i>
+
             </div>
           </td>
           <td>

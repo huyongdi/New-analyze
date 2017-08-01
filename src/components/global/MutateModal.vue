@@ -108,10 +108,13 @@
 
             <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
               ACMG：<span v-if="moduleData.intervars">{{moduleData.intervars.intervar}}
-              (<router-link class="common-a" target="_blank"
+              (
+              <router-link class="common-a" target="_blank" v-if="moduleData.intervars.rank"
                             :to="{path:'/taskM/foo/getIntervar',query:{query:moduleData.intervars.rank.join(',')}}">
                 {{moduleData.intervars.rank.join(',')}}
-              </router-link>)
+              </router-link>
+              <span v-else=""> . </span>
+              )
             </span>
             </div>
 

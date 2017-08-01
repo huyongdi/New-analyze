@@ -279,6 +279,7 @@
               th {
                 padding: 5px 0 5px 17px;
                 border-bottom: 2px solid rgb(206, 219, 227);
+                border-top: none;
               }
               th:first-child {
                 border-top-left-radius: 5px;
@@ -342,6 +343,7 @@
             tr {
               td {
                 padding: 5px 8px 5px 17px;
+                border-top: none;
               }
               td:not(:first-child) {
                 border-left: 1px dashed @tdBorder;

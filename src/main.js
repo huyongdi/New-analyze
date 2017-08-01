@@ -10,13 +10,13 @@ import '../node_modules/font-awesome/css/font-awesome.min.css'
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 Vue.prototype.instance = axios.create({
-  baseURL: 'http://test.analyze.grandbox.site:8081',
+  baseURL: 'https://analyze.grandbox.site/',
   headers:{'Authorization': ''}
 });
 axios.defaults.headers = {'Authorization': localStorage.token?localStorage.token:''};
 /*请求地址*/
-axios.defaults.baseURL = 'http://test.analyze.grandbox.site:8081/';
-Vue.prototype.dbUrl = 'http://test.biomeddb.grandbox.site:8081/';
+axios.defaults.baseURL = 'https://analyze.grandbox.site/';
+Vue.prototype.dbUrl = 'https://biomeddb.grandbox.site/';
 
 /*页面地址*/
 Vue.prototype.dbHtml = '/biomeddb/';
@@ -79,4 +79,3 @@ new Vue({
   template: '<App/>',
   components: {App}
 });
-

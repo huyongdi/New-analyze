@@ -1011,7 +1011,7 @@
             </thead>
             <tbody id="find_table">
             <tr v-for="data in allData">
-              <td>{{data.transcrpit}}</td>
+              <td><a href="javascript:void(0)" @click="showTranscrpit(data.transcrpit)">{{data.transcrpit}}</a></td>
               <td>{{data.geneSymbol}}</td>
               <td>
                 <span v-for="(gene,index) in data.geneId">
@@ -1030,6 +1030,72 @@
             </tr>
             </tbody>
           </table>
+
+          <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="transcrpit-modal" role="dialog"
+               aria-labelledby="gridSystemModalLabel4">
+            <div class="modal-dialog modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="">详情</h4>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-bordered myTable">
+                    <thead>
+                    <tr>
+                      <th>转录本</th>
+                      <th>基因</th>
+                      <th>NCBI GENE ID</th>
+                      <th>1X覆盖度(%)</th>
+                      <th>5X覆盖度(%)</th>
+                      <th>10X覆盖度(%)</th>
+                      <th>20X覆盖度(%)</th>
+                      <th>30X覆盖度(%)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="data in tranData.found">
+                      <td>{{data.transcrpit}}</td>
+                      <td>{{data.geneSymbol}}</td>
+                      <td>
+                         <span v-for="(gene,index) in data.geneId">
+                            <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>
+                            <span v-if="index == data.geneId.length">；</span>
+                         </span>
+                      </td>
+                      <td>{{data.cov1 | filterData}}</td>
+                      <td>{{data.cov5 | filterData}}</td>
+                      <td>{{data.cov10 | filterData}}</td>
+                      <td>{{data.cov20 | filterData}}</td>
+                      <td>{{data.cov30 | filterData}}</td>
+                    </tr>
+                    <tr v-if="tranData&&tranData.found.length == 0" style="text-align: center">
+                      <td colspan="8">暂无数据!</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+
+                  <div class="alert alert-danger alert-dismissible fade in noFound hide" role="alert" v-show="tranData &&tranData.notfound.length!=0">
+                    <h4>警告：</h4>
+                    <p>以下基因名：（
+                      <span v-for="single in tranData.notfound">
+                        <a class="noFound-a" :href="dbHtml +'#/gene?query=' + single" target="_blank">{{single}}</a>
+                      </span>
+                      ）在GRCh37 refgene中没有找到，请确认基因名是否填写正确
+                    </p>
+                  </div>
+
+                </div>
+                <div class="modal-footer analyze-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -1141,6 +1207,7 @@
           "miscellaneous",
           "molecularBasis",
         ],
+        tranData: ''
       }
     },
     mounted: function () {
@@ -1165,6 +1232,21 @@
       this.QC(); //获取质控详情数据
     },
     methods: {
+      showTranscrpit: function (data) {
+        const _vue = this;
+        this.$axios({
+          url: 'application/grandmgd/' + this.ID + '/cov/',
+          method: 'post',
+          data: {
+            transcrpit: data
+          }
+        }).then(function (resp) {
+          $("#transcrpit-modal").modal('show');
+          _vue.tranData = resp.data;
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        })
+      },
       showLocus0: function (snv, type) {
         this.snv = snv;
         this.type = type;

@@ -201,11 +201,11 @@
       }
     },
     mounted: function () {
-      this.getMargin();
-      const _vue = this;
-      $(window).resize(function () {
-        _vue.getMargin();
-      });
+//      this.getMargin();
+//      const _vue = this;
+//      $(window).resize(function () {
+//        _vue.getMargin();
+//      });
     }
   }
 </script>

@@ -26,7 +26,7 @@
             <button class="search-btn myBtn" @click.stop="search(input0,0)"></button>
           </div>
           <ul id="ul0">
-            <li v-for="list in list0" @click="addIn" :data-type="0" :data-prefix="list.sampleCode" :data-datafile="list.code">
+            <li :title="list.showHtml" v-for="list in list0" @click="addIn" :data-type="0" :data-prefix="list.sampleCode" :data-datafile="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list0.length ==0">暂无数据</li>
@@ -39,7 +39,7 @@
             <button class="search-btn myBtn" @click.stop="search(input1,1)"></button>
           </div>
           <ul id="ul1">
-            <li v-for="list in list1" @click="addIn" :data-type="1" :data-father="list.code">
+            <li :title="list.showHtml" v-for="list in list1" @click="addIn" :data-type="1" :data-father="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list1.length ==0">暂无数据</li>
@@ -52,7 +52,7 @@
             <button class="search-btn myBtn" @click.stop="search(input2,2)"></button>
           </div>
           <ul id="ul2">
-            <li v-for="list in list2" @click="addIn" :data-type="2" :data-mother="list.code">
+            <li :title="list.showHtml" v-for="list in list2" @click="addIn" :data-type="2" :data-mother="list.code">
               {{list.code}} ( {{list.sampleCode}} - {{list.patientName}} )
             </li>
             <li v-if="list2.length ==0">暂无数据</li>
@@ -175,6 +175,27 @@
         _table.find('.tr-active').removeClass('tr-active');
         _tr.addClass('tr-active');
       }
+    },
+
+    watch:{
+      list0:function () {
+        const _vue = this;
+        $.each(_vue.list0,function (i,data) {
+          data.showHtml = `${data.code}(${data.sampleCode}-${data.patientName})`
+        })
+      },
+      list1:function () {
+        const _vue = this;
+        $.each(_vue.list1,function (i,data) {
+          data.showHtml = `${data.code}(${data.sampleCode}-${data.patientName})`
+        })
+      },
+      list2:function () {
+        const _vue = this;
+        $.each(_vue.list2,function (i,data) {
+          data.showHtml = `${data.code}(${data.sampleCode}-${data.patientName})`
+        })
+      }
     }
   }
 </script>
@@ -246,6 +267,9 @@
           height: 25px;
           line-height: 25px;
           cursor: pointer;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
           &:hover{
             background-color: rgb(44, 127, 210);
             color: #fff;

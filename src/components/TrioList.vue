@@ -153,17 +153,20 @@
       addIn: function (type, showHtml, a, b) {
         if (type == 0) {
           this.html0 = showHtml;
+          this.input0 = showHtml;
           this.show0 = false;
           this.prefix = a;
           this.datafile = b;
           $("#flag0").addClass('in');
         } else if (type == 1) {
           this.html1 = showHtml;
+          this.input1 = showHtml;
           this.show1 = false;
           this.father = b;
           $("#flag1").addClass('in');
         } else if (type == 2) {
           this.html2 = showHtml;
+          this.input2 = showHtml;
           this.show2 = false;
           this.mother = b;
           $("#flag2").addClass('in');
@@ -262,9 +265,7 @@
         margin: 16px 33px 0 33px;
         padding-bottom: 5px;
         border-bottom: 1px solid rgb(212, 212, 212);
-
         color: rgb(0, 118, 192);
-
       }
       .content {
         margin-top: 40px;
@@ -287,6 +288,9 @@
           }
           input {
             width: 300px;
+            font-size: 12px;
+            height: 24px;
+            line-height: 24px;
           }
           img {
             float: right;
@@ -325,6 +329,7 @@
           display: inline-block;
           width: 350px;
           border: 1px solid #d4d4d4;
+          background-color: #f9f9f9;
           border-radius: 3px;
           height: 24px;
           vertical-align: top;
@@ -347,9 +352,8 @@
             height: 22px;
             padding: 1px 0;
             font-size: 12px;
-            background-color: #fff;
             color: rgb(125, 125, 125);
-
+            background-color: #f9f9f9;
             /*white-space: nowrap;*/
             /*text-overflow: ellipsis;*/
             /*overflow: hidden;*/

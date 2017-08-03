@@ -264,7 +264,7 @@
   @border: rgb(185, 184, 184);
   .sg-list {
     .btn-content {
-      margin: 15px 0 0 15px;
+      margin: 15px 0 0 0;
       .all-check {
         width: 15px;
         height: 15px;

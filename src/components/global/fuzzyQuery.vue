@@ -48,23 +48,14 @@
         }
       },
       rightRemove: function (originalKey) {
-//        $(event.target).closest('li').remove();
-//        const _vue = this;
-//        const orignKey = $(event.target).closest('li').data('key');
-//        console.log(_vue.rightData)
-//        $.each(_vue.rightData, function (i, data) {
-//          if (orignKey === data.key) {
-//            _vue.rightData.splice(i,1);
-//          }
-//        });
-
         const _vue = this;
+        let spliceIndex = 0;
         $.each(this.rightData, function (i, data) {
-          if (originalKey === data.key) {
-            _vue.rightData.splice(i, 1);
+          if (originalKey == data.key) {
+            spliceIndex = i;
           }
         });
-
+        _vue.rightData.splice(spliceIndex, 1);
       },
       sendInput: function () {
         this.$emit('sendInput', this.fuzzyInput) //函数名和父元素的@onEnter一致

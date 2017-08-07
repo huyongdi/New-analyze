@@ -341,6 +341,12 @@
             cursor: pointer;
             font-size: 12px;
             tr {
+              td:first-child {
+                border-bottom-left-radius: 5px;
+              }
+              td:last-child {
+                border-bottom-right-radius: 5px;
+              }
               td {
                 padding: 5px 8px 5px 17px;
                 border-top: none;

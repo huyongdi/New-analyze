@@ -99,7 +99,7 @@
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>
                 </router-link>
                 <router-link v-if="listJob.app.code === 'grandtrio'"
-                             :to="{path:'snvResult',query:{id:listJob.paramId}}">
+                             :to="{path:'trioResult',query:{id:listJob.paramId}}">
                   <i data-toggle="tooltip" data-placement="top"
                      :data-original-title="listJob.app.name+'('+listJob.paramId+')'"
                      v-if="listJob.status == 'completed'" class="fa fa-check text-success po">已完成</i>

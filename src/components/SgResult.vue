@@ -1011,7 +1011,7 @@
             </thead>
             <tbody id="find_table">
             <tr v-for="data in allData">
-              <td><a href="javascript:void(0)" @click="showTranscrpit(data.transcrpit)">{{data.transcrpit}}</a></td>
+              <td><a href="javascript:void(0)" @click="showTranscript(data.transcript)">{{data.transcript}}</a></td>
               <td>{{data.geneSymbol}}</td>
               <td>
                 <span v-for="(gene,index) in data.geneId">
@@ -1056,7 +1056,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="data in tranData.found">
-                      <td>{{data.transcrpit}}</td>
+                      <td>{{data.transcript}}</td>
                       <td>{{data.geneSymbol}}</td>
                       <td>
                          <span v-for="(gene,index) in data.geneId">
@@ -1232,13 +1232,13 @@
       this.QC(); //获取质控详情数据
     },
     methods: {
-      showTranscrpit: function (data) {
+      showTranscript: function (data) {
         const _vue = this;
         this.$axios({
           url: 'application/grandmgd/' + this.ID + '/cov/',
           method: 'post',
           data: {
-            transcrpit: data
+            transcript: data
           }
         }).then(function (resp) {
           $("#transcrpit-modal").modal('show');
@@ -1525,6 +1525,7 @@
             _vue.notfound = resp.notfound;
           }
           _vue.allData = resp.found;
+          console.log(_vue.allData)
         });
       },
       conClick: function (event) {

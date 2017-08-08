@@ -692,7 +692,7 @@
             </thead>
             <tbody id="find_table">
             <tr v-for="data in allData">
-              <td>{{data.transcrpit}}</td>
+              <td>{{data.transcript}}</td>
               <td>{{data.geneSymbol}}</td>
               <td>
                 <span v-for="(gene,index) in data.geneId">

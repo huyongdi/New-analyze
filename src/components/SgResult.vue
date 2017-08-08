@@ -1055,14 +1055,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="data in tranData.found">
+                    <tr v-for="data in tranData">
                       <td>{{data.transcript}}</td>
-                      <td>{{data.geneSymbol}}</td>
+                      <!--<td>{{data.geneSymbol?data.geneSymbol: '-'}}</td>-->
+                      <td>{{data.gene?data.gene: '-'}}</td>
                       <td>
-                         <span v-for="(gene,index) in data.geneId">
+                         <span v-for="(gene,index) in data.geneId" v-if="data.geneId">
                             <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>
                             <span v-if="index == data.geneId.length">；</span>
                          </span>
+                        <span v-if="!data.geneId"> - </span>
                       </td>
                       <td>{{data.cov1 | filterData}}</td>
                       <td>{{data.cov5 | filterData}}</td>
@@ -1070,22 +1072,22 @@
                       <td>{{data.cov20 | filterData}}</td>
                       <td>{{data.cov30 | filterData}}</td>
                     </tr>
-                    <tr v-if="tranData&&tranData.found.length == 0" style="text-align: center">
+                    <tr v-if="tranData&&tranData.length == 0" style="text-align: center">
                       <td colspan="8">暂无数据!</td>
                     </tr>
                     </tbody>
                   </table>
 
 
-                  <div class="alert alert-danger alert-dismissible fade in noFound hide" role="alert" v-show="tranData &&tranData.notfound.length!=0">
-                    <h4>警告：</h4>
-                    <p>以下基因名：（
-                      <span v-for="single in tranData.notfound">
-                        <a class="noFound-a" :href="dbHtml +'#/gene?query=' + single" target="_blank">{{single}}</a>
-                      </span>
-                      ）在GRCh37 refgene中没有找到，请确认基因名是否填写正确
-                    </p>
-                  </div>
+                  <!--<div class="alert alert-danger alert-dismissible fade in noFound hide" role="alert" v-show="tranData &&tranData.notfound.length!=0">-->
+                    <!--<h4>警告：</h4>-->
+                    <!--<p>以下基因名：（-->
+                      <!--<span v-for="single in tranData.notfound">-->
+                        <!--<a class="noFound-a" :href="dbHtml +'#/gene?query=' + single" target="_blank">{{single}}</a>-->
+                      <!--</span>-->
+                      <!--）在GRCh37 refgene中没有找到，请确认基因名是否填写正确-->
+                    <!--</p>-->
+                  <!--</div>-->
 
                 </div>
                 <div class="modal-footer analyze-footer">
@@ -1396,7 +1398,7 @@
             });
 
 
-            console.log(_vue.dbUrl + 'knowledge/gene/dictbygeneids/')
+
 
             _vue.CNVAllData = resp.data.results;
             _vue.$axios({
@@ -1406,7 +1408,7 @@
                 geneids: genePostData
               }
             }).then(function (respA) {
-              console.log(respA)
+
               let count0 = 0;
               let count1 = 0;
               $.each(respA.data, function (k3, k4) {
@@ -1455,7 +1457,6 @@
         });
         this.CNVmoduleData = codeData;
 
-        console.log(codeData)
 
         $("#CNV_select").find('option').each(function () {
           if ($(this).val() === codeData.status) {
@@ -1525,7 +1526,6 @@
             _vue.notfound = resp.notfound;
           }
           _vue.allData = resp.found;
-          console.log(_vue.allData)
         });
       },
       conClick: function (event) {
@@ -1633,7 +1633,7 @@
               });
               value.geneResp = [];
             });
-            console.log(_vue.dbUrl + 'knowledge/gene/dictbygeneids/')
+
             _vue.detailAllData = resp.data.results;
             _vue.$axios({
               url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',

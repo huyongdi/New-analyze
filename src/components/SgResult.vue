@@ -1046,7 +1046,7 @@
                     <tr>
                       <th>转录本</th>
                       <th>基因</th>
-                      <th>NCBI GENE ID</th>
+                      <!--<th>NCBI GENE ID</th>-->
                       <th>1X覆盖度(%)</th>
                       <th>5X覆盖度(%)</th>
                       <th>10X覆盖度(%)</th>
@@ -1059,13 +1059,13 @@
                       <td>{{data.transcript}}</td>
                       <!--<td>{{data.geneSymbol?data.geneSymbol: '-'}}</td>-->
                       <td>{{data.gene?data.gene: '-'}}</td>
-                      <td>
-                         <span v-for="(gene,index) in data.geneId" v-if="data.geneId">
-                            <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>
-                            <span v-if="index == data.geneId.length">；</span>
-                         </span>
-                        <span v-if="!data.geneId"> - </span>
-                      </td>
+                      <!--<td>-->
+                         <!--<span v-for="(gene,index) in data.geneId" v-if="data.geneId">-->
+                            <!--<a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>-->
+                            <!--<span v-if="index == data.geneId.length">；</span>-->
+                         <!--</span>-->
+                        <!--<span v-if="!data.geneId"> - </span>-->
+                      <!--</td>-->
                       <td>{{data.cov1 | filterData}}</td>
                       <td>{{data.cov5 | filterData}}</td>
                       <td>{{data.cov10 | filterData}}</td>

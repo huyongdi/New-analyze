@@ -353,6 +353,7 @@
                 <th>HGMD</th>
                 <th>东亚人群频率(%)</th>
                 <th>本地人群频率(%)</th>
+                <th>变异比例</th>
                 <th>状态</th>
               </tr>
               </thead>
@@ -434,6 +435,7 @@
                   </span>
 
                 </td>
+                <td>{{data.ratio.toFixed(3)}}</td>
                 <td
                   :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">

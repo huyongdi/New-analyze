@@ -399,6 +399,7 @@
                 <th>MITIMPACT</th>
                 <th>MITOMAP</th>
                 <th>人群频率(%)</th>
+                <th>变异比例</th>
               </tr>
               </thead>
               <tbody id="detail-t" class=""> <!--测试用，去掉hide-->
@@ -488,6 +489,7 @@
                   </div>
                 </td>
                 <td v-if="data.annotations">{{data.annotations.mtdb | filterData}}</td>
+                <td>{{data.ratio.toFixed(3)}}</td>
               </tr>
               </tbody>
             </table>

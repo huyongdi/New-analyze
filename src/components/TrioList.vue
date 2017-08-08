@@ -90,7 +90,7 @@
       }
     },
     created: function () {
-      this.getList();
+//      this.getList();
     },
     methods: {
       getList:function () {

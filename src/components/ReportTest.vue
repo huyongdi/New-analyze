@@ -506,7 +506,6 @@
 
   #report-content {
     padding-left: 56px;
-    font-family: '宋体';
     font-size: 20px;
   }
 

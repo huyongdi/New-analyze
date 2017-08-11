@@ -564,7 +564,6 @@
   .base-section-title {
     color: #fff;
     font-size: 18px;
-    font-family: "HYQiHei", serif;
     display: inline-block;
     /*margin-left: 300px;*/
     position: absolute;

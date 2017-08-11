@@ -68,8 +68,9 @@
                   <span id="dataBase" class="po a-color" data-toggle="tooltip" data-placement="top" data-original-title="报道：CLINVAR,HGMD数据库">数据库报道</span>
                 </span>
                 <div class="row-content col-md-10">
-                  <span class="condition" @click="conClick" data-name="report" data-value="true">已报道</span>
-                  <span class="condition" @click="conClick" data-name="report" data-value="false">未报道</span>
+                  <span class="condition" @click="conClick" data-name="report" data-value="p">致病性</span>
+                  <span class="condition" @click="conClick" data-name="report" data-value="o">其他</span>
+                  <span class="condition" @click="conClick" data-name="report" data-value="">未报道</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
                 </div>
               </div>

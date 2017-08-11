@@ -72,9 +72,16 @@
                   <div class="single">
                     <div class="left" data-name="report">数据库报道：</div>
                     <div class="right">
-                      <span class="option" data-value="true">已报道</span>
-                      <span class="option" data-value="false">未报道</span>
+                      <span class="option" data-value="p">致病性</span>
+                      <span class="option" data-value="o">其他</span>
+                      <span class="option" data-value="f">未报道</span>
                       <span class="option in default">不筛选</span>
+                      <i class="fa fa-question-circle-o po flag-q" data-toggle="tooltip" data-placement="top"
+                         data-html="true" data-title="<div style='text-align:left'>致病性满足任一条件：</div>
+                                             <div style='text-align:left;padding-left:5px'>1.CLINVAR包含Pathogenic</div>
+                                             <div style='text-align:left;padding-left:5px'>2.CLINVAR包含Likely pathogenic</div>
+                                             <div style='text-align:left;padding-left:5px'>3.HGMD为DM</div>">
+                      </i>
                     </div>
                   </div>
                   <div class="single">
@@ -942,6 +949,9 @@
       margin: 15px 0 0 0;
       .change-panel {
         margin-left: 50px;
+      }
+      .flag-q{
+        margin: 8px;
       }
       .title-list {
         width: 486px;

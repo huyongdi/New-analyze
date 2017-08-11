@@ -100,7 +100,7 @@
               <thead>
               <tr>
                 <th class="th-1">类别</th>
-                <th class="th-2">GrandOmics指控参数</th>
+                <th class="th-2">GrandOmics质控参数</th>
                 <th class="th-3">真实值</th>
               </tr>
               </thead>

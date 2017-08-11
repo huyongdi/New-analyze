@@ -72,6 +72,11 @@
                   <span class="condition" @click="conClick" data-name="report" data-value="o">其他</span>
                   <span class="condition" @click="conClick" data-name="report" data-value="f">未报道</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
+
+                  <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
+                     data-original-title="致病性须满足其一:1.CLINVAR包含Pathogenic或Likely pathogenic 2.HGMD为DM">
+                  </i>
+
                 </div>
               </div>
               <div class="row-div row">

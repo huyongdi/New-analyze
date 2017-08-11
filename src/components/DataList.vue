@@ -18,11 +18,11 @@
           <!--添加数据-->
 
         <!--</button>-->
-        <button type="button" class="btn my-btn" @click="addExcelFun">
-          <i class="fa fa-file-excel-o"></i>
-          提交Excel文件
+        <!--<button type="button" class="btn my-btn" @click="addExcelFun">-->
+          <!--<i class="fa fa-file-excel-o"></i>-->
+          <!--提交Excel文件-->
 
-        </button>
+        <!--</button>-->
       </div>
       <table class="table myTable">
         <thead>

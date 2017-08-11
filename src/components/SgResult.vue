@@ -232,8 +232,15 @@
                   <span class="condition" @click="conClick" data-name="report" data-value="f">未报道</span>
                   <span class="condition on con-default" @click="conClick">不筛选</span>
 
+                  <!--<i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"-->
+                     <!--data-original-title="">-->
+                  <!--</i>-->
+
                   <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
-                     data-original-title="致病性须满足其一:1.CLINVAR包含Pathogenic或Likely pathogenic 2.HGMD为DM">
+                     data-html="true" data-title="<div style='text-align:left'>致病性满足任一条件：</div>
+                                             <div style='text-align:left;padding-left:5px'>1.CLINVAR包含Pathogenic</div>
+                                             <div style='text-align:left;padding-left:5px'>2.CLINVAR包含Likely pathogenic</div>
+                                             <div style='text-align:left;padding-left:5px'>3.HGMD为DM</div>">
                   </i>
 
                 </div>

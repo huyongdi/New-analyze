@@ -40,10 +40,9 @@
       this.baseBind()
     },
     watch: {
-      '$route' (to, from) { //路由变化的时候判断需不需要加载头部
-//        this.inLogin = !new Boolean(localStorage.token)
+      '$route'(to, from) { //路由变化的时候判断需不需要加载头部
         if (from.name === 'login') {  //重新登录之后token不刷新
-          this.myAxios.headers = {'Authorization': localStorage.token};
+          this.myAxios.defaults.headers= {'Authorization': localStorage.token};
         }
       }
     },
@@ -425,7 +424,7 @@
             min-height: calc(~'100vh - 58px');
             .under-left {
               float: left;
-              width: 249px;
+              width: 250px;
               min-height: calc(~'100vh - 58px');
               /*height: 100%;*/
               margin: 0;

@@ -20,319 +20,323 @@
         </div>
         <div class="detail-content">
           <div class="content-0" :class="{hide:!in0}">
-            <div class="bold">质控详情</div>
-            <ul class="bold">
-              <li>
-                <span class="red">红字</span>：代表未达标
-              </li>
-              <li>
-                FASTQC：<a :href='R1' target="_blank" class="common-a r1">R1:fastq</a>
-                <a target="_blank" :href="R2" class="common-a">R2:fastq</a>
-              </li>
-              <li>
-                INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
-              </li>
-              <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
-              </li>
-              <li>
-                基因分析报告 : <router-link target="_blank" class="common-a"
-                                   :to="{path:'report',query:{code:datafile,app:'grandmgd'}}">点击查看</router-link>
+            <div class="content-0" :class="{hide:!in0}">
+              <div class="bold">质控详情</div>
+              <ul class="bold">
+                <li>
+                  <span class="red">红字</span>：代表未达标
+                </li>
+                <li>
+                  FASTQC：<a :href='R1' target="_blank" class="common-a r1">R1:fastq</a>
+                  <a target="_blank" :href="R2" class="common-a">R2:fastq</a>
+                </li>
+                <li>
+                  INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
+                </li>
+                <li>
+                  注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
+                </li>
+                <li>
+                  基因分析报告 :
+                  <router-link target="_blank" class="common-a"
+                               :to="{path:'report',query:{code:datafile,app:'grandmgd'}}">点击查看
+                  </router-link>
 
-              </li>
-            </ul>
-            <table>
-              <thead>
-              <tr>
-                <th class="th-1">类别</th>
-                <th class="th-2">GrandOmics指控参数</th>
-                <th class="th-3">真实值</th>
-                <th class="th-4">分析详情</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">
-                <td>{{list.type}}</td>
-                <td>{{list.grandValue}}</td>
-                <td :class="{'red':!list.standard}">{{list.realValue}}</td>
-                <td>{{list.detail}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="content-1" :class="{hide:!in1}">
-            <div class="rea">
+                </li>
+              </ul>
+              <table>
+                <thead>
+                <tr>
+                  <th class="th-1">类别</th>
+                  <th class="th-2">GrandOmics指控参数</th>
+                  <th class="th-3">真实值</th>
+                  <th class="th-4">分析详情</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(list,index) in lists0" :class="{'interleave':index%2!==0}">
+                  <td>{{list.type}}</td>
+                  <td>{{list.grandValue}}</td>
+                  <td :class="{'red':!list.standard}">{{list.realValue}}</td>
+                  <td>{{list.detail}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="content-1" :class="{hide:!in1}">
+              <div class="rea">
               <span class="my-btn pull-right condition" @click.stop="filtrateShow1Fun"><img src="../../static/img/red-con.png"
-                                                                                    alt="">筛选条件</span>
-              <!--筛选条件弹框-->
-              <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
-                <img src="../../static/img/th-1.png" alt="" class="up">
-                <div class="title">搜索选项</div>
-                <div class="content">
-                  <div class="single">
-                    <div class="left" data-name="report">数据库报道：</div>
-                    <div class="right">
-                      <span class="option" data-value="p">致病性</span>
-                      <span class="option" data-value="o">其他</span>
-                      <span class="option" data-value="f">未报道</span>
-                      <span class="option in default">不筛选</span>
-                      <i class="fa fa-question-circle-o po flag-q" data-toggle="tooltip" data-placement="top"
-                         data-html="true" data-title="<div style='text-align:left'>致病性满足任一条件：</div>
+                                                                                            alt="">筛选条件</span>
+                <!--筛选条件弹框-->
+                <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
+                  <img src="../../static/img/th-1.png" alt="" class="up">
+                  <div class="title">搜索选项</div>
+                  <div class="content">
+                    <div class="single">
+                      <div class="left" data-name="report">数据库报道：</div>
+                      <div class="right">
+                        <span class="option" data-value="p">致病性</span>
+                        <span class="option" data-value="o">其他</span>
+                        <span class="option" data-value="f">未报道</span>
+                        <span class="option in default">不筛选</span>
+                        <i class="fa fa-question-circle-o po flag-q" data-toggle="tooltip" data-placement="top"
+                           data-html="true" data-title="<div style='text-align:left'>致病性满足任一条件：</div>
                                              <div style='text-align:left;padding-left:5px'>1.CLINVAR包含Pathogenic</div>
                                              <div style='text-align:left;padding-left:5px'>2.CLINVAR包含Likely pathogenic</div>
                                              <div style='text-align:left;padding-left:5px'>3.HGMD为DM</div>">
-                      </i>
+                        </i>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="inheritance">遗传方式：</div>
-                    <div class="right">
-                      <span class="option in default" data-value="All">全部</span>
-                      <span class="option" data-value="AR">AR</span>
-                      <span class="option" data-value="AD">AD</span>
-                      <span class="option" data-value="XR">XR</span>
-                      <span class="option" data-value="XD">XD</span>
-                      <span class="option" data-value="X-linked">X-LINKED</span>
-                      <span class="option" data-value="Y-linked">Y-LINKED</span>
-                      <span class="option" data-value="Other">其它</span>
-                      <span class="option">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="inheritance">遗传方式：</div>
+                      <div class="right">
+                        <span class="option in default" data-value="All">全部</span>
+                        <span class="option" data-value="AR">AR</span>
+                        <span class="option" data-value="AD">AD</span>
+                        <span class="option" data-value="XR">XR</span>
+                        <span class="option" data-value="XD">XD</span>
+                        <span class="option" data-value="X-linked">X-LINKED</span>
+                        <span class="option" data-value="Y-linked">Y-LINKED</span>
+                        <span class="option" data-value="Other">其它</span>
+                        <span class="option">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="func">突变类型：</div>
-                    <div class="right">
-                      <span class="option" data-value="stop">stop*</span>
-                      <span class="option" data-value="nonsyn">nonsynonymous</span>
-                      <span class="option" data-value="splic">splicing</span>
-                      <span class="option" data-value="frameshift">(non)frameshift</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="func">突变类型：</div>
+                      <div class="right">
+                        <span class="option" data-value="stop">stop*</span>
+                        <span class="option" data-value="nonsyn">nonsynonymous</span>
+                        <span class="option" data-value="splic">splicing</span>
+                        <span class="option" data-value="frameshift">(non)frameshift</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="ratio">突变比例：</div>
-                    <div class="right">
-                      <span class="option" data-value="0.9-1">0.9-1</span>
-                      <span class="option" data-value="0.2-0.9">0.2-0.9</span>
-                      <span class="option" data-value="0-0.2">0-0.2</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="ratio">突变比例：</div>
+                      <div class="right">
+                        <span class="option" data-value="0.9-1">0.9-1</span>
+                        <span class="option" data-value="0.2-0.9">0.2-0.9</span>
+                        <span class="option" data-value="0-0.2">0-0.2</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="depth">测序深度：</div>
-                    <div class="right">
-                      <span class="option" data-value="10-20">10-20</span>
-                      <span class="option" data-value=">20">>20</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="depth">测序深度：</div>
+                      <div class="right">
+                        <span class="option" data-value="10-20">10-20</span>
+                        <span class="option" data-value=">20">>20</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="dbfreq">普通人群携带率低于：</div>
-                    <div class="right">
-                      <span class="option" data-value="0">0</span>
-                      <span class="option" data-value="0.0001">0.01%</span>
-                      <span class="option" data-value="0.001">0.1%</span>
-                      <span class="option" data-value="0.01">1%</span>
-                      <span class="option" data-value="0.02">2%</span>
-                      <span class="option" data-value="0.05">5%</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="dbfreq">普通人群携带率低于：</div>
+                      <div class="right">
+                        <span class="option" data-value="0">0</span>
+                        <span class="option" data-value="0.0001">0.01%</span>
+                        <span class="option" data-value="0.001">0.1%</span>
+                        <span class="option" data-value="0.01">1%</span>
+                        <span class="option" data-value="0.02">2%</span>
+                        <span class="option" data-value="0.05">5%</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="grandfreq">本地人群携带率低于：</div>
-                    <div class="right">
-                      <span class="option" data-value="0">0</span>
-                      <span class="option" data-value="0.0001">0.01%</span>
-                      <span class="option" data-value="0.001">0.1%</span>
-                      <span class="option" data-value="0.01">1%</span>
-                      <span class="option" data-value="0.02">2%</span>
-                      <span class="option" data-value="0.05">5%</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="grandfreq">本地人群携带率低于：</div>
+                      <div class="right">
+                        <span class="option" data-value="0">0</span>
+                        <span class="option" data-value="0.0001">0.01%</span>
+                        <span class="option" data-value="0.001">0.1%</span>
+                        <span class="option" data-value="0.01">1%</span>
+                        <span class="option" data-value="0.02">2%</span>
+                        <span class="option" data-value="0.05">5%</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="status">状态：</div>
-                    <div class="right">
-                      <span class="option" data-value="true">已标记</span>
-                      <span class="option" data-value="false">未标记</span>
-                      <span class="option in default">不筛选</span>
+                    <div class="single">
+                      <div class="left" data-name="status">状态：</div>
+                      <div class="right">
+                        <span class="option" data-value="true">已标记</span>
+                        <span class="option" data-value="false">未标记</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="genes">基因：</div>
-                    <div class="right">
-                      <textarea placeholder='请用逗号或换行隔开'  v-model="geneTextArea"></textarea>
+                    <div class="single">
+                      <div class="left" data-name="genes">基因：</div>
+                      <div class="right">
+                        <textarea placeholder='请用逗号或换行隔开' v-model="geneTextArea"></textarea>
 
+                      </div>
                     </div>
                   </div>
+                  <span class="my-btn search-btn" @click="filter"><img src="../../static/img/red-con.png" alt="">搜索</span>
+                  <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png"
+                                                                         alt="">重置</span>
                 </div>
-                <span class="my-btn search-btn" @click="filter"><img src="../../static/img/red-con.png" alt="">搜索</span>
-                <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png"
-                                                                       alt="">重置</span>
               </div>
-            </div>
 
-            <table class="table my-table" id="table-1">
-              <thead>
-              <tr>
-                <th>位点
-                  <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
-                     data-original-title="红色代表最高级，黄色代表第二级，蓝色代表第三级">
-                  </i>
-                </th>
-                <th>基因</th>
-                <th>区域</th>
-                <th>功能</th>
-                <th class="disease-td">疾病</th>
-                <th>CLINVAR</th>
-                <th>HGMD</th>
-                <th>东亚人群频率(%)</th>
-                <th>本地人群频率(%)</th>
-                <th>状态</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="data in lists1">
-                <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,0)"
-                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                  <a class="po common-a" v-if="data.localsnv"
-                     @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
-                    {{data.localsnv.name}}
-                  </a>
-                </td>
-                <td v-if="data.annotations">
-                  <a class="common-a" target="_blank" v-if="data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.func}}
-                </td>
-                <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
-                <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
-                <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
-                <td>{{data.annotations.grandfreq | getPercent}}</td>
-                <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
+              <table class="table my-table" id="table-1">
+                <thead>
+                <tr>
+                  <th>位点
+                    <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
+                       data-original-title="红色代表最高级，黄色代表第二级，蓝色代表第三级">
+                    </i>
+                  </th>
+                  <th>基因</th>
+                  <th>区域</th>
+                  <th>功能</th>
+                  <th class="disease-td">疾病</th>
+                  <th>CLINVAR</th>
+                  <th>HGMD</th>
+                  <th>东亚人群频率(%)</th>
+                  <th>本地人群频率(%)</th>
+                  <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="data in lists1">
+                  <td>
+                    <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,0)"
+                       :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
+                    <a class="po common-a" v-if="data.localsnv"
+                       @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
+                      {{data.localsnv.name}}
+                    </a>
+                  </td>
+                  <td v-if="data.annotations">
+                    <a class="common-a" target="_blank" v-if="data.annotations.geneSymbol"
+                       :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
+                  </td>
+                  <td v-if="data.annotations">
+                    {{data.annotations.region}}
+                  </td>
+                  <td v-if="data.annotations">
+                    {{data.annotations.func}}
+                  </td>
+                  <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
+                  <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
+                  <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
+                  <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
+                  <td>{{data.annotations.grandfreq | getPercent}}</td>
+                  <td
+                    :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
-                </td>
-              </tr>
+                    {{data.status | getStatus}}
+                  </td>
+                </tr>
 
-              </tbody>
-            </table>
-            <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
-          </div>
-          <div class="content-2" :class="{hide:!in2}">
+                </tbody>
+              </table>
+              <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
+            </div>
+            <div class="content-2" :class="{hide:!in2}">
 
-            <div class="rea">
+              <div class="rea">
               <span class="my-btn pull-right condition" @click.stop="filtrateShow2Fun"><img src="../../static/img/red-con.png"
-                                                                                       alt="">筛选条件</span>
-              <!--筛选条件弹框-->
-              <div class="filtrate-content hide" id="filtrate-content-2">
-                <img src="../../static/img/th-1.png" alt="" class="up">
-                <div class="title">搜索选项</div>
-                <div class="content">
-                  <div class="single">
-                    <div class="left" data-name="alt">变异类型：</div>
-                    <div class="right">
-                      <span class="option" data-value="del">DEL</span>
-                      <span class="option" data-value="dup">DUP</span>
-                      <span class="option in default">不筛选</span>
+                                                                                            alt="">筛选条件</span>
+                <!--筛选条件弹框-->
+                <div class="filtrate-content hide" id="filtrate-content-2">
+                  <img src="../../static/img/th-1.png" alt="" class="up">
+                  <div class="title">搜索选项</div>
+                  <div class="content">
+                    <div class="single">
+                      <div class="left" data-name="alt">变异类型：</div>
+                      <div class="right">
+                        <span class="option" data-value="del">DEL</span>
+                        <span class="option" data-value="dup">DUP</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
+                    </div>
+                    <div class="single">
+                      <div class="left" data-name="status">状态：</div>
+                      <div class="right">
+                        <span class="option" data-value="true">已标记</span>
+                        <span class="option" data-value="false">未标记</span>
+                        <span class="option in default">不筛选</span>
+                      </div>
+                    </div>
+                    <div class="single">
+                      <div class="left" data-name="genes">基因：</div>
+                      <div class="right">
+                        <textarea placeholder='请用逗号或换行隔开' v-model="geneTextAreaContent2"></textarea>
+                      </div>
                     </div>
                   </div>
-                  <div class="single">
-                    <div class="left" data-name="status">状态：</div>
-                    <div class="right">
-                      <span class="option" data-value="true">已标记</span>
-                      <span class="option" data-value="false">未标记</span>
-                      <span class="option in default">不筛选</span>
-                    </div>
-                  </div>
-                  <div class="single">
-                    <div class="left" data-name="genes">基因：</div>
-                    <div class="right">
-                      <textarea placeholder='请用逗号或换行隔开'  v-model="geneTextAreaContent2"></textarea>
-                    </div>
-                  </div>
+                  <span class="my-btn search-btn" @click="filter2"><img src="../../static/img/red-con.png" alt="">搜索</span>
+                  <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png" alt="">重置</span>
                 </div>
-                <span class="my-btn search-btn" @click="filter2"><img src="../../static/img/red-con.png" alt="">搜索</span>
-                <span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png" alt="">重置</span>
               </div>
-            </div>
 
-            <table class="table my-table" id="table-2">
-              <thead>
-              <tr>
-                <th>
-                  位点
-                  <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
-                     data-original-title="红色代表最高优先级，黄色代表第二优先级，蓝色代表第三优先级">
-                  </i>
-                </th>
-                <th>长度</th>
-                <th>基因</th>
-                <th>区域</th>
-                <th class="disease-td">疾病</th>
-                <th>基因型</th>
-                <th>深度(原始)</th>
-                <th>深度(标准化)</th>
-                <th>状态</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="data in lists2">
-                <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,1)"
-                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                  <a class="po common-a" v-if="data.localcnv"
-                     @click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">
-                    {{data.localcnv.name}}
-                  </a>
-                </td>
-                <td>
-                  <span v-if="data.localcnv">{{data.localcnv.length}}</span>
-                </td>
-                <td v-if="data.annotations">
-                  <a target="_blank" class="block" v-if="data.annotations.geneSymbol"
-                     v-for="single in data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + single">{{single}}</a>
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
-                </td>
-                <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
+              <table class="table my-table" id="table-2">
+                <thead>
+                <tr>
+                  <th>
+                    位点
+                    <i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"
+                       data-original-title="红色代表最高优先级，黄色代表第二优先级，蓝色代表第三优先级">
+                    </i>
+                  </th>
+                  <th>长度</th>
+                  <th>基因</th>
+                  <th>区域</th>
+                  <th class="disease-td">疾病</th>
+                  <th>基因型</th>
+                  <th>深度(原始)</th>
+                  <th>深度(标准化)</th>
+                  <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="data in lists2">
+                  <td>
+                    <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,1)"
+                       :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
+                    <a class="po common-a" v-if="data.localcnv"
+                       @click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">
+                      {{data.localcnv.name}}
+                    </a>
+                  </td>
+                  <td>
+                    <span v-if="data.localcnv">{{data.localcnv.length}}</span>
+                  </td>
+                  <td v-if="data.annotations">
+                    <a target="_blank" class="block" v-if="data.annotations.geneSymbol"
+                       v-for="single in data.annotations.geneSymbol"
+                       :href="dbHtml+'#/gene?query=' + single">{{single}}</a>
+                  </td>
+                  <td v-if="data.annotations">
+                    {{data.annotations.region}}
+                  </td>
+                  <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
 
-                <td>{{data.genoType}}</td>
-                <td>{{data.originalReadDepth}}</td>
-                <td>{{data.readDepth}}</td>
-                <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
+                  <td>{{data.genoType}}</td>
+                  <td>{{data.originalReadDepth}}</td>
+                  <td>{{data.readDepth}}</td>
+                  <td
+                    :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
                   active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>
-          </div>
-          <div class="content-3" :class="{hide:!in3}">
-            <geneCover :ID="ID" app="grandmgd"></geneCover>
+                    {{data.status | getStatus}}
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>
+            </div>
+            <div class="content-3" :class="{hide:!in3}">
+              <geneCover :ID="ID" app="grandmgd"></geneCover>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <locusModal :datafile="datafile" :locus="locus" :type="type"></locusModal>
-    <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
-                :originalPanelData="originalPanelData"></panelModal>
-    <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd"></mutateModal>
-    <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
-                    :ID="ID"></mutateModalCNV>
+      <locusModal :datafile="datafile" :locus="locus" :type="type"></locusModal>
+      <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
+                  :originalPanelData="originalPanelData"></panelModal>
+      <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
+      <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd"></mutateModal>
+      <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
+                      :ID="ID"></mutateModalCNV>
+    </div>
   </div>
 </template>
 
@@ -389,7 +393,7 @@
         page1: 1,
         reset1: 0,
         moduleData: '',
-        filtrateShow1:false,
+        filtrateShow1: false,
         //content-2
         loading2: false,
         lists2: [],
@@ -398,7 +402,7 @@
         page2: 1,
         reset2: 0,
         moduleDataCNV: '',
-        filtrateShow2:false,
+        filtrateShow2: false,
       }
     },
     created: function () {
@@ -941,16 +945,16 @@
   @tableSha: rgb(185, 184, 184);
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
-  #sgResult{
+  #sgResult {
     .all-content {
-      table{
+      table {
         box-shadow: none;
       }
       margin: 15px 0 0 0;
       .change-panel {
         margin-left: 50px;
       }
-      .flag-q{
+      .flag-q {
         margin: 8px;
       }
       .title-list {
@@ -978,7 +982,7 @@
         }
         .title-single:first-child {
           margin: 0;
-          box-shadow: -3px 0 5px -2px rgb(200,200,200);
+          box-shadow: -3px 0 5px -2px rgb(200, 200, 200);
         }
         .title-single.active {
           height: 35px;
@@ -987,8 +991,8 @@
           margin-bottom: -1px;
           color: @in;
         }
-        .title-single:not(.active){
-          color:rgb(67,67,67)
+        .title-single:not(.active) {
+          color: rgb(67, 67, 67)
         }
       }
       .detail-content {
@@ -997,7 +1001,7 @@
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
-        box-shadow: 0 0 20px 3px rgb(200,200,200);
+        box-shadow: 0 0 20px 3px rgb(200, 200, 200);
         background-color: #fff;
         position: relative;
         > div {
@@ -1018,7 +1022,7 @@
             color: #d3d3d3;
           }
         }
-        #filtrate-content,#filtrate-content-2{
+        #filtrate-content, #filtrate-content-2 {
           .option {
             float: left;
             padding: 3px 8px;
@@ -1035,50 +1039,50 @@
             font-weight: bold;
           }
         }
-        #filtrate-content{
+        #filtrate-content {
           width: 520px;
-          .search-btn{
+          .search-btn {
             margin-left: 130px;
           }
-          .refresh{
+          .refresh {
             margin-left: 50px;
           }
-          .content{
+          .content {
             textarea {
               min-height: 100px;
               width: 100%;
               float: left;
               margin-top: 10px;
             }
-            .left{
+            .left {
               width: 140px;
               margin-top: 6px;
             }
-            .right{
+            .right {
               width: 350px;
             }
           }
         }
-        #filtrate-content-2{
+        #filtrate-content-2 {
           width: 310px;
-          .search-btn{
+          .search-btn {
             margin-left: 40px;
           }
-          .refresh{
+          .refresh {
             margin-left: 20px;
           }
-          .content{
+          .content {
             textarea {
               min-height: 100px;
               width: 100%;
               float: left;
               margin-top: 10px;
             }
-            .left{
+            .left {
               width: 80px;
               margin-top: 6px;
             }
-            .right{
+            .right {
               width: 200px;
             }
           }

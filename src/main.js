@@ -11,10 +11,12 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 Vue.prototype.loginAxios = axios.create({
-  baseURL: 'https://analyze.grandbox.site/',
+//   baseURL: 'https://analyze.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8083/',
 });
 Vue.prototype.myAxios = axios.create({
-  baseURL: 'https://analyze.grandbox.site/',
+//   baseURL: 'https://analyze.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8083/',
   headers:{'Authorization': localStorage.token}
 });
 

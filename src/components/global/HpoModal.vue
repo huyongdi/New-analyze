@@ -107,7 +107,6 @@
     },
     watch: {
       phenotypeMapSingle: function (newData) {
-        console.log(newData)
         this.loading = !$.isEmptyObject(newData.omim.clinicalSynopsis);
         this.clinicalSynopsis = [];
         const _vue = this;

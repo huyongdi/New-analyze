@@ -7,7 +7,7 @@
     </div>
     <ul id="pathUl">
       <li>
-        <router-link to="/">
+        <router-link to="/home">
           <span class="img-analyze li-img"></span>
           <span>Analyze</span>
         </router-link>
@@ -141,6 +141,10 @@
         .img-dataManage{
           background-size: 21px 21px;
           background: url(../../../static/img/header-5-1.png) no-repeat center;
+        }
+        .img-analyze{
+          background-size: 22px 21px;
+          background: url(../../../static/img/header-4-1.png) no-repeat center;
         }
       }
       li {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
+import Home from '@/components/Home'
 
 import DataM from '@/components/DataM'
 import GrandE from '@/components/GrandE'
@@ -39,6 +40,11 @@ export default new Router({
       path: '/',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     { /*数据管理*/
       path: '/dataM/:id',
@@ -82,6 +88,11 @@ export default new Router({
       name:'dataA',
       component: DataA,
       children: [
+        {
+          path: 'home',
+          name: 'dataA-home',
+          component: Home
+        },
         {
           path: 'sgList',
           name: 'dataA-sgList',

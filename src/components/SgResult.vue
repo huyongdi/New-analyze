@@ -1062,6 +1062,8 @@
                       <th>转录本</th>
                       <th>基因</th>
                       <!--<th>NCBI GENE ID</th>-->
+                      <th>起始位置</th>
+                      <th>终止位置</th>
                       <th>1X覆盖度(%)</th>
                       <th>5X覆盖度(%)</th>
                       <th>10X覆盖度(%)</th>
@@ -1074,6 +1076,8 @@
                       <td>{{data.transcript}}</td>
                       <!--<td>{{data.geneSymbol?data.geneSymbol: '-'}}</td>-->
                       <td>{{data.gene?data.gene: '-'}}</td>
+                      <td>{{data.start}}</td>
+                      <td>{{data.end}}</td>
                       <!--<td>-->
                          <!--<span v-for="(gene,index) in data.geneId" v-if="data.geneId">-->
                             <!--<a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>-->
@@ -1088,7 +1092,7 @@
                       <td>{{data.cov30 | filterData}}</td>
                     </tr>
                     <tr v-if="tranData&&tranData.length == 0" style="text-align: center">
-                      <td colspan="8">暂无数据!</td>
+                      <td colspan="10">暂无数据!</td>
                     </tr>
                     </tbody>
                   </table>

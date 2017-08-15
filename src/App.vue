@@ -110,6 +110,13 @@
           }
         }
         /*自定义公共样式*/
+        .s-cnv{
+          color: red;
+          margin-left: 5px;
+          font-size: 10px;
+          transform: scale(0.8); /*2D缩放*/
+          display: inline-block;
+        }
         .table > tbody > tr.active > td, .table > tbody > tr.active > th, .table > tbody > tr > td.active, .table > tbody > tr > th.active, .table > tfoot > tr.active > td, .table > tfoot > tr.active > th, .table > tfoot > tr > td.active, .table > tfoot > tr > th.active, .table > thead > tr.active > td, .table > thead > tr.active > th, .table > thead > tr > td.active, .table > thead > tr > th.active {
           background-color: inherit;
           color: red;

@@ -388,7 +388,8 @@
                   <a target="_blank" v-if="data.annotations.geneSymbol"
                      :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">
                     {{data.annotations.geneSymbol.join(',')}}
-                    <i style="color: red;margin-left: 5px" class="s-cnv fa fa-area-chart" v-if="data.hasCNV"></i>
+                    <sub class="s-cnv" v-if="data.hasCNV">CNV</sub>
+                    <!--<i style="color: red;margin-left: 5px" class="s-cnv fa fa-area-chart" v-if="data.hasCNV"></i>-->
                   </a>
                 </td>
                 <td v-if="data.annotations">

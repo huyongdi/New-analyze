@@ -386,7 +386,10 @@
                 </td>
                 <td v-if="data.annotations">
                   <a target="_blank" v-if="data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
+                     :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">
+                    {{data.annotations.geneSymbol.join(',')}}
+                    <i style="color: red;margin-left: 5px" class="s-cnv fa fa-area-chart" v-if="data.hasCNV"></i>
+                  </a>
                 </td>
                 <td v-if="data.annotations">
                   {{data.annotations.region}}
@@ -755,11 +758,13 @@
                 <td>
                   <span v-if="data.localcnv">{{data.localcnv.length}}</span>
                 </td>
-
+                <!--<span class="s-cnv" v-if="index ==data.annotations.geneSymbol.length-1&&data.hasCNV">CNV</span>-->
                 <td v-if="data.annotations">
                   <a target="_blank" class="block" v-if="data.annotations.geneSymbol"
-                     v-for="single in data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + single">{{single}}</a>
+                     v-for="(single,index) in data.annotations.geneSymbol"
+                     :href="dbHtml+'#/gene?query=' + single">
+                    {{single}}
+                  </a>
                   <!--<a target="_blank" v-if="data.annotations.geneSymbol"-->
                   <!--:href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>-->
                 </td>

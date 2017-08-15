@@ -232,7 +232,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="data in cnvData">
+            <tr v-for="data in cnvData" @click="addBc">
               <td>
                 <i :data-id="data.id" class="fa fa-font-awesome po text-3" title="查看详情" @click="showDetailCNV"></i>
                 <!---->
@@ -986,6 +986,10 @@
             }
           });
         });
+      },
+      addBc: function (event) {
+        $("#aberrance1").find(".bc-active").removeClass('bc-active');
+        $(event.target).closest('tr').addClass('bc-active');
       },
       sortSyn: function (clinicalSynopsis) {
         let arr = [];

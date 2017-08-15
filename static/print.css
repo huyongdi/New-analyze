@@ -76,8 +76,48 @@ table thead {
 }
 .print-content-basic .all-content {
   margin: 50px 50px 30px 50px;
+  /*20170815*/
+  /*20170815-end*/
   /*第三四页样式*/
   /*第一页样式*/
+}
+.print-content-basic .all-content .result-info-detail .no-data {
+  padding-left: 40px;
+}
+.print-content-basic .all-content .center {
+  text-align: center;
+}
+.print-content-basic .all-content .appendix-one .appendix-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.print-content-basic .all-content .diseases-content {
+  margin: 5px 0;
+}
+.print-content-basic .all-content .diseases-content .diseases-content-remark {
+  margin-top: 5px;
+}
+.print-content-basic .all-content .diseases-content-remark,
+.print-content-basic .all-content .variation-content {
+  padding-left: 30px;
+}
+.print-content-basic .all-content .print-content-basic {
+  height: auto;
+  padding-bottom: 150px;
+  min-height: 1500px;
+}
+.print-content-basic .all-content .appendix-one {
+  margin: 10px 0;
+}
+.print-content-basic .all-content .variation-title-content {
+  display: inline-block;
+  margin-left: 10px;
+}
+.print-content-basic .all-content .detail-title {
+  clear: both;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  font-weight: bold;
 }
 .print-content-basic .all-content .detail-basic {
   clear: both;

@@ -102,7 +102,8 @@
           <i></i>
         </div>
         <div class="hideDiv hide">
-          <a :href="dbHtml+'#/panel'">产&nbsp;&nbsp;&nbsp;品</a>
+          <a class="a-bot" :href="dbHtml+'#/panel'">产&nbsp;&nbsp;&nbsp;品</a>
+          <a :href="dbHtml+'#/panelC'">Panel协作</a>
         </div>
       </li>
       <li class="database-hpo-li children">

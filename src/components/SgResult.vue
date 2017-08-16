@@ -389,7 +389,7 @@
                      :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">
                     {{data.annotations.geneSymbol.join(',')}}
                     <sub class="s-cnv" v-if="data.hasCNV">CNV</sub>
-                    <!--<i style="color: red;margin-left: 5px" class="s-cnv fa fa-area-chart" v-if="data.hasCNV"></i>-->
+                    <sub class="s-cnv" v-if="data.pseudogene">假</sub>
                   </a>
                 </td>
                 <td v-if="data.annotations">
@@ -759,7 +759,6 @@
                 <td>
                   <span v-if="data.localcnv">{{data.localcnv.length}}</span>
                 </td>
-                <!--<span class="s-cnv" v-if="index ==data.annotations.geneSymbol.length-1&&data.hasCNV">CNV</span>-->
                 <td v-if="data.annotations">
                   <a target="_blank" class="block" v-if="data.annotations.geneSymbol"
                      v-for="(single,index) in data.annotations.geneSymbol"
@@ -1670,6 +1669,10 @@
             }).then(function (respA) {
               let count0 = 0;
               let count1 = 0;
+
+
+
+
               $.each(respA.data, function (k3, k4) {
                 count1 += 1;
               });
@@ -1690,6 +1693,9 @@
                   _vue.detailLoading = false
                 }
               });
+
+
+
             });
           });
         });

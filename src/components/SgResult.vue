@@ -1740,14 +1740,18 @@
         $("#CNV-input").val('');
       },
       showHPO: function (id, data) {
+        console.log(1111);
+        console.log(data.omim.clinicalSynopsis);
+        console.log($.isEmptyObject(data.omim.clinicalSynopsis));
         this.detailLoading = !$.isEmptyObject(data.omim.clinicalSynopsis);
+        console.log(this.detailLoading)
         $("#hpo_detail").modal("show");
         this.clinicalSynopsis = [];
         const _vue = this;
-        let count = 0;
+        let count = Object.keys(data.omim.clinicalSynopsis).length;
+        console.log(count);
         let count1 = 0;
         $.each(data.omim.clinicalSynopsis, function (n2, data2) {
-          count += 1; //对象里面的key个数
           data2.name = n2;
           let data2Length = 0;
           $.each(data2, function (n3, data3) {

@@ -113,7 +113,7 @@
         .s-cnv{
           color: red;
           margin-left: 5px;
-          font-size: 10px;
+          font-size: 12px;
           transform: scale(0.5); /*2D缩放*/
           display: inline-block;
         }

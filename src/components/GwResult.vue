@@ -569,7 +569,7 @@
       },
       showHPOCNV: function (id, data) {
         $("#hpo_detail_cnv").modal("show");
-        this.loading = !$.isEmptyObject(data.omim.clinicalSynopsis);
+        this.loading = !c(data.omim.clinicalSynopsis);
         this.clinicalSynopsis = [];
         const _vue = this;
         let count = 0; //用来记clinicalSynopsis对象有多少个值

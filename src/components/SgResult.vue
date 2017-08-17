@@ -366,7 +366,6 @@
                 <th>HGMD</th>
                 <th>东亚人群频率(%)</th>
                 <th>本地人群频率(%)</th>
-                <th>纯/杂合</th>
                 <th>变异比例</th>
                 <th>状态</th>
               </tr>
@@ -453,7 +452,6 @@
                   </span>
 
                 </td>
-                <td>{{data.isHomo}}</td>
                 <td>{{data.ratio.toFixed(3)}}</td>
                 <td
                   :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',

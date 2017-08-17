@@ -57,6 +57,11 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="messages">
 
+          <div class="inline" style="font-size: 12px;margin-left: 28px">
+            基因分析报告：&nbsp;
+            <router-link target="_blank" :to="{path:'reportTest',query:{code:datafile,app:'grandtrio'}}">点击查看</router-link>
+          </div>
+
           <div class="row font-12">
             <div class="filter-left col-md-6">
               <div class="row-div title row">

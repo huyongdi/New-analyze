@@ -399,6 +399,7 @@
                 <th>MITIMPACT</th>
                 <th>MITOMAP</th>
                 <th>人群频率(%)</th>
+                <!--<th>纯/杂合</th>-->
                 <th>变异比例</th>
               </tr>
               </thead>
@@ -489,6 +490,7 @@
                   </div>
                 </td>
                 <td v-if="data.annotations">{{data.annotations.mtdb | filterData}}</td>
+                <!--<td>{{data.}}</td>-->
                 <td>{{data.ratio.toFixed(3)}}</td>
               </tr>
               </tbody>
@@ -552,9 +554,9 @@
                     <div class="col-md-4">
                       功能：<span v-if="moduleData.annotations">{{moduleData.annotations.func}}</span>
                     </div>
-                    <div class="col-md-4">
-                      纯/杂合：{{moduleData.isHomo}}
-                    </div>
+                    <!--<div class="col-md-4">-->
+                      <!--纯/杂合：{{moduleData.isHomo}}-->
+                    <!--</div>-->
                     <div class="col-md-4">
                       深度：{{moduleData.depth}}
                     </div>

@@ -48,12 +48,12 @@
         <tbody>
         <tr v-for="result in results">
           <td>
-            <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
+            <span :data-type="result.type">{{ result.id}}</span>
           </td>
-          <td>{{result.app.name}}</td>
+          <td>{{result.appInfo.name}}</td>
           <td><span v-if="result.parameter">{{result.parameter.prefix}}</span></td>
           <td>{{result.nameArr[1]}}</td>
-          <td>{{result.parameter.datafile.code}}</td>
+          <td>{{result.parameterInfo.datafile.code}}</td>
           <td>
             <img v-if='result.status == "waiting"' src="../../static/img/task-3.png" title="等待">
             <img v-else-if='result.status == "running"' src="../../static/img/task-2.png" title="运行中">

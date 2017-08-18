@@ -39,10 +39,10 @@
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
-          <td>{{result.app.name}}</td>
+          <td>{{result.appInfo.name}}</td>
           <td><span v-if="result.parameter">{{result.parameter.prefix}}</span></td>
           <td>{{result.nameArr[1]}}</td>
-          <td>{{result.parameter.datafile.code}}</td>
+          <td>{{result.parameterInfo.datafile.code}}</td>
           <!--<td>-->
           <!--<i v-if="result.status == 'completed' && !result.error" class="fa fa-check text-success"-->
           <!--title="已完成"></i>-->

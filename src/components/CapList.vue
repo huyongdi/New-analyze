@@ -53,7 +53,7 @@
           </td>
           <td>{{val.code}}</td>
           <td>{{val.maker}}</td>
-          <td><a :href='anaUrl+"sample/capture/"+val.bed+"/download/"' target="_blank">下载</a></td>
+          <td><a :href='anaUrl+"sample/capture/"+val.id+"/download/"' target="_blank">下载</a></td>
           <td>
             <img src="../../static/img/edit.png" :data-index="index" @click.stop="editFun(val)">
             <img src="../../static/img/delete.png" class="list-delete" :data-id="val.id" @click.stop='deleteFun'>

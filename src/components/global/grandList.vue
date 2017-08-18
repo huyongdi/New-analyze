@@ -27,11 +27,11 @@
         <tbody>
         <tr v-for="list in results" @click="addIn" class="not-base">
           <td class="check-td">
-            <span :data-datafile='list.code' :data-prefix='list.sampleCode' class="check-span check-no"></span>
+            <span :data-datafile='list.id' :data-prefix='list.patient.code' class="check-span check-no"></span>
           </td>
-          <td>{{list.sampleCode}}</td>
-          <td>{{list.patientName}}({{list.gender}})</td>
-          <td>{{list.code}}:{{list.capture}}</td>
+          <td>{{list.patient.code}}</td>
+          <td>{{list.patient.name}}({{list.patient.gender}})</td>
+          <td>{{list.code}}</td>
         </tr>
         </tbody>
       </table>
@@ -52,13 +52,32 @@
         results: [],
         loading: false,
         count: 0,
-        pageNum: 1
+        pageNum: 1,
+
+        appId:0
       }
     },
     created: function () {
       this.getList();
+      this.getId();
     },
     methods: {
+      getId:function () {
+        const _vue = this;
+        this.myAxios({
+          url:'application/app/'
+        }).then(function (resp) {
+
+          $.each(resp.data.results,function (i,data) {
+            if(data.code == _vue.appCode){
+              _vue.appId = data.id
+            }
+          })
+
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        })
+      },
       getList: function () {
         this.loading = true;
         const _vue = this;
@@ -90,11 +109,14 @@
             let _html = $(this).parent().parent().next().html();
             count += 1;
             _vue.myAxios({
-              url: 'application/'+this.appCode+'/',
+              url: 'application/job/',
               method: 'post',
               data: {
-                prefix: $(this).data('prefix'),
-                datafile: $(this).data('datafile')
+                app:_vue.appId,
+                parameter:{
+                  prefix: $(this).data('prefix'),
+                  datafile: $(this).data('datafile')
+                }
               }
             }).then(function (resp) {
               ajax += 1;

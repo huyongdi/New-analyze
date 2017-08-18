@@ -22,7 +22,7 @@
               <div class="single">
                 <div class="row">
                   <span>捕获芯片：</span>
-                  <input type="text" name="name" placeholder="输入捕获芯片数据">
+                  <input type="text" name="code" placeholder="输入捕获芯片数据">
                 </div>
                 <div class="row">
                   <span>出产厂家：</span>

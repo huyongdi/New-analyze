@@ -86,6 +86,8 @@
     select {
       width: 57px;
       margin: 0 5px;
+      max-height: 150px;
+      overflow-y: auto;
     }
     .black {
       color: black;

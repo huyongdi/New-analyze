@@ -1,11 +1,15 @@
 <template>
-    <div>
-        我是hg19
-    </div>
+  <captureList captureCode="hg19_WGS"></captureList>
+
 </template>
 
 <script>
-    export default {}
+  import captureList from './global/CaptureList.vue'
+    export default {
+      components: {
+        'captureList': captureList
+      },
+    }
 </script>
 
 <style scoped>

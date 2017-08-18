@@ -39,16 +39,16 @@
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
-          <td>{{result.app}}</td>
+          <td>{{result.app.name}}</td>
+          <td><span v-if="result.parameter">{{result.parameter.prefix}}</span></td>
           <td>{{result.nameArr[1]}}</td>
-          <td>{{result.nameArr[0]}}</td>
-          <td>{{result.nameArr[2]}}</td>
+          <td>{{result.parameter.datafile.code}}</td>
           <!--<td>-->
           <!--<i v-if="result.status == 'completed' && !result.error" class="fa fa-check text-success"-->
           <!--title="已完成"></i>-->
           <!--<i v-else="" class="fa fa-bug text-danger" title="出错"></i>-->
           <!--</td>-->
-          <td>{{result.startTime}}</td>
+          <td>{{result.time.start}}</td>
           <td>
             <!--<router-link v-if="result.grandmgds" :to="{path:'/dataA/foo/sgResult',query:{id:result.typeId}}"-->
             <!--class="fa fa-folder-open text-success open-icon po" title="查看任务"></router-link>-->
@@ -96,11 +96,11 @@
         this.loading = true;
         const _vue = this;
         this.myAxios({
-          url: 'application/job/?compl=true&page=' + this.pageNum + '&app=' + this.appCode
+          url: 'application/job/?status=completed&page=' + this.pageNum + '&app=' + this.appCode
         }).then(function (resp) {
           _vue.count = resp.data.count;
           $.each(resp.data.results, function (a, b) {
-            b.startTime = b.startTime.substring(0, b.startTime.indexOf('T'));
+            b.time.start = b.time.start.substring(0, b.time.start.indexOf('T'));
             if (b.grandmgds) {
               b.type = 0;
               b.typeId = b.grandmgds.split('/')[b.grandmgds.split('/').length - 2];
@@ -122,8 +122,8 @@
               b.typeId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
             }
             b.nameArr = [];
-            $.each(b.name.split(' '), function (i, data) {
-              b.nameArr.push(data.split(':')[1])
+            $.each(b.name.split(':'), function (i, data) {
+              b.nameArr.push(data)
             })
           });
           _vue.results = resp.data.results;

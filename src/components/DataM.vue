@@ -15,7 +15,7 @@
               GrandExome
             </router-link>
             <router-link to='/dataM/foo/hg19' data-code="hg19" class="block">
-              hg19_MT
+              hg19_WGS
             </router-link>
           </div>
         </li>

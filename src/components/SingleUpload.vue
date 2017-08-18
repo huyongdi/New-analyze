@@ -23,17 +23,17 @@
               <div class="single">
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->文件编号：</span>
-                  <input type="text" name="code">
+                  <input type="text" name="code" id="code">
                 </div>
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->样本编号：</span>
-                  <input type="text" name="sampleCode">
+                  <input type="text" name="patient.code" id="patient-code">
                 </div>
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->检测平台：</span>
-                  <select name="capture" id="" class="my-select">
+                  <select name="capture.id" id="capture-id" class="my-select">
                     <option value="">请选择检测平台</option>
-                    <option :value="list.name" v-for="list in capList">{{list.name}}</option>
+                    <option :value="list.id" v-for="list in capList">{{list.code}}</option>
                   </select>
                 </div>
               </div>
@@ -47,11 +47,11 @@
               <div class="single">
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->受检者姓名：</span>
-                  <input type="text" name="patientName">
+                  <input type="text" name="patient.name" id="patient-name">
                 </div>
                 <div class="inline">
                   <span>受检者性别：</span>
-                  <select name="gender" class="my-select">
+                  <select name="patient.gender" class="my-select" id="patient-gender">
                     <option value="">请选择性别</option>
                     <option value="男">男</option>
                     <option value="女">女</option>
@@ -60,6 +60,11 @@
                 </div>
               </div>
             </div>
+
+            <!--patient对象每个数据都必须提交，因此伪造2个-->
+            <input type="text" name="patient.clinical" class="hide">
+            <input type="text" name="patient.phenotypes" class="hide" value="[]">
+
           </div>
           <div class="row">
             <div class="title">
@@ -69,7 +74,7 @@
               <div class="single">
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->数据格式：</span>
-                  <select name="dataFormat" class="my-select">
+                  <select name="dataFormat" class="my-select" id="dataFormat">
                     <option value="">请选择数据格式</option>
                     <option value="fastq">fastq</option>
                     <option value="fastqSE">fastqSE</option>
@@ -78,11 +83,11 @@
                 </div>
                 <div class="inline">
                   <span>数据量(Mbp)：</span>
-                  <input type="text" name="volume">
+                  <input type="text" name="volume" id="volume">
                 </div>
                 <div class="inline pull-left">
                   <span>Q30：</span>
-                  <input name="q30" type="text">
+                  <input name="q30" type="text" id="q30">
                 </div>
                 <div class="inline remark-content">
                   <span class="pull-left">备注：</span>
@@ -99,7 +104,7 @@
               <div class="single">
                 <div class="inline">
                   <span><!--<span class="fa fa-star red"></span>-->文件1：</span>
-                  <input type="text" name="file1">
+                  <input type="text" v-model="file1">
                   <!--<div class="upload-content">-->
                   <!--<input type="text" class="show-name">-->
                   <!--<span class="text">选择</span>-->
@@ -108,13 +113,14 @@
                 </div>
                 <div class="inline">
                   <span>文件2：</span>
-                  <input type="text" name="file2">
+                  <input type="text" v-model="file2">
                   <!--<div class="upload-content">-->
                   <!--<input type="text" class="show-name">-->
                   <!--<span class="text">选择</span>-->
                   <!--<input type='file' name="file2" class="hide-input">-->
                   <!--</div>-->
                 </div>
+                <input type="text" name="files" :value="[file1,file2]" class="hide">
               </div>
             </div>
           </div>
@@ -129,7 +135,9 @@
   export default {
     data: function () {
       return {
-        capList: []
+        capList: [],
+        file1:'',
+        file2:'',
       }
     },
     created: function () {
@@ -150,6 +158,7 @@
       save: function () {
         const _form = $("#addDataForm");
         const _remark = $("#remark");
+        const _vue = this;
         _form.find('input[type=text]').each(function () {
           $(this).val($.trim($(this).val()))
         });
@@ -157,7 +166,25 @@
         this.myAxios({
           url: 'sample/datafile/',
           method: 'post',
-          data: new FormData(document.getElementById('addDataForm'))
+          data:{
+            code: $.trim($("#code").val()),
+            patient:{
+              code:$.trim($("#patient-code").val()),
+              name:$.trim($("#patient-name").val()),
+              gender:$.trim($("#patient-gender").val()),
+              clinical: '',
+              phenotypes: []
+            },
+            capture:{
+              id:$.trim($("#capture-id").val())
+            },
+            dataFormat:$.trim($("#dataFormat").val()),
+            volume:$.trim($("#volume").val()),
+            q30:$.trim($("#q30").val()),
+            remark:$.trim($("#remark").val()),
+            files:[_vue.file1,_vue.file2]
+          }
+//          data: new FormData(document.getElementById('addDataForm'))
         }).then(function () {
           alert('提交成功');
         }).catch(function (error) {

@@ -86,7 +86,7 @@
       addBc:function (event) {
         const _tr = $(event.target).closest('tr');
         const _table = _tr.closest('table');
-        _table.find('.tr-active').removeClass('tr-active')
+        _table.find('.tr-active').removeClass('tr-active');
         _tr.addClass('tr-active');
       }
     }

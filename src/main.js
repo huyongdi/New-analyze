@@ -21,7 +21,8 @@ Vue.prototype.myAxios = axios.create({
 });
 
 /*请求地址*/
-Vue.prototype.dbUrl = 'https://biomeddb.grandbox.site/';
+Vue.prototype.anaUrl = 'http://118.26.69.171:8083/';
+Vue.prototype.dbUrl = 'http://118.26.69.171:8082/';
 
 /*页面地址*/
 Vue.prototype.dbHtml = '/biomeddb/';

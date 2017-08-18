@@ -34,9 +34,9 @@
               <div class="hide-content">
                 <img class="img2" src="../../static/img/th-1.png" alt="">
                 <ul>
-                  <li><img src="../../static/img/task-1.png" alt="">出错</li>
-                  <li><img src="../../static/img/task-2.png" alt="">运行中</li>
-                  <li><img src="../../static/img/task-3.png" alt="">等待</li>
+                  <li @click="byStatus('error')"><img src="../../static/img/task-1.png" alt="">出错</li>
+                  <li @click="byStatus('running')"><img src="../../static/img/task-2.png" alt="">运行中</li>
+                  <li@click="byStatus('waiting')"><img src="../../static/img/task-3.png" alt="">等待</li>
                 </ul>
               </div>
             </div>
@@ -50,16 +50,16 @@
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
-          <td>{{result.app}}</td>
+          <td>{{result.app.name}}</td>
+          <td><span v-if="result.parameter">{{result.parameter.prefix}}</span></td>
           <td>{{result.nameArr[1]}}</td>
-          <td>{{result.nameArr[0]}}</td>
-          <td>{{result.nameArr[2]}}</td>
+          <td>{{result.parameter.datafile.code}}</td>
           <td>
             <img v-if='result.status == "waiting"' src="../../static/img/task-3.png" title="等待">
             <img v-else-if='result.status == "running"' src="../../static/img/task-2.png" title="运行中">
             <img v-else="" src="../../static/img/task-1.png" title="出错">
           </td>
-          <td>{{result.startTime}}</td>
+          <td>{{result.time.start}}</td>
           <td>
             <i :class="{'fa fa-refresh po':result.status == 'error','noError':result.status != 'error'}"
                @click="refreshTask(result.id)" title="重新运行"></i>
@@ -86,7 +86,9 @@
         count: 0,
         pageNum: 1,
         selectArr:[],
-        appCode:''
+        appCode:'',
+
+        status:''
       }
     },
     created: function () {
@@ -96,17 +98,28 @@
     methods: {
       appClick:function (code) {
         this.appCode = code?code:'';
-        this.getList()
+        this.getList(this.status)
       },
-      getList: function () {
+      byStatus:function (status) {
+        this.status = status;
+        this.getList(status)
+      },
+      getList: function (status) {
         this.loading = true;
         const _vue = this;
+        let axiosUrl = '';
+        if(status){
+          axiosUrl = 'application/job/?status='+status+'&page=' + this.pageNum+'&app=' + this.appCode;
+        }else{
+          axiosUrl = 'application/job/?status=incompleted&page=' + this.pageNum+'&app=' + this.appCode;
+        }
+
         this.myAxios({
-          url: 'application/job/?compl=false&page=' + this.pageNum+'&app=' + this.appCode
+          url: axiosUrl
         }).then(function (resp) {
           _vue.count = resp.data.count;
           $.each(resp.data.results, function (a, b) {
-            b.startTime = b.startTime.substring(0, b.startTime.indexOf('T'));
+            b.time.start = b.time.start.substring(0, b.time.start.indexOf('T'));
             if (b.grandmgds) {
               b.type = 0;
               b.typeId = b.grandmgds.split('/')[b.grandmgds.split('/').length - 2];
@@ -128,8 +141,8 @@
               b.typeId = b.grandtrios.split('/')[b.grandtrios.split('/').length - 2];
             }
             b.nameArr = [];
-            $.each(b.name.split(' '), function (i, data) {
-              b.nameArr.push(data.split(':')[1])
+            $.each(b.name.split(':'), function (i, data) {
+              b.nameArr.push(data)
             })
           });
           _vue.results = resp.data.results;

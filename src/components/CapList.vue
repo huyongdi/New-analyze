@@ -51,12 +51,12 @@
           <td class="check-td">
             <span :data-name="val.name" :data-i="index" class="check-span check-no"></span>
           </td>
-          <td>{{val.name}}</td>
+          <td>{{val.code}}</td>
           <td>{{val.maker}}</td>
-          <td><a :href="val.bed">下载</a></td>
+          <td><a :href='anaUrl+"sample/capture/"+val.bed+"/download/"' target="_blank">下载</a></td>
           <td>
             <img src="../../static/img/edit.png" :data-index="index" @click.stop="editFun(val)">
-            <img src="../../static/img/delete.png" class="list-delete" :data-name="val.name" @click.stop='deleteFun'>
+            <img src="../../static/img/delete.png" class="list-delete" :data-id="val.id" @click.stop='deleteFun'>
           </td>
         </tr>
         </tbody>
@@ -76,8 +76,8 @@
               <div class="row">
                 <div class="col-md-3">捕获芯片</div>
                 <div class="col-md-9">
-                  <input type="text" disabled class="form-control" id="edit-name" :data-oldName="editModalData.name"
-                         :value="editModalData.name">
+                  <input type="text" disabled class="form-control" id="edit-name"
+                         :value="editModalData.code">
                 </div>
               </div>
               <div class="row noneBottom">
@@ -187,7 +187,7 @@
       saveEdit: function () {
         const _vue = this;
         this.myAxios({
-          url: 'sample/capture/' + $("#edit-name").data('oldname') + '/',
+          url: 'sample/capture/' + _vue.editModalData.id+ '/',
           method: 'patch',
           data: {
             name: $("#edit-name").val(),
@@ -203,10 +203,10 @@
       },
       deleteFun: function (event) {
         const _vue = this;
-        const name = $(event.target).data('name');
+        const id = $(event.target).data('id');
         if (confirm('是否删除该数据')) {
           _vue.myAxios({
-            url: 'sample/capture/' + name + '/',
+            url: 'sample/capture/' + id + '/',
             method: 'delete'
           }).then(function () {
             alert('已成功删除该数据');

@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2 report">
         <div class="title-content">
-          <button class="btn btn-color-r pull-left refresh-btn" @click="refresh1">重新生成报告</button>
+          <!--<button class="btn btn-color-r pull-left refresh-btn" @click="refresh1">重新生成报告</button>-->
           <div class="logo-content">
             <div class="logo-left">
               <img src="../../static/img/report-1.png" alt="">
@@ -45,24 +45,24 @@
           </div>
           <div class="basic-content">
             <div class="one">
-              <span>姓名：{{sampleData.name}}</span>
-              <span>性别：{{sampleData.gender}}</span>
-              <span>民族：{{sampleData.nation}}</span>
-              <span>出生年月：{{sampleData.birthday}}</span>
-              <span>样本编号：{{sampleData.sn}}</span>
+              <span>姓名：{{sampleData.name?sampleData.name:'无'}}</span>
+              <span>性别：{{sampleData.gender?sampleData.gender:'无'}}</span>
+              <span>民族：{{sampleData.nation?sampleData.nation:'无'}}</span>
+              <span>出生年月：{{sampleData.birthday?sampleData.birthday:'无'}}</span>
+              <span>样本编号：{{sampleData.sn?sampleData.sn:'无'}}</span>
             </div>
             <div class="two">
-              <span>样品类型：- </span>
-              <span>检测项目：{{sampleData.item}}</span>
-              <span>检测方法：{{sampleData ? '靶向捕获-高通量测序' : ''}}</span>
-              <span>送检医院：{{sampleData.unit_name}}</span>
+              <span>样品类型：无 </span>
+              <span>检测项目：{{sampleData.item.length != 0?sampleData.item.join(','):'无'}}</span>
+              <span>检测方法：{{sampleData.item_sn ?sampleData.item_sn:'靶向捕获-高通量测序'}}</span>
+              <span>送检医院：{{sampleData.unit_name?sampleData.unit_name:'无'}}</span>
             </div>
             <img src="../../static/img/report-4.png" class="bottom-img" alt="">
           </div>
           <div class="first-page">
             <div class="one">
               <div class="title">临床信息</div>
-              <div class="content">{{sampleData.remark}}</div>
+              <div class="content">{{sampleData.remark?sampleData.remark:'无'}}</div>
             </div>
             <div class="one">
               <div class="title">检测结果</div>
@@ -86,15 +86,16 @@
                   <tbody>
                   <tr v-for="(list,index) in allData.majors">
                     <td>{{index + 1}}</td>
-                    <td>{{list.gene.symbol}}</td>
-                    <td>{{list.transcript}}</td>
+                    <td>{{list.gene}}</td>
+                    <td>{{list.changes.transcript}}</td>
                     <td>{{list.position}}</td>
-                    <td>{{list.change.na ? list.change.na : '-'}}</td>
-                    <td>{{list.change.aa ? list.change.aa : '-'}}</td>
+                    <td><span v-if="list.changes">{{list.changes.NA_changes ? list.changes.NA_changes : '-'}}</span></td>
+                    <td><span v-if="list.changes">{{list.changes.AA_change ? list.changes.AA_change : '-'}}</span></td>
                     <td>{{list.homhet}}</td>
                     <td>{{list.freq}}</td>
                     <td>-</td>
-                    <td>{{list.intervar.value === 'Uncertain significance' ? 'VUS' : list.intervar.value}}</td>
+                    <!--<td>{{list.intervar.value === 'Uncertain significance' ? 'VUS' : list.intervar.value}}</td>-->
+                    <td>{{list.intervar}}</td>
                   </tr>
                   </tbody>
                 </table>
@@ -103,19 +104,34 @@
             <div class="one">
               <div class="title">结果说明</div>
               <div class="content">
-                <span v-for="(major,index) in allData.majorsVue"> <!--不同基因-->
-                {{major.gene.symbol}}基因是<span v-if="major.diseases.length === 1" v-for="(disease,index) in major.diseases"><span
-                    v-for="(list,index) in disease.inheritance">{{list | getName}}<span
-                    v-if="disease.inheritance.length!==1 &&index!==disease.inheritance.length">、</span></span>
-                    <!--{{disease.inheritance|getName.join(',')}}-->的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}})</span><span
-                    v-if="major.diseases.length === 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(
-                    ',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span v-if="index === 0">和</span></span>
-                <span v-if="major.diseases.length > 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(
-                  ',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span
-                  v-if="index != major.diseases.length-1"> , </span></span><span v-if="index !== allData.majorsVue.length-1">。</span>
-              </span>。在本次检测中，我们检测到受检者{{funStr}}。
-                对于常染色体隐性遗传的疾病来说，单个致病性变异的携带者并不会发展为患者，只有纯合致病性变异和复合杂合型致病性变异（反式）才会导致疾病的发生。若父母均为携带者，每次剩余的子女均有25%的可能为患者。
+                <!--<span v-for="(major,index) in allData.majorsVue"> &lt;!&ndash;不同基因&ndash;&gt;-->
+                <!--{{major.gene.symbol}}基因是<span v-if="major.diseases.length === 1" v-for="(disease,index) in major.diseases"><span-->
+                    <!--v-for="(list,index) in disease.inheritance">{{list | getName}}<span-->
+                    <!--v-if="disease.inheritance.length!==1 &&index!==disease.inheritance.length">、</span></span>-->
+                    <!--&lt;!&ndash;{{disease.inheritance|getName.join(',')}}&ndash;&gt;的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}})</span><span-->
+                    <!--v-if="major.diseases.length === 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(-->
+                    <!--',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span v-if="index === 0">和</span></span>-->
+                <!--<span v-if="major.diseases.length > 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(-->
+                  <!--',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span-->
+                  <!--v-if="index != major.diseases.length-1"> , </span></span><span v-if="index !== allData.majorsVue.length-1">。</span>-->
+              <!--</span>。在本次检测中，我们检测到受检者{{funStr}}。-->
+                <!--对于常染色体隐性遗传的疾病来说，单个致病性变异的携带者并不会发展为患者，只有纯合致病性变异和复合杂合型致病性变异（反式）才会导致疾病的发生。若父母均为携带者，每次剩余的子女均有25%的可能为患者。-->
+                <!--<span class="bold">疾病的最终确诊还需结合进一步的临床检查和家系调查。</span>-->
+
+                <span v-for="(major,index) in resultsData">
+                  {{major}} <span v-if="index ==resultsData.length-1">。</span>
+                </span>
+                <span>
+                  在本次检测中，我们检测到受检者
+                  <span v-for="(fuc,index) in resultsFuncsData">
+                    {{fuc}}
+                    <span v-if="index == resultsFuncsData.length-1">。</span>
+                    <span v-else=""> , </span>
+                  </span>
+                </span>
+                <span v-if="allData.resultDes && allData.resultDes.inheritances">{{allData.resultDes.inheritances.join(' , ')}}</span>
                 <span class="bold">疾病的最终确诊还需结合进一步的临床检查和家系调查。</span>
+
                 <div class="notice">
                   注：以上解读基于目前对单基因遗传病致病基因的研究。疾病简介、基因简介、一代验证及其他意义未明变异位点见附录。
                   变异的解释及证据定级是参照美国医学遗传学与基因组学学会（<span>ACMG</span>）发布的最新版基因变异解读标准和指南；
@@ -133,15 +149,23 @@
               <div class="title">1.疾病简介</div>
               <div class="content">
                 <div class="appendix-content">
-                  <div v-for="(majorD,index) in majorDiseases" class="diseases-content">
+                  <!--<div v-for="(majorD,index) in majorDiseases" class="diseases-content">-->
+                    <!--<div class="diseases-content-title">{{index + 1}}) {{majorD.title.chinese ? majorD.title.chinese : majorD.title.english}}</div>-->
+                    <!--<div class="diseases-content-remark" v-show="majorD.hpoLength !==0">-->
+                      <!--疾病概述：<span v-for="(list,index) in majorD.inheritance">{{list | getName}}<span-->
+                      <!--v-if="majorD.inheritance.length!==1 &&index!==majorD.inheritance.length">、</span></span>&lt;!&ndash;{{majorD.inheritance.join(',')}}&ndash;&gt;-->
+                      <!--，典型的临床症状包括<span v-for="(hpo,index) in majorD.hpos">{{hpo.titles.chinese ? hpo.titles.chinese : hpo.titles.english}}<span-->
+                      <!--v-if="index!=majorD.hpos.length-1">、</span></span>。-->
+                    <!--</div>-->
+                  <!--</div>-->
+
+                  <div class="diseases-content" v-for="(majorD,index) in diseaseDessData">
                     <div class="diseases-content-title">{{index + 1}}) {{majorD.title.chinese ? majorD.title.chinese : majorD.title.english}}</div>
-                    <div class="diseases-content-remark" v-show="majorD.hpoLength !==0">
-                      疾病概述：<span v-for="(list,index) in majorD.inheritance">{{list | getName}}<span
-                      v-if="majorD.inheritance.length!==1 &&index!==majorD.inheritance.length">、</span></span><!--{{majorD.inheritance.join(',')}}-->
-                      ，典型的临床症状包括<span v-for="(hpo,index) in majorD.hpos">{{hpo.titles.chinese ? hpo.titles.chinese : hpo.titles.english}}<span
-                      v-if="index!=majorD.hpos.length-1">、</span></span>。
+                    <div class="diseases-content-remark">
+                      疾病概述：{{majorD.inheritance}}，典型的临床症状包括{{majorD.phenotypes.join(' 、')}}。
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -151,10 +175,9 @@
                 <div class="appendix-content">
                   <div class="diseases-content" v-for="(major,index) in allData.majors">
                     <div class="variation-title">{{index + 1}}) <span
-                      class="variation-title-content">{{major.gene.symbol}}基因的{{major.position}}({{major.change.aa}})变异</span></div>
+                      class="variation-title-content">{{major.gene}}基因的{{major.position}}(<span v-if="major.changes">{{major.changes.AA_change}}</span>)变异</span></div>
                     <div class="variation-content">
-                      该变异在EXAC普通人数据库东亚人群中的频率为{{major.freq}}({{major.intervar.rank.join(',')}}),该变异未见文献报道。基于以上证据，我们建议判定该变异为{{major.intervar.value ===
-                    'Uncertain significance' ? 'VUS' : major.intervar.value}}变异。
+                      该变异在EXAC普通人数据库东亚人群中的频率为{{major.freq}}(暂无}),该变异未见文献报道。基于以上证据，我们建议判定该变异为{{major.intervar}}变异。
                     </div>
                   </div>
                 </div>
@@ -162,7 +185,7 @@
             </div>
             <div class="one">
               <div class="title">3.一代验证结果</div>
-              <div class="content">
+              <div class="content">无
               </div>
             </div>
             <div class="one">
@@ -187,22 +210,19 @@
                   <tbody>
                   <tr v-for="(list,index) in allData.minors">
                     <td>{{index + 1}}</td>
-                    <td>{{list.gene.symbol}}</td>
-                    <td>{{list.transcript}}</td>
+                    <td>{{list.gene}}</td>
+                    <td>{{list.changes.transcript}}</td>
                     <td>{{list.position}}</td>
-                    <td>{{list.change.na ? list.change.na : '-'}}</td>
-                    <td>{{list.change.aa ? list.change.aa : '-'}}</td>
+                    <td><span v-if="list.changes">{{list.changes.NA_changes ? list.changes.NA_changes : '-'}}</span></td>
+                    <td><span v-if="list.changes">{{list.changes.AA_change ? list.changes.AA_change : '-'}}</span></td>
                     <td>{{list.homhet}}</td>
                     <td>{{list.freq}}</td>
                     <td>
-                      <div v-for="a in list.diseases">
-                        <span v-if="a.inheritance.length !== 0">{{a.inheritance.join(',')}}</span>
-                        <span v-else="">-</span>
-                      </div>
+                      <div v-for="a in list.diseases">{{a.inheritance}}</div>
                     </td>
                     <td>
                       <div v-for="a in list.diseases">
-                        <span>{{a.title.chinese?a.title.chinese:a.title.english}}({{a.mimNumber}})</span>
+                        <span>{{a.disease}})</span>
                       </div>
                     </td>
                   </tr>
@@ -255,6 +275,10 @@
         majorDiseases: [],
         sampleData: '',
 
+        resultsData:[], /*结果说明*/
+        resultsFuncsData:[], /*结果说明变异位点*/
+        diseaseDessData:[], /*疾病描述*/
+
         header: `
           <img class="left" src="../../static/img/report-1.png" alt="中科检验">
           <img class="right" src="../../static/img/report-2.png" alt="希望组">
@@ -282,58 +306,48 @@
       }
       this.getData();
       this.sampleInfo();
-      this.printPlugIn(); //插件相关
+//      this.printPlugIn(); //插件相关
     },
     methods: {
       sampleInfo: function () {
         const _vue = this;
         _vue.loading = true;
         _vue.$axios({
-          url: 'report/reportsnv/patient/?datafile=' + _vue.id
+          url: 'report/reportsnvnew/patient/?datafile=' + _vue.id
         }).then(function (resp) {
-          if (resp.data.status === 'error') {
+          if (resp.data.patient.status === 'error') {
           } else {
-            if (resp.data.data.birthday) {
-              let arr = resp.data.data.birthday.split('-');
-              resp.data.data.birthday = arr[0] + '年' + arr[1] + '月' + arr[2] + '号';
+            let data = resp.data.patient.data;
+            if (data.birthday) {
+              let arr = data.birthday.split('-');
+              data.birthday = arr[0] + '年' + arr[1] + '月' + arr[2] + '号';
             }
-            _vue.sampleData = resp.data.data;
+            _vue.sampleData = data;
           }
         }).catch(function (error) {
           _vue.catchFun(error);
         });
       },
-      refresh1: function () {
-        const _vue = this;
-        _vue.loading = true;
-        _vue.$axios({
-          url: 'report/reportsnv/refresh/?datafile=' + _vue.id + '&app=' + _vue.app
-        }).then(function (respRe) {
-          _vue.allData = respRe.data;
-          _vue.loading = false;
-        }).catch(function (error) {
-          _vue.catchFun(error);
-        });
-      },
+//      refresh1: function () {
+//        const _vue = this;
+//        _vue.loading = true;
+//        _vue.$axios({
+//          url: 'report/reportsnvnew/refresh/?datafile=' + _vue.id + '&app=' + _vue.app
+//        }).then(function (respRe) {
+//          _vue.allData = respRe.data;
+//          _vue.loading = false;
+//        }).catch(function (error) {
+//          _vue.catchFun(error);
+//        });
+//      },
       getData: function () {
         const _vue = this;
         _vue.loading = true;
         this.$axios({
-          url: 'report/reportsnv/?datafile=' + this.id + '&app=' + this.app,
+          url: 'report/reportsnvnew/?datafile=' + this.id + '&app=' + this.app,
         }).then(function (resp) {
-          if (resp.data.results.length === 0) {
-            _vue.$axios({
-              url: 'report/reportsnv/refresh/?datafile=' + _vue.id + '&app=' + _vue.app
-            }).then(function (respRe) {
-              _vue.allData = respRe.data;
-              _vue.loading = false;
-            }).catch(function (error) {
-              _vue.catchFun(error);
-            });
-          } else {
-            _vue.allData = resp.data.results[0];
-            _vue.loading = false;
-          }
+          _vue.allData = resp.data;
+          _vue.loading = false;
         })
       },
 
@@ -596,8 +610,8 @@
         }
         const _vue = this;
         const genes = this.allData.genes;
-        var arrCount = Math.ceil(genes.length / 8);
-        var pushArr = [];
+        let arrCount = Math.ceil(genes.length / 8);
+        let pushArr = [];
         while (arrCount) {
           pushArr.push([]);
           arrCount -= 1
@@ -618,72 +632,91 @@
         this.geneArr = pushArr;
 
         //结果说明
-        this.allData.majorsVue = [];
-        let majors = this.allData.majors;
-        let geneStr = '';
-        let funcStr = '';
-        let funcObj = {};
-        $.each(majors, function (i, data) {
-
-          //分类出不同的基因名
-          if (geneStr.includes(data.gene.symbol)) {
-          } else {
-            geneStr += data.gene.symbol;
-            _vue.allData.majorsVue.push(data)
-          }
-
-          //剪切变异位点统计
-          if (funcStr.includes(data.func)) {
-            funcObj[data.func] += 1;
-          } else {
-            funcStr += data.func;
-            funcObj[data.func] = 1;
-          }
-
-        });
-
-        //剪切变异位点变成文字
-        let funArr = [];
-        $.each(funcObj, function (n, value) {
-          funArr.push(value + '个' + n + '变异位点')
-        });
-        const funArrCount = funArr.length;
-        if (funArrCount === 1) {
-          _vue.funStr = funArr[0];
-        } else if (funArrCount === 2) {
-          _vue.funStr += funArr[0] + '和' + funArr[1]
-        } else {
-          $.each(funArr, function (k1, k2) {
-            if (k1 !== funArrCount - 1) {
-              _vue.funStr += k2 + ','
-            } else {
-              _vue.funStr += k2
-            }
+            //基因
+        if(_vue.allData.resultDes && _vue.allData.resultDes.genes){
+          $.each(_vue.allData.resultDes.genes,function (i,data) {
+            _vue.resultsData.push(i+'基因是'+data.join('  ,  '))
           })
         }
-
-        //提取疾病信息
-        let majorDiseases = [];
-        _vue.majorDiseases = [];
-        $.each(_vue.allData.majorsVue, function (k3, k4) {
-          majorDiseases = majorDiseases.concat(k4.diseases);
+            //变异位点
+        $.each(_vue.allData.funcs,function (i,data) {
+          _vue.resultsFuncsData.push(data+'个'+i+'位点');
         });
 
-        $.each(majorDiseases, function (k5, k6) {
-          k6.hpos = [];
-          k6.hpoLength = 0;
-          _vue.$axios({
-            url: _vue.dbUrl + 'knowledge/omim/' + k6.mimNumber + "/",
-            method: 'get'
-          }).then(function (respRe) {
-            k6.hpos = respRe.data.hpos;
-            k6.hpoLength = respRe.data.hpos.length;
-            _vue.majorDiseases.push(k6);
-            console.log(_vue.majorDiseases)
-          }).catch(function (error) {
-            _vue.catchFun(error);
-          });
-        });
+
+        //疾病简介
+        $.each(_vue.allData.diseaseDes,function (i,data) {
+          data.omim = i;
+          _vue.diseaseDessData.push(data)
+        })
+
+//        //结果说明
+//        this.allData.majorsVue = [];
+//        let majors = this.allData.majors;
+//        let geneStr = '';
+//        let funcStr = '';
+//        let funcObj = {};
+//        $.each(majors, function (i, data) {
+//
+//          //分类出不同的基因名
+//          if (geneStr.includes(data.gene.symbol)) {
+//          } else {
+//            geneStr += data.gene.symbol;
+//            _vue.allData.majorsVue.push(data)
+//          }
+//
+//          //剪切变异位点统计
+//          if (funcStr.includes(data.func)) {
+//            funcObj[data.func] += 1;
+//          } else {
+//            funcStr += data.func;
+//            funcObj[data.func] = 1;
+//          }
+//
+//        });
+//
+//        //剪切变异位点变成文字
+//        let funArr = [];
+//        $.each(funcObj, function (n, value) {
+//          funArr.push(value + '个' + n + '变异位点')
+//        });
+//        const funArrCount = funArr.length;
+//        if (funArrCount === 1) {
+//          _vue.funStr = funArr[0];
+//        } else if (funArrCount === 2) {
+//          _vue.funStr += funArr[0] + '和' + funArr[1]
+//        } else {
+//          $.each(funArr, function (k1, k2) {
+//            if (k1 !== funArrCount - 1) {
+//              _vue.funStr += k2 + ','
+//            } else {
+//              _vue.funStr += k2
+//            }
+//          })
+//        }
+//
+//        //提取疾病信息
+//        let majorDiseases = [];
+//        _vue.majorDiseases = [];
+//        $.each(_vue.allData.majorsVue, function (k3, k4) {
+//          majorDiseases = majorDiseases.concat(k4.diseases);
+//        });
+//
+//        $.each(majorDiseases, function (k5, k6) {
+//          k6.hpos = [];
+//          k6.hpoLength = 0;
+//          _vue.$axios({
+//            url: _vue.dbUrl + 'knowledge/omim/' + k6.mimNumber + "/",
+//            method: 'get'
+//          }).then(function (respRe) {
+//            k6.hpos = respRe.data.hpos;
+//            k6.hpoLength = respRe.data.hpos.length;
+//            _vue.majorDiseases.push(k6);
+//            console.log(_vue.majorDiseases)
+//          }).catch(function (error) {
+//            _vue.catchFun(error);
+//          });
+//        });
 
       }
     },
@@ -718,9 +751,12 @@
   @title: rgb(83, 83, 83);
   #report-content {
     color: @gray;
-    >.row{
+    > .row {
       margin: 0;
       padding-left: 50px;
+    }
+    .bold{
+      font-weight: bold;
     }
     table {
       text-align: center;
@@ -732,6 +768,7 @@
         th {
           border-right: 1px solid #fff;
           text-align: center;
+          border-bottom: none;
         }
       }
       tbody {
@@ -860,7 +897,7 @@
       }
       .appendix-page {
         margin-top: 80px;
-        >.title {
+        > .title {
           font-size: 18px;
           color: @title;
           text-align: center;
@@ -871,14 +908,14 @@
             font-size: 16px;
             color: @title;
             margin-bottom: 5px;
-            >span{
+            > span {
               font-size: 12px;
               color: @gray;
             }
           }
           .content {
             line-height: @lineH;
-            .diseases-content{
+            .diseases-content {
               margin-top: 10px;
             }
             .notice {

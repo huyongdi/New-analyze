@@ -20,7 +20,7 @@
         <div class="office-content">
           <div class="office-one">
             <div>北京中科医学检验实验室</div>
-            <div>
+            <div class="office-one-content">
               <span>电话：400-110-1066</span>
               <span>邮箱：report@metabolicare.co</span>
               <span>网址：www.metabolicare.com</span>
@@ -29,7 +29,7 @@
           </div>
           <div class="office-one">
             <div>北京希望组生物科技有限公司</div>
-            <div>
+            <div class="office-one-content">
               <span>遗传咨询/查询电话：400-651-6230</span>
               <span>邮箱：support@grandomics.com</span>
               <span>网址：http://www.grandomics.com</span>
@@ -37,9 +37,206 @@
             </div>
           </div>
         </div>
+        <div class="sample-content">
+          <img class="first-img" src="../../static/img/report-3.png" alt="">
+          <div class="sample-title">
+            <span class="big">基因分析报告</span>
+            <span class="small">GENE ANALYSIS REPORT</span>
+          </div>
+          <div class="basic-content">
+            <div class="one">
+              <span>姓名：{{sampleData.name}}</span>
+              <span>性别：{{sampleData.gender}}</span>
+              <span>民族：{{sampleData.nation}}</span>
+              <span>出生年月：{{sampleData.birthday}}</span>
+              <span>样本编号：{{sampleData.sn}}</span>
+            </div>
+            <div class="two">
+              <span>样品类型：- </span>
+              <span>检测项目：{{sampleData.item}}</span>
+              <span>检测方法：{{sampleData ? '靶向捕获-高通量测序' : ''}}</span>
+              <span>送检医院：{{sampleData.unit_name}}</span>
+            </div>
+            <img src="../../static/img/report-4.png" class="bottom-img" alt="">
+          </div>
+          <div class="first-page">
+            <div class="one">
+              <div class="title">临床信息</div>
+              <div class="content">{{sampleData.remark}}</div>
+            </div>
+            <div class="one">
+              <div class="title">检测结果</div>
+              <div class="content">
+                <span class="no-data" v-if="allData.majors && allData.majors.length == 0">未检测到与患者临床表型相关的具有可能临床意义的变异（包括SNV和Indel）</span>
+                <table class="table" id="main-result" v-if="allData.majors && allData.majors.length !=0">
+                  <thead>
+                  <tr>
+                    <th>序号</th>
+                    <th>基因名</th>
+                    <th>转录本</th>
+                    <th>染色体位置</th>
+                    <th>核苷酸改变</th>
+                    <th>氨基酸改变</th>
+                    <th>纯杂合</th>
+                    <th>普通人群频率</th>
+                    <th>来源</th>
+                    <th>变异类型</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="(list,index) in allData.majors">
+                    <td>{{index + 1}}</td>
+                    <td>{{list.gene.symbol}}</td>
+                    <td>{{list.transcript}}</td>
+                    <td>{{list.position}}</td>
+                    <td>{{list.change.na ? list.change.na : '-'}}</td>
+                    <td>{{list.change.aa ? list.change.aa : '-'}}</td>
+                    <td>{{list.homhet}}</td>
+                    <td>{{list.freq}}</td>
+                    <td>-</td>
+                    <td>{{list.intervar.value === 'Uncertain significance' ? 'VUS' : list.intervar.value}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="one">
+              <div class="title">结果说明</div>
+              <div class="content">
+                <span v-for="(major,index) in allData.majorsVue"> <!--不同基因-->
+                {{major.gene.symbol}}基因是<span v-if="major.diseases.length === 1" v-for="(disease,index) in major.diseases"><span
+                    v-for="(list,index) in disease.inheritance">{{list | getName}}<span
+                    v-if="disease.inheritance.length!==1 &&index!==disease.inheritance.length">、</span></span>
+                    <!--{{disease.inheritance|getName.join(',')}}-->的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}})</span><span
+                    v-if="major.diseases.length === 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(
+                    ',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span v-if="index === 0">和</span></span>
+                <span v-if="major.diseases.length > 2" v-for="(disease,index) in major.diseases">{{disease.inheritance.join(
+                  ',')}}的{{disease.title.chinese}}(OMIM：# {{disease.mimNumber}};{{disease.title.english}}) <span
+                  v-if="index != major.diseases.length-1"> , </span></span><span v-if="index !== allData.majorsVue.length-1">。</span>
+              </span>。在本次检测中，我们检测到受检者{{funStr}}。
+                对于常染色体隐性遗传的疾病来说，单个致病性变异的携带者并不会发展为患者，只有纯合致病性变异和复合杂合型致病性变异（反式）才会导致疾病的发生。若父母均为携带者，每次剩余的子女均有25%的可能为患者。
+                <span class="bold">疾病的最终确诊还需结合进一步的临床检查和家系调查。</span>
+                <div class="notice">
+                  注：以上解读基于目前对单基因遗传病致病基因的研究。疾病简介、基因简介、一代验证及其他意义未明变异位点见附录。
+                  变异的解释及证据定级是参照美国医学遗传学与基因组学学会（<span>ACMG</span>）发布的最新版基因变异解读标准和指南；
+                  <span>Pathogenic</span>表示致病性变异，<span>Likely pathogenic</span>表示疑似致病性变异，
+                  <span>VUS</span>表示临床性意义未明变异，<span>Likely benign</span>表示疑
+                  似良性变异，<span>Benign</span>表示良性变异<sup>[1]</sup>.参考基因组为<span>hg19</span>，
+                  变异命名参照<span>HGVS</span>建议的规则给出
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="appendix-page"> <!--附录-->
+            <div class="title">附录</div>
+            <div class="one">
+              <div class="title">1.疾病简介</div>
+              <div class="content">
+                <div class="appendix-content">
+                  <div v-for="(majorD,index) in majorDiseases" class="diseases-content">
+                    <div class="diseases-content-title">{{index + 1}}) {{majorD.title.chinese ? majorD.title.chinese : majorD.title.english}}</div>
+                    <div class="diseases-content-remark" v-show="majorD.hpoLength !==0">
+                      疾病概述：<span v-for="(list,index) in majorD.inheritance">{{list | getName}}<span
+                      v-if="majorD.inheritance.length!==1 &&index!==majorD.inheritance.length">、</span></span><!--{{majorD.inheritance.join(',')}}-->
+                      ，典型的临床症状包括<span v-for="(hpo,index) in majorD.hpos">{{hpo.titles.chinese ? hpo.titles.chinese : hpo.titles.english}}<span
+                      v-if="index!=majorD.hpos.length-1">、</span></span>。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="one">
+              <div class="title">2.变异详情</div>
+              <div class="content">
+                <div class="appendix-content">
+                  <div class="diseases-content" v-for="(major,index) in allData.majors">
+                    <div class="variation-title">{{index + 1}}) <span
+                      class="variation-title-content">{{major.gene.symbol}}基因的{{major.position}}({{major.change.aa}})变异</span></div>
+                    <div class="variation-content">
+                      该变异在EXAC普通人数据库东亚人群中的频率为{{major.freq}}({{major.intervar.rank.join(',')}}),该变异未见文献报道。基于以上证据，我们建议判定该变异为{{major.intervar.value ===
+                    'Uncertain significance' ? 'VUS' : major.intervar.value}}变异。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="one">
+              <div class="title">3.一代验证结果</div>
+              <div class="content">
+              </div>
+            </div>
+            <div class="one">
+              <div class="title">4.其他变异信息</div>
+              <div class="content">
+                <table class="table">
+                  <thead>
+                  <tr>
+                  <tr>
+                    <th>序号</th>
+                    <th>基因名</th>
+                    <th>转录本</th>
+                    <th>染色体位置</th>
+                    <th>核苷酸改变</th>
+                    <th>氨基酸改变</th>
+                    <th>纯/杂合</th>
+                    <th>普通人群频率</th>
+                    <th>遗传方式</th>
+                    <th>疾病表型及OMIM编号</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="(list,index) in allData.minors">
+                    <td>{{index + 1}}</td>
+                    <td>{{list.gene.symbol}}</td>
+                    <td>{{list.transcript}}</td>
+                    <td>{{list.position}}</td>
+                    <td>{{list.change.na ? list.change.na : '-'}}</td>
+                    <td>{{list.change.aa ? list.change.aa : '-'}}</td>
+                    <td>{{list.homhet}}</td>
+                    <td>{{list.freq}}</td>
+                    <td>
+                      <div v-for="a in list.diseases">
+                        <span v-if="a.inheritance.length !== 0">{{a.inheritance.join(',')}}</span>
+                        <span v-else="">-</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div v-for="a in list.diseases">
+                        <span>{{a.title.chinese?a.title.chinese:a.title.english}}({{a.mimNumber}})</span>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="notice">
+                  (
+                  注：以上次要变异均未经一代测序验证，AD表示常染色体遗传，AR表示常染色体隐性遗传，DR表示双基因隐性遗传，
+                  DD表示双基因显性遗传，XLD表示X连锁显性遗传，XLR表示X连锁隐性遗传，IC表示散发病例
+                  )
+                </div>
+              </div>
+            </div>
+            <div class="one">
+              <div class="title">5.检测基因列表<span>(临床表型较不相符或遗传模式不相符的变异信息)</span></div>
+              <div class="content">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th colspan="8">相关疾病panel，共<span v-if="allData.genes">{{allData.genes.length}}</span>个基因</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="list in geneArr">
+                    <td v-for="listS in list">{{listS}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -515,39 +712,65 @@
 </script>
 
 <style scoped lang="less">
-  @gray:rgb(125,125,125);
-  #report-content{
+  @gray: rgb(125, 125, 125);
+  @green: rgb(112, 178, 79);
+  @lineH: 23px;
+  @title: rgb(83, 83, 83);
+  #report-content {
     color: @gray;
-    .report{
-      border: 1px solid red;
+    >.row{
+      margin: 0;
+      padding-left: 50px;
+    }
+    table {
+      text-align: center;
+      thead {
+        /*background:linear-gradient(to right,rgb(35,129,27),rgb(143,185,84));*/
+        background: url('../../static/img/report-4.png');
+        background-size: 100% 100%;
+        color: #fff;
+        th {
+          border-right: 1px solid #fff;
+          text-align: center;
+        }
+      }
+      tbody {
+        td {
+          background-color: rgb(239, 239, 239);
+          border-right: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
+    .report {
       min-height: 200px;
       margin-top: 50px;
       padding-left: 0;
       padding-right: 0;
     }
-    .refresh-btn{
+    .refresh-btn {
       margin: 10px;
     }
-    .logo-content{
+    .logo-content {
       text-align: right;
-      .logo-left{
+      .logo-left {
         display: inline-block;
         padding-right: 15px;
         border-right: 1px solid gray;
         text-align: left;
-        img{
+        img {
           width: 160px;
         }
       }
-      .logo-right{
+      .logo-right {
         display: inline-block;
         padding-left: 15px;
         text-align: left;
-        img{
+        img {
           width: 165px;
         }
       }
-      span{
+      span {
         display: block;
         font-size: 12px;
         transform: scale(0.9); /*2D缩放*/
@@ -556,17 +779,113 @@
         margin-top: 5px;
       }
     }
-    .office-content{
-      margin: 70px 0 80px 0;
+    .office-content {
+      margin: 50px 0 60px 0;
       font-size: 12px;
-      .office-one:last-child{
+      .office-one:last-child {
         margin-top: 15px;
       }
-      .office-one{
-        >div{
+      .office-one {
+        .office-one-content {
+          margin-left: -15px;
+        }
+        > div {
           margin-top: 2px;
-          span:not(:last-child){
-            padding-left: 1px solid ;
+          span:not(:last-child) {
+            border-right: 1px solid rgb(84, 84, 84);
+          }
+          span {
+            display: inline-block;
+            padding-right: 13px;
+            padding-left: 13px;
+          }
+        }
+      }
+    }
+    .sample-content {
+      .first-img {
+        width: 100%;
+      }
+      .sample-title {
+        margin: 30px 0 80px 0;
+        .big {
+          font-size: 48px;
+          color: @green;
+        }
+        .small {
+          display: block;
+          font-size: 18px;
+          font-family: "SIL";
+          color: rgb(137, 137, 137);
+          padding-left: 73px;
+        }
+      }
+      .basic-content {
+        .one {
+          > span {
+            display: inline-block;
+            width: 17%;
+          }
+          margin-bottom: 20px;
+        }
+        .two {
+          > span {
+            display: inline-block;
+            width: 23%;
+          }
+          margin-bottom: 22px;
+        }
+        .bottom-img {
+          width: 100%;
+        }
+      }
+      .first-page {
+        padding-top: 60px;
+        .one {
+          margin-bottom: 30px;
+          .title {
+            font-size: 16px;
+            color: @green;
+            margin-bottom: 5px;
+          }
+          .content {
+            line-height: @lineH;
+            .notice {
+              margin-top: 40px;
+              font-size: 12px;
+              color: @gray
+            }
+          }
+        }
+      }
+      .appendix-page {
+        margin-top: 80px;
+        >.title {
+          font-size: 18px;
+          color: @title;
+          text-align: center;
+        }
+        .one {
+          margin-bottom: 30px;
+          .title {
+            font-size: 16px;
+            color: @title;
+            margin-bottom: 5px;
+            >span{
+              font-size: 12px;
+              color: @gray;
+            }
+          }
+          .content {
+            line-height: @lineH;
+            .diseases-content{
+              margin-top: 10px;
+            }
+            .notice {
+              margin-top: 40px;
+              font-size: 12px;
+              color: @gray
+            }
           }
         }
       }

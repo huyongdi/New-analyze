@@ -90,7 +90,7 @@
             </div>
             <div class="inline">
               基因分析报告：&nbsp;
-              <router-link target="_blank" :to="{path:'reportTest',query:{code:datafile,app:'grandmito'}}">点击查看
+              <router-link target="_blank" :to="{path:'report',query:{code:datafile,app:'grandmito'}}">点击查看
               </router-link>
             </div>
           </div>

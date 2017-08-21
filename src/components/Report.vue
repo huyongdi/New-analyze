@@ -749,7 +749,7 @@
       padding-right: 0;
     }
     .refresh-btn {
-      margin: 10px;
+      margin: 10px 0;
     }
     .logo-content {
       text-align: right;

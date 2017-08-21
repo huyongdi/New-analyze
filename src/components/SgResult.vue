@@ -145,7 +145,7 @@
               <tr>
                 <td>Duplication%</td>
                 <td>≤20%</td>
-                <td :class="{noStandard:final.duplication>0.2}">{{final.duplication}}</td>
+                <td :class="{noStandard:final.duplication>0.2}">{{final.duplication*100}}%</td>
               </tr>
               <tr class="trIn">
                 <td>Total Reads%</td>

@@ -19,7 +19,6 @@
           <div @click="changeContent" data-type="3" class="title-single">基因覆盖度查询</div>
         </div>
         <div class="detail-content">
-          <div class="content-0" :class="{hide:!in0}">
             <div class="content-0" :class="{hide:!in0}">
               <div class="bold">质控详情</div>
               <ul class="bold">
@@ -188,7 +187,7 @@
                   <th class="disease-td">疾病</th>
                   <th>CLINVAR</th>
                   <th>HGMD</th>
-                  <th>东亚人群频率(%)</th>
+                  <th>东亚人群频率(EXOME/GENOME%)</th>
                   <th>本地人群频率(%)</th>
                   <th>状态</th>
                 </tr>
@@ -198,30 +197,37 @@
                   <td>
                     <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,0)"
                        :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                    <a class="po common-a" v-if="data.localsnv"
-                       @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
-                      {{data.localsnv.name}}
+                    <a class="po common-a" v-if="data.variant"
+                       @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
+                      <span v-if="data.variant.start == data.variant.end">{{data.variant.chrom}}:{{data.variant.start}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+                      <span v-else="">{{data.variant.chrom}}:{{data.variant.start}}-{{data.variant.end}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+
                     </a>
                   </td>
-                  <td v-if="data.annotations">
-                    <a class="common-a" target="_blank" v-if="data.annotations.geneSymbol"
-                       :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
+                  <td >
+                    <div v-if="data.anno">
+                      <a class="common-a" target="_blank"  v-if="data.anno.genes.symbols" v-for="oneGene in data.anno.genes.symbols"
+                         :href="dbHtml+'#/geneD?geneId='+oneGene">
+                        {{oneGene}}
+                      </a>
+                    </div>
                   </td>
-                  <td v-if="data.annotations">
-                    {{data.annotations.region}}
+                  <td>
+                    <span v-if="data.anno">{{data.anno.regions.join(',')}}</span>
                   </td>
-                  <td v-if="data.annotations">
-                    {{data.annotations.func}}
+                  <td>
+                    <span v-if="data.anno &&data.anno.funcs.length!=0">{{data.anno.funcs.join(',')}}</span><span v-else="">-</span>
                   </td>
+                  <!--<td>-</td>-->
                   <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                  <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
-                  <td v-if="data.annotations">{{data.annotations.hgmd}}</td>
-                  <td v-if="data.annotations">{{data.annotations.dbfreq | getPercent}}</td>
-                  <td>{{data.annotations.grandfreq | getPercent}}</td>
+                  <td ><span v-if="data.dbinfo&&data.dbinfo.clinvar.length!=0">{{data.dbinfo.clinvar.join(',')}}</span><span v-else="">-</span></td>
+                  <td ><span v-if="data.dbinfo&&data.dbinfo.hgmd">{{data.dbinfo.hgmd}}</span><span v-else="">-</span></td>
+                  <td ><span v-if="data.anno.freqs">{{data.anno.freqs.dbfreq.exome | getPercent}}/{{data.anno.freqs.dbfreq.genome | getPercent}}</span></td>
+                  <td><span v-if="data.anno.freqs">{{data.anno.freqs.grandfreq | getPercent}}</span></td>
                   <td
-                    :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
-                  active4: data.status=='invalid'}">
-                    {{data.status | getStatus}}
+                    :class="{ active1: data.edit.status=='major',active2: data.edit.status=='minor',active3: data.edit.status=='benign',
+                  active4: data.edit.status=='invalid'}">
+                    {{data.edit.status | getStatus}}
                   </td>
                 </tr>
 
@@ -325,14 +331,13 @@
             <div class="content-3" :class="{hide:!in3}">
               <geneCover :ID="ID" app="grandmgd"></geneCover>
             </div>
-          </div>
         </div>
       </div>
 
       <locusModal :datafile="datafile" :locus="locus" :type="type"></locusModal>
       <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                   :originalPanelData="originalPanelData"></panelModal>
-      <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
+      <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
       <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd"></mutateModal>
       <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
                       :ID="ID"></mutateModalCNV>
@@ -403,16 +408,17 @@
         reset2: 0,
         moduleDataCNV: '',
         filtrateShow2: false,
+
+        //请求链接cnv snv
+        snvUrl:'',
+        cnvUrl:'',
       }
     },
-    created: function () {
-//      this.getSample();
-//      this.current0();
-    },
     mounted: function () {
+//      this.ID = '599690afccaa6c94a937a633'
       this.bindCurrent();//绑定变异详情的过滤点击事件
-      this.getSample();
-      this.current0();
+      this.getSampleAndUrl();
+//      this.current0();
     },
     methods: {
       //查看位点信息
@@ -460,223 +466,199 @@
         })
       },
       //获取样本信息
-      getSample: function () {
+      getSampleAndUrl: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/',
+          url:'application/job/'+this.ID+'/url/'
         }).then(function (resp) {
-          _vue.datafile = resp.data.datafile;
-          _vue.myAxios({
-            url: resp.data.job
-          }).then(function (respJob) {
-            _vue.sampleInfo = respJob.data.name;
-          })
+          const data = resp.data;
+          _vue.cnvUrl = resp.data.cnv.query_url+'?';
+          _vue.snvUrl = resp.data.snv.query_url+'?';
+          $.each(data.cnv.query_params,function (i,data) {
+            _vue.cnvUrl+='&'+i+'='+data
+          });
+          $.each(data.snv.query_params,function (i,data) {
+            _vue.snvUrl+='&'+i+'='+data
+          });
+
+          //得到链接之后开始请求数据
+          _vue.getList1();
+
         });
-      },
-      //切换导航
-      changeContent: function (event) {
-        const _current = $(event.target);
-        const current = _current.data("type");
-        _current.parent().find('.active').removeClass('active');
-        _current.addClass('active');
-        this.in0 = '';
-        this.in1 = '';
-        this.in2 = '';
-        this.in3 = '';
-        if (current === 0) {
-          this.in0 = true;
-          this.current0();
-        } else if (current === 1) {
-          this.in1 = true;
-          this.current1();
-        } else if (current === 2) {
-          this.in2 = true;
-          this.current2();
-        } else if (current === 3) {
-          this.in3 = true;
-          this.current3();
-        }
-      },
-      //绑定基础操作
-      bindCurrent: function () {
-        $('.option').on("click", function () {
-          $(this).parent().find('.in').removeClass('in');
-          $(this).addClass('in')
-        });
-      },
-      resetFilter: function () {
-        this.geneTextArea = '';
-        this.geneTextAreaContent2 = '';
-        $(".default").each(function () {
-          $(this).parent().find('.in').removeClass('in');
-          $(this).addClass('in')
+
+        this.myAxios({
+          url:'application/job/'+this.ID+'/'
+        }).then(function (resp) {
+          _vue.sampleInfo = resp.data.name;
+          _vue.datafile = resp.data.parameter.datafile;
         })
+
       },
       //每个块域的逻辑
       /*疾病TD里面显示hpo的弹框*/
       getPhenotypeMapSingle: function (data) {
         this.phenotypeMapSingle = data;
       },
-      current0: function () {
-        this.loading0 = true;
-        const _vue = this;
-        this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/fastqc/',
-        }).then(function (resp) {
-          _vue.R1 = resp.data.r1;
-          _vue.R2 = resp.data.r2;
-        });
-        this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/insertsize/',
-        }).then(function (resp) {
-          _vue.insert = resp.data
-        });
-        this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/csv/',
-        }).then(function (resp) {
-          _vue.CSV = resp.data
-        });
-
-        //列表
-        this.myAxios({
-          url: 'application/grandmgd/' + this.ID + "/stat/",
-        }).then(function (resp) {
-          resp = resp.data;
-          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
-          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
-          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
-          qObj.baseGender = resp.data.gender;
-          qObj.gender = resp.data.gender;
-          if (qObj.Sample_gender === 'Male') {
-            qObj.Sample_gender = '男'
-          } else if (qObj.Sample_gender === 'Female') {
-            qObj.Sample_gender = '女'
-          } else {
-            qObj.Sample_gender = '未知'
-          }
-          //如果性别和20X都不对
-          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
-            alert('指数严重不合格！')
-          }
-          const arr = [
-            {
-              type: '20X覆盖度',
-              grandValue: '≥≈95%',
-              realValue: qObj.above_20,
-              standard: qObj.above_20 >= 95
-            }, {
-              type: '性别',
-              grandValue: qObj.baseGender,
-              realValue: qObj.above_20,
-              standard: qObj.Sample_gender == qObj.gender
-            }, {
-              type: 'Q30',
-              grandValue: '≥85%',
-              realValue: qObj.q30,
-              standard: qObj.q30 >= 85
-            }, {
-              type: '数据量(M)',
-              grandValue: '≥10G',
-              realValue: qObj.volume,
-              standard: qObj.volume >= 10000
-            }, {
-              type: 'Duplication%',
-              grandValue: '≤20%',
-              realValue: qObj.duplication,
-              standard: qObj.duplication <= 0.2
-            }, {
-              type: 'Total Reads%',
-              grandValue: '---',
-              realValue: qObj.total,
-              standard: true
-            }, {
-              type: 'QC passed Reads%',
-              grandValue: '---',
-              realValue: qObj.qc,
-              standard: true
-            }, {
-              type: 'Mapped Reads%',
-              grandValue: '---',
-              realValue: qObj.mapped,
-              standard: true
-            }, {
-              type: '捕获效率',
-              grandValue: '≥70%',
-              realValue: qObj.target,
-              standard: qObj.target >= 0.7
-            }, {
-              type: '平均深度',
-              grandValue: '≥75X',
-              realValue: qObj.depth,
-              standard: qObj.depth >= 75
-            }, {
-              type: '1X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_1,
-              standard: true
-            }, {
-              type: '5X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_5,
-              standard: true
-            }, {
-              type: '10X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_10,
-              standard: true
-            }, {
-              type: '30X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_30,
-              standard: true
-            }
-          ];
-          $.each(resp.aln, function (i, data) {
-            $.each(arr, function (n, k) {
-              if (i === n) {
-                k.detail = data
-              }
-            })
-          });
-          _vue.lists0 = arr;
-          _vue.loading0 = false;
-        });
-      },
-      getValue: function (final) {
-        const obj = {};
-        $.each(final, function (i, data) {
-          if (data.name === 'mapped reads') {
-            obj.mapped = data.value.raw
-          } else if (data.name === 'QC passed reads') {
-            obj.qc = data.value
-          } else if (data.name === 'total reads') {
-            obj.total = data.value
-          } else if (data.name === 'duplication rate') {
-            obj.duplication = data.value
-          } else if (data.name === 'target reads ratio') {
-            obj.target = data.value
-          } else if (data.name === 'depth') {
-            obj.depth = data.value
-          } else if (data.name === '%_bases_above_1') {
-            obj.above_1 = data.value
-          } else if (data.name === '%_bases_above_5') {
-            obj.above_5 = data.value
-          } else if (data.name === '%_bases_above_10') {
-            obj.above_10 = data.value
-          } else if (data.name === '%_bases_above_20') {
-            obj.above_20 = data.value
-          } else if (data.name === '%_bases_above_30') {
-            obj.above_30 = data.value
-          } else if (data.name === 'Sample_gender') {
-            obj.Sample_gender = data.value
-          }
-        });
-        return obj;
-      },
+//      current0: function () {
+//        this.loading0 = true;
+//        const _vue = this;
+//        this.myAxios({
+//          url: 'application/grandmgd/' + this.ID + '/fastqc/',
+//        }).then(function (resp) {
+//          _vue.R1 = resp.data.r1;
+//          _vue.R2 = resp.data.r2;
+//        });
+//        this.myAxios({
+//          url: 'application/grandmgd/' + this.ID + '/insertsize/',
+//        }).then(function (resp) {
+//          _vue.insert = resp.data
+//        });
+//        this.myAxios({
+//          url: 'application/grandmgd/' + this.ID + '/csv/',
+//        }).then(function (resp) {
+//          _vue.CSV = resp.data
+//        });
+//
+//        //列表
+//        this.myAxios({
+//          url: 'application/grandmgd/' + this.ID + "/stat/",
+//        }).then(function (resp) {
+//          resp = resp.data;
+//          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
+//          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
+//          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
+//          qObj.baseGender = resp.data.gender;
+//          qObj.gender = resp.data.gender;
+//          if (qObj.Sample_gender === 'Male') {
+//            qObj.Sample_gender = '男'
+//          } else if (qObj.Sample_gender === 'Female') {
+//            qObj.Sample_gender = '女'
+//          } else {
+//            qObj.Sample_gender = '未知'
+//          }
+//          //如果性别和20X都不对
+//          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
+//            alert('指数严重不合格！')
+//          }
+//          const arr = [
+//            {
+//              type: '20X覆盖度',
+//              grandValue: '≥≈95%',
+//              realValue: qObj.above_20,
+//              standard: qObj.above_20 >= 95
+//            }, {
+//              type: '性别',
+//              grandValue: qObj.baseGender,
+//              realValue: qObj.above_20,
+//              standard: qObj.Sample_gender == qObj.gender
+//            }, {
+//              type: 'Q30',
+//              grandValue: '≥85%',
+//              realValue: qObj.q30,
+//              standard: qObj.q30 >= 85
+//            }, {
+//              type: '数据量(M)',
+//              grandValue: '≥10G',
+//              realValue: qObj.volume,
+//              standard: qObj.volume >= 10000
+//            }, {
+//              type: 'Duplication%',
+//              grandValue: '≤20%',
+//              realValue: qObj.duplication,
+//              standard: qObj.duplication <= 0.2
+//            }, {
+//              type: 'Total Reads%',
+//              grandValue: '---',
+//              realValue: qObj.total,
+//              standard: true
+//            }, {
+//              type: 'QC passed Reads%',
+//              grandValue: '---',
+//              realValue: qObj.qc,
+//              standard: true
+//            }, {
+//              type: 'Mapped Reads%',
+//              grandValue: '---',
+//              realValue: qObj.mapped,
+//              standard: true
+//            }, {
+//              type: '捕获效率',
+//              grandValue: '≥70%',
+//              realValue: qObj.target,
+//              standard: qObj.target >= 0.7
+//            }, {
+//              type: '平均深度',
+//              grandValue: '≥75X',
+//              realValue: qObj.depth,
+//              standard: qObj.depth >= 75
+//            }, {
+//              type: '1X覆盖度',
+//              grandValue: '---',
+//              realValue: qObj.above_1,
+//              standard: true
+//            }, {
+//              type: '5X覆盖度',
+//              grandValue: '---',
+//              realValue: qObj.above_5,
+//              standard: true
+//            }, {
+//              type: '10X覆盖度',
+//              grandValue: '---',
+//              realValue: qObj.above_10,
+//              standard: true
+//            }, {
+//              type: '30X覆盖度',
+//              grandValue: '---',
+//              realValue: qObj.above_30,
+//              standard: true
+//            }
+//          ];
+//          $.each(resp.aln, function (i, data) {
+//            $.each(arr, function (n, k) {
+//              if (i === n) {
+//                k.detail = data
+//              }
+//            })
+//          });
+//          _vue.lists0 = arr;
+//          _vue.loading0 = false;
+//        });
+//      },
+//      getValue: function (final) {
+//        const obj = {};
+//        $.each(final, function (i, data) {
+//          if (data.name === 'mapped reads') {
+//            obj.mapped = data.value.raw
+//          } else if (data.name === 'QC passed reads') {
+//            obj.qc = data.value
+//          } else if (data.name === 'total reads') {
+//            obj.total = data.value
+//          } else if (data.name === 'duplication rate') {
+//            obj.duplication = data.value
+//          } else if (data.name === 'target reads ratio') {
+//            obj.target = data.value
+//          } else if (data.name === 'depth') {
+//            obj.depth = data.value
+//          } else if (data.name === '%_bases_above_1') {
+//            obj.above_1 = data.value
+//          } else if (data.name === '%_bases_above_5') {
+//            obj.above_5 = data.value
+//          } else if (data.name === '%_bases_above_10') {
+//            obj.above_10 = data.value
+//          } else if (data.name === '%_bases_above_20') {
+//            obj.above_20 = data.value
+//          } else if (data.name === '%_bases_above_30') {
+//            obj.above_30 = data.value
+//          } else if (data.name === 'Sample_gender') {
+//            obj.Sample_gender = data.value
+//          }
+//        });
+//        return obj;
+//      },
       current1: function () {
-        if (this.lists1.length === 0) {
-          this.getList1();
-        }
+//        if (this.lists1.length === 0) {
+//          this.getList1();
+//        }
       },
       getList1: function () {
         this.loading1 = true;
@@ -693,15 +675,8 @@
         const _vue = this;
         this.lists1 = [];
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/snv/',
+          url: _vue.snvUrl+'&page='+_vue.page1,
         }).then(function (resp) {
-          let str = '';
-          $.each(resp.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
-          _vue.myAxios({
-            url: resp.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
-          }).then(function (resp) {
             if (resp.data.count === 0) {
               _vue.loading1 = false
             }
@@ -709,24 +684,28 @@
             let genePostData = [];
             $.each(resp.data.results, function (i, value) {
               //处理highlight和active得到级别(highlight为true的时候active必定为true)
-              if (value.highlight && value.active) {
+              if (value.flag.highlight && value.flag.active) {
                 value.level = 0
-              } else if (!value.highlight && value.active) {
+              } else if (!value.flag.highlight && value.flag.active) {
                 value.level = 1
-              } else if (!value.highlight && !value.active) {
+              } else if (!value.flag.highlight && !value.flag.active) {
                 value.level = 2
               }
-              $.each(value.annotations.geneId, function (n, k) {
-                genePostData.push(k)
+              $.each(value.anno.genes.geneids, function (n, k) {
+                if(!genePostData.join(',').includes(k)){
+                  genePostData.push(k)
+                }
               });
               value.geneResp = [];
             });
             _vue.lists1 = resp.data.results;
+
             _vue.myAxios({
               url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
               method: 'post',
               data: {
-                geneids: genePostData
+//                geneids: genePostData
+                geneids: [5310]
               }
             }).then(function (respA) {
               let count0 = 0;
@@ -737,13 +716,13 @@
               $.each(respA.data, function (k1, k2) {
                 count0 += 1;
                 $.each(resp.data.results, function (n1, n2) {
-                  $.each(n2.annotations.geneId, function (n3, n4) {
-                    if (k1 == n4) {
+                  $.each(n2.anno.genes.geneids, function (n3, n4) {
+//                    if (k1 == n4) {
                       n2.geneResp.push({
                         geneId: n4,
                         geneData: k2
                       });
-                    }
+//                    }
                   })
                 });
                 if (count0 === count1) {
@@ -751,7 +730,6 @@
                 }
               });
             });
-          });
         });
       },
       filtrateShow1Fun: function () {
@@ -815,15 +793,16 @@
         const _vue = this;
         this.lists2 = [];
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/cnv/',
+//          url: 'application/grandmgd/' + this.ID + '/cnv/',
+          url: _vue.snvUrl+'&page='+_vue.page2,
         }).then(function (resp) {
-          let str = '';
-          $.each(resp.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
-          _vue.myAxios({
-            url: resp.data.query_url + '?' + str + 'page=' + _vue.page2 + urlParam,
-          }).then(function (resp) { //开始填数据
+//          let str = '';
+//          $.each(resp.data.query_params, function (i, value) {
+//            str += i + '=' + value + "&"
+//          });
+//          _vue.myAxios({
+//            url: resp.data.query_url + '?' + str + 'page=' + _vue.page2 + urlParam,
+//          }).then(function (resp) { //开始填数据
             if (resp.data.count === 0) {
               _vue.loading2 = false
             }
@@ -839,7 +818,7 @@
               } else if (!value.highlight && !value.active) {
                 value.level = 2
               }
-              $.each(value.annotations.geneId, function (n, k) {
+              $.each(value.anno.genes.geneids, function (n, k) {
                 genePostData.push(k)
               });
               value.geneResp = [];
@@ -874,7 +853,7 @@
                 }
               });
             });
-          });
+//          });
         });
       },
       filtrateShow2Fun: function () {
@@ -902,6 +881,45 @@
       },
       current3: function () {
 
+      },
+      //切换导航
+      changeContent: function (event) {
+        const _current = $(event.target);
+        const current = _current.data("type");
+        _current.parent().find('.active').removeClass('active');
+        _current.addClass('active');
+        this.in0 = '';
+        this.in1 = '';
+        this.in2 = '';
+        this.in3 = '';
+        if (current === 0) {
+          this.in0 = true;
+//          this.current0();
+        } else if (current === 1) {
+          this.in1 = true;
+          this.current1();
+        } else if (current === 2) {
+          this.in2 = true;
+          this.current2();
+        } else if (current === 3) {
+          this.in3 = true;
+          this.current3();
+        }
+      },
+      //绑定基础操作
+      bindCurrent: function () {
+        $('.option').on("click", function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        });
+      },
+      resetFilter: function () {
+        this.geneTextArea = '';
+        this.geneTextAreaContent2 = '';
+        $(".default").each(function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        })
       },
     },
     updated: function () {
@@ -946,14 +964,14 @@
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
   #sgResult {
+    .change-panel {
+      margin-left: 50px;
+    }
     .all-content {
       table {
         box-shadow: none;
       }
       margin: 15px 0 0 0;
-      .change-panel {
-        margin-left: 50px;
-      }
       .flag-q {
         margin: 8px;
       }

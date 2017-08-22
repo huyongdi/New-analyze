@@ -1,54 +1,25 @@
 <!--各种分析结果页面，疾病那一行-->
 <template>
   <td class="disease-td">
-    <div v-for="(disease,index) in geneResp" v-if="disease.geneData.phenotypeMap.length !== 0">
+    <div v-for="(disease,index) in geneResp" ><!--v-if="disease.geneData.phenotypeMap.length !== 0"-->
       <!--小圆点-->
       <span :data-geneId="disease.geneId" v-if="geneResp.length !==1"
             :class="{color0:index===0,color1:index%4===1,color2:index%4===2,color3:index%4===3,color4:index%4===0&&index!==0}">
       </span>
-      <div v-for="diseaseSingle in disease.geneData.phenotypeMap">
-        <div v-if="diseaseSingle.inheritances.gene.length!=0">
+      <div v-for="omimSingle in disease.geneData.omims">
+        <span v-for="phenotypeMapSingle in omimSingle.phenotypeMaps">
           <!--[AD]-->
-          <span class="po bold" data-toggle="tooltip" data-placement="top"
-                :data-original-title="diseaseSingle.inheritances.gene.join(',')">
-                  [{{diseaseSingle.inheritances.gene_ab.join(',')}}]
+          <span class="po bold" data-toggle="tooltip" data-placement="top" v-for="inheritanceSingle in phenotypeMapSingle.phenotype.inheritance"
+                :data-original-title='inheritanceSingle.name'>
+                  [{{inheritanceSingle.ab}}]
           </span>
-          <!--Pfeiffer综合征有中文名-->
-          <a class="po common-a" v-if="diseaseSingle.omim.titles.chinese"
-             @click="showHPO(diseaseSingle)"
-             data-toggle="tooltip"
-             data-placement="top" :data-original-title='diseaseSingle.phenotype'>
-            {{diseaseSingle.omim.titles.chinese}}
-          </a>
-          <!--Pfeiffer综合征没有中文名-->
-          <a class="po common-a" v-else @click="showHPO(diseaseSingle)">{{diseaseSingle.phenotype}}</a>
-          <!--(100100)-->
-          (
-          <a target="_blank"
-             :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
-             class="common-a">{{diseaseSingle.omim.mimNumber}}
-          </a>
-          )
-        </div>
-        <div v-else> <!--phenotypeMap数组里面的值的inheritances.gene不存在就用inheritances.phenotype-->
-          <span class="po bold" data-toggle="tooltip" data-placement="top"
-                :data-original-title="diseaseSingle.inheritances.phenotype.join(',')">
-            [{{diseaseSingle.inheritances.phenotype_ab.join(',')}}]
-          </span>
-          <a class="po common-a" v-if="diseaseSingle.omim.titles.chinese"
-             @click="showHPO(diseaseSingle)"
-             data-toggle="tooltip" data-placement="top"
-             :data-original-title='diseaseSingle.phenotype'>
-            {{diseaseSingle.omim.titles.chinese}}
-          </a>
-          <a class='common-a po' v-else
-             @click="showHPO(diseaseSingle)">{{diseaseSingle.phenotype}}</a>
-          (
-          <a target="_blank"
-             :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
-             class="common-a">{{diseaseSingle.omim.mimNumber}}</a>
-          )
-        </div>
+        </span>
+        <!--Pfeiffer综合征有中文名-->
+        <a class="po common-a" @click="showHPO(omimSingle.clinicalSynopsis)" data-toggle="tooltip" data-placement="top" :data-original-title='omimSingle.titles.preferred'>
+          {{omimSingle.titles.chinese?omimSingle.titles.chinese:omimSingle.titles.preferred}}
+        </a>
+        <!--(100100)-->
+        (<a target="_blank" :href="dbHtml+'#/oMIMD?&id='+omimSingle.mimNumber" class="common-a">{{omimSingle.mimNumber}}</a>)
       </div>
     </div>
   </td>
@@ -62,7 +33,10 @@
         this.$emit('sendPhenotypeMapSingle', data);
         $("#hpo_detail").modal('show');
       }
-    }
+    },
+    updated: function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    },
   }
 </script>
 

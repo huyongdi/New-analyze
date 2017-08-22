@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="result in results" @click="toResult(result.type,result.typeId)" title="点击查看结果">
+        <tr v-for="result in results" @click="toResult(result.type,result.id)" title="点击查看结果">
           <td>
             <span :data-type="result.type">{{ result.id}} / {{result.typeId}}</span>
           </td>
@@ -87,6 +87,7 @@
       this.getList();
       this.getSelect()
     },
+
     methods: {
       appClick: function (code) {
         this.appCode = code ? code : '';

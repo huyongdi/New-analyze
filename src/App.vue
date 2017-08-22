@@ -75,6 +75,7 @@
           $(this).next().click();
         });
         $(".upload-content").on('change','.hide-input',function () {
+          console.log($(this).val())
           const arr = $(this).val().split("\\");
           $(this).parent().find('.show-name').val(arr[arr.length-1])
         });

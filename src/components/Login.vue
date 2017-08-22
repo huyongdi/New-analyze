@@ -112,7 +112,7 @@
         }).then(function (resp) {
           localStorage.token = resp.data.data.token;
           localStorage.uname = resp.data.data.personnel;
-          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/dataA/foo/sgList';
+          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/home';
           _vue.$router.push({path: nextPath})
         }).catch(function (error) {
           _vue.catchFun(error);

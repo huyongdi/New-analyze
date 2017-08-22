@@ -1,8 +1,8 @@
 <!--弹框显示hpo中英文和ClinicalPhenotye-->
-<loading v-if="loading"></loading>
 <template>
   <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="hpo_detail" role="dialog"
        aria-labelledby="gridSystemModalLabel3">
+    <loading v-if="loadingHpo"></loading>
     <div class="modal-dialog modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -11,7 +11,7 @@
           <h4 class="modal-title" id="gridSystemModalLabel3">详情</h4>
         </div>
         <div class="modal-body">
-          <table class="table my-table">
+          <table class="table my-table no-shadow">
             <thead>
             <tr>
               <th>#</th>
@@ -52,7 +52,7 @@
     props: ['clinicalSynopsisObj'],
     data: function () {
       return {
-        loading: true,
+        loadingHpo: true,
         sortArr: ["inheritance", "growth", "growthHeight", "growthWeight", "growthOther",
           "headAndNeck", "headAndNeckHead", "headAndNeckFace", "headAndNeckEars", "headAndNeckEyes",
           "headAndNeckNose", "headAndNeckMouth", "headAndNeckTeeth", "headAndNeckNeck", "cardiovascular",
@@ -160,7 +160,7 @@
       getCnName: function (hpoId) {
         const _vue = this;
         _vue.myAxios({
-          url: 'knowledge/hpo/?hpoid=' + hpoId
+          url: _vue.dbUrl+'knowledge/hpo/?hpoid=' + hpoId
         }).then(function (resp) {
           const data = resp.data.results[0];
           const id = data.hpoId;
@@ -180,7 +180,7 @@
 
           _vue.availableHPOCount-=1;
           if(_vue.availableHPOCount === 0){
-            _vue.loading = false
+            _vue.loadingHpo = false
           }
 
         });

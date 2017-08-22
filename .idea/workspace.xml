@@ -4,10 +4,7 @@
     <list default="true" id="5bb1820c-f60d-429d-a2e6-bd847b9d20a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Done.vue" afterPath="$PROJECT_DIR$/src/components/Done.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Login.vue" afterPath="$PROJECT_DIR$/src/components/Login.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SgResult.vue" afterPath="$PROJECT_DIR$/src/components/SgResult.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/DiseaseTd.vue" afterPath="$PROJECT_DIR$/src/components/global/DiseaseTd.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/HpoModal.vue" afterPath="$PROJECT_DIR$/src/components/global/HpoModal.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -35,20 +32,20 @@
       <file leaf-file-name="SgResult.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="231" column="21" lean-forward="true" selection-start-line="231" selection-start-column="21" selection-end-line="231" selection-end-column="21" />
+            <state relative-caret-position="346">
+              <caret line="717" column="15" lean-forward="true" selection-start-line="717" selection-start-column="15" selection-end-line="717" selection-end-column="15" />
               <folding>
                 <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#18197#18233#0" expanded="true" />
-                <element signature="e#20126#20224#0" expanded="false" />
-                <element signature="e#20278#20827#0" expanded="false" />
-                <element signature="e#20862#21366#0" expanded="false" />
-                <element signature="e#21418#22207#0" expanded="false" />
-                <element signature="e#36269#36428#0" expanded="false" />
-                <element signature="e#36461#36685#0" expanded="false" />
-                <element signature="e#37779#38863#0" expanded="false" />
-                <element signature="e#38886#44308#0" expanded="false" />
+                <element signature="e#17663#17699#0" expanded="true" />
+                <element signature="e#19594#19692#0" expanded="false" />
+                <element signature="e#19746#20295#0" expanded="false" />
+                <element signature="e#20330#20834#0" expanded="false" />
+                <element signature="e#20886#21709#0" expanded="false" />
+                <element signature="e#35575#35734#0" expanded="false" />
+                <element signature="e#35767#35991#0" expanded="false" />
+                <element signature="e#37085#38169#0" expanded="false" />
+                <element signature="e#38192#43614#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -57,10 +54,10 @@
       <file leaf-file-name="HpoModal.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/global/HpoModal.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="32" />
+            <state relative-caret-position="68">
+              <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
               <folding>
-                <element signature="e#2183#4336#0" expanded="false" />
+                <element signature="e#2203#4356#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -89,8 +86,20 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+            <state relative-caret-position="-510">
+              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -99,14 +108,16 @@
       <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3162">
-              <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+            <state relative-caret-position="178">
+              <caret line="377" column="9" lean-forward="false" selection-start-line="377" selection-start-column="9" selection-end-line="377" selection-end-column="9" />
               <folding>
                 <element signature="e#1177#1471#0" expanded="false" />
                 <element signature="e#1565#1928#0" expanded="false" />
                 <element signature="e#6637#6728#0" expanded="false" />
+                <element signature="e#6752#10197#0" expanded="false" />
                 <element signature="e#7061#9196#0" expanded="false" />
-                <element signature="e#14336#15129#0" expanded="false" />
+                <element signature="e#10332#11452#0" expanded="false" />
+                <element signature="e#14427#15220#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,9 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>capture-id</find>
-      <find>@click=&quot;byStatus('waiting)</find>
-      <find>sgre</find>
       <find>toResult</find>
       <find>sampleInfo</find>
       <find>change-panel</find>
@@ -151,10 +159,13 @@
       <find>clinicalSynopsisObj</find>
       <find>getPhenotypeMapSingle</find>
       <find>hpo_detail</find>
-      <find>sendPhenotypeMapSingle</find>
       <find>phenotypeMapSingle</find>
       <find>geneResp</find>
+      <find>sendPhenotypeMapSingle</find>
+      <find>dbUrl</find>
       <find>geneId</find>
+      <find>table</find>
+      <find>loading</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -233,11 +244,11 @@
         <option value="$PROJECT_DIR$/src/components/global/Page.vue" />
         <option value="$PROJECT_DIR$/src/components/CapList.vue" />
         <option value="$PROJECT_DIR$/src/components/Doing.vue" />
-        <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/components/Login.vue" />
         <option value="$PROJECT_DIR$/src/components/Done.vue" />
-        <option value="$PROJECT_DIR$/src/components/global/HpoModal.vue" />
         <option value="$PROJECT_DIR$/src/components/global/DiseaseTd.vue" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/HpoModal.vue" />
         <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
       </list>
     </option>
@@ -568,7 +579,7 @@
       <workItem from="1503016216660" duration="17964000" />
       <workItem from="1503274957718" duration="1168000" />
       <workItem from="1503283289491" duration="6821000" />
-      <workItem from="1503361523459" duration="12358000" />
+      <workItem from="1503361523459" duration="13968000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1496741396325</created>
@@ -836,11 +847,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503039087916</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="sgResult修改點擊彈出hpo">
+      <created>1503374013363</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1503374013363</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="574950000" />
+    <option name="totallyTimeSpent" value="576560000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -857,13 +875,13 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24657534" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49789253" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19042437" sideWeight="0.57850367" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22633298" sideWeight="0.57850367" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32317737" sideWeight="0.45995784" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26985854" sideWeight="0.46733403" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2437432" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24710222" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19042437" sideWeight="0.4214963" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22633298" sideWeight="0.4214963" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -901,7 +919,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20170707" />
     <MESSAGE value="20170711 提交组件" />
     <MESSAGE value="20170712" />
     <MESSAGE value="全局配置以及按钮" />
@@ -926,7 +943,8 @@
     <MESSAGE value="添加首页" />
     <MESSAGE value="完善基本接口功能" />
     <MESSAGE value="剩下结果页面未测" />
-    <option name="LAST_COMMIT_MESSAGE" value="剩下结果页面未测" />
+    <MESSAGE value="sgResult修改點擊彈出hpo" />
+    <option name="LAST_COMMIT_MESSAGE" value="sgResult修改點擊彈出hpo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1172,13 +1190,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -1236,28 +1247,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3162">
-          <caret line="206" column="0" lean-forward="false" selection-start-line="206" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-          <folding>
-            <element signature="e#1177#1471#0" expanded="false" />
-            <element signature="e#1565#1928#0" expanded="false" />
-            <element signature="e#6637#6728#0" expanded="false" />
-            <element signature="e#7061#9196#0" expanded="false" />
-            <element signature="e#14336#15129#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Done.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -1290,13 +1279,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/global/HpoModal.vue">
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="32" />
+        <state relative-caret-position="-510">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
-            <element signature="e#2183#4336#0" expanded="false" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,22 +1305,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="377" column="9" lean-forward="false" selection-start-line="377" selection-start-column="9" selection-end-line="377" selection-end-column="9" />
+          <folding>
+            <element signature="e#1177#1471#0" expanded="false" />
+            <element signature="e#1565#1928#0" expanded="false" />
+            <element signature="e#6637#6728#0" expanded="false" />
+            <element signature="e#6752#10197#0" expanded="false" />
+            <element signature="e#7061#9196#0" expanded="false" />
+            <element signature="e#10332#11452#0" expanded="false" />
+            <element signature="e#14427#15220#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/HpoModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding>
+            <element signature="e#2203#4356#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="231" column="21" lean-forward="true" selection-start-line="231" selection-start-column="21" selection-end-line="231" selection-end-column="21" />
+        <state relative-caret-position="346">
+          <caret line="717" column="15" lean-forward="true" selection-start-line="717" selection-start-column="15" selection-end-line="717" selection-end-column="15" />
           <folding>
             <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#18197#18233#0" expanded="true" />
-            <element signature="e#20126#20224#0" expanded="false" />
-            <element signature="e#20278#20827#0" expanded="false" />
-            <element signature="e#20862#21366#0" expanded="false" />
-            <element signature="e#21418#22207#0" expanded="false" />
-            <element signature="e#36269#36428#0" expanded="false" />
-            <element signature="e#36461#36685#0" expanded="false" />
-            <element signature="e#37779#38863#0" expanded="false" />
-            <element signature="e#38886#44308#0" expanded="false" />
+            <element signature="e#17663#17699#0" expanded="true" />
+            <element signature="e#19594#19692#0" expanded="false" />
+            <element signature="e#19746#20295#0" expanded="false" />
+            <element signature="e#20330#20834#0" expanded="false" />
+            <element signature="e#20886#21709#0" expanded="false" />
+            <element signature="e#35575#35734#0" expanded="false" />
+            <element signature="e#35767#35991#0" expanded="false" />
+            <element signature="e#37085#38169#0" expanded="false" />
+            <element signature="e#38192#43614#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -372,6 +372,10 @@
             border-top-left-radius: 5px
           }
         }
+        table.no-shadow{
+          border-radius: 0;
+          box-shadow: none;
+        }
         /*筛选框样式*/
         .filtrate-content{
           width: 290px;

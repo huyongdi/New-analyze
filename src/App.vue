@@ -8,7 +8,7 @@
 <script>
 
   import header from './components/global/Header.vue'
-  import Vue from  'vue'
+  import Vue from 'vue'
   import axios from 'axios'
 
   Vue.component('loading', {
@@ -36,13 +36,13 @@
     mounted: function () {
       this.baseBind()
     },
-    updated:function () {
+    updated: function () {
       this.baseBind()
     },
     watch: {
       '$route'(to, from) { //路由变化的时候判断需不需要加载头部
         if (from.name === 'login') {  //重新登录之后token不刷新
-          this.myAxios.defaults.headers= {'Authorization': localStorage.token};
+          this.myAxios.defaults.headers = {'Authorization': localStorage.token};
         }
       }
     },
@@ -60,27 +60,26 @@
           }
         });
         /*点击左侧列表*/
-        $(".under-left").off('click').on('click','>li',function (event) {
+        $(".under-left").off('click').on('click', '>li', function (event) {
           const _currentLi = $(event.target).closest('li');
           const _children = _currentLi.find('.children');
-          if(_currentLi.hasClass('active')){
+          if (_currentLi.hasClass('active')) {
             _currentLi.removeClass('active')
-          }else{
+          } else {
 //            $(".under-left").find("li.active").removeClass('active');
             _currentLi.addClass('active');
           }
         });
         /*自定义的上传输入框*/
-        $(".upload-content").on("click",'.text',function () {
+        $(".upload-content").on("click", '.text', function () {
           $(this).next().click();
         });
-        $(".upload-content").on('change','.hide-input',function () {
-          console.log($(this).val())
+        $(".upload-content").on('change', '.hide-input', function () {
           const arr = $(this).val().split("\\");
-          $(this).parent().find('.show-name').val(arr[arr.length-1])
+          $(this).parent().find('.show-name').val(arr[arr.length - 1])
         });
         /*点击其它地方筛选关闭*/
-        $("#app:not('.filtrate-content')").on("click",function () {
+        $("#app:not('.filtrate-content')").on("click", function () {
           $('.filtrate-content').addClass('hide')
         })
       },
@@ -99,11 +98,11 @@
   @tdBorder: rgb(225, 226, 227);
   @trHover: rgb(255, 245, 231);
   @trIn: rgb(255, 236, 210);
-  @interleave:rgb(246,248,250);
-  @fliterBorder:rgb(212,212,212);
+  @interleave: rgb(246, 248, 250);
+  @fliterBorder: rgb(212, 212, 212);
   html {
     min-width: 1350px;
-    background:linear-gradient(to bottom,#f0f0f0,#ffffff);
+    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
     min-height: 100%;
     width: 100%;
     margin: 0;
@@ -121,15 +120,24 @@
       #app {
         min-height: 100%;
         /*自定义class*/
-        .span-a{
+        .base-color { /*标题背景底色*/
+          padding: 8px 10px;
+          margin-left: -10px;
+          background-color: rgb(245, 245, 245);
+        }
+        .light-font { /*浅字体*/
+          font-size: 13px;
+          color: rgb(125, 125, 125);
+        }
+        .span-a {
           color: #337ab7;
           cursor: pointer;
-          &:hover{
+          &:hover {
             text-decoration: underline;
             color: #23527c;
           }
         }
-        .break-all{
+        .break-all {
           word-break: break-all;
         }
         .po {
@@ -141,24 +149,25 @@
         .block {
           display: block;
         }
-        .fr{
+        .fr {
           float: right;
         }
-        .fl{
+        .fl {
           float: left;
         }
-        .center{
+        .center {
           text-align: center;
         }
         a {
           text-decoration: none;
         }
-        .common-a{
-          &:hover{
+        .common-a {
+          cursor: pointer;
+          &:hover {
             text-decoration: underline;
           }
         }
-        .bold{
+        .bold {
           font-weight: bold;
         }
         ul {
@@ -166,36 +175,38 @@
             list-style: none;
           }
         }
-        .rea{
+        .rea {
           position: relative;
         }
-        input,textarea{
+        input, textarea {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           padding: 1px 8px;
-          &:focus{
+          &:focus {
             outline: none;
           }
         }
-        select::-ms-expand { display: none; }
-        .my-select{
+        select::-ms-expand {
+          display: none;
+        }
+        .my-select {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           height: 24px;
           line-height: 24px;
           padding-left: 5px;
           padding-right: 24px;
-          appearance:none;
-          -moz-appearance:none;
-          -webkit-appearance:none;
-          -ms-appearance:none;
+          appearance: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          -ms-appearance: none;
           background: url(../static/img/select-right.png) no-repeat scroll right center transparent;
-          &:focus{
+          &:focus {
             outline: none;
           }
         }
 
-        .my-btn{
+        .my-btn {
           display: inline-block;
           width: 95px;
           height: 28px;
@@ -204,30 +215,30 @@
           border: 1px solid #df3a24;
           text-align: center;
           color: #fff;
-          background:linear-gradient(to bottom,#f46554,#ea533f);
+          background: linear-gradient(to bottom, #f46554, #ea533f);
           cursor: pointer;
-          img{
+          img {
             margin: -3px 5px 0 0;
           }
-          &:active{
-            background:linear-gradient(to bottom,#ea533f,#f46544);
+          &:active {
+            background: linear-gradient(to bottom, #ea533f, #f46544);
           }
         }
-        .upload-content{
+        .upload-content {
           display: inline-block;
           width: 50%;
           padding: 0;
-          .show-name{
+          .show-name {
             background-color: #fff;
             width: 78%;
             margin-right: -2%;
             padding-right: 2%;
             float: left;
-            &:focus{
+            &:focus {
               outline: none;
             }
           }
-          .text{
+          .text {
             cursor: pointer;
             border: 1px solid #d4d4d4;
             border-radius: 3px;
@@ -236,29 +247,29 @@
             height: 24px;
             line-height: 24px;
             text-align: center;
-            background-color: rgb(238,238,238);
+            background-color: rgb(238, 238, 238);
           }
-          .hide-input{
+          .hide-input {
             display: none;
           }
         }
 
-        .shadow{
+        .shadow {
           border: 1px solid @tableSha;
           border-radius: 5px;
           box-shadow: 0 0 10px 1px @tableSha;
         }
-        .shadow-top{
-          border-top: 5px solid rgb(0,118,192);
+        .shadow-top {
+          border-top: 5px solid rgb(0, 118, 192);
           border-radius: 5px;
           box-shadow: 0 0 10px 1px @tableSha;
         }
-        .bc-fff{
+        .bc-fff {
           background-color: #fff;
         }
         /*表格样式*/
-        table{
-          tr.interleave{
+        table {
+          tr.interleave {
             background-color: @interleave;
           }
         }
@@ -290,8 +301,8 @@
               th:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
               }
-              th{
-                .img1 {  //th上面显示的图
+              th {
+                .img1 { //th上面显示的图
                   width: 29px;
                   height: 32px;
                   background: url(../static/img/th-2.png);
@@ -300,22 +311,22 @@
                   margin-bottom: -6px;
                   cursor: pointer;
                   position: relative;
-                  &:hover{
-                    .hide-content{
+                  &:hover {
+                    .hide-content {
                       display: block;
                     }
                   }
-                  .hide-content{
+                  .hide-content {
                     position: absolute;
                     top: 32px;
                     display: none;
-                    .img2{
+                    .img2 {
                       cursor: pointer;
                       background-color: transparent;
                       z-index: 11;
                       margin-left: 6px;
                     }
-                    ul{
+                    ul {
                       margin: -5px 0 0 -30px;
                       border: 1px solid @tableSha;
                       box-shadow: 0 0 10px 1px @tableSha;
@@ -324,10 +335,10 @@
                       background-color: #fff;
                       font-weight: normal;
                       cursor: pointer;
-                      li{
+                      li {
                         padding: 5px 20px;
-                        white-space:nowrap;
-                        &:hover{
+                        white-space: nowrap;
+                        &:hover {
                           background-color: @trIn;
                         }
                       }
@@ -345,7 +356,7 @@
                 border-bottom-left-radius: 5px;
               }*/
               /*td:last-child {*/
-                /*border-bottom-right-radius: 5px;*/
+              /*border-bottom-right-radius: 5px;*/
               /*}*/
               td {
                 padding: 5px 8px 5px 17px;
@@ -362,22 +373,22 @@
             tr.in {
               background-color: @trIn;
             }
-           /* tr:not(:last-child) {
-              td {
-                border-bottom: 1px dashed @tdBorder;
-              }
-            }*/
+            /* tr:not(:last-child) {
+               td {
+                 border-bottom: 1px dashed @tdBorder;
+               }
+             }*/
           }
           table tr:first-child th:first-child {
             border-top-left-radius: 5px
           }
         }
-        table.no-shadow{
+        table.no-shadow {
           border-radius: 0;
           box-shadow: none;
         }
         /*筛选框样式*/
-        .filtrate-content{
+        .filtrate-content {
           width: 290px;
           border: 1px solid @tableSha;
           border-radius: 5px;
@@ -388,36 +399,36 @@
           padding: 14px 14px 20px 14px;
           background-color: #fff;
           z-index: 10;
-          .up{
+          .up {
             position: absolute;
             right: 20px;
-            top:-9px;
+            top: -9px;
           }
-          .title{
+          .title {
             padding-bottom: 9px;
             border-bottom: 1px solid @fliterBorder;
           }
-          .content{
+          .content {
             padding-top: 6px;
-            .left{
+            .left {
               float: left;
               width: 70px;
             }
-            .right{
+            .right {
               float: left;
               width: 185px;
-              input{
+              input {
                 border: 1px solid @fliterBorder;
                 border-radius: 3px;
                 width: 100%;
               }
             }
-            .single{
+            .single {
               margin: 3px 0;
               min-height: 28px;
             }
           }
-          .search-btn{
+          .search-btn {
             margin-top: 20px;
             margin-left: 90px;
           }
@@ -437,7 +448,7 @@
               padding: 0;
               color: @color;
               background-color: #fff;
-              li{
+              li {
                 cursor: pointer;
               }
               li.active {
@@ -489,14 +500,14 @@
                   color: inherit;
                   padding-left: 23px;
                 }
-                a.active,a:hover,.router-link-active,.router-link-active:hover {
+                a.active, a:hover, .router-link-active, .router-link-active:hover {
                   color: @in;
                   background-color: @inBc;
                 }
               }
             }
             .under-right {
-              border-left: 1px solid rgb(211,212,212);
+              border-left: 1px solid rgb(211, 212, 212);
               display: inline-block;
               /*float: left;*/
               width: calc(~'100vw - 300px');

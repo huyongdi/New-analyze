@@ -101,19 +101,13 @@
           "molecularBasis",
         ],
         availableHPOCount:0,
+        clinicalSynopsisData:[],
         hpoArr:[]
       }
     },
-    computed: {
-      clinicalSynopsisData: function () {
-        console.log(this.clinicalSynopsisObj)
-        console.log(this.sortSyn(this.clinicalSynopsisObj))
-        return this.sortSyn(this.clinicalSynopsisObj);
-      }
-    },
     watch:{
-      clinicalSynopsisObj:function (a) {
-        console.log(a)
+      clinicalSynopsisObj:function () {
+        this.clinicalSynopsisData = this.sortSyn(this.clinicalSynopsisObj)
       }
     },
     methods:{
@@ -153,8 +147,6 @@
             }
           })
         });
-
-
         return arr
       },
       getCnName: function (hpoId) {

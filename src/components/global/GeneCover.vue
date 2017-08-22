@@ -151,7 +151,8 @@
         const _vue = this;
         this.coverLoading = true;
         this.myAxios({
-          url: 'application/'+this.app+'/' + this.ID + '/cov/',
+//          url: 'application/'+this.app+'/' + this.ID + '/cov/',
+          url: 'application/job'+ this.ID + '/cov/',
           method: 'post',
           data: {'gene': _vue.strToArr(this.geneTextAreaContent3)}
         }).then(function (resp) {

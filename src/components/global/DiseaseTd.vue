@@ -21,6 +21,7 @@
         <!--(100100)-->
         (<a target="_blank" :href="dbHtml+'#/oMIMD?&id='+omimSingle.mimNumber" class="common-a">{{omimSingle.mimNumber}}</a>)
       </div>
+      <span v-if="disease.geneData.omims.length==0"> - </span>
     </div>
   </td>
 </template>

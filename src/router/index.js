@@ -30,6 +30,7 @@ import MtResult from '@/components/MtResult'
 import CnvResult from '@/components/CnvResult'
 import SnvResult from '@/components/SnvResult'
 import TrioResult from '@/components/TrioResult'
+import Report from '@/components/Report'
 
 
 Vue.use(Router);
@@ -179,6 +180,11 @@ export default new Router({
           path: 'trioResult',
           name: 'taskM-trioResult',
           component: TrioResult
+        },
+        {
+          path: 'report',
+          name: 'taskM-report',
+          component: Report
         },
       ]
     },

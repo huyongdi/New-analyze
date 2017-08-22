@@ -16,7 +16,7 @@
       <div class="dataContent shadow-top bc-fff">
         <form id="addExcelForm">
           <div class="row">
-            <div class="title">
+            <div class="title base-color">
               文件
             </div>
             <div class="content">

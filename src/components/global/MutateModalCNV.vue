@@ -12,49 +12,54 @@
         <div class="modal-body" id="id_modal">
           <div class="row">
             <div class="col-md-4">
-              位点：<span v-if="CNVModuleData.localcnv">{{CNVModuleData.localcnv.name}}</span>
+              位点： <span v-if="CNVModuleData.variant">
+               <span v-if="CNVModuleData.variant.start == CNVModuleData.variant.end">{{CNVModuleData.variant.chrom}}:{{CNVModuleData.variant.start}}({{CNVModuleData.variant.ref}}/{{CNVModuleData.variant.alt}})</span>
+               <span v-else="">{{CNVModuleData.variant.chrom}}:{{CNVModuleData.variant.start}}-{{CNVModuleData.variant.end}}({{CNVModuleData.variant.ref}}/{{CNVModuleData.variant.alt}})</span>
+            </span>
             </div>
             <div class="col-md-4">
-              <router-link v-if="CNVModuleData.localcnv" :to="{path:'/svg',query:{pos: CNVModuleData.localcnv.chrom +
-                       ':' + CNVModuleData.localcnv.start+ '-' + CNVModuleData.localcnv.end,id:ID}}" target="_blank"
+              <router-link v-if="CNVModuleData.variant" :to="{path:'/svg',query:{pos: CNVModuleData.variant.chrom +
+                       ':' + CNVModuleData.variant.start+ '-' + CNVModuleData.variant.end,id:ID}}" target="_blank"
                            title="查看位点覆盖图" class="common-a">查看位点覆盖图
               </router-link>
             </div>
             <div class="col-md-4">
-              区域：<span v-if="CNVModuleData.annotations">{{CNVModuleData.annotations.region}}</span>
+              区域：<span v-if="CNVModuleData.anno">{{CNVModuleData.anno.regions.join(',')}}</span>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-4">
-              基因型：<span>{{CNVModuleData.genoType}}</span>
+              基因型：<span v-if="CNVModuleData.info&& CNVModuleData.info.wes">{{CNVModuleData.info.wes.genoType?CNVModuleData.info.wes.genoType:'-'}}</span><span v-else=""> - </span>
             </div>
             <div class="col-md-4">
-              深度(原始)：<span>{{CNVModuleData.originalReadDepth}}</span>
-
+              深度(原始)：<span v-if="CNVModuleData.info&& CNVModuleData.info.wes">{{CNVModuleData.info.wes.originalReadDepth?CNVModuleData.info.wes.originalReadDepth:'-'}}</span><span v-else=""> - </span>
             </div>
             <div class="col-md-4">
-              深度(标准化)：<span>{{CNVModuleData.readDepth}}</span>
+              深度(标准化)：<span v-if="CNVModuleData.info&& CNVModuleData.info.wes">{{CNVModuleData.info.wes.readDepth?CNVModuleData.info.wes.readDepth:'-'}}</span><span v-else=""> - </span>
             </div>
           </div>
 
           <div class="row specialRow">
             <div class="col-md-11">
-              基因：<a target="_blank" v-if='CNVModuleData.annotations' class="common-a"
-                    :href="dbHtml+'#/gene?query=' + CNVModuleData.annotations.geneSymbol.join(',')">
-              {{CNVModuleData.annotations.geneSymbol.join(',')}}</a>
+              基因： <span v-if="CNVModuleData.anno">
+                    <a class="common-a" target="_blank" v-if="CNVModuleData.anno.genes.symbols" v-for="(oneGene,index) in CNVModuleData.anno.genes.symbols"
+                       :href="dbHtml+'#/gene?n='+oneGene">
+                      {{oneGene}} <span v-if="index!==CNVModuleData.anno.genes.symbols.length-1">,</span>
+                    </a>
+                  </span>
             </div>
 
           </div>
           <div class="row specialRow">
             <div class="col-md-11">
               <span>NCBI GENE ID:</span>
-              <span v-if="CNVModuleData.annotations"><span
-                v-for="(gene,index) in CNVModuleData.annotations.geneId">
-                          <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene" class="common-a">{{gene}}</a>
-                          <span v-if="index == CNVModuleData.annotations.geneId.length">；</span>
-                          </span>
-                    </span>
+              <span v-if="CNVModuleData.anno">
+                    <a class="common-a" target="_blank" v-if="CNVModuleData.anno.genes.geneids" v-for="(oneGene,index) in CNVModuleData.anno.genes.geneids"
+                       :href="dbHtml+'#/geneD?geneId='+oneGene">
+                      {{oneGene}} <span v-if="index!==CNVModuleData.anno.genes.geneids.length-1">,</span>
+                    </a>
+            </span>
             </div>
 
           </div>
@@ -63,23 +68,20 @@
             <div class="col-md-12">
               <div class="">变异信息：(常用转录本：
                 <span v-if="CNVModuleData.geneResp" v-for="list in CNVModuleData.geneResp">
-                            <span v-if="list.geneData.length !== 0" v-for="(list1,index) in list.geneData">
-                            </span>
-                          <span
-                            v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript ? list.geneData.tags.transcript : '无'}}</span>
-                        </span>
+                <span v-if="list.geneData && list.geneData.tags">{{list.geneData.tags.transcript ? list.geneData.tags.transcript : '无'}}</span>
+                <span v-else=""> 无 </span>
+              </span>
                 )
               </div>
-              <div v-if="CNVModuleData.annotations && CNVModuleData.annotations.change">
-                <div v-for="single in CNVModuleData.annotations.change">{{single}}</div>
+              <div v-if="CNVModuleData.anno && CNVModuleData.anno.change">
+                <div v-for="single in CNVModuleData.anno.change">{{single}}</div>
               </div>
-
             </div>
           </div>
 
           <div class="row specialRow">
             <div class="col-md-11">
-              DGV：<span v-if="CNVModuleData.annotations">{{CNVModuleData.annotations.dgv.join(',')}}</span>
+              DGV：<span v-if="CNVModuleData.anno" class="dgv">{{CNVModuleData.anno.dgvs.join(',')}}</span>
             </div>
           </div>
 
@@ -89,12 +91,13 @@
 
           <div class="edit">
             <div class="edit-title">
-              编辑<span>(最后编辑人:"{{CNVModuleData.lastEditor ? CNVModuleData.lastEditor : '无'}}")：</span>
+              编辑<span>(最后编辑人:"<span v-if="CNVModuleData.edit">{{CNVModuleData.edit.lastEditor ? CNVModuleData.edit.lastEditor : '无'}}</span>")：</span>
             </div>
             <div class="edit-content">
               <div>评论：</div>
-              <textarea class="form-control" :data-id=CNVModuleData.id id="commentCNV"
-                        rows="3">{{CNVModuleData.comment}}</textarea>
+              <textarea v-if="CNVModuleData.edit" class="form-control" :data-id=CNVModuleData.id id="commentCNV"
+                        rows="3" :value="CNVModuleData.edit.comment"></textarea>
+
             </div>
 
             <div class="edit-content">
@@ -153,12 +156,12 @@
     watch: {
       moduleDataFromFatherCNV: function (newData) {
         this.CNVModuleData = newData;
-        $("#detail_selectCNV").val(newData.status);
-        $("#commentCNV").val(newData.comment);
+        $("#detail_selectCNV").val(newData.edit.status);
+        $("#commentCNV").val(newData.edit.comment);
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/image/?pos=' + newData.localcnv.chrom +
-          ':' + newData.localcnv.start + '-' + newData.localcnv.end
+          url: 'application/grandmgd/' + this.ID + '/image/?pos=' + newData.variant.chrom +
+          ':' + newData.variant.start + '-' + newData.variant.end
         }).then(function (resp) {
           _vue.IMG = resp.data.url
         })
@@ -178,6 +181,9 @@
       #comment {
         margin-bottom: 10px;
       }
+    }
+    .dgv{
+      word-break: break-all;
     }
   }
 </style>

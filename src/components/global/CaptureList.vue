@@ -344,7 +344,6 @@
             _vue.editModalData = data;
           }
         });
-        console.log(_vue.editModalData);
         $("#editModal").modal('show')
       },
       deleteFun: function (event) {

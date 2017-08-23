@@ -36,10 +36,13 @@
         this.$router.push('/')
       }
       const pos = this.$route.query.pos;
-      const myUrl = this.$route.query.t == 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
-        : 'application/grandmgd/' + id + '/svg/?pos=' + pos;
+
+
+
+//      const myUrl = this.$route.query.t == 1 ? 'application/grandmito/' + id + '/svg/?pos=' + pos
+//        : 'application/grandmgd/' + id + '/svg/?pos=' + pos;
       this.myAxios({
-        url: myUrl,
+        url: 'application/job/'+id+'/svg/?pos='+pos,
       }).then(function (resp) {
         $("#svg-title").html(resp.data.sample);
         $("#svg-detail").html(resp.data.svg);

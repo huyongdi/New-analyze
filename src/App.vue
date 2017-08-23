@@ -109,14 +109,15 @@
     padding: 0;
     /*overflow-x: hidden;*/
     body {
-      background: url("../static/img/html-bc.png");
+      /*background: url("../static/img/html-bc.png");*/
+      /*background-size: 100% 100%;*/
       /*background:linear-gradient(to bottom,#e9e9e9,#fafafa);*/
+      background-color: #f5f5f5;
       min-height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
       font-family: "AdobeHeitiStd";
-      background-size: 100% 100%;
       #app {
         min-height: 100%;
         /*自定义class*/
@@ -181,7 +182,7 @@
         input, textarea {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
-          padding: 1px 8px;
+          padding: 2px 8px;
           &:focus {
             outline: none;
           }
@@ -192,8 +193,8 @@
         .my-select {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
-          height: 24px;
-          line-height: 24px;
+          height: 26px;
+          line-height: 26px;
           padding-left: 5px;
           padding-right: 24px;
           appearance: none;
@@ -447,11 +448,11 @@
               margin: 0;
               padding: 0;
               color: @color;
-              background-color: #fff;
               li {
                 cursor: pointer;
               }
               li.active {
+                background-color: #fff;
                 .father {
                   .triangle {
                     opacity: 1;
@@ -507,10 +508,13 @@
               }
             }
             .under-right {
+              background: url("../static/img/html-bc.png");
+              /*background-position: -60px 0;*/
+              background-size: 100% auto;
               border-left: 1px solid rgb(211, 212, 212);
               display: inline-block;
               /*float: left;*/
-              width: calc(~'100vw - 300px');
+              width: calc(~'100vw - 285px');
               min-width: 1100px;
               min-height: calc(~'100vh - 58px');
               padding-left: 32px;

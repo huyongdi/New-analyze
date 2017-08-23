@@ -269,6 +269,7 @@
         width: 15px;
         height: 15px;
         margin-bottom: -4px;
+        margin-left: 14px;
         background: url('../../static/img/all-2.png') 72px 15px;
         text-align: center;
         position: relative;

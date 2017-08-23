@@ -30,10 +30,10 @@
                 <a target="_blank" :href="R2" class="common-a">R2:fastq</a>
               </li>
               <li>
-                INSERTSIZE图：<a class="common-a" :href="anaUrl+insert">点击下载</a>
+                INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
               </li>
               <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
+                注释结果(CSV)：<a class="common-a" :href="CSV.cnv">点击下载(cnv)</a>  <a class="common-a" :href="CSV.snv">点击下载(snv)</a>
               </li>
               <li>
                 基因分析报告 :
@@ -419,13 +419,14 @@
         //请求链接cnv snv
         snvUrl: '',
         cnvUrl: '',
+        csv: {},
       }
     },
     mounted: function () {
 //      this.ID = '599690afccaa6c94a937a633' 5993e676ccaa6c0a76fcef63
       this.bindCurrent();//绑定变异详情的过滤点击事件
       this.getSampleAndUrl();
-//      this.current0();
+      this.getStat()
     },
     methods: {
       //查看位点信息
@@ -480,10 +481,11 @@
         }).then(function (resp) {
           const data = resp.data;
           //QC和inse
-          if(data.qc){
-            _vue.R1 = data.qc.fastqc[0];
-            _vue.R2 = data.qc.fastqc[1];
-            _vue.insert = data.qc.insertsize.substring(1, data.qc.insertsize.length);
+          if(data.files){
+            _vue.R1 = data.files.fastqc[0];
+            _vue.R2 = data.files.fastqc[1];
+            _vue.insert = data.files.insertsize;
+            _vue.csv = data.files.csv;
           }
 
           //CNV.SNV
@@ -511,167 +513,150 @@
         })
 
       },
+
+      getStat:function () {
+        const _vue = this;
+        this.myAxios({
+          url:'application/job/'+this.ID+'/stat/'
+        }).then(function (resp) {
+          resp = resp.data;
+          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
+          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
+          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
+          qObj.baseGender = resp.data.gender;
+          qObj.gender = resp.data.gender;
+          if (qObj.Sample_gender === 'Male') {
+            qObj.Sample_gender = '男'
+          } else if (qObj.Sample_gender === 'Female') {
+            qObj.Sample_gender = '女'
+          } else {
+            qObj.Sample_gender = '未知'
+          }
+          //如果性别和20X都不对
+          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
+            alert('指数严重不合格！')
+          }
+          const arr = [
+            {
+              type: '20X覆盖度',
+              grandValue: '≥≈95%',
+              realValue: qObj.above_20,
+              standard: qObj.above_20 >= 95
+            }, {
+              type: '性别',
+              grandValue: qObj.baseGender,
+              realValue: qObj.above_20,
+              standard: qObj.Sample_gender == qObj.gender
+            }, {
+              type: 'Q30',
+              grandValue: '≥85%',
+              realValue: qObj.q30,
+              standard: qObj.q30 >= 85
+            }, {
+              type: '数据量(M)',
+              grandValue: '≥10G',
+              realValue: qObj.volume,
+              standard: qObj.volume >= 10000
+            }, {
+              type: 'Duplication%',
+              grandValue: '≤20%',
+              realValue: _vue.getPercent1(qObj.duplication),
+              standard: qObj.duplication <= 0.2
+            }, {
+              type: 'Total Reads%',
+              grandValue: '---',
+              realValue: qObj.total,
+              standard: true
+            }, {
+              type: 'QC passed Reads%',
+              grandValue: '---',
+              realValue: qObj.qc,
+              standard: true
+            }, {
+              type: 'Mapped Reads%',
+              grandValue: '---',
+              realValue: qObj.mapped,
+              standard: true
+            }, {
+              type: '捕获效率',
+              grandValue: '≥70%',
+              realValue: qObj.target,
+              standard: qObj.target >= 0.7
+            }, {
+              type: '平均深度',
+              grandValue: '≥75X',
+              realValue: qObj.depth,
+              standard: qObj.depth >= 75
+            }, {
+              type: '1X覆盖度',
+              grandValue: '---',
+              realValue: qObj.above_1,
+              standard: true
+            }, {
+              type: '5X覆盖度',
+              grandValue: '---',
+              realValue: qObj.above_5,
+              standard: true
+            }, {
+              type: '10X覆盖度',
+              grandValue: '---',
+              realValue: qObj.above_10,
+              standard: true
+            }, {
+              type: '30X覆盖度',
+              grandValue: '---',
+              realValue: qObj.above_30,
+              standard: true
+            }
+          ];
+          $.each(resp.aln, function (i, data) {
+            $.each(arr, function (n, k) {
+              if (i === n) {
+                k.detail = data
+              }
+            })
+          });
+          _vue.lists0 = arr;
+          _vue.loading0 = false;
+        })
+      },
+
       //每个块域的逻辑
       /*疾病TD里面显示hpo的弹框*/
       getPhenotypeMapSingle: function (data) {
         this.phenotypeMapSingle = data;
       },
-//      current0: function () {
-//        this.loading0 = true;
-//        const _vue = this;
-//        this.myAxios({
-//          url: 'application/grandmgd/' + this.ID + '/fastqc/',
-//        }).then(function (resp) {
-//          _vue.R1 = resp.data.r1;
-//          _vue.R2 = resp.data.r2;
-//        });
-//        this.myAxios({
-//          url: 'application/grandmgd/' + this.ID + '/insertsize/',
-//        }).then(function (resp) {
-//          _vue.insert = resp.data
-//        });
-//        this.myAxios({
-//          url: 'application/grandmgd/' + this.ID + '/csv/',
-//        }).then(function (resp) {
-//          _vue.CSV = resp.data
-//        });
-//
-//        //列表
-//        this.myAxios({
-//          url: 'application/grandmgd/' + this.ID + "/stat/",
-//        }).then(function (resp) {
-//          resp = resp.data;
-//          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
-//          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
-//          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
-//          qObj.baseGender = resp.data.gender;
-//          qObj.gender = resp.data.gender;
-//          if (qObj.Sample_gender === 'Male') {
-//            qObj.Sample_gender = '男'
-//          } else if (qObj.Sample_gender === 'Female') {
-//            qObj.Sample_gender = '女'
-//          } else {
-//            qObj.Sample_gender = '未知'
-//          }
-//          //如果性别和20X都不对
-//          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
-//            alert('指数严重不合格！')
-//          }
-//          const arr = [
-//            {
-//              type: '20X覆盖度',
-//              grandValue: '≥≈95%',
-//              realValue: qObj.above_20,
-//              standard: qObj.above_20 >= 95
-//            }, {
-//              type: '性别',
-//              grandValue: qObj.baseGender,
-//              realValue: qObj.above_20,
-//              standard: qObj.Sample_gender == qObj.gender
-//            }, {
-//              type: 'Q30',
-//              grandValue: '≥85%',
-//              realValue: qObj.q30,
-//              standard: qObj.q30 >= 85
-//            }, {
-//              type: '数据量(M)',
-//              grandValue: '≥10G',
-//              realValue: qObj.volume,
-//              standard: qObj.volume >= 10000
-//            }, {
-//              type: 'Duplication%',
-//              grandValue: '≤20%',
-//              realValue: qObj.duplication,
-//              standard: qObj.duplication <= 0.2
-//            }, {
-//              type: 'Total Reads%',
-//              grandValue: '---',
-//              realValue: qObj.total,
-//              standard: true
-//            }, {
-//              type: 'QC passed Reads%',
-//              grandValue: '---',
-//              realValue: qObj.qc,
-//              standard: true
-//            }, {
-//              type: 'Mapped Reads%',
-//              grandValue: '---',
-//              realValue: qObj.mapped,
-//              standard: true
-//            }, {
-//              type: '捕获效率',
-//              grandValue: '≥70%',
-//              realValue: qObj.target,
-//              standard: qObj.target >= 0.7
-//            }, {
-//              type: '平均深度',
-//              grandValue: '≥75X',
-//              realValue: qObj.depth,
-//              standard: qObj.depth >= 75
-//            }, {
-//              type: '1X覆盖度',
-//              grandValue: '---',
-//              realValue: qObj.above_1,
-//              standard: true
-//            }, {
-//              type: '5X覆盖度',
-//              grandValue: '---',
-//              realValue: qObj.above_5,
-//              standard: true
-//            }, {
-//              type: '10X覆盖度',
-//              grandValue: '---',
-//              realValue: qObj.above_10,
-//              standard: true
-//            }, {
-//              type: '30X覆盖度',
-//              grandValue: '---',
-//              realValue: qObj.above_30,
-//              standard: true
-//            }
-//          ];
-//          $.each(resp.aln, function (i, data) {
-//            $.each(arr, function (n, k) {
-//              if (i === n) {
-//                k.detail = data
-//              }
-//            })
-//          });
-//          _vue.lists0 = arr;
-//          _vue.loading0 = false;
-//        });
-//      },
-//      getValue: function (final) {
-//        const obj = {};
-//        $.each(final, function (i, data) {
-//          if (data.name === 'mapped reads') {
-//            obj.mapped = data.value.raw
-//          } else if (data.name === 'QC passed reads') {
-//            obj.qc = data.value
-//          } else if (data.name === 'total reads') {
-//            obj.total = data.value
-//          } else if (data.name === 'duplication rate') {
-//            obj.duplication = data.value
-//          } else if (data.name === 'target reads ratio') {
-//            obj.target = data.value
-//          } else if (data.name === 'depth') {
-//            obj.depth = data.value
-//          } else if (data.name === '%_bases_above_1') {
-//            obj.above_1 = data.value
-//          } else if (data.name === '%_bases_above_5') {
-//            obj.above_5 = data.value
-//          } else if (data.name === '%_bases_above_10') {
-//            obj.above_10 = data.value
-//          } else if (data.name === '%_bases_above_20') {
-//            obj.above_20 = data.value
-//          } else if (data.name === '%_bases_above_30') {
-//            obj.above_30 = data.value
-//          } else if (data.name === 'Sample_gender') {
-//            obj.Sample_gender = data.value
-//          }
-//        });
-//        return obj;
-//      },
+      getValue: function (final) {
+        const obj = {};
+        $.each(final, function (i, data) {
+          if (data.name === 'mapped reads') {
+            obj.mapped = data.value.raw
+          } else if (data.name === 'QC passed reads') {
+            obj.qc = data.value
+          } else if (data.name === 'total reads') {
+            obj.total = data.value
+          } else if (data.name === 'duplication rate') {
+            obj.duplication = data.value
+          } else if (data.name === 'target reads ratio') {
+            obj.target = data.value
+          } else if (data.name === 'depth') {
+            obj.depth = data.value
+          } else if (data.name === '%_bases_above_1') {
+            obj.above_1 = data.value
+          } else if (data.name === '%_bases_above_5') {
+            obj.above_5 = data.value
+          } else if (data.name === '%_bases_above_10') {
+            obj.above_10 = data.value
+          } else if (data.name === '%_bases_above_20') {
+            obj.above_20 = data.value
+          } else if (data.name === '%_bases_above_30') {
+            obj.above_30 = data.value
+          } else if (data.name === 'Sample_gender') {
+            obj.Sample_gender = data.value
+          }
+        });
+        return obj;
+      },
       current1: function () {
 //        if (this.lists1.length === 0) {
 //          this.getList1();
@@ -910,6 +895,15 @@
           $(this).addClass('in')
         })
       },
+
+      getPercent1: function (data) {
+        if (data == 0) {
+          return 0;
+        }
+        data = data * 100;
+        data = data.toFixed(2);
+        return data
+      },
     },
     updated: function () {
       $('[data-toggle="tooltip"]').tooltip();
@@ -1103,7 +1097,7 @@
             margin: 23px 0;
             li {
               display: inline-block;
-              margin-right: 80px;
+              margin-right: 60px;
               .r1 {
                 margin-right: 10px;
               }

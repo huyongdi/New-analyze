@@ -2,10 +2,10 @@
 <template>
   <div class="text-right">
     页数
-    <select class="black" name="" id="" v-model="currentPage">
-      <option v-for="page in allPage" :value="page">{{page}}</option>
+    <select class="black" name="" id="page-select" panelheight="auto" v-model="currentPage" @click="showSize" @blur="hideSize">
+      <option v-for="page in allPage" :value="page" @click.stop="hideSize">{{page}}</option>
     </select>
-    <span class="black">{{currentPage}}/{{allPage}}</span>
+    <span class="black c-a-page">{{currentPage}}/{{allPage}}</span>
     <span class="lr-content"> <!--左右按钮-->
       <span @click="currentPage !==1 && --currentPage"
             :class="{'left-no':currentPage === 1,'left-yes':currentPage !==1}"
@@ -50,6 +50,19 @@
       }
     },
     methods: {
+      showSize:function () {
+//        const length = this.allPage;
+//        const _select = $("#page-select");
+//        console.log(length);
+//        if(length>5){
+//          _select.attr('size',5)
+//        }else{
+//          _select.attr('size',length)
+//        }
+      },
+      hideSize:function () {
+//        $("#page-select").attr("size",0)
+      },
       jump: function () {
         if (!this.usableInput) {
 //          alert('请输入正确的页码！');
@@ -86,9 +99,18 @@
     select {
       width: 57px;
       margin: 0 5px;
-      max-height: 150px;
-      overflow-y: auto;
     }
+
+
+    /*如果要设置高度*/
+    /*.c-a-page{*/
+      /*margin-left: 70px;*/
+    /*}*/
+    /*select{*/
+      /*position: absolute;*/
+      /*z-index: 10;*/
+    /*}*/
+    /*结束*/
     .black {
       color: black;
     }

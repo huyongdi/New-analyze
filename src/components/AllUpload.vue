@@ -24,7 +24,7 @@
                 <div class="inline">
                   <span>excel：</span>
                   <div class="upload-content">
-                    <input type="text" class="show-name" id="input-show">
+                    <input type="text" class="show-name light-font" id="input-show">
                     <span class="text">选择</span>
                     <input type='file' name="excel" class="hide-input" id="input-hide">
                   </div>

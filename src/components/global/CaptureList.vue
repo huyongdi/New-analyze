@@ -55,7 +55,7 @@
           <td>{{list.code}}</td>
           <td><span v-if="list.patient">{{list.patient.code}}</span></td>
           <td><span v-if="list.patient">{{list.patient.name}}（{{list.patient.gender}}）</span></td>
-          <td><span v-if="list.capture">{{list.capture.code}}</span></td>
+          <td><span v-if="list.captureInfo">{{list.captureInfo.code}}</span></td>
           <td>{{list.dataFormat}}</td>
           <td>
             <span v-if="list.volume==-1"> - </span>
@@ -480,6 +480,7 @@
         width: 15px;
         height: 15px;
         margin-bottom: -4px;
+        margin-left: 14px;
         background: url('../../../static/img/all-2.png') 72px 15px;
         text-align: center;
         position: relative;

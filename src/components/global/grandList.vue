@@ -13,7 +13,7 @@
         </span>
         <span class="my-btn submit" @click="submit"><img src="../../../static/img/red-submit.png" alt="">提交</span>
         <span class="my-btn refresh" @click="refresh"><img src="../../../static/img/red-refresh.png" alt="">数据刷新</span>
-        <span class="my-btn condition pull-right" @click="filter"><img src="../../../static/img/red-con.png" alt="">筛选条件</span>
+        <!--<span class="my-btn condition pull-right" @click="filter"><img src="../../../static/img/red-con.png" alt="">筛选条件</span>-->
       </div>
       <table id="sg-table" class="bc-fff my-table">
         <thead>
@@ -178,6 +178,7 @@
         width: 15px;
         height: 15px;
         margin-bottom: -4px;
+        margin-left: 14px;
         background: url('../../../static/img/all-2.png') 72px 15px;
         text-align: center;
         position: relative;

@@ -486,7 +486,7 @@
                       </a>
                     </div>
                     <div class="col-md-4">
-                      位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.name}}</span>
+                      位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.chrom}}:{{moduleData.localsnv.start}}-{{moduleData.localsnv.end}}({{moduleData.localsnv.ref}}/{{moduleData.localsnv.alt}})</span>
                     </div>
                     <div class="col-md-4">
                       <!--const pos = codeData.localsnv.chrom + ':' + codeData.localsnv.start + '-' + codeData.localsnv.end;-->
@@ -845,7 +845,7 @@
                 <div class="modal-body" id="">
                   <div class="row">
                     <div class="col-md-4">
-                      位点：<span v-if="CNVmoduleData.localcnv">{{CNVmoduleData.localcnv.name}}</span>
+                      位点：<span v-if="CNVmoduleData.localcnv">{{CNVmoduleData.localcnv.chrom}}:{{CNVmoduleData.localcnv.start}}-{{CNVmoduleData.localcnv.end}}({{CNVmoduleData.localcnv.alt}})</span>
                     </div>
                     <div class="col-md-4">
                       <router-link v-if="CNVmoduleData.localcnv" :to="{path:'/svg',query:{pos: CNVmoduleData.localcnv.chrom +

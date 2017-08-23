@@ -173,7 +173,7 @@
                 <div class="modal-body" id="">
                   <div class="row">
                     <div class="col-md-4">
-                      位点：<span v-if="CNVmoduleData.localcnv">{{CNVmoduleData.localcnv.name}}</span>
+                      位点：<span v-if="CNVmoduleData.localcnv">{{CNVmoduleData.localcnv.chrom}}:{{CNVmoduleData.localcnv.start}}-{{CNVmoduleData.localcnv.end}}({{CNVmoduleData.localcnv.alt}})</span>
                     </div>
                     <!--<div class="col-md-4">-->
                     <!--<router-link v-if="CNVmoduleData.localcnv" :to="{path:'/svg',query:{pos: CNVmoduleData.localcnv.chrom +-->

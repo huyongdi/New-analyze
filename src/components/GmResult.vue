@@ -519,7 +519,7 @@
                       </a>
                     </div>
                     <div class="col-md-4">
-                      位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.name}}</span>
+                      位点：<span v-if="moduleData.localsnv">{{moduleData.localsnv.chrom}}:{{moduleData.localsnv.start}}-{{moduleData.localsnv.end}}({{moduleData.localsnv.ref}}/{{moduleData.localsnv.alt}})</span>
                     </div>
                     <div class="col-md-4">
                       <router-link v-if="moduleData.localsnv" :to="{path:'/svg',query:{pos: moduleData.localsnv.chrom +

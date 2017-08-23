@@ -347,7 +347,8 @@
                       </a>
                     </div>
                     <div class="col-md-4">
-                      位点：<span v-if="CNVmoduleData.localsnv">{{CNVmoduleData.localsnv.name}}</span>
+                      位点：<span v-if="CNVmoduleData.localsnv">{{CNVmoduleData.localsnv.chrom}}:{{CNVmoduleData.localsnv.start}}-{{CNVmoduleData.localsnv.end}}({{CNVmoduleData.localsnv.ref}}/{{CNVmoduleData.localsnv.alt}})</span>
+
                     </div>
                     <div class="col-md-4">
                       区域：<span v-if="CNVmoduleData.annotations">{{CNVmoduleData.annotations.region}}</span>

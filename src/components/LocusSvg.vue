@@ -43,6 +43,7 @@
 //        : 'application/grandmgd/' + id + '/svg/?pos=' + pos;
       this.myAxios({
         url: 'application/job/'+id+'/svg/?pos='+pos,
+//        url:'application/job/'+id+'/image/?pos='+pos
       }).then(function (resp) {
         $("#svg-title").html(resp.data.sample);
         $("#svg-detail").html(resp.data.svg);

@@ -196,7 +196,7 @@
               <tbody>
               <tr v-for="data in lists1">
                 <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,0)"
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,0,data.id)"
                      :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
                   <a class="po common-a" v-if="data.variant"
                      @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
@@ -296,7 +296,7 @@
               <tbody>
               <tr v-for="data in lists2">
                 <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,1)"
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,1,data.id)"
                      :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
                   <a class="po common-a" v-if="data.variant"
                      @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
@@ -345,8 +345,8 @@
       <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                   :originalPanelData="originalPanelData"></panelModal>
       <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
-      <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd"></mutateModal>
-      <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
+      <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmgd" :postId="snvId"></mutateModal>
+      <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV" :postId="cnvId"
                       :ID="ID"></mutateModalCNV>
     </div>
   </div>
@@ -376,6 +376,8 @@
     data: function () {
       return {
         //公用
+        snvId:0,
+        cnvId:0,
         locus: '',
         type: 0,
         phenotypeMapSingle: '',
@@ -426,7 +428,7 @@
 //      this.ID = '599690afccaa6c94a937a633' 5993e676ccaa6c0a76fcef63
       this.bindCurrent();//绑定变异详情的过滤点击事件
       this.getSampleAndUrl();
-      this.getStat()
+//      this.getStat()
     },
     methods: {
       //查看位点信息
@@ -482,8 +484,10 @@
           const data = resp.data;
           //QC和inse
           if(data.files){
-            _vue.R1 = data.files.fastqc[0];
-            _vue.R2 = data.files.fastqc[1];
+            if(data.files.fastqc){
+              _vue.R1 = data.files.fastqc[0];
+              _vue.R2 = data.files.fastqc[1];
+            }
             _vue.insert = data.files.insertsize;
             _vue.csv = data.files.csv;
           }
@@ -737,21 +741,25 @@
       filtrateShow1Fun: function () {
         this.switchHide('filtrate-content')
       },
-      showDetail: function (data, type) {
+      showDetail: function (data, type,postId) {
         const _vue = this;
         if (type === 0) {
           _vue.moduleData = data;
-          $("#mutateDetailModal").modal('show')
+          _vue.snvId =postId;
+          $("#mutateDetailModal").modal('show');
         } else if (type === 1) {
           _vue.moduleDataCNV = data;
+          _vue.cnvId =postId;
           $("#mutateDetailModalCNV").modal('show')
         }
       },
       getMutateModalStatus: function (newStatus) {
         const _vue = this;
-        $.each(this.lists1, function (i, data) {
-          if (data.url === _vue.moduleData.url) {
-            data.status = newStatus;
+        $.each(_vue.lists1, function (i, data) {
+          if (data.id ==_vue.snvId) {
+            data.edit.status = newStatus.status;
+            data.edit.comment = newStatus.comment;
+            data.edit.validation = newStatus.validation
           }
         })
       },
@@ -843,9 +851,11 @@
       },
       getMutateModalStatusCNV: function (newStatus) {
         const _vue = this;
-        $.each(this.lists2, function (i, data) {
-          if (data.url === _vue.moduleDataCNV.url) {
-            data.status = newStatus;
+        $.each(_vue.lists2, function (i, data) {
+          if (data.id ==_vue.cnvId) {
+            data.edit.status = newStatus.status;
+            data.edit.comment = newStatus.comment;
+            data.edit.validation = newStatus.validation
           }
         })
       },

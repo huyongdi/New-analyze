@@ -202,7 +202,7 @@
     <locusModal :datafile="datafile" :locus="locus" :type="type"></locusModal>
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
-    <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
+    <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
     <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmito"></mutateModal>
   </div>
 </template>
@@ -261,14 +261,10 @@
         filtrateShow1: false,
       }
     },
-    created: function () {
-//      this.getSample();
-//      this.current0();
-    },
     mounted: function () {
       this.bindCurrent();//绑定变异详情的过滤点击事件
-      this.getSample();
-      this.current0();
+      this.getSampleAndUrl();
+      this.getStat()
     },
     methods: {
       //查看位点信息
@@ -316,18 +312,44 @@
         })
       },
       //获取样本信息
-      getSample: function () {
+      getSampleAndUrl: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/',
+          url: 'application/job/' + this.ID + '/url/'
         }).then(function (resp) {
-          _vue.datafile = resp.data.datafile;
-          _vue.myAxios({
-            url: resp.data.job
-          }).then(function (respJob) {
-            _vue.sampleInfo = respJob.data.name;
-          })
+          const data = resp.data;
+          //QC和inse
+          if(data.files){
+            _vue.R1 = data.files.fastqc[0];
+            _vue.R2 = data.files.fastqc[1];
+            _vue.insert = data.files.insertsize;
+            _vue.csv = data.files.csv;
+          }
+
+          //CNV.SNV
+          if(data.cnv){
+            _vue.cnvUrl = resp.data.cnv.query_url + '?';
+            $.each(data.cnv.query_params, function (i, data) {
+              _vue.cnvUrl += '&' + i + '=' + data
+            });
+            _vue.getList2();
+          }
+          if(data.snv){
+            _vue.snvUrl = resp.data.snv.query_url + '?';
+            $.each(data.snv.query_params, function (i, data) {
+              _vue.snvUrl += '&' + i + '=' + data
+            });
+            _vue.getList1();
+          }
         });
+
+        this.myAxios({
+          url: 'application/job/' + this.ID + '/'
+        }).then(function (resp) {
+          _vue.sampleInfo = resp.data.name;
+          _vue.datafile = resp.data.parameter.datafile;
+        })
+
       },
       //切换导航
       changeContent: function (event) {
@@ -340,58 +362,20 @@
         this.in3 = '';
         if (current === 0) {
           this.in0 = true;
-          this.current0();
         } else if (current === 1) {
           this.in1 = true;
-          this.current1();
-        } else if (current === 3) {
-          this.in3 = true;
-          this.current3();
         }
       },
-      //绑定基础操作
-      bindCurrent: function () {
-        $('.option').on("click", function () {
-          $(this).parent().find('.in').removeClass('in');
-          $(this).addClass('in')
-        });
-      },
-      resetFilter: function () {
-        this.geneTextArea = '';
-        this.geneTextAreaContent2 = '';
-        $(".default").each(function () {
-          $(this).parent().find('.in').removeClass('in');
-          $(this).addClass('in')
-        })
-      },
+
       //每个块域的逻辑
       /*疾病TD里面显示hpo的弹框*/
       getPhenotypeMapSingle: function (data) {
         this.phenotypeMapSingle = data;
       },
-      current0: function () {
-        this.loading0 = true;
+      getStat:function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/fastqc/',
-        }).then(function (resp) {
-          _vue.R1 = resp.data.r1;
-          _vue.R2 = resp.data.r2;
-        });
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/insertsize/',
-        }).then(function (resp) {
-          _vue.insert = resp.data
-        });
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/csv/',
-        }).then(function (resp) {
-          _vue.CSV = resp.data
-        });
-
-        //列表
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + "/stat/",
+          url:'application/job/'+this.ID+'/stat/'
         }).then(function (resp) {
           resp = resp.data;
           const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
@@ -434,7 +418,7 @@
             }, {
               type: 'Duplication%',
               grandValue: '≤20%',
-              realValue: qObj.duplication,
+              realValue: _vue.getPercent1(qObj.duplication),
               standard: qObj.duplication <= 0.2
             }, {
               type: 'Total Reads%',
@@ -492,7 +476,7 @@
           });
           _vue.lists0 = arr;
           _vue.loading0 = false;
-        });
+        })
       },
       getValue: function (final) {
         const obj = {};
@@ -524,11 +508,6 @@
           }
         });
         return obj;
-      },
-      current1: function () {
-        if (this.lists1.length === 0) {
-          this.getList1();
-        }
       },
       getList1: function () {
         this.loading1 = true;
@@ -638,8 +617,20 @@
         this.getList1();
         this.filtrateShow1 = false;
       },
-      current3: function () {
-
+      //绑定基础操作
+      bindCurrent: function () {
+        $('.option').on("click", function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        });
+      },
+      resetFilter: function () {
+        this.geneTextArea = '';
+        this.geneTextAreaContent2 = '';
+        $(".default").each(function () {
+          $(this).parent().find('.in').removeClass('in');
+          $(this).addClass('in')
+        })
       },
     },
     updated: function () {
@@ -685,14 +676,14 @@
   @red: rgb(233, 73, 73);
 
   #mtResult{
+    .change-panel {
+      margin-left: 50px;
+    }
     .all-content {
       table{
         box-shadow: none;
       }
       margin: 15px 0 0 0;
-      .change-panel {
-        margin-left: 50px;
-      }
       .title-list {
         width: 486px;
         border-bottom: 1px solid @border;

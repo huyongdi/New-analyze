@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5bb1820c-f60d-429d-a2e6-bd847b9d20a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/AllUpload.vue" afterPath="$PROJECT_DIR$/src/components/AllUpload.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CapList.vue" afterPath="$PROJECT_DIR$/src/components/CapList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/CnvResult.vue" afterPath="$PROJECT_DIR$/src/components/CnvResult.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/LocusSvg.vue" afterPath="$PROJECT_DIR$/src/components/LocusSvg.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/MtResult.vue" afterPath="$PROJECT_DIR$/src/components/MtResult.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/SgResult.vue" afterPath="$PROJECT_DIR$/src/components/SgResult.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/CaptureList.vue" afterPath="$PROJECT_DIR$/src/components/global/CaptureList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/Page.vue" afterPath="$PROJECT_DIR$/src/components/global/Page.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/grandList.vue" afterPath="$PROJECT_DIR$/src/components/global/grandList.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/MutateModal.vue" afterPath="$PROJECT_DIR$/src/components/global/MutateModal.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/global/MutateModalCNV.vue" afterPath="$PROJECT_DIR$/src/components/global/MutateModalCNV.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,35 +25,113 @@
       <file leaf-file-name="SgResult.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="294" column="22" lean-forward="false" selection-start-line="294" selection-start-column="22" selection-end-line="294" selection-end-column="22" />
+            <state relative-caret-position="-1202">
+              <caret line="427" column="43" lean-forward="false" selection-start-line="427" selection-start-column="19" selection-end-line="427" selection-end-column="43" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#20652#20750#0" expanded="false" />
-                <element signature="e#20804#21353#0" expanded="false" />
-                <element signature="e#21388#21892#0" expanded="false" />
-                <element signature="e#27967#28059#0" expanded="false" />
-                <element signature="e#30571#30624#0" expanded="false" />
-                <element signature="e#30992#31187#0" expanded="false" />
-                <element signature="e#31223#31309#0" expanded="false" />
-                <element signature="e#31337#31456#0" expanded="false" />
-                <element signature="e#35189#35348#0" expanded="false" />
-                <element signature="e#35381#35605#0" expanded="false" />
-                <element signature="e#36880#37964#0" expanded="false" />
-                <element signature="e#37987#43409#0" expanded="false" />
+                <element signature="e#20736#20834#0" expanded="false" />
+                <element signature="e#21472#21976#0" expanded="false" />
+                <element signature="e#23280#26678#0" expanded="false" />
+                <element signature="e#26851#28074#0" expanded="false" />
+                <element signature="e#28104#28196#0" expanded="false" />
+                <element signature="e#28226#30670#0" expanded="false" />
+                <element signature="e#30708#30761#0" expanded="false" />
+                <element signature="e#31535#31621#0" expanded="false" />
+                <element signature="e#31649#31768#0" expanded="false" />
+                <element signature="e#31799#34237#0" expanded="false" />
+                <element signature="e#35605#35764#0" expanded="false" />
+                <element signature="e#35797#36021#0" expanded="false" />
+                <element signature="e#37296#38380#0" expanded="false" />
+                <element signature="e#38403#43825#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocusSvg.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/LocusSvg.vue">
+      <file leaf-file-name="grandList.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/grandList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+            <state relative-caret-position="158">
+              <caret line="205" column="10" lean-forward="false" selection-start-line="205" selection-start-column="10" selection-end-line="218" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MutateModal.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/MutateModal.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+              <folding>
+                <element signature="n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="e#19981#20175#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MutateModalCNV.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/global/MutateModalCNV.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="532">
+              <caret line="188" column="30" lean-forward="true" selection-start-line="188" selection-start-column="30" selection-end-line="188" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Done.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Done.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="175" column="29" lean-forward="true" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CnvResult.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/CnvResult.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="571" column="22" lean-forward="false" selection-start-line="571" selection-start-column="22" selection-end-line="571" selection-end-column="22" />
+              <folding>
+                <marker date="1503537327347" expanded="true" signature="18119:18192" ph="..." />
+                <marker date="1503537327347" expanded="true" signature="18206:18217" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MtResult.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/MtResult.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="192" column="28" lean-forward="false" selection-start-line="192" selection-start-column="28" selection-end-line="192" selection-end-column="28" />
+              <folding>
+                <element signature="e#11276#11825#0" expanded="false" />
+                <element signature="e#11860#12364#0" expanded="false" />
+                <element signature="e#13639#14037#0" expanded="false" />
+                <element signature="e#14126#14175#0" expanded="false" />
+                <element signature="e#14203#17601#0" expanded="false" />
+                <element signature="e#17636#18859#0" expanded="false" />
+                <element signature="e#18889#21601#0" expanded="false" />
+                <element signature="e#22570#22729#0" expanded="false" />
+                <element signature="e#22762#22986#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TaskM.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TaskM.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -74,16 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
-      <find>insert</find>
-      <find>:href</find>
-      <find>qc</find>
-      <find>loading</find>
-      <find>moduleData</find>
-      <find>showDetail</find>
-      <find>getList1</find>
-      <find>dataContent</find>
-      <find>geneId</find>
       <find>table</find>
       <find>title</find>
       <find>detail_select</find>
@@ -104,6 +170,16 @@
       <find>common-a</find>
       <find>80</find>
       <find>Duplication%</find>
+      <find>showDetail</find>
+      <find>application/grandmgd/</find>
+      <find>snvId</find>
+      <find>check-no</find>
+      <find>change-panel</find>
+      <find>check-span</find>
+      <find>getMutateModalStatus</find>
+      <find>status-content</find>
+      <find>changeStatus</find>
+      <find>status-check</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -156,8 +232,6 @@
         <option value="$PROJECT_DIR$/src/components/global/PanelModal.vue" />
         <option value="$PROJECT_DIR$/node_modules/bootstrap/dist/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/src/components/TrioList.vue" />
-        <option value="$PROJECT_DIR$/src/components/CnvResult.vue" />
-        <option value="$PROJECT_DIR$/src/components/MtResult.vue" />
         <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
         <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
         <option value="$PROJECT_DIR$/src/components/global/fuzzyQuery.vue" />
@@ -172,13 +246,11 @@
         <option value="$PROJECT_DIR$/src/components/Doing.vue" />
         <option value="$PROJECT_DIR$/src/components/Login.vue" />
         <option value="$PROJECT_DIR$/src/components/Done.vue" />
-        <option value="$PROJECT_DIR$/src/components/global/MutateModal.vue" />
         <option value="$PROJECT_DIR$/src/components/SingleUpload.vue" />
         <option value="$PROJECT_DIR$/src/components/global/DiseaseTd.vue" />
         <option value="$PROJECT_DIR$/src/router/index.js" />
         <option value="$PROJECT_DIR$/src/components/Report.vue" />
         <option value="$PROJECT_DIR$/src/components/global/HpoModal.vue" />
-        <option value="$PROJECT_DIR$/src/components/global/MutateModalCNV.vue" />
         <option value="$PROJECT_DIR$/src/components/global/GeneCover.vue" />
         <option value="$PROJECT_DIR$/src/components/AllUpload.vue" />
         <option value="$PROJECT_DIR$/src/components/global/Page.vue" />
@@ -186,8 +258,12 @@
         <option value="$PROJECT_DIR$/src/components/global/grandList.vue" />
         <option value="$PROJECT_DIR$/src/components/global/CaptureList.vue" />
         <option value="$PROJECT_DIR$/src/components/CapList.vue" />
-        <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
         <option value="$PROJECT_DIR$/src/components/LocusSvg.vue" />
+        <option value="$PROJECT_DIR$/src/components/MtResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/CnvResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/MutateModal.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/MutateModalCNV.vue" />
       </list>
     </option>
   </component>
@@ -502,7 +578,8 @@
       <workItem from="1503274957718" duration="1168000" />
       <workItem from="1503283289491" duration="6821000" />
       <workItem from="1503361523459" duration="29641000" />
-      <workItem from="1503447772546" duration="10445000" />
+      <workItem from="1503447772546" duration="10629000" />
+      <workItem from="1503534497123" duration="14735000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <created>1496741396325</created>
@@ -791,11 +868,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503393525357</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="准备填写其余结果页面">
+      <created>1503480392856</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1503480392856</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="602678000" />
+    <option name="totallyTimeSpent" value="617597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,12 +896,12 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14699684" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49789253" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17519042" sideWeight="0.5816649" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2437432" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24710222" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22959739" sideWeight="0.5848261" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2437432" sideWeight="0.49367756" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26985854" sideWeight="0.46522656" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24710222" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17519042" sideWeight="0.41833508" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22959739" sideWeight="0.41517386" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -831,23 +915,25 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49789253" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25813448" sideWeight="0.5031679" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22959739" sideWeight="0.5848261" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25921908" sideWeight="0.4968321" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24403471" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22850925" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24710222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2437432" sideWeight="0.49367756" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26985854" sideWeight="0.46522656" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24710222" sideWeight="0.50537634" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22959739" sideWeight="0.41517386" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14699684" sideWeight="0.49462366" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27440348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25136018" sideWeight="0.4536354" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -857,7 +943,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="全局配置以及按钮" />
     <MESSAGE value="20170714 addcapture" />
     <MESSAGE value="axios分类" />
     <MESSAGE value="20170718 准备开始写结果" />
@@ -882,22 +967,16 @@
     <MESSAGE value="sgResult修改點擊彈出hpo" />
     <MESSAGE value="提交HPO 去掉測試數據" />
     <MESSAGE value="暂停结果页面开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="暂停结果页面开发" />
+    <MESSAGE value="准备填写其余结果页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="准备填写其余结果页面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/static/js/vendor.6f62060aa301652e7ace.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="33" column="18108" lean-forward="false" selection-start-line="33" selection-start-column="18108" selection-end-line="33" selection-end-column="18108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/js/bootstrap.js" />
     <entry file="file://$PROJECT_DIR$/static/img/header-1.png">
       <provider selected="true" editor-type-id="images">
@@ -940,30 +1019,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CnvResult.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9435">
-          <caret line="810" column="5" lean-forward="false" selection-start-line="810" selection-start-column="5" selection-end-line="810" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MtResult.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11577">
-          <caret line="687" column="17" lean-forward="false" selection-start-line="687" selection-start-column="17" selection-end-line="687" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/static/js/vendor.6f62060aa301652e7ace.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="0" column="257" lean-forward="true" selection-start-line="0" selection-start-column="257" selection-end-line="0" selection-end-column="257" />
         </state>
+      </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build/utils.js">
@@ -1121,13 +1184,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Done.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1159,14 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/global/MutateModalCNV.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="123" column="10" lean-forward="false" selection-start-line="123" selection-start-column="10" selection-end-line="123" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/global/GeneCover.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
@@ -1182,16 +1230,6 @@
           <folding>
             <marker date="1503389751748" expanded="true" signature="13474:13816" ph="..." />
             <marker date="1503389751748" expanded="true" signature="13857:14193" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/global/MutateModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="235" column="32" lean-forward="false" selection-start-line="235" selection-start-column="32" selection-end-line="235" selection-end-column="32" />
-          <folding>
-            <element signature="n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1251,14 +1289,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/global/grandList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="188" column="21" lean-forward="true" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1279,41 +1309,112 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="186" column="27" lean-forward="false" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/TaskM.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="294" column="22" lean-forward="false" selection-start-line="294" selection-start-column="22" selection-end-line="294" selection-end-column="22" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#20652#20750#0" expanded="false" />
-            <element signature="e#20804#21353#0" expanded="false" />
-            <element signature="e#21388#21892#0" expanded="false" />
-            <element signature="e#27967#28059#0" expanded="false" />
-            <element signature="e#30571#30624#0" expanded="false" />
-            <element signature="e#30992#31187#0" expanded="false" />
-            <element signature="e#31223#31309#0" expanded="false" />
-            <element signature="e#31337#31456#0" expanded="false" />
-            <element signature="e#35189#35348#0" expanded="false" />
-            <element signature="e#35381#35605#0" expanded="false" />
-            <element signature="e#36880#37964#0" expanded="false" />
-            <element signature="e#37987#43409#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="57" column="21" lean-forward="false" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/LocusSvg.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="42" column="49" lean-forward="false" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+        <state relative-caret-position="427">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Done.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="175" column="29" lean-forward="true" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CnvResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="571" column="22" lean-forward="false" selection-start-line="571" selection-start-column="22" selection-end-line="571" selection-end-column="22" />
+          <folding>
+            <marker date="1503537327347" expanded="true" signature="18119:18192" ph="..." />
+            <marker date="1503537327347" expanded="true" signature="18206:18217" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MtResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="192" column="28" lean-forward="false" selection-start-line="192" selection-start-column="28" selection-end-line="192" selection-end-column="28" />
+          <folding>
+            <element signature="e#11276#11825#0" expanded="false" />
+            <element signature="e#11860#12364#0" expanded="false" />
+            <element signature="e#13639#14037#0" expanded="false" />
+            <element signature="e#14126#14175#0" expanded="false" />
+            <element signature="e#14203#17601#0" expanded="false" />
+            <element signature="e#17636#18859#0" expanded="false" />
+            <element signature="e#18889#21601#0" expanded="false" />
+            <element signature="e#22570#22729#0" expanded="false" />
+            <element signature="e#22762#22986#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/grandList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="205" column="10" lean-forward="false" selection-start-line="205" selection-start-column="10" selection-end-line="218" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1202">
+          <caret line="427" column="43" lean-forward="false" selection-start-line="427" selection-start-column="19" selection-end-line="427" selection-end-column="43" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#20736#20834#0" expanded="false" />
+            <element signature="e#21472#21976#0" expanded="false" />
+            <element signature="e#23280#26678#0" expanded="false" />
+            <element signature="e#26851#28074#0" expanded="false" />
+            <element signature="e#28104#28196#0" expanded="false" />
+            <element signature="e#28226#30670#0" expanded="false" />
+            <element signature="e#30708#30761#0" expanded="false" />
+            <element signature="e#31535#31621#0" expanded="false" />
+            <element signature="e#31649#31768#0" expanded="false" />
+            <element signature="e#31799#34237#0" expanded="false" />
+            <element signature="e#35605#35764#0" expanded="false" />
+            <element signature="e#35797#36021#0" expanded="false" />
+            <element signature="e#37296#38380#0" expanded="false" />
+            <element signature="e#38403#43825#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/MutateModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="324" column="0" lean-forward="false" selection-start-line="324" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+          <folding>
+            <element signature="n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#19981#20175#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/MutateModalCNV.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="188" column="30" lean-forward="true" selection-start-line="188" selection-start-column="30" selection-end-line="188" selection-end-column="30" />
           <folding />
         </state>
       </provider>

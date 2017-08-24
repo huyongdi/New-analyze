@@ -559,14 +559,14 @@
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
   #cnvResult{
+    .change-panel {
+      margin-left: 50px;
+    }
     .all-content {
       table{
         box-shadow: none;
       }
       margin: 15px 0 0 0;
-      .change-panel {
-        margin-left: 50px;
-      }
       .title-list {
         width: 486px;
         border-bottom: 1px solid @border;

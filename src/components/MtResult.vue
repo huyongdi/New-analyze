@@ -31,7 +31,7 @@
                 INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
               </li>
               <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV">点击下载</a>
+                注释结果(CSV)：<a class="common-a" :href="csv.cnv">点击下载(cnv)</a>  <a class="common-a" :href="csv.snv">点击下载(snv)</a>
               </li>
               <li>
                 基因分析报告 :
@@ -137,12 +137,13 @@
                 <th>基因</th>
                 <th>区域</th>
                 <th>功能</th>
-                <th class="disease-td">疾病</th>
+                <th>疾病</th>
                 <th>CLINVAR</th>
                 <th>本地人群频率(%)</th>
                 <th>MITIMPACT</th>
                 <th>MITOMAP</th>
                 <th>人群频率(%)</th>
+                <th>变异比例(%)</th>
                 <th>状态</th>
               </tr>
               </thead>
@@ -150,41 +151,46 @@
 
               <tr v-for="data in lists1">
                 <td>
-                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url)"
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,0,data.id)"
                      :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
-                  <a class="po common-a" v-if="data.localsnv"
-                     @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
-                    {{data.localsnv.name}}
+                  <a class="po common-a" v-if="data.variant"
+                     @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
+                    <span
+                      v-if="data.variant.start == data.variant.end">{{data.variant.chrom}}:{{data.variant.start}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+                    <span
+                      v-else="">{{data.variant.chrom}}:{{data.variant.start}}-{{data.variant.end}}({{data.variant.ref}}/{{data.variant.alt}})</span>
                   </a>
                 </td>
-                <td v-if="data.annotations">
-                  <a class="common-a" target="_blank" v-if="data.annotations.geneSymbol"
-                     :href="dbHtml+'#/gene?query=' + data.annotations.geneSymbol.join(',')">{{data.annotations.geneSymbol.join(',')}}</a>
+                <td>
+                  <span v-if="data.anno">
+                    <a class="common-a" target="_blank" v-if="data.anno.genes.symbols" v-for="(oneGene,index) in data.anno.genes.symbols"
+                       :href="dbHtml+'#/gene?n='+oneGene">
+                      {{oneGene}} <span v-if="index!==data.anno.genes.symbols.length-1">,</span>
+                    </a>
+                  </span>
                 </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.func}}
-                </td>
+                <td><span v-if="data.anno">{{data.anno.regions.join(',')}}</span></td>
+                <td><span v-if="data.anno &&data.anno.funcs.length!=0">{{data.anno.funcs.join(',')}}</span><span v-else="">-</span></td>
+
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td v-if="data.annotations">{{data.annotations.clinvar}}</td>
-                <td v-if="data.annotations"> - </td>
-                <td v-if="data.annotations">
-                  <div v-for="single in data.annotations.mitimpact.split(';')">
-                    {{single}}
-                  </div>
+
+                <td><span v-if="data.dbinfo&&data.dbinfo.clinvar.length!=0">{{data.dbinfo.clinvar.join(',')}}</span><span v-else="">-</span></td>
+
+                <td v-if="data.anno"> - </td>
+                <td v-if="data.anno">{{data.anno.dbinfo.mitimpact?data.anno.dbinfo.mitimpact:'-'}}
+                  <!--<div v-for="single in data.anno.dbinfo.mitimpact.split(';')">-->
+                    <!--{{single}}-->
+                  <!--</div>-->
                 </td>
-                <td v-if="data.annotations">
-                  <div v-for="single in data.annotations.mitomap.split(';')">
-                    {{single}}
-                  </div>
+                <td v-if="data.anno">
+                  {{data.anno.dbinfo.mitomap?data.anno.dbinfo.mitomap:'-'}}
                 </td>
-                <td v-if="data.annotations">{{data.annotations.mtdb | getPercent}}</td>
+                <td v-if="data.anno">{{data.anno.freqs.mtdb | getPercent}}</td>
+                <td><span v-if="data.info">{{data.info.ratio | getPercent}}</span></td>
                 <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
-                  active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
+                  :class="{ active1: data.edit.status=='major',active2: data.edit.status=='minor',active3: data.edit.status=='benign',
+                  active4: data.edit.status=='invalid'}">
+                  {{data.edit.status | getStatus}}
                 </td>
               </tr>
 
@@ -203,7 +209,7 @@
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
     <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmito"></mutateModal>
+    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandmito" :postId="snvId"></mutateModal>
   </div>
 </template>
 
@@ -259,6 +265,11 @@
         reset1: 0,
         moduleData: '',
         filtrateShow1: false,
+
+        //请求链接cnv snv
+        snvUrl: '',
+        csv: {},
+        snvId:0
       }
     },
     mounted: function () {
@@ -320,20 +331,22 @@
           const data = resp.data;
           //QC和inse
           if(data.files){
-            _vue.R1 = data.files.fastqc[0];
-            _vue.R2 = data.files.fastqc[1];
+            if(data.files.fastqc){
+              _vue.R1 = data.files.fastqc[0];
+              _vue.R2 = data.files.fastqc[1];
+            }
             _vue.insert = data.files.insertsize;
             _vue.csv = data.files.csv;
           }
 
           //CNV.SNV
-          if(data.cnv){
-            _vue.cnvUrl = resp.data.cnv.query_url + '?';
-            $.each(data.cnv.query_params, function (i, data) {
-              _vue.cnvUrl += '&' + i + '=' + data
-            });
-            _vue.getList2();
-          }
+//          if(data.cnv){
+//            _vue.cnvUrl = resp.data.cnv.query_url + '?';
+//            $.each(data.cnv.query_params, function (i, data) {
+//              _vue.cnvUrl += '&' + i + '=' + data
+//            });
+//            _vue.getList2();
+//          }
           if(data.snv){
             _vue.snvUrl = resp.data.snv.query_url + '?';
             $.each(data.snv.query_params, function (i, data) {
@@ -523,15 +536,9 @@
         //条件判断结束
         const _vue = this;
         this.lists1 = [];
-        this.myAxios({
-          url: 'application/grandmito/' + this.ID + '/snv/',
-        }).then(function (resp) {
-          let str = '';
-          $.each(resp.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
           _vue.myAxios({
-            url: resp.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+//            url: resp.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
+            url: _vue.snvUrl + '&page=' + _vue.page1+urlParam,
           }).then(function (resp) {
             if (resp.data.count === 0) {
               _vue.loading1 = false
@@ -540,15 +547,17 @@
             let genePostData = [];
             $.each(resp.data.results, function (i, value) {
               //处理highlight和active得到级别(highlight为true的时候active必定为true)
-              if (value.highlight && value.active) {
+              if (value.flag.highlight && value.flag.active) {
                 value.level = 0
-              } else if (!value.highlight && value.active) {
+              } else if (!value.flag.highlight && value.flag.active) {
                 value.level = 1
-              } else if (!value.highlight && !value.active) {
+              } else if (!value.flag.highlight && !value.flag.active) {
                 value.level = 2
               }
-              $.each(value.annotations.geneId, function (n, k) {
-                genePostData.push(k)
+              $.each(value.anno.genes.geneids, function (n, k) {
+                if (!genePostData.join(',').includes(k)) {
+                  genePostData.push(k)
+                }
               });
               value.geneResp = [];
             });
@@ -568,7 +577,7 @@
               $.each(respA.data, function (k1, k2) {
                 count0 += 1;
                 $.each(resp.data.results, function (n1, n2) {
-                  $.each(n2.annotations.geneId, function (n3, n4) {
+                  $.each(n2.anno.genes.geneids, function (n3, n4) {
                     if (k1 == n4) {
                       n2.geneResp.push({
                         geneId: n4,
@@ -582,27 +591,26 @@
                 }
               });
             });
-          });
+
         });
       },
       filtrateShow1Fun: function () {
 //        this.filtrateShow1 = !this.filtrateShow1
         this.switchHide('filtrate-content')
       },
-      showDetail: function (url) {
+      showDetail: function (data,type,postId) {
         const _vue = this;
-        $.each(this.lists1, function (i, data) {
-          if (data.url === url) {
-            _vue.moduleData = data;
-            $("#mutateDetailModal").modal('show')
-          }
-        });
+          _vue.moduleData = data;
+          _vue.snvId =postId;
+          $("#mutateDetailModal").modal('show');
       },
       getMutateModalStatus: function (newStatus) {
         const _vue = this;
-        $.each(this.lists1, function (i, data) {
-          if (data.url === _vue.moduleData.url) {
-            data.status = newStatus;
+        $.each(_vue.lists1, function (i, data) {
+          if (data.id ==_vue.snvId) {
+            data.edit.status = newStatus.status;
+            data.edit.comment = newStatus.comment;
+            data.edit.validation = newStatus.validation
           }
         })
       },
@@ -615,7 +623,7 @@
         this.page1 = 1;
         this.reset1 = 1;
         this.getList1();
-        this.filtrateShow1 = false;
+        $('#filtrate-content').addClass('hide')
       },
       //绑定基础操作
       bindCurrent: function () {
@@ -632,18 +640,30 @@
           $(this).addClass('in')
         })
       },
+      getPercent1: function (data) {
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+        return Math.round(data*10000)/100
+
+      },
     },
     updated: function () {
       $('[data-toggle="tooltip"]').tooltip();
     },
     filters: {
       getPercent: function (data) {
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+        return Math.round(data*10000)/100
+
       },
       getStatus: function (status) {
         switch (status) {
@@ -820,7 +840,7 @@
             margin: 23px 0;
             li {
               display: inline-block;
-              margin-right: 80px;
+              margin-right: 60px;
               .r1 {
                 margin-right: 10px;
               }

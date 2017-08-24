@@ -36,7 +36,7 @@
                 <ul>
                   <li @click="byStatus('error')"><img src="../../static/img/task-1.png" alt="">出错</li>
                   <li @click="byStatus('running')"><img src="../../static/img/task-2.png" alt="">运行中</li>
-                  <li@click="byStatus('waiting')"><img src="../../static/img/task-3.png" alt="">等待</li>
+                  <li @click="byStatus('waiting')"><img src="../../static/img/task-3.png" alt="">等待</li>
                 </ul>
               </div>
             </div>

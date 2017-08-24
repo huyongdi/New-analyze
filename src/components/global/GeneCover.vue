@@ -44,11 +44,11 @@
       </thead>
       <tbody id="find_table">
       <tr v-for="data in allData">
-        <td><a href="javascript:void(0)" @click="showTranscrpit(data.transcrpit)">{{data.transcrpit}}</a></td>
+        <td><a class="common-a" href="javascript:void(0)" @click="showTranscrpit(data.transcrpit)">{{data.transcrpit}}</a></td>
         <td>{{data.geneSymbol}}</td>
         <td>
           <span v-for="(gene,index) in data.geneId">
-            <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>
+            <a class="common-a" target="_blank" :href="dbHtml+'#/geneD?geneId=' + gene">{{gene}}</a>
             <span v-if="index == data.geneId.length">；</span>
           </span>
         </td>
@@ -97,11 +97,11 @@
                     <span v-if="index == data.geneId.length">；</span>
                   </span>
                 </td>
-                <td>{{data.cov1 | filterData}}</td>
-                <td>{{data.cov5 | filterData}}</td>
-                <td>{{data.cov10 | filterData}}</td>
-                <td>{{data.cov20 | filterData}}</td>
-                <td>{{data.cov30 | filterData}}</td>
+                <td>{{data.cov1 | percentData}}</td>
+                <td>{{data.cov5 | percentData}}</td>
+                <td>{{data.cov10 | percentData}}</td>
+                <td>{{data.cov20 | percentData}}</td>
+                <td>{{data.cov30 | percentData}}</td>
               </tr>
               <tr v-if="tranData&&tranData.found.length == 0" style="text-align: center">
                 <td colspan="8">暂无数据!</td>
@@ -120,7 +120,7 @@
 
           </div>
           <div class="modal-footer analyze-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+            <span class="my-btn pull-left" data-dismiss="modal"><img src="../../../static/img/red-close.png" alt="">关闭</span>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@
         this.coverLoading = true;
         this.myAxios({
 //          url: 'application/'+this.app+'/' + this.ID + '/cov/',
-          url: 'application/job'+ this.ID + '/cov/',
+          url: 'application/job/'+ this.ID + '/cov/',
           method: 'post',
           data: {'gene': _vue.strToArr(this.geneTextAreaContent3)}
         }).then(function (resp) {
@@ -165,7 +165,7 @@
             _vue.notfound = resp.notfound;
           }
           _vue.allData = resp.found;
-          _vue.filtrateShow3 = false;
+          $("#filtrate-content-geneCover").addClass('hide')
         });
       },
       filtrateShow3Fun: function () {
@@ -175,10 +175,11 @@
       showTranscrpit: function (data) {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandmgd/' + this.ID + '/cov/',
+          url: 'application/job/' + this.ID + '/cov/',
           method: 'post',
           data: {
-            transcrpit: data
+            transcrpit: data,
+            gene: _vue.strToArr(this.geneTextAreaContent3)
           }
         }).then(function (resp) {
           $("#transcrpit-modal").modal('show');
@@ -190,12 +191,14 @@
     },
     filters: {
       percentData: function (data) { //取百分比
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+        return Math.round(data*10000)/100
+
       },
     }
   }

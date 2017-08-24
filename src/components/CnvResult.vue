@@ -52,9 +52,9 @@
           </div>
           <div class="content-1" :class="{hide:!in1}">
             <div class="rea">
-              <span class="my-btn pull-right condition" @click.stop="filtrateShow1Fun"><img
-                src="../../static/img/red-con.png"
-                alt="">筛选条件</span>
+              <!--<span class="my-btn pull-right condition" @click.stop="filtrateShow1Fun"><img-->
+                <!--src="../../static/img/red-con.png"-->
+                <!--alt="">筛选条件</span>-->
               <!--筛选条件弹框-->
               <div class="filtrate-content hide" id="filtrate-content" @click.stop="">
                 <img src="../../static/img/th-1.png" alt="" class="up">
@@ -123,7 +123,7 @@
                 <th>长度</th>
                 <th>基因</th>
                 <th>区域</th>
-                <th class="disease-td">疾病</th>
+                <th>疾病</th>
                 <th>相对深度</th>
                 <th>人群平均深度</th>
                 <th>人群深度标准差</th>
@@ -134,29 +134,37 @@
 
               <tr v-for="data in lists1">
                 <td>
-                  <i :data-id='data.id' class="fa fa-font-awesome po text-3" title="查看详情"  @click="showDetail(data.url)"></i>
-                  <a class="po common-a" v-if="data.localcnv" @click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt)">
-                    {{data.localcnv.name}}
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,1,data.id)"
+                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
+                  <a class="po common-a" v-if="data.variant"
+                     @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
+                    <span
+                      v-if="data.variant.start == data.variant.end">{{data.variant.chrom}}:{{data.variant.start}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+                    <span
+                      v-else="">{{data.variant.chrom}}:{{data.variant.start}}-{{data.variant.end}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+
                   </a>
                 </td>
+                <td>{{data.length?data.length:'-'}}</td>
                 <td>
-                  <span v-if="data.localcnv">{{data.localcnv.length}}</span>
+                  <span v-if="data.anno">
+                    <a class="common-a" target="_blank" v-if="data.anno.genes.symbols" v-for="(oneGene,index) in data.anno.genes.symbols"
+                       :href="dbHtml+'#/gene?n='+oneGene">
+                      {{oneGene}} <span v-if="index!==data.anno.genes.symbols.length-1">,</span>
+                    </a>
+                  </span>
                 </td>
-                <td v-if="data.annotations">
-                  <a target="_blank" class="block common-a" v-if="data.geneVue"
-                     v-for="single in data.geneVue"
-                     :href="dbHtml+'#/gene?query=' + single.id">{{single.name}}</a>
-                </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
+                <td>
+                  <span v-if="data.anno">{{data.anno.regions.join(',')}}</span>
                 </td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td>{{data.mCPratio}}</td>
-                <td>{{data.mDepOfPopu}}</td>
-                <td>{{data.stdOfPopDep}}</td>
+                <td><span v-if="data.info && data.info.wgs">{{data.info.wgs.mCPratio}}</span><span v-else=""> - </span></td>
+                <td><span v-if="data.info && data.info.wgs">{{data.info.wgs.mDepOfPopu}}</span><span v-else=""> - </span></td>
+                <td><span v-if="data.info && data.info.wgs">{{data.info.wgs.stdOfPopDep}}</span><span v-else=""> - </span></td>
                 <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
+                  :class="{ active1: data.edit.status=='major',active2: data.edit.status=='minor',active3: data.edit.status=='benign',
+                  active4: data.edit.status=='invalid'}">
+                  {{data.edit.status | getStatus}}
                 </td>
               </tr>
 
@@ -175,7 +183,7 @@
               <tbody>
               <tr v-for="(img,index) in imgs">
                 <td>
-                  <span>{{img.chrom}}</span>
+                  <span>{{img.name}}</span>
                 </td>
                 <td>
                   <a href="javascript:void(0)" :data-index="index" @click="showImg">点击查看图片</a>
@@ -191,8 +199,8 @@
     <locusModal :datafile="datafile" :locus="locus" :type="1"></locusModal>
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
-    <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandwcnv"></mutateModal>
+    <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
+    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" app="grandwcnv" :postId="cnvId"></mutateModal>
   </div>
 </template>
 
@@ -247,16 +255,18 @@
         //content-2
         imgs:[],
         loading2:false,
+
+        //请求链接cnv snv
+        snvUrl: '',
+        cnvUrl: '',
+        cnvId:''
       }
-    },
-    created: function () {
-//      this.getSample();
-//      this.current0();
     },
     mounted: function () {
       this.bindCurrent();//绑定变异详情的过滤点击事件
-      this.getSample();
-      this.current0();
+      this.getSampleAndUrl();
+      this.getStat();
+      this.current2();
     },
     methods: {
       //查看位点信息
@@ -304,17 +314,58 @@
         })
       },
       //获取样本信息
-      getSample: function () {
+      getSampleAndUrl: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandwcnv/' + this.ID + '/',
+          url: 'application/job/' + this.ID + '/url/'
         }).then(function (resp) {
-          _vue.datafile = resp.data.datafile;
-          _vue.myAxios({
-            url: resp.data.job
-          }).then(function (respJob) {
-            _vue.sampleInfo = respJob.data.name;
-          })
+          const data = resp.data;
+          //QC和inse
+          if(data.files){
+            if(data.files.fastqc){
+              _vue.R1 = data.files.fastqc[0];
+              _vue.R2 = data.files.fastqc[1];
+            }
+            _vue.insert = data.files.insertsize;
+            _vue.csv = data.files.csv;
+          }
+
+          //CNV
+          if(data.cnv){
+            _vue.cnvUrl = resp.data.cnv.query_url + '?';
+            $.each(data.cnv.query_params, function (i, data) {
+              _vue.cnvUrl += '&' + i + '=' + data
+            });
+            _vue.getList1();
+          }
+//          if(data.snv){
+//            _vue.snvUrl = resp.data.snv.query_url + '?';
+//            $.each(data.snv.query_params, function (i, data) {
+//              _vue.snvUrl += '&' + i + '=' + data
+//            });
+//            _vue.getList1();
+//          }
+        });
+
+        this.myAxios({
+          url: 'application/job/' + this.ID + '/'
+        }).then(function (resp) {
+          _vue.sampleInfo = resp.data.name;
+          _vue.datafile = resp.data.parameter.datafile;
+        })
+
+      },
+      getStat:function () {
+        this.loading0 = true;
+        const _vue = this;
+        //列表
+        this.myAxios({
+          url: 'application/job/' + this.ID + "/stat/",
+        }).then(function (resp) {
+          _vue.statData = resp.data;
+          _vue.loading0 = false
+        }).catch(function (error) {
+          _vue.catchFun(error);
         });
       },
       //切换导航
@@ -325,16 +376,13 @@
         _current.addClass('active');
         this.in0 = '';
         this.in1 = '';
-        this.in3 = '';
+        this.in2 = '';
         if (current === 0) {
           this.in0 = true;
-          this.current0();
         } else if (current === 1) {
           this.in1 = true;
-          this.current1();
         } else if (current === 2) {
           this.in2 = true;
-          this.current2();
         }
       },
       //绑定基础操作
@@ -357,19 +405,6 @@
       getPhenotypeMapSingle: function (data) {
         this.phenotypeMapSingle = data;
       },
-      current0: function () {
-        this.loading0 = true;
-        const _vue = this;
-        //列表
-        this.myAxios({
-          url: 'application/grandwcnv/' + this.ID + "/stat/",
-        }).then(function (resp) {
-          _vue.statData = resp.data;
-          _vue.loading0 = false
-        }).catch(function (error) {
-          _vue.catchFun(error);
-        });
-      },
       current1: function () {
         if (this.lists1.length === 0) {
           this.getList1();
@@ -377,25 +412,10 @@
       },
       getList1: function () {
         this.loading1 = true;
-        let urlParam = '';
-        $('#filtrate-content').find('.option').each(function () {
-          if ($(this).html() !== '不筛选' && $(this).hasClass('in')) {
-            urlParam += '&' + $(this).parent().prev().data('name') + '=' + $(this).data('value');
-          }
-        });
-        //条件判断结束
         const _vue = this;
         this.lists1 = [];
-        this.myAxios({
-          url: 'application/grandwcnv/' + this.ID + '/cnv/',
-        }).then(function (respAll) {
-          let str = '';
-          $.each(respAll.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
           _vue.myAxios({
-            url: respAll.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
-//            url: 'report/cnvwgsinfo/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam,
+            url: _vue.cnvUrl + '&page=' + _vue.page1,
           }).then(function (resp) {
             _vue.count1 = resp.data.count;
             if(!_vue.count1){
@@ -403,23 +423,31 @@
             }
             let genePostData = [];
             $.each(resp.data.results, function (i, value) {
-              //gene名和id綁定起來
-              value.geneVue = [];
-              $.each(value.annotations.geneSymbol, function (n1, n2) {
-                $.each(value.annotations.geneId, function (n3, n4) {
-                  if (n1 === n3) {
-                    value.geneVue.push({
-                      name: n2,
-                      id: n4
-                    });
-                  }
-                })
+//              //gene名和id綁定起來
+//              value.geneVue = [];
+//              $.each(value.annotations.geneSymbol, function (n1, n2) {
+//                $.each(value.annotations.geneId, function (n3, n4) {
+//                  if (n1 === n3) {
+//                    value.geneVue.push({
+//                      name: n2,
+//                      id: n4
+//                    });
+//                  }
+//                })
+//              });
+//              //疾病信息
+//              value.geneResp = [];
+//              $.each(value.annotations.geneId, function (n, k) {
+//                genePostData.push(k)
+//              });
+
+              $.each(value.anno.genes.geneids, function (n, k) {
+                if (!genePostData.join(',').includes(k)) {
+                  genePostData.push(k)
+                }
               });
-              //疾病信息
               value.geneResp = [];
-              $.each(value.annotations.geneId, function (n, k) {
-                genePostData.push(k)
-              });
+
             });
             _vue.lists1 = resp.data.results;
             _vue.myAxios({
@@ -437,7 +465,7 @@
               $.each(respA.data, function (k1, k2) {
                 count0 += 1;
                 $.each(resp.data.results, function (n1, n2) {
-                  $.each(n2.annotations.geneId, function (n3, n4) {
+                  $.each(n2.anno.genes.geneids, function (n3, n4) {
                     if (k1 == n4) {
                       n2.geneResp.push({
                         geneId: n4,
@@ -450,7 +478,6 @@
                   _vue.loading1 = false;
                 }
               });
-            });
           })
 
         });
@@ -461,20 +488,18 @@
 //        this.filtrateShow1 = !this.filtrateShow1
         this.switchHide('filtrate-content')
       },
-      showDetail: function (url) {
-        const _vue = this;
-        $.each(this.lists1, function (i, data) {
-          if (data.url === url) {
-            _vue.moduleData = data;
-            $("#mutateDetailModal").modal('show')
-          }
-        });
+      showDetail: function (data,type,postId) {
+        this.cnvId =postId;
+        this.moduleData = data;
+        $("#mutateDetailModal").modal('show')
       },
       getMutateModalStatus: function (newStatus) {
         const _vue = this;
-        $.each(this.lists1, function (i, data) {
-          if (data.url === _vue.moduleData.url) {
-            data.status = newStatus;
+        $.each(_vue.lists1, function (i, data) {
+          if (data.id ==_vue.cnvId) {
+            data.edit.status = newStatus.status;
+            data.edit.comment = newStatus.comment;
+            data.edit.validation = newStatus.validation
           }
         })
       },
@@ -493,7 +518,8 @@
         const _vue = this;
         this.loading2 = true;
         this.myAxios({
-          url: 'application/grandwcnv/' + this.ID + '/images/'
+//          url:'application/job/'+this.ID+'/image/'
+          url:'application/job/599690a7ccaa6c94a937a5bb/image/'
         }).then(function (resp) {
           _vue.imgs = resp.data;
           _vue.loading2 = false;
@@ -522,12 +548,14 @@
     },
     filters: {
       getPercent: function (data) {
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+        return Math.round(data*10000)/100
+
       },
       getStatus: function (status) {
         switch (status) {

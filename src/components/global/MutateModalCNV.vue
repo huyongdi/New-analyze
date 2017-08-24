@@ -96,7 +96,7 @@
 
 
             <div class="edit-content">
-              <div class="edit-radio" id="status-check">
+              <div class="edit-radio" id="status-all">
                 <span class="title">状态：</span>
                 <span class="status-content"><span class="check-span check-no status-check" data-value="major"></span>主要的</span>
                 <span class="status-content"><span class="check-span check-no status-check" data-value="minor"></span>次要的</span>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="edit-content">
-              <div class="edit-radio" id="validation-check">
+              <div class="edit-radio" id="validation-all">
                 <span class="title">验证来源：</span>
                 <span class="status-content"><span class="check-span check-no validation-check" data-value="father"></span>父源</span>
                 <span class="status-content"><span class="check-span check-no validation-check" data-value="mother"></span>母源</span>
@@ -172,18 +172,9 @@
       patchEdit: function (axiosUrl) {
         const _vue = this;
         const _comment = $.trim($("#commentCNV").val());
-        let _status='';
-        let _validation='';
-        $('.status-check').each(function () {
-          if($(this).hasClass('check-yes')){
-            _status = _status?_status:$(this).data('value')
-          }
-        });
-        $('.validation-check').each(function () {
-          if($(this).hasClass('check-yes')){
-            _validation = _validation?_validation:$(this).data('value')
-          }
-        });
+        let _status=$("#status-all").find('.status-content').find('.check-yes').data('value');
+        let _validation=$("#validation-all").find('.status-content').find('.check-yes').data('value');
+
 
         this.myAxios({
           url: 'report/edit/',

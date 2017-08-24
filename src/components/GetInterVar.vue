@@ -10,11 +10,12 @@
           <input class="form-control" id="countInput">
         </div>
         <div class="col-md-1">
-          <span class="my-btn" @click="calculate"><img src="../../static/img/red-submit.png" alt="">计算</span>
+          <!--<span class="my-btn" @click="calculate"><img src="../../static/img/red-submit.png" alt="">计算</span>-->
+          <span class="my-btn submit" @click="submit"><img src="../../static/img/red-submit.png" alt="">提交</span>
         </div>
       </div>
 
-      <table class="table my-table">
+      <table class="table my-table bc-fff">
         <thead>
         <tr>
           <th></th>
@@ -25,7 +26,7 @@
         </tr>
         </thead>
         <tbody id="submit_table">
-        <tr v-for="data in allData" @click="addBc">
+        <tr v-for="data in allData">
           <td><input type="checkbox" class="valueBox" :data-value=data.value></td>
           <td class="t-name">{{data.name}}</td>
           <td>{{data.cn}}</td>
@@ -60,6 +61,47 @@
       }
     },
     methods:{
+      submit:function () {
+        this.calculate();
+        let obj={
+          snv:this.$route.query.snv,
+          weight:$('#countInput').val(),
+          pvs1:0,
+          bv1:0,
+          ps:[],
+          pm:[],
+          pp:[],
+          bp:[],
+          ba:[],
+        };
+        $(".valueBox").each(function () {
+          const html = $(this).parent().next().html();
+          const _value = $(this).data('value');
+          if ($(this).prop("checked")) {
+            if(html == 'PVS1'){
+              obj.pvs1 = _value
+            }else if(html.includes('PS')){
+              obj.ps.push(_value)
+            }else if(html.includes('PM')){
+              obj.pm.push(_value)
+            }else if(html.includes('BP')){
+              obj.bp.push(_value)
+            }else if(html.includes('BS')){
+              obj.bs.push(_value)
+            }else if(html == 'BA1'){
+              obj.ba.push(_value)
+            }
+          }
+        });
+
+        this.myAxios({
+          url:'report/snv/intervar/',
+          method:'post',
+          data:obj
+        }).then(function (resp) {
+
+        })
+      },
       calculate:function () {
         let allValue = 0;
         let interVar = '';

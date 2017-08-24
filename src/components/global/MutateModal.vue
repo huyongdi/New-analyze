@@ -1,4 +1,5 @@
 <!--变异详情的模态框-->
+<!--cnvResult里面的CNV实际上应该放到mutateModalCNV.vue里面，但是由于和本文件相似性更高，放到了这里-->
 <template>
   <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="mutateDetailModal" role="dialog"
        aria-labelledby="gridSystemModalLabel1">
@@ -116,11 +117,13 @@
           <div class="col-md-12" v-if="app==='grandmgd'|| app==='grandmito'||app==='grandanno' || app==='grandtrio'">
             <span class="title">ACMG：</span><span v-if="moduleData.intervar">{{moduleData.intervar.intervar}}
               ( 待填
-            <!--<router-link class="common-a" target="_blank" v-if="moduleData.intervar.rank"-->
-            <!--:to="{path:'/taskM/foo/getIntervar',query:{query:moduleData.intervar.rank.join(',')}}">-->
-            <!--{{moduleData.intervar.rank.join(',')}}-->
-            <!--</router-link>-->
-            <!--<span v-else=""> . </span>-->
+            <router-link class="common-a" target="_blank" v-if="moduleData.intervar.rank"
+            :to="{path:'/taskM/foo/getIntervar',query:{query:moduleData.intervar.rank.join(','),
+            snv:moduleData.variant.chrom+':'+moduleData.variant.start+':'+moduleData.variant.end+':'+moduleData.variant.ref+':'+moduleData.variant.alt
+            }}">
+            {{moduleData.intervar.rank.join(',')}}
+            </router-link>
+            <span v-else=""> . </span>
               )
             </span>
           </div>
@@ -146,7 +149,7 @@
             <span class="title">DGV：</span><span v-if="moduleData.annotations" class="break-all">{{moduleData.annotations.dgv.join(',')}}</span>
           </div>
 
-          <table class="table my-table" v-if="app==='grandtrio'">
+          <table class="table my-table no-shadow" v-if="app==='grandtrio'">
             <thead>
             <tr>
               <th>关系</th>
@@ -248,7 +251,7 @@
             <!--</div>-->
 
             <div class="edit-content">
-              <div class="edit-radio">
+              <div class="edit-radio" id="status-all">
                 <span class="title">状态：</span>
                 <span class="status-content"><span class="check-span check-no status-check" data-value="major"></span>主要的</span>
                 <span class="status-content"><span class="check-span check-no status-check" data-value="minor"></span>次要的</span>
@@ -259,7 +262,7 @@
             </div>
 
             <div class="edit-content">
-              <div class="edit-radio">
+              <div class="edit-radio" id="validation-all">
                 <span class="title">验证来源：</span>
                 <span class="status-content"><span class="check-span check-no validation-check" data-value="father"></span>父源</span>
                 <span class="status-content"><span class="check-span check-no validation-check" data-value="mother"></span>母源</span>
@@ -313,23 +316,29 @@
       patchEdit: function (axiosUrl) {
         const _vue = this;
         const _comment = $.trim($("#comment").val());
-        let _status='';
-        let _validation='';
-        $('.status-check').each(function () {
-          if($(this).hasClass('check-yes')){
-            _status = _status?_status:$(this).data('value')
-          }
-        });
+        let _status=$("#status-all").find('.status-content').find('.check-yes').data('value');
+        let _validation=$("#validation-all").find('.status-content').find('.check-yes').data('value');
+
         $('.validation-check').each(function () {
           if($(this).hasClass('check-yes')){
             _validation = _validation?_validation:$(this).data('value')
           }
         });
+
+        let _varType ='';
+        if(_vue.app=='grandwcnv'){
+          _varType = 'cnv'
+        }else if(_vue.app == 'grandtrio'){
+          _varType = 'trio'
+        }else{
+          _varType = 'snv'
+        }
+
         this.myAxios({
           url: 'report/edit/',
           method: 'post',
           data: {
-            varType: _vue.app == 'grandtrio' ? "trio" : "snv",
+            varType: _varType,
             objId: _vue.postId,
             status: _status,
             validation: _validation,
@@ -346,7 +355,6 @@
       moduleDataFromFather: function (newData) {
         this.moduleData = newData;
         $("#comment").val(newData.edit.comment);
-
 
         $('.status-check').each(function () {
           const _value = $(this).data('value');
@@ -372,12 +380,16 @@
     },
     filters: {
       percentData: function (data) { //取百分比
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+
+        return Math.round(data*10000)/100
+
+
       },
     }
   }

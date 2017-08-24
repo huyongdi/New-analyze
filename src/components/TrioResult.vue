@@ -196,7 +196,7 @@
                 <th>基因</th>
                 <th>区域</th>
                 <th>功能</th>
-                <th class="disease-td">疾病</th>
+                <th>疾病</th>
                 <th>纯/杂合(受检者/父/母)</th>
                 <th>状态</th>
               </tr>
@@ -204,43 +204,52 @@
               <tbody>
               <tr v-for="data in lists1">
                 <td>
-                  <i :data-id="data.id" class="fa fa-font-awesome po text-3" title="查看详情"
-                     @click="showDetail(data.url,0)"></i>
-                  <a class="po common-a" v-if="data.localsnv"
-                     @click="showLocus(data.localsnv.chrom+':'+data.localsnv.start+':'+data.localsnv.end+':'+data.localsnv.ref+':'+data.localsnv.alt,0)">
-                    {{data.localsnv.name}}</a>
+                  <i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data,0,data.id)"
+                     :class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>
+                  <a class="po common-a" v-if="data.variant"
+                     @click="showLocus(data.variant.chrom+':'+data.variant.start+':'+data.variant.end+':'+data.variant.ref+':'+data.variant.alt,0)">
+                    <span
+                      v-if="data.variant.start == data.variant.end">{{data.variant.chrom}}:{{data.variant.start}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+                    <span
+                      v-else="">{{data.variant.chrom}}:{{data.variant.start}}-{{data.variant.end}}({{data.variant.ref}}/{{data.variant.alt}})</span>
+                  </a>
                 </td>
-                <td v-if="data.annotations">
-                  <a target="_blank" class="block common-a" v-if="data.geneVue"
-                     v-for="single in data.geneVue"
-                     :href="dbHtml+'#/gene?query=' + single.id">{{single.name}}</a>
+                <td>
+                  <span v-if="data.anno">
+                    <a class="common-a" target="_blank" v-if="data.anno.genes.symbols" v-for="(oneGene,index) in data.anno.genes.symbols"
+                       :href="dbHtml+'#/gene?n='+oneGene">
+                      {{oneGene}} <span v-if="index!==data.anno.genes.symbols.length-1">,</span>
+                    </a>
+                  </span>
                 </td>
-                <td v-if="data.annotations">
-                  {{data.annotations.region}}
+                <td>
+                  <span v-if="data.anno">{{data.anno.regions.join(',')}}</span>
                 </td>
-                <td>{{data.annotations.func}}</td>
+                <td>
+                  <span v-if="data.anno &&data.anno.funcs.length!=0">{{data.anno.funcs.join(',')}}</span><span v-else="">-</span>
+                </td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
                 <td>
-                <span v-if="data.patient.snvinfo">
-                  <span v-if="data.patient.snvinfo.isHomo">{{data.patient.snvinfo.isHomo}}</span>
-                  <span v-else=""> - </span>
-                </span>
-                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
-                  <span v-if="data.father.snvinfo">
-                  <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
-                  <span v-else=""> - </span>
-                </span>
-                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
-                  <span v-if="data.mother.snvinfo">
-                  <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
-                  <span v-else=""> - </span>
-                </span>
-                  <span v-else=""> - </span>
+                  <!--<span v-if="data.patient.snvinfo">-->
+                  <!--<span v-if="data.patient.snvinfo.isHomo">{{data.patient.snvinfo.isHomo}}</span>-->
+                  <!--<span v-else=""> - </span>-->
+                  <!--</span>-->
+                  <!--<span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;-->
+                  <!--<span v-if="data.father.snvinfo">-->
+                  <!--<span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>-->
+                  <!--<span v-else=""> - </span>-->
+                  <!--</span>-->
+                  <!--<span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;-->
+                  <!--<span v-if="data.mother.snvinfo">-->
+                  <!--<span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>-->
+                  <!--<span v-else=""> - </span>-->
+                  <!--</span>-->
+                  <span> - </span>
                 </td>
                 <td
-                  :class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',
-                  active4: data.status=='invalid'}">
-                  {{data.status | getStatus}}
+                  :class="{ active1: data.edit.status=='major',active2: data.edit.status=='minor',active3: data.edit.status=='benign',
+                  active4: data.edit.status=='invalid'}">
+                  {{data.edit.status | getStatus}}
                 </td>
               </tr>
 
@@ -248,101 +257,6 @@
             </table>
             <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
           </div>
-          <!--<div class="content-2" :class="{hide:!in2}">-->
-          <!--<div class="rea">-->
-          <!--<span class="my-btn pull-right condition" @click="filtrateShow2Fun"><img src="../../static/img/red-con.png"-->
-          <!--alt="">筛选条件</span>-->
-          <!--&lt;!&ndash;筛选条件弹框&ndash;&gt;-->
-          <!--<div class="filtrate-content" v-show="filtrateShow2" id="filtrate-content-2">-->
-          <!--<img src="../../static/img/th-1.png" alt="" class="up">-->
-          <!--<div class="title">搜索选项</div>-->
-          <!--<div class="content">-->
-          <!--<div class="single">-->
-          <!--<div class="left" data-name="alt">变异类型：</div>-->
-          <!--<div class="right">-->
-          <!--<span class="option" data-value="del">DEL</span>-->
-          <!--<span class="option" data-value="dup">DUP</span>-->
-          <!--<span class="option in default">不筛选</span>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<div class="single">-->
-          <!--<div class="left" data-name="status">状态：</div>-->
-          <!--<div class="right">-->
-          <!--<span class="option" data-value="true">已标记</span>-->
-          <!--<span class="option" data-value="false">未标记</span>-->
-          <!--<span class="option in default">不筛选</span>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<div class="single">-->
-          <!--<div class="left" data-name="genes">基因：</div>-->
-          <!--<div class="right">-->
-          <!--<textarea placeholder='请用逗号或换行隔开'  v-model="geneTextAreaContent2"></textarea>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<span class="my-btn search-btn" @click="filter2"><img src="../../static/img/red-con.png" alt="">搜索</span>-->
-          <!--<span class="my-btn refresh" @click="resetFilter"><img src="../../static/img/red-refresh.png" alt="">重置</span>-->
-          <!--</div>-->
-          <!--</div>-->
-
-          <!--<table class="table my-table" id="table-2">-->
-          <!--<thead>-->
-          <!--<tr>-->
-          <!--<th>-->
-          <!--位点-->
-          <!--<i class="fa fa-question-circle-o po flag-th" data-toggle="tooltip" data-placement="top"-->
-          <!--data-original-title="红色代表最高优先级，黄色代表第二优先级，蓝色代表第三优先级">-->
-          <!--</i>-->
-          <!--</th>-->
-          <!--<th>长度</th>-->
-          <!--<th>基因</th>-->
-          <!--<th>区域</th>-->
-          <!--<th class="disease-td">疾病</th>-->
-          <!--<th>基因型</th>-->
-          <!--<th>深度(原始)</th>-->
-          <!--<th>深度(标准化)</th>-->
-          <!--<th>状态</th>-->
-          <!--</tr>-->
-          <!--</thead>-->
-          <!--<tbody>-->
-          <!--<tr v-for="data in lists2">-->
-          <!--<td>-->
-          <!--<i title="查看详情" class="fa fa-font-awesome po" @click="showDetail(data.url,1)"-->
-          <!--:class="{'text-1':data.level == 0,'text-2':data.level==1,'text-3':data.level==2}"></i>-->
-          <!--<a class="po common-a" v-if="data.localcnv"-->
-          <!--@click="showLocus(data.localcnv.chrom+':'+data.localcnv.start+':'+data.localcnv.end+':'+data.localcnv.alt,1)">-->
-          <!--{{data.localcnv.name}}-->
-          <!--</a>-->
-          <!--</td>-->
-          <!--<td>-->
-          <!--<span v-if="data.localcnv">{{data.localcnv.length}}</span>-->
-          <!--</td>-->
-          <!--<td v-if="data.annotations">-->
-          <!--<a target="_blank" class="block" v-if="data.annotations.geneSymbol"-->
-          <!--v-for="single in data.annotations.geneSymbol"-->
-          <!--:href="dbHtml+'#/gene?query=' + single">{{single}}</a>-->
-          <!--</td>-->
-          <!--<td v-if="data.annotations">-->
-          <!--{{data.annotations.region}}-->
-          <!--</td>-->
-          <!--<diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>-->
-
-          <!--<td>{{data.genoType}}</td>-->
-          <!--<td>{{data.originalReadDepth}}</td>-->
-          <!--<td>{{data.readDepth}}</td>-->
-          <!--<td-->
-          <!--:class="{ active1: data.status=='major',active2: data.status=='minor',active3: data.status=='benign',-->
-          <!--active4: data.status=='invalid'}">-->
-          <!--{{data.status | getStatus}}-->
-          <!--</td>-->
-          <!--</tr>-->
-          <!--</tbody>-->
-          <!--</table>-->
-          <!--<page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>-->
-          <!--</div>-->
-          <!--<div class="content-3" :class="{hide:!in3}">-->
-          <!--<geneCover :ID="ID" app="grandtrio"></geneCover>-->
-          <!--</div>-->
         </div>
       </div>
     </div>
@@ -350,11 +264,9 @@
     <locusModal :datafile="datafile" :locus="locus" :type="type"></locusModal>
     <panelModal @saveData="savePanel" :originalGeneInput='geneInput'
                 :originalPanelData="originalPanelData"></panelModal>
-    <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
-    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID"
+    <hpoModal :clinicalSynopsisObj="phenotypeMapSingle"></hpoModal>
+    <mutateModal @changeStatus="getMutateModalStatus" :moduleDataFromFather="moduleData" :ID="ID" :postId="snvId"
                  app="grandtrio"></mutateModal>
-    <mutateModalCNV @changeStatusCNV="getMutateModalStatusCNV" :moduleDataFromFatherCNV="moduleDataCNV"
-                    :ID="ID"></mutateModalCNV>
   </div>
 </template>
 
@@ -421,16 +333,21 @@
         reset2: 0,
         moduleDataCNV: '',
         filtrateShow2: false,
+
+        //请求链接cnv snv
+        snvUrl: '',
+        cnvUrl: '',
+        csv: {},
+        snvId: 0
       }
-    },
-    created: function () {
-//      this.getSample();
-//      this.current1();
     },
     mounted: function () {
       this.bindCurrent();//绑定变异详情的过滤点击事件
-      this.getSample();
-      this.current1();
+//      this.getSample();
+//      this.current1();
+
+      this.getSampleAndUrl();
+
     },
     methods: {
       //查看位点信息
@@ -478,18 +395,46 @@
         })
       },
       //获取样本信息
-      getSample: function () {
+      getSampleAndUrl: function () {
         const _vue = this;
         this.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/',
+          url: 'application/job/' + this.ID + '/url/'
         }).then(function (resp) {
-          _vue.datafile = resp.data.datafile;
-          _vue.myAxios({
-            url: resp.data.job
-          }).then(function (respJob) {
-            _vue.sampleInfo = respJob.data.name;
-          })
+          const data = resp.data;
+          //QC和inse
+          if (data.files) {
+            if (data.files.fastqc) {
+              _vue.R1 = data.files.fastqc[0];
+              _vue.R2 = data.files.fastqc[1];
+            }
+            _vue.insert = data.files.insertsize;
+            _vue.csv = data.files.csv;
+          }
+
+          //CNV.SNV
+//          if(data.cnv){
+//            _vue.cnvUrl = resp.data.cnv.query_url + '?';
+//            $.each(data.cnv.query_params, function (i, data) {
+//              _vue.cnvUrl += '&' + i + '=' + data
+//            });
+//            _vue.getList2();
+//          }
+          if (data.snv) {
+            _vue.snvUrl = resp.data.snv.query_url + '?';
+            $.each(data.snv.query_params, function (i, data) {
+              _vue.snvUrl += '&' + i + '=' + data
+            });
+            _vue.getList1();
+          }
         });
+
+        this.myAxios({
+          url: 'application/job/' + this.ID + '/'
+        }).then(function (resp) {
+          _vue.sampleInfo = resp.data.name;
+          _vue.datafile = resp.data.parameter.datafile;
+        })
+
       },
       //切换导航
       changeContent: function (event) {
@@ -503,16 +448,12 @@
         this.in3 = '';
         if (current === 0) {
           this.in0 = true;
-          this.current0();
         } else if (current === 1) {
           this.in1 = true;
-          this.current1();
         } else if (current === 2) {
           this.in2 = true;
-          this.current2();
         } else if (current === 3) {
           this.in3 = true;
-          this.current3();
         }
       },
       //绑定基础操作
@@ -535,162 +476,6 @@
       getPhenotypeMapSingle: function (data) {
         this.phenotypeMapSingle = data;
       },
-      current0: function () {
-        this.loading0 = true;
-        const _vue = this;
-        this.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/fastqc/',
-        }).then(function (resp) {
-          _vue.R1 = resp.data.r1;
-          _vue.R2 = resp.data.r2;
-        });
-        this.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/insertsize/',
-        }).then(function (resp) {
-          _vue.insert = resp.data
-        });
-        this.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/csv/',
-        }).then(function (resp) {
-          _vue.CSV = resp.data
-        });
-
-        //列表
-        this.myAxios({
-          url: 'application/grandtrio/' + this.ID + "/stat/",
-        }).then(function (resp) {
-          resp = resp.data;
-          const qObj = _vue.getValue(resp.final);//定义传到质控列表的对象
-          qObj.q30 = resp.data.q30 === -1 ? '---' : resp.data.q30;
-          qObj.volume = resp.data.volume === -1 ? '---' : resp.data.volume;
-          qObj.baseGender = resp.data.gender;
-          qObj.gender = resp.data.gender;
-          if (qObj.Sample_gender === 'Male') {
-            qObj.Sample_gender = '男'
-          } else if (qObj.Sample_gender === 'Female') {
-            qObj.Sample_gender = '女'
-          } else {
-            qObj.Sample_gender = '未知'
-          }
-          //如果性别和20X都不对
-          if (qObj.Sample_gender !== qObj.gender && qObj.above_20 < 95) {
-            alert('指数严重不合格！')
-          }
-          const arr = [
-            {
-              type: '20X覆盖度',
-              grandValue: '≥≈95%',
-              realValue: qObj.above_20,
-              standard: qObj.above_20 >= 95
-            }, {
-              type: '性别',
-              grandValue: qObj.baseGender,
-              realValue: qObj.above_20,
-              standard: qObj.Sample_gender == qObj.gender
-            }, {
-              type: 'Q30',
-              grandValue: '≥85%',
-              realValue: qObj.q30,
-              standard: qObj.q30 >= 85
-            }, {
-              type: '数据量(M)',
-              grandValue: '≥10G',
-              realValue: qObj.volume,
-              standard: qObj.volume >= 10000
-            }, {
-              type: 'Duplication%',
-              grandValue: '≤20%',
-              realValue: qObj.duplication,
-              standard: qObj.duplication <= 0.2
-            }, {
-              type: 'Total Reads%',
-              grandValue: '---',
-              realValue: qObj.total,
-              standard: true
-            }, {
-              type: 'QC passed Reads%',
-              grandValue: '---',
-              realValue: qObj.qc,
-              standard: true
-            }, {
-              type: 'Mapped Reads%',
-              grandValue: '---',
-              realValue: qObj.mapped,
-              standard: true
-            }, {
-              type: '捕获效率',
-              grandValue: '≥70%',
-              realValue: qObj.target,
-              standard: qObj.target >= 0.7
-            }, {
-              type: '平均深度',
-              grandValue: '≥75X',
-              realValue: qObj.depth,
-              standard: qObj.depth >= 75
-            }, {
-              type: '1X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_1,
-              standard: true
-            }, {
-              type: '5X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_5,
-              standard: true
-            }, {
-              type: '10X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_10,
-              standard: true
-            }, {
-              type: '30X覆盖度',
-              grandValue: '---',
-              realValue: qObj.above_30,
-              standard: true
-            }
-          ];
-          $.each(resp.aln, function (i, data) {
-            $.each(arr, function (n, k) {
-              if (i === n) {
-                k.detail = data
-              }
-            })
-          });
-          _vue.lists0 = arr;
-          _vue.loading0 = false;
-        });
-      },
-      getValue: function (final) {
-        const obj = {};
-        $.each(final, function (i, data) {
-          if (data.name === 'mapped reads') {
-            obj.mapped = data.value.raw
-          } else if (data.name === 'QC passed reads') {
-            obj.qc = data.value
-          } else if (data.name === 'total reads') {
-            obj.total = data.value
-          } else if (data.name === 'duplication rate') {
-            obj.duplication = data.value
-          } else if (data.name === 'target reads ratio') {
-            obj.target = data.value
-          } else if (data.name === 'depth') {
-            obj.depth = data.value
-          } else if (data.name === '%_bases_above_1') {
-            obj.above_1 = data.value
-          } else if (data.name === '%_bases_above_5') {
-            obj.above_5 = data.value
-          } else if (data.name === '%_bases_above_10') {
-            obj.above_10 = data.value
-          } else if (data.name === '%_bases_above_20') {
-            obj.above_20 = data.value
-          } else if (data.name === '%_bases_above_30') {
-            obj.above_30 = data.value
-          } else if (data.name === 'Sample_gender') {
-            obj.Sample_gender = data.value
-          }
-        });
-        return obj;
-      },
       current1: function () {
         if (this.lists1.length === 0) {
           this.getList1();
@@ -712,103 +497,94 @@
         this.lists1 = [];
 
         _vue.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/snv/',
-        }).then(function (respAll) {
-          let str = '';
-          $.each(respAll.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
+          url: _vue.snvUrl + '&page=' + _vue.page1 + urlParam,
+        }).then(function (resp) {
+          _vue.cnvCount = resp.data.count;
+          if (_vue.cnvCount === 0) {
+            _vue.loading1 = false;
+          }
+          let id = 0;
+          let genePostData = [];
+          $.each(resp.data.results, function (i, value) {
+//            id += 1;
+//            value.id = id;
+//            //gene名和id綁定起來
+//            value.geneVue = [];
+//            $.each(value.annotations.geneSymbol, function (n1, n2) {
+//              $.each(value.annotations.geneId, function (n3, n4) {
+//                if (n1 === n3) {
+//                  value.geneVue.push({
+//                    name: n2,
+//                    id: n4
+//                  });
+//                }
+//              })
+//            });
+//            //疾病信息
+//            value.geneResp = [];
+//            $.each(value.annotations.geneId, function (n, k) {
+//              genePostData.push(k)
+//            });
 
-          _vue.myAxios({
-            url: respAll.data.query_url + '?' + str + 'page=' + _vue.page1 + urlParam,
-//            url: 'report/triosnv/?datafile=' + _vue.datafile + '&page=' + _vue.page1+urlParam
-          }).then(function (resp) {
-            _vue.cnvCount = resp.data.count;
-            if (_vue.cnvCount === 0) {
-              _vue.loading1 = false;
+            //处理highlight和active得到级别(highlight为true的时候active必定为true)
+            if (value.flag.highlight && value.flag.active) {
+              value.level = 0
+            } else if (!value.flag.highlight && value.flag.active) {
+              value.level = 1
+            } else if (!value.flag.highlight && !value.flag.active) {
+              value.level = 2
             }
-            let id = 0;
-            let genePostData = [];
-            $.each(resp.data.results, function (i, value) {
-              id += 1;
-              value.id = id;
-              //gene名和id綁定起來
-              value.geneVue = [];
-              $.each(value.annotations.geneSymbol, function (n1, n2) {
-                $.each(value.annotations.geneId, function (n3, n4) {
-                  if (n1 === n3) {
-                    value.geneVue.push({
-                      name: n2,
-                      id: n4
+            $.each(value.anno.genes.geneids, function (n, k) {
+              if (!genePostData.join(',').includes(k)) {
+                genePostData.push(k)
+              }
+            });
+            value.geneResp = [];
+
+          });
+          _vue.lists1 = resp.data.results;
+          _vue.myAxios({
+            url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
+            method: 'post',
+            data: {
+              geneids: genePostData
+            }
+          }).then(function (respA) {
+            let count0 = 0;
+            let count1 = 0;
+            $.each(respA.data, function () {
+              count1 += 1;
+            });
+            $.each(respA.data, function (k1, k2) {
+              count0 += 1;
+              $.each(resp.data.results, function (n1, n2) {
+                $.each(n2.anno.genes.geneids, function (n3, n4) {
+                  if (k1 == n4) {
+                    n2.geneResp.push({
+                      geneId: n4,
+                      geneData: k2
                     });
                   }
                 })
               });
-              //疾病信息
-              value.geneResp = [];
-              $.each(value.annotations.geneId, function (n, k) {
-                genePostData.push(k)
-              });
-            });
-            _vue.lists1 = resp.data.results;
-            _vue.myAxios({
-              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
-              method: 'post',
-              data: {
-                geneids: genePostData
+              if (count0 === count1) {
+                _vue.loading1 = false;
               }
-            }).then(function (respA) {
-              let count0 = 0;
-              let count1 = 0;
-              $.each(respA.data, function () {
-                count1 += 1;
-              });
-              $.each(respA.data, function (k1, k2) {
-                count0 += 1;
-                $.each(resp.data.results, function (n1, n2) {
-                  $.each(n2.annotations.geneId, function (n3, n4) {
-                    if (k1 == n4) {
-                      n2.geneResp.push({
-                        geneId: n4,
-                        geneData: k2
-                      });
-                    }
-                  })
-                });
-                if (count0 === count1) {
-                  _vue.loading1 = false;
-                }
-              });
             });
-          }).catch(function (error) {
-            _vue.catchFun(error);
           });
-
+        }).catch(function (error) {
+          _vue.catchFun(error);
         });
-
-
       },
       filtrateShow1Fun: function () {
 //        this.filtrateShow1 = !this.filtrateShow1
         this.switchHide('filtrate-content')
       },
-      showDetail: function (url, type) {
+      showDetail: function (data, type,postId) {
         const _vue = this;
-        if (type === 0) {
-          $.each(this.lists1, function (i, data) {
-            if (data.url === url) {
-              _vue.moduleData = data;
-              $("#mutateDetailModal").modal('show')
-            }
-          });
-        } else if (type === 1) {
-          $.each(this.lists2, function (i, data) {
-            if (data.url === url) {
-              _vue.moduleDataCNV = data;
-              $("#mutateDetailModalCNV").modal('show')
-            }
-          });
-        }
+        _vue.moduleData = data;
+        _vue.snvId = postId;
+        $("#mutateDetailModal").modal('show');
       },
       getMutateModalStatus: function (newStatus) {
         const _vue = this;
@@ -829,125 +605,20 @@
         this.getList1();
         $("#filtrate-content").addClass('hide')
       },
-      current2: function () {
-        if (this.lists2.length === 0) {
-          this.getList2();
-        }
-      },
-      getList2: function () {
-        this.loading2 = true;
-        let urlParam = '';
-        $('#filtrate-content-2').find('.option').each(function () {
-          if ($(this).html() !== '不筛选' && $(this).hasClass('in')) {
-            urlParam += '&' + $(this).parent().prev().data('name') + '=' + $(this).data('value');
-          }
-        });
-        if (this.geneTextAreaContent2) {
-          urlParam += '&genes=' + $.trim(this.geneTextAreaContent2);
-        }
-        //条件判断结束
-        const _vue = this;
-        this.lists2 = [];
-        this.myAxios({
-          url: 'application/grandtrio/' + this.ID + '/cnv/',
-        }).then(function (resp) {
-          let str = '';
-          $.each(resp.data.query_params, function (i, value) {
-            str += i + '=' + value + "&"
-          });
-          _vue.myAxios({
-            url: resp.data.query_url + '?' + str + 'page=' + _vue.page2 + urlParam,
-          }).then(function (resp) { //开始填数据
-            if (resp.data.count === 0) {
-              _vue.loading2 = false
-            }
-            _vue.count2 = resp.data.count;
-            //填充列表
-            let genePostData = [];
-            $.each(resp.data.results, function (i, value) {
-              //处理highlight和active得到级别(highlight为true的时候active必定为true)
-              if (value.highlight && value.active) { //两个都为true是最高级
-                value.level = 0
-              } else if (!value.highlight && value.active) {
-                value.level = 1
-              } else if (!value.highlight && !value.active) {
-                value.level = 2
-              }
-              $.each(value.annotations.geneId, function (n, k) {
-                genePostData.push(k)
-              });
-              value.geneResp = [];
-            });
-            _vue.lists2 = resp.data.results;
-            _vue.myAxios({
-              url: _vue.dbUrl + 'knowledge/gene/dictbygeneids/',
-              method: 'post',
-              data: {
-                geneids: genePostData
-              }
-            }).then(function (respA) {
-              let count0 = 0;
-              let count1 = 0;
-              $.each(respA.data, function () {
-                count1 += 1;
-              });
-              $.each(respA.data, function (k1, k2) {
-                count0 += 1;
-                $.each(resp.data.results, function (n1, n2) {
-                  $.each(n2.annotations.geneId, function (n3, n4) {
-                    if (k1 == n4) {
-                      n2.geneResp.push({
-                        geneId: n4,
-                        geneData: k2
-                      });
-                    }
-                  })
-                });
-                if (count0 === count1) {
-                  _vue.loading2 = false
-                }
-              });
-            });
-          });
-        });
-      },
-      filtrateShow2Fun: function () {
-        this.filtrateShow2 = !this.filtrateShow2
-      },
-      getMutateModalStatusCNV: function (newStatus) {
-        const _vue = this;
-        $.each(this.lists2, function (i, data) {
-          if (data.url === _vue.moduleDataCNV.url) {
-            data.status = newStatus;
-          }
-        })
-      },
-      filter2: function () {
-        this.page2 = 1;
-        this.reset2 = 1;
-        this.getList2();
-        this.filtrateShow2 = false;
-      },
-      getCurrent2: function (data) {
-        this.page2 = data;
-        this.reset2 = 0;
-        this.getList2();
-      },
-      current3: function () {
 
-      },
     },
     updated: function () {
       $('[data-toggle="tooltip"]').tooltip();
     },
     filters: {
       getPercent: function (data) {
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+        return Math.round(data*10000)/100
       },
       getStatus: function (status) {
         switch (status) {
@@ -978,22 +649,23 @@
   @tableSha: rgb(185, 184, 184);
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
-  .title-s{
-    >span{
+  .title-s {
+    > span {
       display: inline-block;
       margin-left: 20px;
     }
   }
-  #trioResult{
+
+  #trioResult {
     .all-content {
-      table{
+      table {
         box-shadow: none;
       }
       margin: 15px 0 0 0;
       .change-panel {
         margin-left: 50px;
       }
-      .flag-q{
+      .flag-q {
         margin: 8px;
       }
       .title-list {
@@ -1021,7 +693,7 @@
         }
         .title-single:first-child {
           margin: 0;
-          box-shadow: -3px 0 5px -2px rgb(200,200,200);
+          box-shadow: -3px 0 5px -2px rgb(200, 200, 200);
         }
         .title-single.active {
           height: 35px;
@@ -1037,7 +709,7 @@
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
-        box-shadow: 0 0 20px 3px rgb(200,200,200);
+        box-shadow: 0 0 20px 3px rgb(200, 200, 200);
         background-color: #fff;
         position: relative;
         > div {

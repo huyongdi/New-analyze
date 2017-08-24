@@ -31,6 +31,7 @@
     props: ['geneResp'],
     methods:{
       showHPO:function (data) {
+        console.log(data)
         this.$emit('sendPhenotypeMapSingle', data);
         $("#hpo_detail").modal('show');
       }

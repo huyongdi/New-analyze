@@ -33,7 +33,7 @@
                 INSERTSIZE图：<a class="common-a" :href="insert">点击下载</a>
               </li>
               <li>
-                注释结果(CSV)：<a class="common-a" :href="CSV.cnv">点击下载(cnv)</a>  <a class="common-a" :href="CSV.snv">点击下载(snv)</a>
+                注释结果(CSV)：<a class="common-a" :href="csv.cnv">点击下载(cnv)</a>  <a class="common-a" :href="csv.snv">点击下载(snv)</a>
               </li>
               <li>
                 基因分析报告 :
@@ -307,8 +307,7 @@
                   </a>
                 </td>
                 <td>
-                  <span v-if="data.localcnv">{{data.localcnv.length}}</span>
-                  <span> - </span>
+                  {{data.length?data.length:'-'}}
                 </td>
                 <td>
                   <span v-if="data.anno">
@@ -428,7 +427,7 @@
 //      this.ID = '599690afccaa6c94a937a633' 5993e676ccaa6c0a76fcef63
       this.bindCurrent();//绑定变异详情的过滤点击事件
       this.getSampleAndUrl();
-//      this.getStat()
+      this.getStat()
     },
     methods: {
       //查看位点信息
@@ -493,13 +492,13 @@
           }
 
           //CNV.SNV
-          if(data.cnv){
-            _vue.cnvUrl = resp.data.cnv.query_url + '?';
-            $.each(data.cnv.query_params, function (i, data) {
-              _vue.cnvUrl += '&' + i + '=' + data
-            });
-            _vue.getList2();
-          }
+//          if(data.cnv){
+//            _vue.cnvUrl = resp.data.cnv.query_url + '?';
+//            $.each(data.cnv.query_params, function (i, data) {
+//              _vue.cnvUrl += '&' + i + '=' + data
+//            });
+//            _vue.getList2();
+//          }
           if(data.snv){
             _vue.snvUrl = resp.data.snv.query_url + '?';
             $.each(data.snv.query_params, function (i, data) {
@@ -681,7 +680,7 @@
         const _vue = this;
         this.lists1 = [];
         this.myAxios({
-          url: _vue.snvUrl + '&page=' + _vue.page1,
+          url: _vue.snvUrl + '&page=' + _vue.page1+urlParam,
         }).then(function (resp) {
           if (resp.data.count === 0) {
             _vue.loading1 = false
@@ -772,7 +771,7 @@
         this.page1 = 1;
         this.reset1 = 1;
         this.getList1();
-        this.filtrateShow1 = false;
+        $('#filtrate-content').addClass('hide')
       },
 
       getList2: function () {
@@ -790,7 +789,7 @@
         const _vue = this;
         this.lists2 = [];
         this.myAxios({
-          url: _vue.cnvUrl + '&page=' + _vue.page2,
+          url: _vue.cnvUrl + '&page=' + _vue.page2+urlParam,
         }).then(function (resp) {
           if (resp.data.count === 0) {
             _vue.loading2 = false
@@ -863,7 +862,7 @@
         this.page2 = 1;
         this.reset2 = 1;
         this.getList2();
-        this.filtrateShow2 = false;
+        $('#filtrate-content-2').addClass('hide')
       },
       getCurrent2: function (data) {
         this.page2 = data;
@@ -907,12 +906,15 @@
       },
 
       getPercent1: function (data) {
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+
+        return Math.round(data*10000)/100
+
       },
     },
     updated: function () {
@@ -920,12 +922,15 @@
     },
     filters: {
       getPercent: function (data) {
-        if (data == 0) {
-          return 0;
-        }
-        data = data * 100;
-        data = data.toFixed(2);
-        return data
+//        if (data == 0) {
+//          return 0;
+//        }
+//        data = data * 100;
+//        data = data.toFixed(2);
+//        return data
+
+        return Math.round(data*10000)/100
+
       },
       getStatus: function (status) {
         switch (status) {

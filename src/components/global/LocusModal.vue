@@ -117,12 +117,16 @@
       },
       filters:{
         filterData: function (data) { //取百分比
-          if (data == 0) {
-            return 0;
-          }
-          data = data * 100;
-          data = data.toFixed(2);
-          return data
+//          if (data == 0) {
+//            return 0;
+//          }
+//          data = data * 100;
+//          data = data.toFixed(2);
+//          return data
+
+          return Math.round(data*10000)/100
+
+
         },
         getDatafile:function (str) {
           let arr = str.split('/');

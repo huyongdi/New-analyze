@@ -53,7 +53,7 @@
             <span :data-datafile='list.code' :data-prefix='list.sampleCode' class="check-span check-no"></span>
           </td>
           <td>{{list.code}}</td>
-          <td><span v-if="list.patient">{{list.patient.code}}</span></td>
+          <td><span v-if="list.sample">{{list.sample.code}}</span></td>
           <td><span v-if="list.patient">{{list.patient.name}}（{{list.patient.gender}}）</span></td>
           <td><span v-if="list.captureInfo">{{list.captureInfo.code}}</span></td>
           <td>{{list.dataFormat}}</td>

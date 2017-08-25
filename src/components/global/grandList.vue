@@ -29,7 +29,7 @@
           <td class="check-td">
             <span :data-datafile='list.id' :data-prefix='list.patient.code' class="check-span check-no"></span>
           </td>
-          <td>{{list.patient.code}}</td>
+          <td>{{list.sample.code}}</td>
           <td>{{list.patient.name}}({{list.patient.gender}})</td>
           <td>{{list.code}}</td>
         </tr>

@@ -23,6 +23,12 @@
             <router-link to='/dataM/foo/hg19_MT' data-code="hg19" class="block">
               hg19_MT
             </router-link>
+            <router-link to='/dataM/foo/agilentV6' data-code="hg19" class="block">
+              AgilentV6
+            </router-link>
+            <router-link to='/dataM/foo/trusightOne' data-code="hg19" class="block">
+              TrusightOne
+            </router-link>
           </div>
         </li>
         <li>
@@ -139,16 +145,16 @@
         }
       }
       .data-centre{
-        background: url(../../static/img/all-1.png) 18px 266px;
+        background: url(../../static/img/all-1.png) 16px 266px;
       }
       .test-platform{
-        background: url(../../static/img/all-1.png) 18px 240px;
+        background: url(../../static/img/all-1.png) 16px 240px;
       }
       .capture-region{
-        background: url(../../static/img/all-1.png) 18px 212px;
+        background: url(../../static/img/all-1.png) 16px 212px;
       }
       .capture-up{
-        background: url(../../static/img/all-1.png) 18px 186px;
+        background: url(../../static/img/all-1.png) 16px 186px;
       }
     }
   }

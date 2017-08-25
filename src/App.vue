@@ -478,9 +478,9 @@
                 font-weight: bold;
                 .img {
                   float: left;
-                  width: 18px;
+                  width: 16px;
                   height: 25px;
-                  margin: 6px 10px 0 20px;
+                  margin: 6px 12px 0 20px;
                 }
                 img {
                   float: right;

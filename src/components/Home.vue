@@ -158,13 +158,13 @@
     }
     .active {
       .analyze-flow {
-        background: url(../../static/img/all-1.png) 18px 400px;
+        background: url(../../static/img/all-1.png) 16px 400px;
       }
       .analyze-soft{
-        background: url(../../static/img/all-1.png) 18px 374px;
+        background: url(../../static/img/all-1.png) 16px 374px;
       }
       .analyze-tool{
-        background: url(../../static/img/all-1.png) 18px 346px;
+        background: url(../../static/img/all-1.png) 16px 346px;
       }
       .father{
         img{

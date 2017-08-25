@@ -8,6 +8,8 @@ import GrandE from '@/components/GrandE'
 import Hg19WGS from '@/components/Hg19_WGS'
 import Hg19MT from '@/components/Hg19_MT'
 import IDTexome from '@/components/IDTexome'
+import AgilentV6 from '@/components/AgilentV6'
+import TrusightOne from '@/components/TrusightOne'
 import CapList from '@/components/CapList'
 import AddCap from '@/components/AddCap'
 import SingleUpload from '@/components/SingleUpload'
@@ -73,6 +75,16 @@ export default new Router({
           path: 'IDTexome',
           name: 'dataM-IDTexome',
           component: IDTexome
+        },
+        {
+          path: 'agilentV6',
+          name: 'dataM-agilentV6',
+          component: AgilentV6
+        },
+        {
+          path: 'trusightOne',
+          name: 'dataM-trusightOne',
+          component: TrusightOne
         },
         {
           path: 'capList',

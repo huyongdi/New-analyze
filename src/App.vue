@@ -64,10 +64,13 @@
           const _currentLi = $(event.target).closest('li');
           const _children = _currentLi.find('.children');
           if (_currentLi.hasClass('active')) {
-            _currentLi.removeClass('active')
+            _currentLi.removeClass('active');
+            _currentLi.find('.children').slideToggle();
+
           } else {
 //            $(".under-left").find("li.active").removeClass('active');
             _currentLi.addClass('active');
+            _currentLi.find('.children').slideToggle();
           }
         });
         /*自定义的上传输入框*/
@@ -466,9 +469,9 @@
                   border-right: 1px solid @triangle-color;
                   color: @in;
                 }
-                .children {
-                  display: block;
-                }
+                /*.children {*/
+                  /*display: block;*/
+                /*}*/
               }
               .father {
                 height: 40px;
@@ -498,7 +501,7 @@
                 }
               }
               .children {
-                display: none;
+                /*display: none;*/
                 border-top: 1px solid #fbfbfb;
                 border-bottom: 1px solid #d3d4d4;
                 a {

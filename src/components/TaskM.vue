@@ -106,7 +106,7 @@
         }
       }
       .task-detail{
-        background: url(../../static/img/all-1.png) 18px 320px;
+        background: url(../../static/img/all-1.png) 16px 320px;
       }
       .task-automate{
         width: 16px;

@@ -109,7 +109,8 @@
         background: url(../../static/img/all-1.png) 18px 320px;
       }
       .task-automate{
-        background: url(../../static/img/all-1.png) 18px 293px;
+        width: 16px;
+        background: url(../../static/img/all-1.png) 16px 293px;
       }
     }
   }

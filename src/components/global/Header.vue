@@ -132,19 +132,19 @@
         border-bottom: 1px solid #fff;
         color: rgb(0, 118, 192);
         .img-dataAnalysis {
-          background: url(../../../static/img/header-4-1.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) -34px -59px no-repeat;
         }
         .img-taskManage {
           background-size: 28px 19px;
-          background: url(../../../static/img/header-7-1.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) -34px -89px no-repeat;
         }
         .img-dataManage{
           background-size: 21px 21px;
-          background: url(../../../static/img/header-5-1.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) -34px -30px no-repeat;
         }
         .img-analyze{
           background-size: 22px 21px;
-          background: url(../../../static/img/header-4-1.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) -34px 1px no-repeat;
         }
       }
       li {
@@ -174,19 +174,21 @@
         }
         .img-analyze {
           background-size: 21px 20px;
-          background: url(../../../static/img/header-4.png) no-repeat center;
+          /*background: url(../../../static/img/header-4.png) no-repeat center;*/
+          background: url(../../../static/img/all-3.png) 0 1px no-repeat;
         }
         .img-dataManage {
           background-size: 21px 21px;
-          background: url(../../../static/img/header-5.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) 0 -30px no-repeat;
         }
         .img-dataAnalysis {
           background-size: 22px 21px;
-          background: url(../../../static/img/header-6.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) 0 -59px no-repeat;
+
         }
         .img-taskManage {
           background-size: 28px 19px;
-          background: url(../../../static/img/header-7.png) no-repeat center;
+          background: url(../../../static/img/all-3.png) 0 -89px no-repeat;
         }
       }
     }

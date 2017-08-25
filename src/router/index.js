@@ -5,7 +5,9 @@ import Home from '@/components/Home'
 
 import DataM from '@/components/DataM'
 import GrandE from '@/components/GrandE'
-import Hg19 from '@/components/Hg19'
+import Hg19WGS from '@/components/Hg19_WGS'
+import Hg19MT from '@/components/Hg19_MT'
+import IDTexome from '@/components/IDTexome'
 import CapList from '@/components/CapList'
 import AddCap from '@/components/AddCap'
 import SingleUpload from '@/components/SingleUpload'
@@ -58,9 +60,19 @@ export default new Router({
           component: GrandE
         },
         {
-          path: 'hg19',
-          name: 'dataM-hg19',
-          component: Hg19
+          path: 'hg19_WGS',
+          name: 'dataM-hg19_WGS',
+          component: Hg19WGS
+        },
+        {
+          path: 'hg19_MT',
+          name: 'dataM-hg19_MT',
+          component: Hg19MT
+        },
+        {
+          path: 'IDTexome',
+          name: 'dataM-IDTexome',
+          component: IDTexome
         },
         {
           path: 'capList',

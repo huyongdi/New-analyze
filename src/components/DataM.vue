@@ -14,8 +14,14 @@
             <router-link to="/dataM/foo/grandE" data-code='grandE' class="block">
               GrandExome
             </router-link>
-            <router-link to='/dataM/foo/hg19' data-code="hg19" class="block">
+            <router-link to='/dataM/foo/hg19_WGS' data-code="hg19" class="block">
               hg19_WGS
+            </router-link>
+            <router-link to='/dataM/foo/IDTexome' data-code="hg19" class="block">
+              IDTexome
+            </router-link>
+            <router-link to='/dataM/foo/hg19_MT' data-code="hg19" class="block">
+              hg19_MT
             </router-link>
           </div>
         </li>

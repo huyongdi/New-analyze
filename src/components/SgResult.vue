@@ -184,7 +184,7 @@
                 <th>基因</th>
                 <th>区域</th>
                 <th>功能</th>
-                <th class="disease-td">疾病</th>
+                <th>疾病</th>
                 <th>CLINVAR</th>
                 <th>HGMD</th>
                 <th>东亚人群频率(EXOME/GENOME%)</th>
@@ -235,6 +235,7 @@
                   {{data.edit.status | getStatus}}
                 </td>
               </tr>
+              <tr v-if="lists1.length == 0"><td colspan="11" class="center">暂无数据</td></tr>
               </tbody>
             </table>
             <page :childCount="count1" :childReset="reset1" @childCurrent="getCurrent"></page>
@@ -286,7 +287,7 @@
                 <th>长度</th>
                 <th>基因</th>
                 <th>区域</th>
-                <th class="disease-td">疾病</th>
+                <th>疾病</th>
                 <th>基因型</th>
                 <th>深度(原始)</th>
                 <th>深度(标准化)</th>
@@ -330,6 +331,8 @@
                   {{data.edit.status | getStatus}}
                 </td>
               </tr>
+              <tr v-if="lists2.length == 0"><td colspan="9" class="center">暂无数据</td></tr>
+
               </tbody>
             </table>
             <page :childCount="count2" :childReset="reset2" @childCurrent="getCurrent2"></page>

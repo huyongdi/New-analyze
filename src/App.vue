@@ -362,7 +362,7 @@
               td {
                 padding: 5px 8px 5px 17px;
                 border-top: none;
-                border-bottom: 1px dashed @tdBorder;
+                /*!*border-bottom: 1px dashed @tdBorder*!;*/
               }
               td:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
@@ -374,11 +374,17 @@
             tr.in {
               background-color: @trIn;
             }
-            /* tr:not(:last-child) {
-               td {
-                 border-bottom: 1px dashed @tdBorder;
-               }
-             }*/
+            tr:last-child {
+              td {
+                border-bottom: none;
+              }
+              td:first-child {
+                border-bottom-left-radius: 5px;
+              }
+              td:last-child {
+                border-bottom-right-radius: 5px;
+              }
+            }
           }
           table tr:first-child th:first-child {
             border-top-left-radius: 5px

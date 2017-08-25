@@ -29,7 +29,7 @@
               </span>
         ）在GRCh37 refgene中没有找到，请确认基因名是否填写正确</p>
     </div>
-    <table class="table my-table">
+    <table class="table my-table no-shadow">
       <thead>
       <tr>
         <th>转录本</th>
@@ -74,11 +74,13 @@
             <h4 class="modal-title" id="">详情</h4>
           </div>
           <div class="modal-body">
-            <table class="table table-bordered myTable">
+            <table class="table my-table no-shadow">
               <thead>
               <tr>
                 <th>转录本</th>
                 <th>基因</th>
+                <th>起始位置</th>
+                <th>终止位置</th>
                 <th>NCBI GENE ID</th>
                 <th>1X覆盖度(%)</th>
                 <th>5X覆盖度(%)</th>
@@ -91,6 +93,8 @@
               <tr v-for="data in tranData.found">
                 <td>{{data.transcrpit}}</td>
                 <td>{{data.geneSymbol}}</td>
+                <td>{{data.start}}</td>
+                <td>{{data.end}}</td>
                 <td>
                   <span v-for="(gene,index) in data.geneId">
                     <a target="_blank" :href="dbHtml+'#/geneDetail?geneId=' + gene">{{gene}}</a>
@@ -179,7 +183,6 @@
           method: 'post',
           data: {
             transcrpit: data,
-            gene: _vue.strToArr(this.geneTextAreaContent3)
           }
         }).then(function (resp) {
           $("#transcrpit-modal").modal('show');

@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body" id="modal-panel">
               <div class="table-content">
-                <table class="table my-table" v-show="!hide0">
+                <table class="table my-table no-shadow" v-show="!hide0">
                   <thead>
                   <tr>
                     <th>Datafile</th>
@@ -43,7 +43,7 @@
                   </tbody>
                 </table>
 
-                <table class="table my-table" v-show="!hide1">
+                <table class="table my-table no-shadow" v-show="!hide1">
                   <thead>
                   <tr>
                     <th>深度(原始)</th>
@@ -94,7 +94,7 @@
           _vue.loading = true;
           if(this.type){ //1是cnv
             _vue.myAxios({
-              url:'report/cnvwesinfo/records/?datafile='+_vue.datafile+'&cnv='+_vue.locus
+              url:'report/cnv/records/?datafile='+_vue.datafile+'&cnv='+_vue.locus
             }).then(function (resp) {
               _vue.lists1 = resp.data;
               _vue.loading = false;
@@ -105,7 +105,7 @@
             this.hide0 = false;
             this.hide1 = true;
             _vue.myAxios({
-              url:'report/snvatinfo/records/?datafile='+_vue.datafile+'&snv='+_vue.locus
+              url:'report/snv/records/?datafile='+_vue.datafile+'&snv='+_vue.locus
             }).then(function (resp) {
               _vue.lists0 = resp.data;
               _vue.loading = false;

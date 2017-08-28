@@ -91,6 +91,8 @@
 //      }).catch(function (error) {
 //        _vue.catchFun(error);
 //      })
+
+      
     },
     methods: {
       toPage: function (pagePath) {

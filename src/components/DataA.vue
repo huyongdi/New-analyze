@@ -92,7 +92,7 @@
 //        _vue.catchFun(error);
 //      })
 
-      
+
     },
     methods: {
       toPage: function (pagePath) {

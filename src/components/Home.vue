@@ -1,7 +1,7 @@
 <template>
-  <div class="all-content">
+  <div class="all-content" id="home">
     <top-header></top-header>
-    <div class="under">
+    <div class="under" id="under">
       <ul class="under-left">
         <li class="active">
           <div class="father">
@@ -18,22 +18,29 @@
             <router-link to="/dataA/foo/trioList" class="block" data-code="grandtrio">核心家系分析</router-link>
           </div>
         </li>
-        <li>
+        <li @click="toPage('/dataA/foo/genotype')">
           <div class="father">
-            <span class="img analyze-soft"></span>
-            <span>分析软件</span>
+            <span class="img task-genotype"></span>
+            <span>表型分析</span>
             <i class="triangle"></i>
-            <img src="../../static/img/under-left-1.png" alt="">
           </div>
         </li>
-        <li>
-          <div class="father">
-            <span class="img analyze-tool"></span>
-            <span>实用工具</span>
-            <i class="triangle"></i>
-            <img src="../../static/img/under-left-1.png" alt="">
-          </div>
-        </li>
+        <!--<li>-->
+          <!--<div class="father">-->
+            <!--<span class="img analyze-soft"></span>-->
+            <!--<span>分析软件</span>-->
+            <!--<i class="triangle"></i>-->
+            <!--<img src="../../static/img/under-left-1.png" alt="">-->
+          <!--</div>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<div class="father">-->
+            <!--<span class="img analyze-tool"></span>-->
+            <!--<span>实用工具</span>-->
+            <!--<i class="triangle"></i>-->
+            <!--<img src="../../static/img/under-left-1.png" alt="">-->
+          <!--</div>-->
+        <!--</li>-->
       </ul>
       <div class="under-right">
 
@@ -117,6 +124,9 @@
 //      })
     },
     methods: {
+      toPage: function (pagePath) {
+        this.$router.push({path: '' + pagePath})
+      },
       getHref: function () {
         const _vue = this;
         $.each(_vue.leftObj, function (k1, k2) { //k2代表pipelineArr
@@ -146,135 +156,146 @@
 </script>
 
 <style scoped lang="less">
-  .under-left {
-    .analyze-flow {
-      background: url(../../static/img/all-1.png) 0 400px;
-    }
-    .analyze-soft{
-      background: url(../../static/img/all-1.png) 0 374px;
-    }
-    .analyze-tool{
-      background: url(../../static/img/all-1.png) 0 346px;
-    }
-    .active {
-      .analyze-flow {
-        background: url(../../static/img/all-1.png) 16px 400px;
-      }
-      .analyze-soft{
-        background: url(../../static/img/all-1.png) 16px 374px;
-      }
-      .analyze-tool{
-        background: url(../../static/img/all-1.png) 16px 346px;
-      }
-      .father{
-        img{
-          transform:rotate(180deg);
-          -ms-transform:rotate(180deg); 	/* IE 9 */
-          -moz-transform:rotate(180deg); 	/* Firefox */
-          -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
-          -o-transform:rotate(180deg); 	/* Opera */
+  #home{
+    #under{
+      .under-left {
+        .analyze-flow {
+          background: url(../../static/img/all-1.png) 0 400px;
+        }
+        .analyze-soft{
+          background: url(../../static/img/all-1.png) 0 374px;
+        }
+        .analyze-tool{
+          background: url(../../static/img/all-1.png) 0 346px;
+        }
+        .task-genotype {
+          margin-top: 3px;
+          background: url(../../static/img/all-1.png) 0 80px;
+        }
+        .active {
+          .analyze-flow {
+            background: url(../../static/img/all-1.png) 16px 400px;
+          }
+          .analyze-soft{
+            background: url(../../static/img/all-1.png) 16px 374px;
+          }
+          .analyze-tool{
+            background: url(../../static/img/all-1.png) 16px 346px;
+          }
+          .task-genotype {
+            background: url(../../static/img/all-1.png) 16px 80px;
+          }
+          .father{
+            img{
+              transform:rotate(180deg);
+              -ms-transform:rotate(180deg); 	/* IE 9 */
+              -moz-transform:rotate(180deg); 	/* Firefox */
+              -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+              -o-transform:rotate(180deg); 	/* Opera */
+            }
+          }
         }
       }
-    }
-  }
-
-  .shadow#home-content {
-    background: #fff;
-    margin-top: 20px;
-    .title {
-      height: 60px;
-      line-height: 60px;
-      color: rgb(67, 67, 67);
-      font-size: 16px;
-      padding-left: 40px;
-      border-bottom: 1px solid rgb(221, 221, 221);
-    }
-    .content {
-      padding: 0 90px;
-      .row.search-content {
-        text-align: center;
-        margin-top: 140px;
-        margin-bottom: 70px;
-        input {
-          width: 250px;
+      .shadow#home-content {
+        background: #fff;
+        margin-top: 20px;
+        .title {
+          height: 60px;
+          line-height: 60px;
+          color: rgb(67, 67, 67);
+          font-size: 16px;
+          padding-left: 40px;
+          border-bottom: 1px solid rgb(221, 221, 221);
         }
-        .remove-input {
-          position: relative;
-          display: inline-block;
-          border-radius: 3px;
-          margin-left: -7px;
-          height: 28px;
-          vertical-align: top;
-          background: linear-gradient(to bottom, #f46554, #ea533f);
-          >img{
-            height: 27px;
+        .content {
+          padding: 0 90px;
+          .row.search-content {
+            text-align: center;
+            margin-top: 140px;
+            margin-bottom: 70px;
+            input {
+              width: 250px;
+            }
+            .remove-input {
+              position: relative;
+              display: inline-block;
+              border-radius: 3px;
+              margin-left: -7px;
+              height: 28px;
+              vertical-align: top;
+              background: linear-gradient(to bottom, #f46554, #ea533f);
+              >img{
+                height: 27px;
+              }
+              .search {
+                cursor: pointer;
+                display: inline-block;
+                width: 35px;
+                &:active {
+                  background: linear-gradient(to bottom, #ea533f, #f46544);
+                  border-radius: 3px 0 0 3px;
+                }
+                img {
+                  margin-left: 5px;
+                  margin-top: 2px;
+                }
+              }
+              .select {
+                cursor: pointer;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                &:active {
+                  background: linear-gradient(to bottom, #ea533f, #f46544);
+                  border-radius: 0 3px 3px 0;
+                }
+                img {
+                  margin-right: 5px;
+                }
+              }
+              .select-div {
+                position: absolute;
+                width: 100px;
+                img {
+                  position: absolute;
+                  right: 37px;
+                  z-index: 10;
+                }
+                ul {
+                  position: absolute;
+                  top: 8px;
+                  width: 100px;
+                  /*height: 77px;*/
+                  height: 52px;
+                  li {
+                    height: 25px;
+                  }
+                }
+              }
+            }
           }
-          .search {
-            cursor: pointer;
-            display: inline-block;
-            width: 35px;
-            &:active {
-              background: linear-gradient(to bottom, #ea533f, #f46544);
-              border-radius: 3px 0 0 3px;
-            }
+          .topRow {
+            margin: 50px 0 40px 0;
             img {
-              margin-left: 5px;
-              margin-top: 2px;
+              float: left;
+              margin-right: 20px;
             }
-          }
-          .select {
-            cursor: pointer;
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            &:active {
-              background: linear-gradient(to bottom, #ea533f, #f46544);
-              border-radius: 0 3px 3px 0;
-            }
-            img {
-              margin-right: 5px;
-            }
-          }
-          .select-div {
-            position: absolute;
-            width: 100px;
-            img {
-              position: absolute;
-              right: 37px;
-              z-index: 10;
-            }
-            ul {
-              position: absolute;
-              top: 8px;
-              width: 100px;
-              /*height: 77px;*/
-              height: 52px;
-              li {
-                height: 25px;
+            .right {
+              float: left;
+              .right-title {
+                font-weight: bold;
+                margin: 5px 0 8px 0;
+              }
+              .remark {
+                max-width: 210px;
+                font-size: 12px;
               }
             }
           }
         }
       }
-      .topRow {
-        margin: 50px 0 40px 0;
-        img {
-          float: left;
-          margin-right: 20px;
-        }
-        .right {
-          float: left;
-          .right-title {
-            font-weight: bold;
-            margin: 5px 0 8px 0;
-          }
-          .remark {
-            max-width: 210px;
-            font-size: 12px;
-          }
-        }
-      }
     }
   }
+
 
 </style>

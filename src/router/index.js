@@ -21,6 +21,8 @@ import MtList from '@/components/MtList'
 import CnvList from '@/components/CnvList'
 import SnvList from '@/components/SnvList'
 import TrioList from '@/components/TrioList'
+import Genotype from '@/components/Genotype'
+
 
 import TaskM from '@/components/TaskM'
 import ReportSe from '@/components/ReportSearch'
@@ -142,6 +144,11 @@ export default new Router({
           path: 'trioList',
           name: 'dataA-trioList',
           component: TrioList
+        },
+        {
+          path: 'genotype',
+          name: 'dataA-genotype',
+          component: Genotype
         },
       ]
     },

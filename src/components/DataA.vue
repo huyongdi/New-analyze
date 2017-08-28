@@ -1,7 +1,7 @@
 <template>
-  <div class="all-content">
+  <div class="all-content" id="dataA">
     <top-header></top-header>
-    <div class="under">
+    <div class="under" id="under">
       <ul class="under-left">
         <li class="active">
           <div class="father">
@@ -22,22 +22,29 @@
             <router-link to="/dataA/foo/trioList" class="block" data-code="grandtrio">核心家系分析</router-link>
           </div>
         </li>
-        <li>
+        <li @click="toPage('/dataA/foo/genotype')">
           <div class="father">
-            <span class="img analyze-soft"></span>
-            <span>分析软件</span>
+            <span class="img task-genotype"></span>
+            <span>表型分析</span>
             <i class="triangle"></i>
-            <img src="../../static/img/under-left-1.png" alt="">
           </div>
         </li>
-        <li>
-          <div class="father">
-            <span class="img analyze-tool"></span>
-            <span>实用工具</span>
-            <i class="triangle"></i>
-            <img src="../../static/img/under-left-1.png" alt="">
-          </div>
-        </li>
+        <!--<li>-->
+          <!--<div class="father">-->
+            <!--<span class="img analyze-soft"></span>-->
+            <!--<span>分析软件</span>-->
+            <!--<i class="triangle"></i>-->
+            <!--<img src="../../static/img/under-left-1.png" alt="">-->
+          <!--</div>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<div class="father">-->
+            <!--<span class="img analyze-tool"></span>-->
+            <!--<span>实用工具</span>-->
+            <!--<i class="triangle"></i>-->
+            <!--<img src="../../static/img/under-left-1.png" alt="">-->
+          <!--</div>-->
+        <!--</li>-->
       </ul>
       <div class="under-right">
         <router-view></router-view>
@@ -86,6 +93,9 @@
 //      })
     },
     methods: {
+      toPage: function (pagePath) {
+        this.$router.push({path: '' + pagePath})
+      },
       getHref: function () {
         const _vue = this;
         $.each(_vue.leftObj, function (k1, k2) { //k2代表pipelineArr
@@ -115,36 +125,48 @@
 </script>
 
 <style scoped lang="less">
-  .under-left {
-    .analyze-flow {
-      background: url(../../static/img/all-1.png) 0 400px;
-    }
-    .analyze-soft{
-      background: url(../../static/img/all-1.png) 0 374px;
-    }
-    .analyze-tool{
-      background: url(../../static/img/all-1.png) 0 346px;
-    }
-    .active {
-      .analyze-flow {
-        background: url(../../static/img/all-1.png) 16px 400px;
-      }
-      .analyze-soft{
-        background: url(../../static/img/all-1.png) 16px 374px;
-      }
-      .analyze-tool{
-        background: url(../../static/img/all-1.png) 16px 346px;
-      }
-      .father{
-        img{
-          transform:rotate(180deg);
-          -ms-transform:rotate(180deg); 	/* IE 9 */
-          -moz-transform:rotate(180deg); 	/* Firefox */
-          -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
-          -o-transform:rotate(180deg); 	/* Opera */
+  #dataA{
+    #under{
+      .under-left {
+        .analyze-flow {
+          background: url(../../static/img/all-1.png) 0 400px;
+        }
+        .analyze-soft{
+          background: url(../../static/img/all-1.png) 0 374px;
+        }
+        .analyze-tool{
+          background: url(../../static/img/all-1.png) 0 346px;
+        }
+        .task-genotype {
+         margin-top: 3px;
+          background: url(../../static/img/all-1.png) 0 80px;
+        }
+        .active {
+          .analyze-flow {
+            background: url(../../static/img/all-1.png) 16px 400px;
+          }
+          .analyze-soft{
+            background: url(../../static/img/all-1.png) 16px 374px;
+          }
+          .analyze-tool{
+            background: url(../../static/img/all-1.png) 16px 346px;
+          }
+          .task-genotype {
+            background: url(../../static/img/all-1.png) 16px 80px;
+          }
+          .father{
+            img{
+              transform:rotate(180deg);
+              -ms-transform:rotate(180deg); 	/* IE 9 */
+              -moz-transform:rotate(180deg); 	/* Firefox */
+              -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+              -o-transform:rotate(180deg); 	/* Opera */
+            }
+          }
         }
       }
     }
   }
+
 
 </style>

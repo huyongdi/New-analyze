@@ -504,6 +504,7 @@
                 /*display: none;*/
                 border-top: 1px solid #fbfbfb;
                 border-bottom: 1px solid #d3d4d4;
+                font-size: 13px;
                 a {
                   height: 25px;
                   line-height: 25px;
@@ -529,6 +530,12 @@
               padding-left: 32px;
               padding-top: 28px;
               padding-bottom: 50px;
+              .shadow-title {
+                margin: 16px 33px 0 33px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid rgb(212, 212, 212);
+                color: rgb(0, 118, 192);
+              }
               .title {
                 color: rgb(67, 67, 67);
                 font-weight: bold;

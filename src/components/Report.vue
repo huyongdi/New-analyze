@@ -312,7 +312,7 @@
       sampleInfo: function () {
         const _vue = this;
         _vue.loading = true;
-        _vue.$axios({
+        _vue.myAxios({
           url: 'report/reportsnvnew/patient/?datafile=' + _vue.id
         }).then(function (resp) {
           if (resp.data.patient.status === 'error') {
@@ -343,7 +343,7 @@
       getData: function () {
         const _vue = this;
         _vue.loading = true;
-        this.$axios({
+        this.myAxios({
           url: 'report/reportsnvnew/?datafile=' + this.id + '&app=' + this.app,
         }).then(function (resp) {
           _vue.allData = resp.data;

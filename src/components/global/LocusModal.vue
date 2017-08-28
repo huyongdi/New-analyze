@@ -1,4 +1,4 @@
-<!--点击位点出现的弹框-->
+<!--查看位点信息-->
 <template>
     <div>
       <loading v-if="loading"></loading>
@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body" id="modal-panel">
               <div class="table-content">
-                <table class="table myTable hide" id="table-0">
+                <table class="table my-table no-shadow" v-show="!hide0">
                   <thead>
                   <tr>
                     <th>Datafile</th>
@@ -33,7 +33,7 @@
                       {{list.ratio?list.ratio.toFixed(4):'-'}}
                     </td>
                     <td>
-                      <span v-if="list.gatkFilter">{{list.gatkFilter}}</span>
+                      <span v-if="list.gatkFilter">{{list.gatkFilter}}%</span>
                       <span v-else> - </span>
                     </td>
                   </tr>
@@ -43,7 +43,7 @@
                   </tbody>
                 </table>
 
-                <table class="table myTable hide" id="table-1">
+                <table class="table my-table no-shadow" v-show="!hide1">
                   <thead>
                   <tr>
                     <th>深度(原始)</th>
@@ -65,7 +65,8 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+              <span class="my-btn pull-left" data-dismiss="modal"><img src="../../../static/img/red-close.png" alt="">关闭</span>
+              <!--<button type="button" class="my-btn pull-left" data-dismiss="modal">关闭</button>-->
             </div>
           </div>
         </div>
@@ -75,23 +76,25 @@
 
 <script>
   export default {
-      props:['locusId','datafile','snv','type'],
+      props:['locusId','datafile','locus','type'],
       data:function () {
         return{
           lists0:[],
           lists1:[],
-          loading:false
+          loading:false,
+          hide0:true,
+          hide1:true,
         }
       },
       watch:{
-        snv:function () {
+        locus:function () {
+          this.hide0 = true;
+          this.hide1 = false;
           const _vue = this;
           _vue.loading = true;
-          if(this.type && this.type !=0){ //1是cnv
-            $("#table-0").addClass('hide');
-            $("#table-1").removeClass('hide');
-            _vue.$axios({
-              url:'report/cnvwesinfo/records/?datafile='+_vue.datafile+'&cnv='+_vue.snv
+          if(this.type){ //1是cnv
+            _vue.myAxios({
+              url:'report/cnv/records/?datafile='+_vue.datafile+'&cnv='+_vue.locus
             }).then(function (resp) {
               _vue.lists1 = resp.data;
               _vue.loading = false;
@@ -99,10 +102,10 @@
               _vue.catchFun(error);
             });
           }else{ //0是snv
-            $("#table-0").removeClass('hide');
-            $("#table-1").addClass('hide');
-            _vue.$axios({
-              url:'report/snvatinfo/records/?datafile='+_vue.datafile+'&snv='+_vue.snv
+            this.hide0 = false;
+            this.hide1 = true;
+            _vue.myAxios({
+              url:'report/snv/records/?datafile='+_vue.datafile+'&snv='+_vue.locus
             }).then(function (resp) {
               _vue.lists0 = resp.data;
               _vue.loading = false;
@@ -114,12 +117,16 @@
       },
       filters:{
         filterData: function (data) { //取百分比
-          if (data == 0) {
-            return 0;
-          }
-          data = data * 100;
-          data = data.toFixed(2);
-          return data
+//          if (data == 0) {
+//            return 0;
+//          }
+//          data = data * 100;
+//          data = data.toFixed(2);
+//          return data
+
+          return Math.round(data*10000)/100
+
+
         },
         getDatafile:function (str) {
           let arr = str.split('/');
@@ -134,6 +141,12 @@
   width: 100%;
   .center{
     text-align: center;
+  }
+  table{
+    table-layout: fixed;
+    td,th{
+      word-break: break-all;
+    }
   }
 }
 </style>

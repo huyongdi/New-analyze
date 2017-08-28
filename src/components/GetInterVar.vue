@@ -1,18 +1,21 @@
 <template>
-  <div class="right-content">
-    <location imgClass="analyzeTool-small" currentPage="分析流程"></location>
-
-    <div class="all-content">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="title">
+        <span class="title-b">任务详情</span>
+        <span class="title-s">> 计算Interval</span>
+      </div>
       <div class="title-content row">
         <div class="col-md-offset-4 col-md-3">
           <input class="form-control" id="countInput">
         </div>
         <div class="col-md-1">
-          <button class="btn btn-color" @click="calculate">计&nbsp;&nbsp;算</button>
+          <!--<span class="my-btn" @click="calculate"><img src="../../static/img/red-submit.png" alt="">计算</span>-->
+          <span class="my-btn submit" @click="submit"><img src="../../static/img/red-submit.png" alt="">提交</span>
         </div>
       </div>
 
-      <table class="table myTable">
+      <table class="table my-table bc-fff">
         <thead>
         <tr>
           <th></th>
@@ -23,7 +26,7 @@
         </tr>
         </thead>
         <tbody id="submit_table">
-        <tr v-for="data in allData" @click="addBc">
+        <tr v-for="data in allData">
           <td><input type="checkbox" class="valueBox" :data-value=data.value></td>
           <td class="t-name">{{data.name}}</td>
           <td>{{data.cn}}</td>
@@ -32,19 +35,13 @@
         </tr>
         </tbody>
       </table>
-
     </div>
-
   </div>
 </template>
 
 <script>
-  import topLocation from './global/location'
   import acmgJson from  '../../static/acmg_rank.json'
   export default {
-    components: {
-      'location': topLocation,
-    },
     data:function () {
       return{
         allData: acmgJson
@@ -64,6 +61,47 @@
       }
     },
     methods:{
+      submit:function () {
+        this.calculate();
+        let obj={
+          snv:this.$route.query.snv,
+          weight:$('#countInput').val(),
+          pvs1:0,
+          bv1:0,
+          ps:[],
+          pm:[],
+          pp:[],
+          bp:[],
+          ba:[],
+        };
+        $(".valueBox").each(function () {
+          const html = $(this).parent().next().html();
+          const _value = $(this).data('value');
+          if ($(this).prop("checked")) {
+            if(html == 'PVS1'){
+              obj.pvs1 = _value
+            }else if(html.includes('PS')){
+              obj.ps.push(_value)
+            }else if(html.includes('PM')){
+              obj.pm.push(_value)
+            }else if(html.includes('BP')){
+              obj.bp.push(_value)
+            }else if(html.includes('BS')){
+              obj.bs.push(_value)
+            }else if(html == 'BA1'){
+              obj.ba.push(_value)
+            }
+          }
+        });
+
+        this.myAxios({
+          url:'report/snv/intervar/',
+          method:'post',
+          data:obj
+        }).then(function (resp) {
+
+        })
+      },
       calculate:function () {
         let allValue = 0;
         let interVar = '';
@@ -90,7 +128,7 @@
       addBc:function (event) {
         const _tr = $(event.target).closest('tr');
         const _table = _tr.closest('table');
-        _table.find('.tr-active').removeClass('tr-active')
+        _table.find('.tr-active').removeClass('tr-active');
         _tr.addClass('tr-active');
       }
     }
@@ -98,10 +136,5 @@
 </script>
 
 <style scoped>
-.detail-content{
-  margin-top: 20px;
-}
-table{
-  margin-top: 50px;
-}
+
 </style>

@@ -4,19 +4,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js'
+import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
-Vue.prototype.instance = axios.create({
-  baseURL: 'https://analyze.grandbox.site/',
-  headers:{'Authorization': ''}
+
+Vue.prototype.loginAxios = axios.create({
+//   baseURL: 'https://analyze.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8083/',
 });
-axios.defaults.headers = {'Authorization': localStorage.token?localStorage.token:''};
+Vue.prototype.myAxios = axios.create({
+//   baseURL: 'https://analyze.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8083/',
+  headers:{'Authorization': localStorage.token}
+});
+
 /*请求地址*/
-axios.defaults.baseURL = 'https://analyze.grandbox.site/';
-Vue.prototype.dbUrl = 'https://biomeddb.grandbox.site/';
+Vue.prototype.anaUrl = 'http://118.26.69.171:8083/';
+Vue.prototype.dbUrl = 'http://118.26.69.171:8082/';
 
 /*页面地址*/
 Vue.prototype.dbHtml = '/biomeddb/';
@@ -24,6 +30,8 @@ Vue.prototype.anaHtml = '/analyze/';
 Vue.prototype.manHtml = '/manage/';
 
 /*自定义全局函数*/
+
+// 捕获错误
 Vue.prototype.catchFun = function (error) {
   if (error.response) {
     let alertContent = '';
@@ -51,14 +59,15 @@ Vue.prototype.catchFun = function (error) {
     alert(error.response.status + ' : ' + alertContent);
     if (error.response.status === 401) {
       if (this.$route.name !== 'login') {
-        localStorage.token = '';
-        this.$router.push({path: '/login',query:{'next':this.$route.path}})
+        // localStorage.token = '';
+        this.$router.push({path: '/?next=' + this.$route.path})
       }
     }
   } else {
     alert(error.message);
   }
 };
+// 字符串转化为数组
 Vue.prototype.strToArr = function (str) {
   str = $.trim(str).replace(/，/g,','); //英文逗号替换为中文
   str = str.replace(/<\/?.+?>/g, ","); //回车替换成逗号
@@ -72,10 +81,19 @@ Vue.prototype.strToArr = function (str) {
   });
   return arr1
 };
-
+// hide转换(参数为id)
+Vue.prototype.switchHide = function (ID) {
+  const _ele = $("#"+ID);
+  if(_ele.hasClass('hide')){
+    _ele.removeClass('hide')
+  }else{
+    _ele.addClass('hide')
+  }
+};
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: {App}
 });
+

@@ -1,10 +1,9 @@
+<!--模糊搜索框-->
 <template>
-  <div class="fuzzy-content">
+  <div class="fuzzy-content" id="fuzzy-content">
     <div class="left">
-      <!--<input type="text" class="form-control" :placeholder='placeholder' v-model="fuzzyInput" @keyup="sendInput">-->
-
       <div class="searchBorder" id="search_gene">
-        <input type="text" class="form-control input_hasImg" :placeholder='placeholder' v-model="fuzzyInput">
+        <input class="form-control input_hasImg" :placeholder='placeholder' v-model="fuzzyInput" @keyup.enter="sendInput">
         <button class="search-btn myBtn" @click.stop="sendInput"></button>
       </div>
 
@@ -13,8 +12,8 @@
       </ul>
     </div>
     <div class="right">
-      <div class="title">{{title}}</div>
-      <ul id="right-ul">
+      <div class="has-title">{{title}}</div>
+      <ul>
         <li v-for="list in rightData" :data-key="list.key" @click="rightRemove(list.key)">
           <span>{{list.value}}</span>
           <span>&times;</span>
@@ -61,24 +60,18 @@
         this.$emit('sendInput', this.fuzzyInput) //函数名和父元素的@onEnter一致
       }
     },
-//    computed: {
-//      leftDataArr: function () {
-//          console.log(this.leftData)
-//      }
-//    }
   }
 </script>
 
 <style scoped lang="less">
   @border: #d3d3d3;
   @bc:rgb(240,244,247);
-  .fuzzy-content {
+  #fuzzy-content {
     overflow: hidden;
     > div {
       float: left;
     }
-    .title {
-      /*padding-left: 20px;*/
+    .has-title {
       border-bottom: 1px solid @border;
       height: 40px;
       line-height: 40px;
@@ -100,7 +93,6 @@
         line-height: 25px;
         &:hover {
           background-color: rgb(44, 127, 210);
-          /*background-color: rgb(240,244,247);*/
           color: #fff;
         }
       }
@@ -110,17 +102,49 @@
       width: 50%;
       border: 1px solid @border;
       border-right: none;
-      input {
-        /*width: 90%;*/
-        /*height: 25px;*/
-        /*line-height: 25px;*/
-        /*margin: 5px 0 5px 5%;*/
-      }
       ul {
         height: 268px;
         border-top: 1px solid @border;
         background-color: @bc;
       }
+      .searchBorder {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        .input_hasImg {
+          display: inline-block;
+          width: 80%;
+          border: none;
+          height: 40px;
+          outline: none;
+          box-shadow: none;
+          padding-left: 20px;
+        }
+        .myBtn {
+          display: inline-block;
+          padding: 4px 12px;
+          margin-bottom: 0;
+          font-size: 13px;
+          color: #fff;
+          font-weight: 400;
+          line-height: 1.42857143;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          border: 1px solid transparent;
+          border-radius: 3px;
+        }
+        .search-btn {
+          position: absolute;
+          width: 36px;
+          height: 36px;
+          background: url(../../../static/img/fu-search.png) no-repeat center;
+          background-size: 36px 36px;
+          margin: 2px 6px 2px 6px;
+          right: 0;
+        }
+      }
+
     }
     .right {
       height: 310px;
@@ -151,47 +175,4 @@
       }
     }
   }
-
-  .searchBorder {
-    width: 100%;
-    height: 40px;
-    position: relative;
-
-  }
-
-  .searchBorder .input_hasImg {
-    display: inline-block;
-    width: 80%;
-    border: none;
-    height: 40px;
-    outline: none;
-    box-shadow: none;
-    padding-left: 20px;
-  }
-
-  .myBtn {
-    display: inline-block;
-    padding: 4px 12px;
-    margin-bottom: 0;
-    font-size: 13px;
-    color: #fff;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    border: 1px solid transparent;
-    border-radius: 3px;
-  }
-
-  .search-btn {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background: url(../../../static/img/search.png) no-repeat center;
-    background-size: 36px 36px;
-    margin: 2px 6px 2px 6px;
-    right: 0;
-  }
-
 </style>
